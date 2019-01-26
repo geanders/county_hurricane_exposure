@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ehp_supp.aux
+The style file: agsm.bst
+Database file #1: hurr_exposure.bib
+You've used 54 entries,
+            2909 wiz_defined-function locations,
+            951 strings with 15601 characters,
+and the built_in function-call counts, 325593 in all, are:
+= -- 54096
+> -- 4043
+< -- 1
++ -- 26478
+- -- 1249
+* -- 28996
+:= -- 63688
+add.period$ -- 63
+call.type$ -- 54
+change.case$ -- 749
+chr.to.int$ -- 54
+cite$ -- 54
+duplicate$ -- 833
+empty$ -- 1786
+format.name$ -- 1441
+if$ -- 58535
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 47
+newline$ -- 179
+num.names$ -- 566
+pop$ -- 183
+preamble$ -- 1
+purify$ -- 810
+quote$ -- 0
+skip$ -- 692
+stack$ -- 0
+substring$ -- 77947
+swap$ -- 142
+text.length$ -- 757
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 212
+warning$ -- 0
+while$ -- 1210
+width$ -- 0
+write$ -- 722

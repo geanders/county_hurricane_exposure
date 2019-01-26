@@ -1,0 +1,33 @@
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[comma,authoryear,round]{natbib}
+\usepackage{nopageno}
+\usepackage{tocloft}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{authblk}
+\usepackage{microtype}
+\usepackage{charter}
+\usepackage[nolist,nohyperlinks]{acronym}
+
+\bibliographystyle{abbrvnat}
+
+\graphicspath{{../figures/}}
+
+\cftpagenumbersoff{figure}
+\cftpagenumbersoff{table}
+
+\renewcommand\Affilfont{\itshape\small}
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+     
+\frenchspacing
+

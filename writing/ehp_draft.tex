@@ -1,0 +1,126 @@
+\documentclass[fleqn,10pt,lineno]{olplainarticle}
+% Use option lineno for line numbers
+
+\graphicspath{{../figures/}}
+
+\usepackage[implicit=false]{hyperref}
+\usepackage{acronym}
+
+\title{Assessing United States county-level exposure for research on tropical cyclones and human health}
+
+\author[a,1]{G. Brooke Anderson} 
+\author[a,b]{Joshua Ferreri}
+\author[c]{Mohammad Al-Hamdan} 
+\author[c]{William Crosson} 
+\author[d]{Andrea Schumacher} 
+\author[e]{Seth Guikema} 
+\author[f]{Steven Quiring} 
+\author[g]{Dirk Eddelbuettel} 
+\author[a]{Meilin Yan} 
+\author[h]{Roger D. Peng}
+
+\affil[a]{Department of Environmental \& Radiological Health Sciences, Colorado 
+  State University, Fort Collins, CO, 80523} 
+\affil[b]{University of Colorado Denver School of Medicine, Aurora, CO, 80045} 
+\affil[c]{Universities Space Research Association, NASA Marshall Space Flight 
+  Center, Huntsville, AL, 35805}
+\affil[d]{Cooperative Institute for Research in the Atmosphere, Colorado State
+  University, Fort Collins, CO, 80523} 
+\affil[e]{Department of Industrial and Operations Engineering, University of 
+  Michigan, Ann Arbor, MI, 48109}
+\affil[f]{Department of Geography, Ohio State University, Columbus, OH, 43210}
+\affil[g]{Debian and R Projects; Department of Statistics, University of
+  Illinois at Urbana-Champaign, Champaign, IL, 61820} 
+\affil[h]{Department of Biostatistics, Johns Hopkins Bloomberg School of Public 
+  Health, Baltimore, MD, 21205}
+
+\keywords{Hurricanes, Tropical cyclones, Disaster impacts, Exposure assessment}
+
+\begin{abstract} 
+  \input{ehp_abstract}
+\end{abstract}
+
+\begin{document}
+
+\flushbottom 
+\maketitle 
+\thispagestyle{empty}
+
+\input{ehp_introduction}
+
+\begin{table}%[tbhp] 
+\centering 
+\caption{Exposure metrics considered to assess county-level exposure to 
+tropical cyclones}
+\begin{tabular}{p{0.9cm}p{2.5cm}p{9cm}} 
+Metric & Available & Criteria for exposure \\ \midrule 
+Distance & 1988--2015 & County population mean center within 100 kilometers of storm track \\ 
+Rain & 1988--2011 & County cumulative rainfall of 75 millimeters or more over the period from two days before to one day after the storm's closest approach and county population mean center within 500 kilometers of the storm track \\ 
+Wind & 1988--2015 & Modeled maximum sustained wind speed at the county's population mean center 15 meters per second or higher during the storm\\ 
+Flood & 1996--2015 & Flood event listed in the National Oceanic and Atmospheric Administration (NOAA) Storm Events database for the county with a start date within two days of the storm's closest approach and county population mean center within 500 kilometers of the storm track \\
+Tornado & 1996--2015 & Tornado event listed NOAA Storm Events database for the county with a start date within two days of the storm's closest approach and county population mean center within 500 kilometers of the storm track\\
+\bottomrule 
+\end{tabular} 
+\label{tab:exposuremetrics} 
+\end{table}
+
+\input{ehp_methods}
+
+\begin{figure*}%[tbhp] 
+\centering 
+\includegraphics[width=16cm]{ivanonly}
+\caption{Counties classified as exposed to Hurricane Ivan (2004) under each
+exposure metric (Table 1). The red line shows the track of Hurricane Ivan 
+based on the revised Atlantic hurricane database (HURDAT2 \citep{landsea2013}).
+Similar maps for other large-extent storms are given in Fig. S5.}
+\label{fig:ivanexposure} 
+\end{figure*}
+
+\input{../tables/stormseverity.tex}
+
+\begin{figure}%[tbhp] 
+\centering 
+\includegraphics[width = 0.7\linewidth]{jaccard_heatmap} 
+\caption{Heatmap of Jaccard index values for
+specific exposure metric pairs within storms. Only storms between 1996 and 2011,
+and for which at least 250 counties were exposed based on at least one metric,
+are included. The color of each cell within the main heatmap indicates the value
+of the Jaccard index (proportion of counties classified as exposed by both
+metrics out of storms classified as exposed by either metric) for a given pair
+of metrics for a given storm. Storms are displayed within clusters that have
+similar patterns in county-level exposure agreement for metric pairs, based on
+hierarchical clustering using the complete link method
+\citep{murtagh2012algorithms} (i.e., storms in the same cluster tend to have
+similar patterns for the pairwise strength of agreement among metrics); columns
+are also ordered based on hierarchical clustering. The colors to the right of
+the main heatmap for each storm indicate the total number of counties classified
+as exposed to the storm by any of the five metrics, providing an estimate of
+storm extent. Maps are available showing the counties identified as exposed
+under each of five metrics for the widest-extent storm in each cluster:
+Hurricane Ivan (2004) (Fig. \ref{fig:ivanexposure}) and Hurricanes Floyd (1999),
+Lee (2011), Cindy (2005), and Katrina (2005) (Fig. S5).} 
+\label{fig:jaccard}
+\end{figure}
+
+\begin{figure*}%[tbhp] 
+\centering
+\includegraphics[width=16cm]{averageexposureonly} 
+\caption{Average number of storm exposures per decade in U.S. counties for 
+each exposure metric. The criteria behind each of the five metrics is given 
+in Table \ref{tab:exposuremetrics}. The years used to estimate these averages 
+are based on years of available exposure data (distance and wind: 1988--2015; 
+rain: 1988--2011; flood and tornado: 1996--2015). Similar patterns persist when
+analysis is restricted to years with all exposure data available (1996--2011;
+Fig. S3).} 
+\label{fig:averageexposure} 
+\end{figure*}
+
+\input{ehp_results}
+
+\input{ehp_discussion}
+
+\input{ehp_acknowledgements}
+
+\bibliography{hurr_exposure}
+
+\end{document}

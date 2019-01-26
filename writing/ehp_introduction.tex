@@ -1,0 +1,91 @@
+\section*{Introduction}
+
+Tropical cyclones, including hurricanes, can have disastrous impacts in the
+\ac{US}. A tropical cyclone's high winds can bring health risks
+and property damage through structural damage of houses and other buildings,
+falling trees, and wind-borne debris~\citep{rappaport2000} and cause power
+outages~\citep{liu2005, han2009}, which introduce a number of threats to human
+and ecological health, including water quality risks if the outage affects
+wastewater treatment plants~\citep{mallin2006}.  Other risks can exist without
+severe wind; for example, one study found that most of the direct
+hurricane-related deaths in the \ac{US} between 1970 and 1999 occurred in cases
+when wind was below hurricane strength, including for Tropical Storms Charley
+in 1998 and Alberto in 1994~\citep{rappaport2000}.  Tropical cyclones can
+produce excessive rain, especially in certain topographies (e.g., near
+mountains), so counties well inland sometimes experience more extreme rain than
+coastal counties. Flood risks from tropical cyclones can result from this rain,
+although the two risks are not perfectly correlated~\citep{chen2015}. In the
+\ac{US}, over half of hurricane-related direct deaths from 1970 to 1999 from
+Atlantic basin storms were a result of freshwater flooding~\citep{rappaport2000}. 
+Flooding can also degrade water quality~\citep{mallin2006}, which can threaten both 
+human and ecological health.
+
+To measure tropical cyclone exposure for either investigations of exposure
+patterns or for estimation of tropical cyclone risks and impacts, including
+those related to human health, studies have varied widely in how they determine
+tropical cyclone exposure (some examples shown in Figure~S1). While some
+studies have measured exposure based on specific hazards of the tropical
+cyclone (e.g., wind, rain), many have used distance from the tropical
+cyclone's central track as a surrogate in identifying exposure to the hazards
+of a tropical cyclone (e.g.,~\citet{czajkowski2011, tansel2010, kinney2008,
+caillouet2008increase}).  
+
+Distance from the tropical cyclone's central track can be easily measured using
+widely-available hurricane tracking data. There are, however, a number of
+limitations to using distance to assess exposure to tropical cyclones, and
+there are reasons to suspect that exposure classifications based on other
+tropical cyclone hazards may disagree with distance-based classifications.
+Tropical cyclones vary dramatically in size: \ac{US} tropical cyclones have been
+observed with radii to maximum winds as small as 20 kilometers and as large as
+200 kilometers~\citep{mallin2006, quiring2011variations}. While a number of
+tropical cyclone hazards are strongly associated with distance from the
+tropical cyclone's center (e.g., wind and, at the coast, storm surge and 
+waves~\citep{rappaport2000, kruk2010}), other hazards like dangerous rain, 
+floods, and tornadoes can occur well away from the tropical cyclone's central 
+track~\citep{rappaport2000, atallah2007, moore2012}.  For example, fatal tropical
+cyclone tornadoes, which were linked to over 300 deaths in the \ac{US}  between
+1995 and 2009, most often occur 200\,--\,500 kilometers from the tropical cyclone's
+center~\citep{moore2012}. 
+
+Further, distance-based exposure metrics that use
+buffers tend to use an equal buffer distance on each side of the tropical
+cyclone track (e.g.,~\citep{czajkowski2011, grabich2015, grabich2016,
+zandbergen2009, tansel2010}), but the forces of a tropical cyclone tend to be
+distributed around the center in a non-symmetrical way. For example, extreme
+winds are more common to the right of the track, where counter-clockwise
+cyclonic winds move in concert with the tropical cyclone's forward 
+motion~\citep{halverson2015}, and the fatal tornadoes associated with \ac{US} tropical
+cyclones between 1995 and 2009 occurred almost exclusively to the right of the
+tropical cyclone's track, mostly in the right front quadrant of the tropical
+cyclone~\citep{moore2012}. Rain, conversely, is often heaviest to the left of
+the tropical cyclone's track, especially when the tropical cyclone interacts
+with other weather systems~\citep{atallah2003, atallah2007, zhu2013variations}
+or undergoes an extratropical transition~\citep{elsberry2002}.
+
+[Something about differences in other metrics]
+
+The use of different exposure metrics across studies hampers the development of
+a scientific consensus on tropical cyclone-related risks, as differences
+observed between studies could result from differences in exposure assessment.
+Further, if a study misclassifies exposure to the hazard or hazards that cause
+an impact, estimates of tropical cyclone risks or impacts will be biased,
+making it hard to identify true associations. These concerns are particularly
+important if there are large differences in the locations that are determined
+to be exposed based on different metrics.  
+
+To investigate this, we measured county-level exposure to tropical cyclones in
+all eastern \ac{US} counties using five metrics (
+Table~\ref{tab:exposuremetrics}): (1) distance to tropical cyclone track; (2) maximum
+sustained wind speed; (3) cumulative rainfall; (4) flood events; and (5)
+tornado events.  We assessed exposure at the county level since data on many
+potential impacts are available at county-level aggregations (e.g., direct
+hurricane-related deaths~\citep{czajkowski2011}; birth outcomes~\citep{grabich2015,
+grabich2016}; autism prevalence~\citep{kinney2008}) and
+since decisions and policies to prepare for, and respond to, tropical cyclones
+are often undertaken at the county level~\citep{zandbergen2009, rappaport2000}.
+We explored patterns in these exposure assessments and measured how well
+exposure classification agreed across these five metrics in terms of
+classifying specific counties as exposed to a tropical cyclone.  Finally, to
+make this hazard-specific tropical cyclone exposure data available to other
+researchers, we published open source software for county-based hurricane
+exposure assessment in \ac{US} counties~\citep{hurricaneexposure}.
