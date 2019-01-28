@@ -35,21 +35,21 @@ metrics.
 
 Figure~\ref{fig:ivanexposure} gives an example of how sensitive county-level
 tropical cyclone exposure assessment is to the choice of metric, using as an
-example Hurricane Ivan in 2004, which was record-breaking for its
-duration as a major hurricane~\citep{franklin2006atlantic}. When county-level
-exposure was determined based on distance, the counties assessed as exposed
-followed the tropical cyclone's track, including counties well inland. For the
-wind metric, only counties near two of the tropical cyclone's landfalls were
-assessed as exposed. For rain- and flood-based metrics, however, exposure
-extended to the left of the track, including counties as far north as New York
-and Connecticut, while for the tornado metric, exposed counties tended to be to
-the right of the track and included several counties in central North Carolina,
-South Carolina, and Georgia that were not identified as exposed to Ivan based
-on any other metric.  Figure~S3 provides similar maps for four other example
-tropical cyclones (selected because they exposed many \ac{US}  counties based on
-at least one metric), and Figure~S4 provides four examples of tropical cyclones
-in which the disagreement in exposure assessment between rain- and wind-based
-metrics was particularly notable.
+example Hurricane Ivan in 2004, which was record-breaking for its duration as a
+major hurricane~\parencite{franklin2006atlantic}. When county-level exposure
+was determined based on distance, the counties assessed as exposed followed the
+tropical cyclone's track, including counties well inland. For the wind metric,
+only counties near two of the tropical cyclone's landfalls were assessed as
+exposed. For rain- and flood-based metrics, however, exposure extended to the
+left of the track, including counties as far north as New York and Connecticut,
+while for the tornado metric, exposed counties tended to be to the right of the
+track and included several counties in central North Carolina, South Carolina,
+and Georgia that were not identified as exposed to Ivan based on any other
+metric.  Figure~S3\todo{Check fig ref} provides similar maps for four other
+example tropical cyclones (selected because they exposed many \ac{US}  counties
+based on at least one metric), and Figure~S4\todo{Check fig ref} provides four
+examples of tropical cyclones in which the disagreement in exposure assessment
+between rain- and wind-based metrics was particularly notable.
 
 We drew similar conclusions when we investigated all~46 tropical cyclones
 between~1996 and~2011 (the period for which all five metrics were available)
@@ -78,28 +78,29 @@ in most tropical cyclones.
 
 There were, however, a few exceptions\,---\,tropical cyclones in which similar
 counties were determined to be exposed to the tropical cyclone for two or more
-of the metrics considered.  For Floyd in~1999 (Figure~S3) and Irene in~2011,
-for example, county-level classification agreed moderately to well (Jaccard
-index of approximately~0.5\,--\,0.8) for all pairs of exposure metrics except
-those including the tornado-based metric. These tropical cyclones both made
-their first \ac{US}  landfall in North Carolina at minor hurricane windspeeds
-(Category~2 and~1, respectively) and then skimmed the eastern coast of the
-\ac{US} north through New England, bringing large rainfall to much of the
-eastern coast from North Carolina north and causing extensive inland flooding
-in North Carolina (Floyd) and New England (Irene)~\citep{avila2013atlantic,
-lawrence2000atlantic}. For another set of tropical cyclones (e.g., Lee in~2011
-[Figure~S3], Ernesto in~2006, and Bertha in~1996), there was moderate to good
-agreement for all pairwise combinations of distance, rain, and wind, but poor
-agreement for all other combinations of metrics. Most of these tropical
-cyclones either followed the eastern coastline north of North Carolina (Bertha
-in~1996, Charley in~2004, Gaston in~2004, Barry in~2007, and Hanna in~2008), in
-a pattern similar to Hurricanes Floyd in~1999 and Irene in~2011, or made
-landfall in or near the Florida panhandle and cut across to exit into the
-Atlantic around North Carolina (Josephine in~1996, Earl in~1998, Alberto
-in~2006). However, these two sets of tropical cyclones represented the minority
-of all tropical cyclones considered; for most tropical cyclones, there was low
-overlap in the counties determined to be exposed to the tropical cyclones
-between most pairings of metrics.
+of the metrics considered.  For Floyd in~1999 (Figure~S3\todo{Check fig ref})
+and Irene in~2011, for example, county-level classification agreed moderately
+to well (Jaccard index of approximately~0.5\,--\,0.8) for all pairs of exposure
+metrics except those including the tornado-based metric. These tropical
+cyclones both made their first \ac{US}  landfall in North Carolina at minor
+hurricane windspeeds (Category~2 and~1, respectively) and then skimmed the
+eastern coast of the \ac{US} north through New England, bringing large rainfall
+to much of the eastern coast from North Carolina north and causing extensive
+inland flooding in North Carolina (Floyd) and New England
+(Irene)~\parencite{avila2013atlantic, lawrence2000atlantic}. For another set of
+tropical cyclones (e.g., Lee in~2011 [Figure~S3\todo{Check fig ref}], Ernesto
+in~2006, and Bertha in~1996), there was moderate to good agreement for all
+pairwise combinations of distance, rain, and wind, but poor agreement for all
+other combinations of metrics. Most of these tropical cyclones either followed
+the eastern coastline north of North Carolina (Bertha in~1996, Charley in~2004,
+Gaston in~2004, Barry in~2007, and Hanna in~2008), in a pattern similar to
+Hurricanes Floyd in~1999 and Irene in~2011, or made landfall in or near the
+Florida panhandle and cut across to exit into the Atlantic around North
+Carolina (Josephine in~1996, Earl in~1998, Alberto in~2006). However, these two
+sets of tropical cyclones represented the minority of all tropical cyclones
+considered; for most tropical cyclones, there was low overlap in the counties
+determined to be exposed to the tropical cyclones between most pairings of
+metrics.
 
 \subsection*{Geographic patterns in tropical cyclone exposures}
 
@@ -130,10 +131,10 @@ health-related studies based on physical exposure to tropical cyclones. For
 this example, we compared estimates of which \ac{US} counties have the largest
 expected physical exposure to tropical cyclones among a susceptible
 subpopulation, Medicare beneficiaries who are reliant on electricity for
-medical equipment (Figure~S6)~\citep{empower}.  We found
-that a few counties (Miami-Dade County, FL; Harris County, TX) were ranked in
-the top three counties of physical exposure among electricity-dependent
-Medicare beneficiaries for almost all exposure metrics
+medical equipment (Figure~S6\todo{Check fig ref})~\parencite{empower}.  We
+found that a few counties (Miami-Dade County, FL; Harris County, TX) were
+ranked in the top three counties of physical exposure among
+electricity-dependent Medicare beneficiaries for almost all exposure metrics
 (Figure~\ref{fig:topelecdependexposure}). However, there were key differences
 when using different exposure metrics. For example, Florida counties dominated
 the lists of top exposed counties based on wind- and tornado-based metrics,
@@ -145,39 +146,41 @@ states (PA, NY).
 To assist with future tropical cyclone impact studies, we created and published
 open source software that includes the hazard-specific, county-level tropical
 cyclone data in this paper, as well as tools to explore and map that 
-data~\citep{hurricaneexposure, hurricaneexposuredata}. This software includes continuous
+data~\parencite{hurricaneexposure, hurricaneexposuredata}. This software includes continuous
 data for the distance-, rain-, and wind-based metrics, allowing users to also explore
 different thresholds of these metrics when assessing exposure.
 
 We investigated how well these data correspond with data from other available
-sources (Figures~S7\,--\,11). Within the nine sample counties, storm-related
-rainfall from the reanalysis precipitation dataset was well-correlated with
-station-based rainfall measurements, although the reanalysis data did tend to
-somewhat underestimate rainfall totals in storms with extremely high rainfall
-(Figure~\ref{fig:raincomparison}). A distance constraint (county population
-mean center within~500 \si{\kilo\metre} of the storm's closest approach) was
-necessary for assessing storm exposure based on this metric to ensure that
-rains unrelated and far from the storm track were not misattributed to storm
-exposures. We found that this distance constraint was typically adequately
-large to capture storm-related rain, although in rare examples of exceptionally
-large storms (e.g., Hurricane Ike in 2008) or storms for which tracking was
-stopped at extratropical transition (e.g., Tropical Storm Lee in 2011), some
-storm-related rains were missed because of this distance constraint
-(Figure~\ref{fig:rainexamples}).  The modeled wind speeds generally agreed well
-with the \ac{HURDAT2} wind radii (Figure~\ref{fig:windcomparison}), with
-disagreement mostly limited to large storms that were characterized by high
-winds well inland (e.g., Hurricanes Ike in 2008 and Sandy in 2012;
-Figure~\ref{fig:windexamples}).  Stream gage data generally indicated higher
-discharge in these counties on dates identified as flood events, particularly
-in counties with more reporting stream gages (e.g., Harris County, TX, with~10
-reporting stream gages; Figure~\ref{fig:floodcomparison}), although these two
-flooding data sources were not completely consistent.
+sources (Figures~S7\,--\,11\todo{Check fig refs}). Within the nine sample
+counties, storm-related rainfall from the reanalysis precipitation dataset was
+well-correlated with station-based rainfall measurements, although the
+reanalysis data did tend to somewhat underestimate rainfall totals in storms
+with extremely high rainfall (Figure~\ref{fig:raincomparison}). A distance
+constraint (county population mean center within~500 \si{\kilo\metre} of the
+storm's closest approach) was necessary for assessing storm exposure based on
+this metric to ensure that rains unrelated and far from the storm track were
+not misattributed to storm exposures. We found that this distance constraint
+was typically adequately large to capture storm-related rain, although in rare
+examples of exceptionally large storms (e.g., Hurricane Ike in 2008) or storms
+for which tracking was stopped at extratropical transition (e.g., Tropical
+Storm Lee in 2011), some storm-related rains were missed because of this
+distance constraint (Figure~\ref{fig:rainexamples}).  The modeled wind speeds
+generally agreed well with the \ac{HURDAT2} wind radii
+(Figure~\ref{fig:windcomparison}), with disagreement mostly limited to large
+storms that were characterized by high winds well inland (e.g., Hurricanes Ike
+in 2008 and Sandy in 2012; Figure~\ref{fig:windexamples}).  Stream gage data
+generally indicated higher discharge in these counties on dates identified as
+flood events, particularly in counties with more reporting stream gages (e.g.,
+Harris County, TX, with~10 reporting stream gages;
+Figure~\ref{fig:floodcomparison}), although these two flooding data sources
+were not completely consistent.
 
-While generally in agreement with data from other
-sources, there are a few limitations. The wind data are based on modeled,
-rather than observed, values, and while the modeled wind data generally agree
-well with post-analysis maximum wind radii from the revised Atlantic hurricane
-database \ac{HURDAT2}~\citep{landsea2013} (Figure~S7), for a few tropical cyclones
-it did not (e.g., Figure~S10). The rainfall data are from re-analysis data,
-which are generally well-correlated with observed ground-based station data but
-sometimes oversmooth extreme measurements (Figure~S8). 
+While generally in agreement with data from other sources, there are a few
+limitations. The wind data are based on modeled, rather than observed, values,
+and while the modeled wind data generally agree well with post-analysis maximum
+wind radii from the revised Atlantic hurricane database
+\ac{HURDAT2}~\parencite{landsea2013} (Figure~S7\todo{Check fig ref}), for a few
+tropical cyclones it did not (e.g., Figure~S10\todo{Check fig ref}). The
+rainfall data are from re-analysis data, which are generally well-correlated
+with observed ground-based station data but sometimes oversmooth extreme
+measurements (Figure~S8\todo{Check fig ref}). 

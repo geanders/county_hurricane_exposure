@@ -167,11 +167,11 @@ total_sum %>%
          `Tropical cyclone with most counties exposures (# exposed counties)` = max_storm) %>%
   xtable(align = "cp{1.75cm}p{3cm}p{4cm}p{4cm}",
          caption = "Summary statistics for exposure metrics considered to assess county-level exposure to
-         tropical cyclones. A county exposure represents the exposure of a specific eastern U.S.  
+         tropical cyclones. A county exposure represents the exposure of a specific eastern US  
          county to a specific tropical cyclone. A county can be exposed to multiple tropical cyclones within
          a year, and a tropical cyclone can create multiple county exposures under a given metric.
          The median and interquartile range of county exposures per tropical cyclone is based on
-         the tropical cyclones for which at least one U.S. county was exposed. The years for which
+         the tropical cyclones for which at least one US county was exposed. The years for which
          data are available for each metric are given in Table 1.",
          label = "tab:exposuresummaries",
          digits = 0) %>%

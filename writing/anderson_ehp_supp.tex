@@ -4,6 +4,7 @@
 
 \begin{document}
 
+
 \title{Supplemental Material for ``Assessing United States county-level
 exposure for research on tropical cyclones and human health"}
 
@@ -82,10 +83,10 @@ fuller2014, baggerly2008impact, strobl2011economic, mukherjee2017}
 \includegraphics[width=0.7\linewidth]{hurrtracks}
 \caption{Tracks of all tropical cyclones included in the study. The study
 included all tracked storms in the revised Atlantic hurricane database
-\ac{HURDAT2}~\citep{landsea2013} that came within 250~\si{\kilo\metre} of at least on
+\ac{HURDAT2}~\parencite{landsea2013} that came within 250~\si{\kilo\metre} of at least on
 \ac{US} county, 1988\,--\,2015. Thicker lines show the tracks of storms whose
 names were retired, indicating that the storm was particularly severe or had
-notable impacts~\citep{retirednames}.}
+notable impacts~\parencite{retirednames}.}
 \label{fig:hurrtracks}
 \end{figure}
 
@@ -97,7 +98,7 @@ notable impacts~\citep{retirednames}.}
 \caption{Counties exposed, based on different exposure metrics, to the storms
 with largest extent (as measured by the number of counties exposed based on any
 metric) from each of the clusters shown in the Jaccard heatmap in the main text
-(Figure 2).}
+(Figure 2\todo[inline]{Check fig ref}).}
 \label{fig:othertopstorms}
 \end{figure}
 
@@ -136,15 +137,15 @@ metrics is given in Table 1 of the main text.} \label{fig:averageexposuresupp}
 \includegraphics[width=\linewidth]{windexamples}
 \caption{Wind classifications for the two storms, Hurricanes Sandy (2012) and
 Ike (2008) for which exposure classifications from modeled wind
-data~\citep{stormwindmodel} and \ac{HURDAT2} wind
-radii~\citep{demuth2006improvement} showed the highest disagreement for storms
+data~\parencite{stormwindmodel} and \ac{HURDAT2} wind
+radii~\parencite{demuth2006improvement} showed the highest disagreement for storms
 between 2004 and 2015 (Figure~\ref{fig:windcomparison}). The top two maps show
 modeled (left) and \ac{HURDAT2} (right) windspeed categorizations for Hurricane
 Ike (2008), while the bottom two maps show the same windspeed characterizations
 for Hurricane Sandy (2012).  In both cases, the storms were exceptionally large
 systems for which high winds persisted well inland from landfall and for which,
 based on the \ac{HURDAT2} data, a large number of counties were exposed to
-winds of $\ge$34 knots (Figure~\ref{fig:windcomparison}).}
+winds of $\ge$34 knots (Figure~\ref{fig:windcomparison}\todo[inline]{Fix fig ref}).}
 \label{fig:windexamples}
 \end{figure}
 
@@ -155,13 +156,13 @@ winds of $\ge$34 knots (Figure~\ref{fig:windcomparison}).}
 to capture full storm-related rainfall because of the distance constraint used
 in that assessment metric. The red line on each map shows the track of the
 storm, based on the revised Atlantic hurricane database
-\ac{HURDAT2}~\citep{landsea2013}. The color of each county in the map gives the
-cumulative precipitation (in millimeters) for that county during the window
+\ac{HURDAT2}~\parencite{landsea2013}. The color of each county in the map gives the
+cumulative precipitation (in \si{\milli\metre}) for that county during the window
 from two days before to one day after the storm's closest approach to the
 county. The blue outline identifies the collection of counties that were
 classified as ``exposed" based on the criteria that the storm passed within
 500~\si{\kilo\metre} of the county's population mean center and the cumulative
-rainfall was 75 millimeters or more (Table 1 of main text). The map on the left
+rainfall was 75 \si{\milli\metre} or more (Table 1 of main text). The map on the left
 shows rain-based exposure for Hurricane Ike. For this exceptionally large
 storm, there are some counties in northern Texas that received high rainfall
 from the storm but are too far from the storm center's track to be classified
@@ -176,6 +177,11 @@ exposed to the storm based on this metric.}
 
 \clearpage
 
-\bibliography{hurr_exposure}
+\printbibliography
+
+\cleardoublepage
+
+\listoftodos
 
 \end{document}
+

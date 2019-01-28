@@ -1,0 +1,17 @@
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'anderson_ehp_draft.blg'
+[48] biber-darwin:313> INFO - === Sat Jan 26, 2019, 19:24:25
+[79] Biber.pm:371> INFO - Reading 'anderson_ehp_draft.bcf'
+[184] Biber.pm:857> INFO - Found 66 citekeys in bib section 0
+[199] Biber.pm:3976> INFO - Processing section 0
+[214] Biber.pm:4136> INFO - Looking for bibtex format file 'hurr_exposure.bib' for section 0
+[220] bibtex.pm:1500> INFO - LaTeX decoding ...
+[394] bibtex.pm:1316> INFO - Found BibTeX data source 'hurr_exposure.bib'
+[792] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/q5/vw9rp4956w7d8frpqzlfrrl40000gn/T/VAA3rBWoTe/hurr_exposure.bib_66774.utf8, line 147, warning: undefined macro "Second"
+[930] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[930] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[930] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[930] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[1015] bbl.pm:617> INFO - Writing 'anderson_ehp_draft.bbl' with encoding 'UTF-8'
+[1075] bbl.pm:720> INFO - Output to anderson_ehp_draft.bbl
+[1075] Biber.pm:110> INFO - WARNINGS: 1

@@ -1,9 +1,10 @@
 \usepackage{graphicx}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1in, marginpar=2cm]{geometry}
 \usepackage[hidelinks=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage[comma,authoryear,round]{natbib}
+%\usepackage[comma,authoryear,round]{natbib}
+\usepackage[style=authoryear,backend=biber]{biblatex}
 \usepackage{nopageno}
 \usepackage{tocloft}
 \usepackage{array}
@@ -13,8 +14,11 @@
 \usepackage{charter}
 \usepackage[nolist,nohyperlinks]{acronym}
 \usepackage{siunitx}
+\usepackage{color}
+\usepackage[textsize=scriptsize]{todonotes}
 
-\bibliographystyle{abbrvnat}
+%\bibliographystyle{abbrvnat}
+\addbibresource{hurr_exposure.bib}
 
 \graphicspath{{../figures/}}
 
@@ -30,15 +34,17 @@
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
 
-\acrodef{HURDAT2}{revised Atlantic hurricane database}
-\acrodef{US}{United States}
-\acrodef{NOAA}{National Oceanic and Atmospheric Administration}
-\acrodef{CDC}{Centers for Disease Control}
-\acrodef{UTC}{Coordinated Universal Time}
-\acrodef{NHC}{National Hurricane Center}
-\acrodef{NLDAS-2}{North American Land Data Assimilation System Phase 2}
-\acrodef{WONDER}{Wide-ranging Online Data for Epidemiological Research}
-\acrodef{FIPS}{Federal Information Processing Standard}
+\renewcommand*{\acsfont}[1]{\textsc{\MakeLowercase{#1}}}
+
+\newacro{HURDAT2}{revised Atlantic hurricane database}
+\newacro{US}{United States}
+\newacro{NOAA}{National Oceanic and Atmospheric Administration}
+\newacro{CDC}{Centers for Disease Control}
+\newacro{UTC}{Coordinated Universal Time}
+\newacro{NHC}{National Hurricane Center}
+\newacro{NLDAS-2}{North American Land Data Assimilation System Phase 2}
+\newacro{WONDER}{Wide-ranging Online Data for Epidemiological Research}
+\newacro{FIPS}{Federal Information Processing Standard}
      
 \frenchspacing
 
