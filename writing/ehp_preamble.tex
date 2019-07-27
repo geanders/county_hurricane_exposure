@@ -4,7 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 %\usepackage[comma,authoryear,round]{natbib}
-\usepackage[style=authoryear,backend=biber]{biblatex}
+\usepackage[style=authoryear,backend=biber,uniquename=false]{biblatex}
 \usepackage{nopageno}
 \usepackage{tocloft}
 \usepackage{array}
@@ -16,6 +16,7 @@
 \usepackage{siunitx}
 \usepackage{color}
 \usepackage[textsize=scriptsize]{todonotes}
+\usepackage{comment}
 
 %\bibliographystyle{abbrvnat}
 \addbibresource{hurr_exposure.bib}
@@ -33,6 +34,17 @@
         \setcounter{figure}{0}
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
+
+\renewbibmacro{in:}{}
+\DeclareFieldFormat{pages}{#1}
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+%  \setunit*{\adddot}% DELETED
+  \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
 
 \renewcommand*{\acsfont}[1]{\textsc{\MakeLowercase{#1}}}
 

@@ -1,92 +1,122 @@
 \section*{Methods and Materials}
 
-All counties in the eastern half of the \ac{US}
-(Figure~\ref{fig:ivanexposure}), as of the~2010 \ac{US} Decennial Census, were
-included in the study. The study covered all tracked storms in the \ac{HURDAT2}
+This study covered all counties in the eastern half of the \ac{US}
+(Figure~\ref{fig:hurrtracks}), as of the~2010 \ac{US} Decennial Census. The
+study covered all tracked land-falling or near-land Atlantic-basin tropical
+cyclones between~1988 and~2015, considering all 136 storms in \ac{HURDAT2}
 \parencite{landsea2013} that came within~250 \si{\kilo\metre} of at least one
-study county between~1988 and~2015 (Figure~S2\todo{Check fig ref}).
-\ac{HURDAT2} is a post-storm assessment conducted by the \ac{US} \ac{NHC} and
-incorporates data from a variety of sources, including satellite data and, when
-available, aircraft reconnaissance data~\parencite{landsea2013, jarvinen1988}.
-These data typically give measurements of the tropical cyclone center's
-location at~6-\si{\hour} intervals at synoptic times (i.e., 6:00~am, 12:00~pm,
-6:00~pm, and 12:00~am \ac{UTC}); some landfalling tropical cyclones have an
-additional observation at the time of landfall~\parencite{landsea2013}.
+eastern \ac{US} county in this period (Figure~\ref{fig:hurrtracks}). 
+
+\begin{comment}
+These data typically give measurements of
+the tropical cyclone center's location [and central pressure / maximum
+windspeed?] at~6-\si{\hour} intervals at synoptic times (i.e., 6:00~am,
+12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}); some landfalling tropical cyclones
+have an additional observation at the time of landfall~\parencite{landsea2013}.
+\end{comment}
 
 \subsection*{Distance-based exposure metric}
 
-For each storm, the distance of closest approach was measured for every study
-county.  Storm center track location data from \ac{HURDAT2} were interpolated
-using natural cubic splines to~15-\si{\minute} intervals~\parencite{hurricaneexposure}.
-The distance between each county's population mean center, as assessed by the
-2010 Decennial Census~\parencite{countycenters}, and each~15-\si{\minute} interpolated
-storm center location was measured using Great Circle (WGS84 ellipsoid)
-distance~\parencite{bivand2013applied}. The distance-based exposure metric was
-based on the minimum value of this storm center-to-county distance throughout
-the period the storm was tracked. The time of closest approach for each
-county-storm pairing was also recorded for use assessing rain-, flood-, and
-tornado-based metrics. To allow matching with data based on local time, times
-were converted from \ac{UTC} to local time~\parencite{countytimezones}.
+We first measured how close each study storm came to each study county. We
+started with tracking data from \ac{HURDAT2}, which records the storm's
+position every~6 \si{\hour}, and interpolated to~15-\si{\minute} intervals
+using natural cubic splines~\parencite{hurricaneexposure}. We then measured the
+distance between the storm's position at each~15-\si{\minute} interval and each
+county's population mean center, as assessed by the 2010 Decennial
+Census~\parencite{countycenters}, using the Great Circle (WGS84 ellipsoid)
+method~\parencite{bivand2013applied}. These measurements captured the distance
+between the storm's central track and each study county throughout the period
+when the storm was tracked. The closest distance between the storm and each
+county was recorded as the distance of the storm's closest approach to the
+county. We also recorded the time storm came closest to each county, for use in
+assessing rain-, flood-, and tornado-based metrics where observed data on the
+hazards needed to be matched by time to storm events.  To allow matching with
+data based on local time, times were converted from \ac{UTC} to local
+time~\parencite{countytimezones}.
 
 \subsection*{Rain-based exposure metric}
 
-For the rain-based exposure metric, cumulative rainfall was estimated for the
-period from two days before to one day after the date of a tropical cyclone's
-closest approach to a county. Daily county-level rainfall was determined by
-aggregating hourly~1/8\si{\degree} gridded reanalysis data from the \ac{NLDAS-2}
-precipitation data files~\parencite{rui2013nldas}. The \ac{NLDAS-2} data integrate
+To estimate storm-associated rainfall, we used precipitation data from a
+re-analysis dataset, as this data was available for every county and every day
+through a continuous period of the study
+(1988\,--\,2011)~\parencite{alhamdan2014environmental, cdcwonder}.  By
+comparison, observations from ground-based monitoring networks had missing
+values spatially (i.e., for some study counties), temporally (for some days),
+or both.  
+
+We estimated daily rainfall for each study county by aggregating
+hourly~1/8\si{\degree} gridded reanalysis data from the \ac{NLDAS-2}
+precipitation data files~\parencite{rui2013nldas}. These data integrate
 satellite-based and land-based monitoring, applying a land-surface model to
 create a reanalysis dataset that is spatially and temporally complete across
 the continental \ac{US}~\parencite{rui2013nldas, alhamdan2014environmental}. To
-aggregate to county-level, hourly data at each grid point were summed to create
-a daily rainfall total, and these grid point rainfall totals were then averaged
-across all grid points within a county's~1990 \ac{US} Census boundaries to
-create a county-level daily total~\parencite{alhamdan2014environmental, cdcwonder}.
-This county-level precipitation data are publicly available through the \ac{US}
-\ac{CDC}'s \ac{WONDER} database~\parencite{cdcwonder, alhamdan2014environmental}.
-The rainfall-based exposure metric was only available for tropical cyclones
-through~2011, the period for which the county-aggregated reanalysis rainfall
-data were available~\parencite{cdcwonder, alhamdan2014environmental}. 
+aggregate to county-level, the hourly data at each grid point were summed to
+create a daily rainfall total, and these grid point rainfall totals were then
+averaged across all grid points within a county's~1990 \ac{US} Census
+boundaries~\parencite{alhamdan2014environmental, cdcwonder}. These daily
+county-level estimates were then matched temporally with storm tracks, using
+the date when each storm was closest to each county. The cumulative
+storm-associated rainfall was then calculated as the sum of rainfall from two
+days before the storm's closest approach to a county to one day after. 
 
-To assess the rainfall estimates from the reanalysis data used in analysis in
-the the main text, we compared cumulative rainfall estimates based on this
-reanalysis rainfall data to rainfall observations from ground-based weather
-stations in nine sample study counties, selected as counties with data
-available from multiple stations. In these nine counties, observed rainfall was
-collected for all storms,~1988\,--\,2011, for the same period of two days
-before to one day after each storm's closest approach, using all stations with
-available daily data in the Global Historical Climatology Network throughout
-1988\,--\,2011~\parencite{menne2012overview, rnoaa, countyweather}. Agreement
-between measured storm-related rainfall between these two data sources was
-assessed by Spearman's rank correlation. 
+To validate these rainfall estimates, we investigated a subset of counties that
+also had available ground-based precipitation observations. We selected nine
+sample counties geographically spread across storm-prone regions of the eastern
+\ac{US} and for which precipitation data were available from multiple stations
+throughout the study period: Miami-Dade, FL; Harris County, TX; Mobile County,
+AL; Orleans Parish, LA; Fulton County, GA; Charleston County, SC; Wake County,
+NC; Baltimore County, MD; and Philadelphia County, PA. We collected
+ground-based observations of precipitation data from all stations in the county
+with available daily data in the Global Historical Climatology Network
+throughout 1988\,--\,2011~\parencite{menne2012overview, rnoaa, countyweather}.
+We summed daily station-specific measurments for two days before to one day
+after each storm's closest approach and then averaged these cumulative
+station-based precipitation totals for each county as a county-wide estimate of
+cumulative storm-related precipitation. We measured the rank correlation
+(Spearman's~$\rho$~\parencite{spearman1904proof}) between storm-specific
+cumulative precipitation estimates for the two data sources within each sample
+county.
 
 \subsection*{Wind-based exposure metric}
 
-Ground-based observations of wind speed are problematic during tropical
-cyclones, as instruments often fail at high wind speed, while reanalysis data,
-often available at hourly or higher resolution, can be too smooth to capture
-wind extremes associated with a tropical cyclone. Therefore, to create a
-dataset of county-level sustained winds during historical tropical cyclones, we
-modeled maximum sustained wind speeds at each county's population mean
-center~\parencite{countycenters}. \ac{HURDAT2} Best Track data were interpolated
-from~6-\si{\hour} reported values to~15-\si{\minute} increments using natural cubic
-splines~\parencite{stormwindmodel}, and then sustained wind speed was modeled for
-each county center at each~15-\si{\minute} increment using a double exponential wind
-speed model~\parencite{willoughby2006parametric} to estimate maximum ground-level
-sustained wind speed at each county center~\parencite{stormwindmodel}. Asymmetry in
-wind speeds around the tropical cyclone center was incorporated into the wind
-speed model~\parencite{phadke2003modeling, stormwindmodel}. The maximum value of
-this modeled wind speed was determined for each county as the maximum windspeed
-across the~15-\si{\minute} incremented modeled values throughout the tropical
-cyclone.
+Ground-based observations of wind speed are problematic as a metric of exposure
+to tropical cyclones, as instruments often fail at high wind speed, while
+reanalysis data, often available at hourly or higher resolution, can lack a
+fine enough temporal resolution to capture wind extremes associated with a
+tropical cyclone. Therefore, to create a dataset of county-level sustained
+winds during historical tropical cyclones, we modeled maximum sustained wind
+speeds at each county's population mean center~\parencite{countycenters}, using
+a wind speed model based on results from
+Willoughby~\parencite{willoughby2006parametric}. For each storm, we used the
+interpolated storm tracks generated for the distance metric and, for
+each~15-\si{\minute} increment, we modeled maximum ground-level sustained wind
+speed at each county center using a double exponential wind speed model with
+inputs for the storm's forward speed, direction, and central wind
+speed~\parencite{willoughby2006parametric, stormwindmodel}. This model
+incorporated asymmetry in wind speeds around the tropical cyclone center that
+results from the storm's forward movement~\parencite{phadke2003modeling,
+stormwindmodel}. We then determined the maximum value of this estimate over the
+storm tracking period for each study county to determine the maximum sustained
+surface wind speed in each county during each storm.
 
-To validate the metric of county-level wind speed used in the main text, we
-compared this wind metric to estimated wind radii from \ac{HURDAT2}, available
-for storms in our study from~2004~\parencite{landsea2013}. \ac{HURDAT2} gives
-estimates of the maximum radii to winds of~64,~50, and~34 \si{\knot} in each four
-quadrants of a storm (i.e., distance from the storm's center to the furthest
-point in a quadrant with winds at or above that speed) at each~6-\si{\hour} storm
-observation. 
+To validate these modeled county-level wind speed estimates, we compared them
+to county-level maximum sustained surface wind speeds based on the wind radii
+estimates in \ac{HURDAT2}, which are based on \ldots. The wind radii values
+have been included in \ac{HURDAT2} since 2004 [?] and estimate the distance
+from the storm's center to the furthest point with winds at or above winds of a
+certain speed in each four quadrants of the storm. They give estimates of these
+maximum radii for three thresholds of maximum surface wind speeds: 64,~50,
+and~34 \si{\knot}.  They therefore allow for the classification of counties
+into four categories of maximum sustained wind speeds: $<$34~\si{\knot};
+34\,--\,49.9~\si{\knot}; 50\,--\,63.9~\si{\knot}; $\ge$64~\si{\knot}. We
+interpolated this data to~15-\si{\minute} increments and classified a county as
+exposed to winds in a given wind speed category if its population mean center
+was within~85\% of the maximum radius for that wind speed in its quadrant of
+the storm [clarify why 85\%]. We compared these wind radii-based estimates with
+the modeled wind speed estimates for the study storms since 2004 for which at
+least one study county had a sustained wind of~$\ge$34 \si{\knot} (based on the
+\ac{HURDAT2} wind radii). For each of these storms, we calculated the percent
+of study counties that were classified in the same wind speed category.
 
 \subsection*{Flood- and tornado-based exposure metrics}
 
@@ -95,47 +125,88 @@ counties, we used event listings from the National Oceanic and Atmospheric
 Administration (NOAA)'s Storm Event Database~\parencite{stormevents}. For each
 tropical cyclone, we identified all events with event types related to flooding
 (``Flood", ``Flash Flood", ``Coastal Flood") and tornadoes (``Tornado") and
-that occurred in a county within~500 \si{\kilo\metre} of the tropical cyclone's track
-and with a start date within a five-day window centered on the date of the
-tropical cyclone's closest approach to the
-county~\parencite{hurricaneexposuredata}. ``Flood", ``Flash Flood" and ``Tornado"
-events in this database were reported by county \ac{FIPS} code. ``Coastal
-Flood" events were reported by forecast zone; for these, the event was matched
-to the appropriate county if possible~\parencite{noaastormevents}. While this
+that occurred in a county within~500 \si{\kilo\metre} of the tropical cyclone's
+track and with a start date within a five-day window centered on the date of
+the tropical cyclone's closest approach to the
+county~\parencite{hurricaneexposuredata}. ``Flood", ``Flash Flood" and
+``Tornado" events in this database were reported by county \ac{FIPS} code.
+``Coastal Flood" events were reported by forecast zone; for these, the event
+was matched to the appropriate county if possible using regular expression
+matching of listed county names~\parencite{noaastormevents}. While this
 database has recorded storm data since~1950, its coverage changed substantially
 in~1996 to cover a wider variety of storm events~\parencite{stormevents}. We
 therefore only considered these metrics of hurricane exposure for tropical
 cyclones in~1996 and later.
 
-As validation for the flood data, we compared streamflow data from \ac{US}
-Geological Survey gages~\parencite{usgsgages, countyfloods, dataRetrieval} in nine
-counties with tropical cyclone flood classifications based on the NOAA Storm
-Events Database (Figure~\ref{fig:floodcomparison}).
+The tornado observations from this dataset form the traditional tornado
+tracking dataset for the \ac{US} [ref for this?], and so we did not conduct
+analyses to validate the tornado event data.  As validation for the
+flood data, we investigated a sample of study counties, comparing the flood
+status, based on NOAA Storm Events listings~\parencite{stormevents,
+noaastormevents}, with streamflow measurements at \ac{US} Geological Survey county
+streamflow gages during tropical storms~\parencite{usgsgages, countyfloods,
+dataRetrieval}.  We considered nine study counties, selecting counties
+geographically spread through storm-prone areas of the eastern \ac{US} and with
+multiple streamflow gages reporting data during events (Baltimore County, MD;
+Bergen County, NJ; Escambia County, FL; Fairfield County, CT; Fulton County,
+GA; Harris County, TX; Mobile County, AL; Montgomery County, PL; and Wake
+County, NC). For each county, we first identified all streamflow gages in the
+county that had complete data for Jan.~1~1996\,--\,Dec.~31,~2015. For each
+tropical cyclone that came within~500~\si{\kilo\metre} of one of these counties
+between~1996 and~2015, we calculated the highest daily total streamflow (cubic
+feet / second), summed across all identified streamgages in the county, for a
+five-day window centered on the day of the storm's closest approach to the
+county.  We also calculated the percent of streamflow gages in the county with
+a daily streamflow that exceeded a threshold of flooding (the streamgage's
+median value for annual peak flow~\parencite{countyfloods}) on any day during
+the five-day window. We compared these measurements to each county's flood
+status based on NOAA Storm Events listings for each tropical cyclone that came
+within~500~\si{\kilo\metre} between~1996 and~2015, to explore if flood event
+listings in the NOAA Storm Events database concurrent with tropical cyclones
+were associated with higher streamflows at gages within the county.
 
-\subsection*{Assessing agreement in exposure classification between
-metrics}
+\subsection*{Binary storm exposure classifications based on different metrics}
+
+In our open-source dataset, we provide the closest distance of each storm to
+each county, as well as county-level storm-related winds and rainfall, as
+continuous metrics. However, epidemiologic studies of tropical cyclones often
+compare ``exposed'' versus ``unexposed'' communities to assess storm-related
+health risks [refs], and so we also used these continuous metrics to classify
+counties as ``exposed'' or ``unexposed'' and explored patterns in storm
+exposure based on these binary clasifications. 
 
 Two of the exposure metrics (flood- and tornado-based) were inherently binary,
 since these metrics were based on whether an event was listed in the NOAA Storm
-Events database or not.  For the other exposure metrics, each county was
-classified as exposed to a tropical cyclone based on whether the exposure
-metric exceeded a certain threshold (Table~\ref{tab:exposuremetrics}). We
-assessed county-level tropical cyclone exposure in the eastern \ac{US} based on
-each exposure metric for all land-falling or near-land Atlantic basin tropical
-cyclones. Depending on available exposure data, this assessment included some
-or all of the period from~1988 to~2015, a period with~136 tropical cyclones
-that made \ac{US} landfall or passed within~250 \si{\kilo\metre} (155 mi) of at
-least one \ac{US} county (Figure~S2\todo{Check fig ref}).
+Events database.  For the other exposure metrics, each county was classified as
+exposed to a tropical cyclone based on whether the exposure metric exceeded a
+certain threshold (Table~\ref{tab:exposuremetrics}). For the rainfall metric, a
+distance constraint was also necessary, to ensure that rains unrelated and far
+from the storm track were not misattributed to a storm. Through exploratory
+analysis, we set this distance metric at~500 \si{\kilo\metre} (i.e., for a
+county to be classified as exposed based on rainfall, the cumulative rainfall
+had to be over 75 \si{\milli\metre} and the storm must have passed within~500
+\si{\kilo\metre} of the county; Table~\ref{tab:exposuremetrics}). We set this
+distance constraint at a value that was typically large enough to capture
+storm-related rain. However, data users should note that in rare examples of
+exceptionally large storms (e.g., Hurricane Ike in 2008) or storms for which
+storm tracking was stopped at extratropical transition (e.g., Tropical Storm
+Lee in 2011), some storm-related rains may be missed because of this distance
+constraint (Figure~S7). 
 
-We measured agreement between exposure metrics in the classification of a
-county as exposed or unexposed to a specific tropical cyclone. For this
-measurement, we calculated the within-storm Jaccard
-index~\parencite{jaccard1901distribution, jaccard1908nouvelles} between every
-pair-wise combination of hazard metrics.  The Jaccard index~($J_s$) measures
-similarity between two metrics ($X_{1,s}$ and~$X_{2,s}$) for tropical
-cyclone~$s$ as the proportion of counties in which both of the metrics classify
-the county as exposed out of all counties classified as exposed by at least one
-of the metrics:
+We assessed patterns in county-level tropical cyclone exposure in the eastern
+\ac{US} based on each exposure metric. Depending on available exposure data,
+this assessment included some or all of the period from~1988 to~2015 (Table 1).
+For each binary metric of tropical cyclone exposure (Table 1), we first summed
+the total number of county-level exposures over available years for each
+exposure metric and mapped patterns in these exposures. We next investigated
+agreement between storm exposure classifications based on different exposure
+metrics. We calculated the within-storm Jaccard
+index~\parencite{jaccard1901distribution, jaccard1908nouvelles} between each
+pair of exposure metrics. The Jaccard index~($J_s$) measures similarity between
+two metrics ($X_{1,s}$ and~$X_{2,s}$) for tropical cyclone~$s$ as the
+proportion of counties in which both of the metrics classify the county as
+exposed out of all counties classified as exposed by at least one of the
+metrics:
 
 \begin{equation} 
 J_s = \frac{X_{1,s} \cap X_{2,s}}{X_{1,s} \cup X_{2,s}}
@@ -143,29 +214,33 @@ J_s = \frac{X_{1,s} \cap X_{2,s}}{X_{1,s} \cup X_{2,s}}
 
 \noindent This metric can range from~0, in the case of no overlap between the
 counties classified as exposed based on the two metrics, to~1, in the case that
-the two metrics classify exactly the same counties as exposed to the tropical
-cyclone.
+the two metrics classify exactly the same set of counties as exposed to the
+tropical cyclone. We measured these values for all study storms that affected a
+large number of eastern \ac{US} counties (250 or more of the study counties
+classified as exposed by at least one of the exposure metrics) during the years
+when all exposure data were available (1996\,--\,2011).
 
 \subsection*{Case study: Physical exposure of electricity-dependent Medicare
 beneficiaries to tropical cyclones}
 
-The outcomes of disasters depend both on the geophysical forces of the disaster
-as well as on the vulnerability of the society living in the geographical areas
-affected by those forces.~\parencite{chakraborty2005population,
-anderson2003community, cutter1996vulnerability} As a case study of how
-differences in tropical cyclone exposure assessments across different hazard
-metrics influence estimates of physical exposures of susceptible populations to
-tropical cyclones, we investigated how the use of different metrics influenced
-estimates of which eastern \ac{US} counties have the highest expected average
-exposures of electricity-dependent Medicare beneficiaries to tropical cyclones.
-This subpopulation was selected for this analysis since it may be particularly
-susceptible to health impacts from tropical cyclone exposure, especially
-through the pathway of storm-associated power outages and evacuations. We
-collected data on the number of electricity-dependent Medicare beneficiaries in
-each study county from the U.S. Department of Health \& Human Service's emPower
-Map~2.0~\parencite{empower}. We then calculated the physical exposure of the
-electricity-dependent Medicare population in each county, based on tropical
-cyclone assessments using each hazard metric,
+Disasters' societal impacts depend both on the geophysical forces of the
+disaster and on the vulnerability of those living in the affected geographical
+areas~\parencite{chakraborty2005population, anderson2003community,
+cutter1996vulnerability}. As a case study, we explored how differences in
+tropical cyclone exposure assessments across different exposure metrics might
+influence estimates of physical exposures of a susceptible population to
+tropical cyclones. We calculated expected average physical exposures among
+electricity-dependent Medicare beneficiaries in eastern \ac{US} counties to
+tropical cyclones based on each exposure metric. This subpopulation was
+selected since it may be particularly susceptible to health impacts from
+tropical cyclone exposure, especially through the pathway of storm-associated
+power outages and evacuations. 
+
+We collected data on the number of electricity-dependent Medicare beneficiaries
+in each study county from the \ac{US} Department of Health \& Human Service's
+emPower Map~2.0~\parencite{empower}. We then calculated the physical exposure
+of the electricity-dependent Medicare population in each county, based on
+tropical cyclone assessments using each hazard metric,
 following~\parencite{peduzzi2009assessing}:
 
 \begin{equation}
@@ -176,11 +251,14 @@ E_c = F_c * P_c
 electricity-dependent Medicare beneficiaries in county~$c$ to tropical cyclone
 exposures based on a given metric,~$F_c$ is the estimated yearly expected
 frequency of tropical cyclone exposures in county~$c$ based on that metric,
-and~$P_c$ is the size of the electricity-dependent Medicare population in
-county~$c$, as of July~2017. When combined with estimates of vulnerability of a
+and~$P_c$ is the electricity-dependent Medicare population in
+county~$c$, as of July~2017. 
+
+\begin{comment}
+When combined with estimates of vulnerability of a
 population to a natural hazard, such measurements of physical exposure can be
 used to calculate risk of human losses from the
 hazard~\parencite{peduzzi2009assessing}.
-
+\end{comment}
 
 

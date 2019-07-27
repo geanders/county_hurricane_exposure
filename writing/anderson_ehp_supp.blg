@@ -1,17 +1,17 @@
-[0] Config.pm:302> INFO - This is Biber 2.11
-[0] Config.pm:305> INFO - Logfile is 'anderson_ehp_supp.blg'
-[48] biber-darwin:313> INFO - === Sat Jan 26, 2019, 19:28:05
-[81] Biber.pm:371> INFO - Reading 'anderson_ehp_supp.bcf'
-[182] Biber.pm:857> INFO - Found 37 citekeys in bib section 0
-[197] Biber.pm:3976> INFO - Processing section 0
-[211] Biber.pm:4136> INFO - Looking for bibtex format file 'hurr_exposure.bib' for section 0
-[217] bibtex.pm:1500> INFO - LaTeX decoding ...
-[392] bibtex.pm:1316> INFO - Found BibTeX data source 'hurr_exposure.bib'
-[653] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/q5/vw9rp4956w7d8frpqzlfrrl40000gn/T/QsfxI2KYrN/hurr_exposure.bib_66829.utf8, line 147, warning: undefined macro "Second"
-[739] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[739] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[740] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[740] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[796] bbl.pm:617> INFO - Writing 'anderson_ehp_supp.bbl' with encoding 'UTF-8'
-[834] bbl.pm:720> INFO - Output to anderson_ehp_supp.bbl
-[835] Biber.pm:110> INFO - WARNINGS: 1
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'anderson_ehp_supp.blg'
+[29] biber-darwin:315> INFO - === Sat Jul 27, 2019, 10:17:32
+[48] Biber.pm:371> INFO - Reading 'anderson_ehp_supp.bcf'
+[118] Biber.pm:889> INFO - Found 33 citekeys in bib section 0
+[127] Biber.pm:4093> INFO - Processing section 0
+[135] Biber.pm:4254> INFO - Looking for bibtex format file 'hurr_exposure.bib' for section 0
+[138] bibtex.pm:1523> INFO - LaTeX decoding ...
+[248] bibtex.pm:1340> INFO - Found BibTeX data source 'hurr_exposure.bib'
+[418] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/83/ffl13dn505z0jvklj1y612kw0000gn/T/SO2eUPWldt/hurr_exposure.bib_11179.utf8, line 147, warning: undefined macro "Second"
+[465] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[465] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[466] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[466] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
+[493] bbl.pm:636> INFO - Writing 'anderson_ehp_supp.bbl' with encoding 'UTF-8'
+[505] bbl.pm:739> INFO - Output to anderson_ehp_supp.bbl
+[505] Biber.pm:110> INFO - WARNINGS: 1

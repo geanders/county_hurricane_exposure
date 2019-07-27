@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bcf:controlfile version="3.4" bltxversion="3.11" xmlns:bcf="https://sourceforge.net/projects/biblatex">
+<bcf:controlfile version="3.5" bltxversion="3.12" xmlns:bcf="https://sourceforge.net/projects/biblatex">
   <!-- BIBER OPTIONS -->
   <bcf:options component="biber" type="global">
     <bcf:option type="singlevalued">
@@ -98,6 +98,10 @@
       <bcf:value>3</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
+      <bcf:key>maxsortnames</bcf:key>
+      <bcf:value>3</bcf:value>
+    </bcf:option>
+    <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
       <bcf:value>3</bcf:value>
     </bcf:option>
@@ -111,6 +115,10 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>mincitenames</bcf:key>
+      <bcf:value>1</bcf:value>
+    </bcf:option>
+    <bcf:option type="singlevalued">
+      <bcf:key>minsortnames</bcf:key>
       <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
@@ -143,7 +151,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniquename</bcf:key>
-      <bcf:value>2</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniqueprimaryauthor</bcf:key>
@@ -354,6 +362,7 @@
     <bcf:option datatype="boolean">labeldateparts</bcf:option>
     <bcf:option datatype="boolean">uniquelist</bcf:option>
     <bcf:option datatype="boolean">uniquename</bcf:option>
+    <bcf:option datatype="boolean">noroman</bcf:option>
     <bcf:option datatype="boolean">singletitle</bcf:option>
     <bcf:option datatype="boolean">uniquetitle</bcf:option>
     <bcf:option datatype="boolean">uniquebaretitle</bcf:option>
@@ -383,6 +392,8 @@
     <bcf:option datatype="integer">minbibnames</bcf:option>
     <bcf:option datatype="integer">maxcitenames</bcf:option>
     <bcf:option datatype="integer">mincitenames</bcf:option>
+    <bcf:option datatype="integer">maxsortnames</bcf:option>
+    <bcf:option datatype="integer">minsortnames</bcf:option>
     <bcf:option datatype="integer">maxitems</bcf:option>
     <bcf:option datatype="integer">minitems</bcf:option>
     <bcf:option datatype="integer">maxalphanames</bcf:option>
@@ -420,6 +431,7 @@
     <bcf:option datatype="boolean">labeldateparts</bcf:option>
     <bcf:option datatype="boolean">uniquelist</bcf:option>
     <bcf:option datatype="boolean">uniquename</bcf:option>
+    <bcf:option datatype="boolean">noroman</bcf:option>
     <bcf:option datatype="boolean">singletitle</bcf:option>
     <bcf:option datatype="boolean">uniquetitle</bcf:option>
     <bcf:option datatype="boolean">uniquebaretitle</bcf:option>
@@ -444,6 +456,8 @@
     <bcf:option datatype="integer">minbibnames</bcf:option>
     <bcf:option datatype="integer">maxcitenames</bcf:option>
     <bcf:option datatype="integer">mincitenames</bcf:option>
+    <bcf:option datatype="integer">maxsortnames</bcf:option>
+    <bcf:option datatype="integer">minsortnames</bcf:option>
     <bcf:option datatype="integer">maxitems</bcf:option>
     <bcf:option datatype="integer">minitems</bcf:option>
     <bcf:option datatype="integer">maxalphanames</bcf:option>
@@ -477,6 +491,7 @@
     <bcf:option datatype="boolean">indexing</bcf:option>
     <bcf:option datatype="boolean">uniquelist</bcf:option>
     <bcf:option datatype="boolean">uniquename</bcf:option>
+    <bcf:option datatype="boolean">noroman</bcf:option>
     <bcf:option datatype="boolean">useprefix</bcf:option>
     <bcf:option datatype="boolean">skipbib</bcf:option>
     <bcf:option datatype="boolean">skipbiblist</bcf:option>
@@ -489,6 +504,8 @@
     <bcf:option datatype="integer">minbibnames</bcf:option>
     <bcf:option datatype="integer">maxcitenames</bcf:option>
     <bcf:option datatype="integer">mincitenames</bcf:option>
+    <bcf:option datatype="integer">maxsortnames</bcf:option>
+    <bcf:option datatype="integer">minsortnames</bcf:option>
     <bcf:option datatype="integer">maxitems</bcf:option>
     <bcf:option datatype="integer">minitems</bcf:option>
     <bcf:option datatype="integer">maxalphanames</bcf:option>
@@ -790,7 +807,7 @@
       <bcf:entrytype skip_output="true">xdata</bcf:entrytype>
     </bcf:entrytypes>
     <bcf:fields>
-      <bcf:field fieldtype="field" datatype="integer">number</bcf:field>
+      <bcf:field fieldtype="field" datatype="integer">sortyear</bcf:field>
       <bcf:field fieldtype="field" datatype="integer">volume</bcf:field>
       <bcf:field fieldtype="field" datatype="integer">volumes</bcf:field>
       <bcf:field fieldtype="field" datatype="literal">abstract</bcf:field>
@@ -831,6 +848,7 @@
       <bcf:field fieldtype="field" datatype="literal">maintitleaddon</bcf:field>
       <bcf:field fieldtype="field" datatype="literal">nameaddon</bcf:field>
       <bcf:field fieldtype="field" datatype="literal">note</bcf:field>
+      <bcf:field fieldtype="field" datatype="literal">number</bcf:field>
       <bcf:field fieldtype="field" datatype="literal">origtitle</bcf:field>
       <bcf:field fieldtype="field" datatype="literal">pagetotal</bcf:field>
       <bcf:field fieldtype="field" datatype="literal">part</bcf:field>
@@ -854,7 +872,6 @@
       <bcf:field fieldtype="field" datatype="literal" label="true">shortjournal</bcf:field>
       <bcf:field fieldtype="field" datatype="literal" label="true">shortseries</bcf:field>
       <bcf:field fieldtype="field" datatype="literal" label="true">shorttitle</bcf:field>
-      <bcf:field fieldtype="field" datatype="literal" skip_output="true">sortyear</bcf:field>
       <bcf:field fieldtype="field" datatype="literal" skip_output="true">sorttitle</bcf:field>
       <bcf:field fieldtype="field" datatype="literal" skip_output="true">sortshorthand</bcf:field>
       <bcf:field fieldtype="field" datatype="literal" skip_output="true">sortkey</bcf:field>
@@ -1493,8 +1510,12 @@
       <bcf:entrytype>online</bcf:entrytype>
       <bcf:field>addendum</bcf:field>
       <bcf:field>author</bcf:field>
+      <bcf:field>doi</bcf:field>
       <bcf:field>editor</bcf:field>
       <bcf:field>editortype</bcf:field>
+      <bcf:field>eprint</bcf:field>
+      <bcf:field>eprintclass</bcf:field>
+      <bcf:field>eprinttype</bcf:field>
       <bcf:field>language</bcf:field>
       <bcf:field>note</bcf:field>
       <bcf:field>organization</bcf:field>
@@ -1975,168 +1996,114 @@
     <bcf:datasource type="file" datatype="bibtex">hurr_exposure.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">rappaport2000</bcf:citekey>
-    <bcf:citekey order="2">liu2005</bcf:citekey>
-    <bcf:citekey order="2">han2009</bcf:citekey>
-    <bcf:citekey order="3">mallin2006</bcf:citekey>
+    <bcf:citekey order="1">landsea2013</bcf:citekey>
+    <bcf:citekey order="1">jarvinen1988</bcf:citekey>
+    <bcf:citekey order="2">mallin2006</bcf:citekey>
+    <bcf:citekey order="2">quiring2011variations</bcf:citekey>
+    <bcf:citekey order="3">rappaport2000</bcf:citekey>
+    <bcf:citekey order="3">kruk2010</bcf:citekey>
     <bcf:citekey order="4">rappaport2000</bcf:citekey>
-    <bcf:citekey order="5">chen2015</bcf:citekey>
-    <bcf:citekey order="6">rappaport2000</bcf:citekey>
-    <bcf:citekey order="7">mallin2006</bcf:citekey>
-    <bcf:citekey order="8">czajkowski2011</bcf:citekey>
-    <bcf:citekey order="8">tansel2010</bcf:citekey>
-    <bcf:citekey order="8">kinney2008</bcf:citekey>
-    <bcf:citekey order="8">caillouet2008increase</bcf:citekey>
-    <bcf:citekey order="9">mallin2006</bcf:citekey>
-    <bcf:citekey order="9">quiring2011variations</bcf:citekey>
-    <bcf:citekey order="10">rappaport2000</bcf:citekey>
-    <bcf:citekey order="10">kruk2010</bcf:citekey>
-    <bcf:citekey order="11">rappaport2000</bcf:citekey>
-    <bcf:citekey order="11">atallah2007</bcf:citekey>
-    <bcf:citekey order="11">moore2012</bcf:citekey>
-    <bcf:citekey order="12">moore2012</bcf:citekey>
-    <bcf:citekey order="13">czajkowski2011</bcf:citekey>
-    <bcf:citekey order="13">grabich2015</bcf:citekey>
-    <bcf:citekey order="13">grabich2016</bcf:citekey>
-    <bcf:citekey order="13">zandbergen2009</bcf:citekey>
-    <bcf:citekey order="13">tansel2010</bcf:citekey>
-    <bcf:citekey order="14">halverson2015</bcf:citekey>
-    <bcf:citekey order="15">moore2012</bcf:citekey>
-    <bcf:citekey order="16">atallah2003</bcf:citekey>
-    <bcf:citekey order="16">atallah2007</bcf:citekey>
-    <bcf:citekey order="16">zhu2013variations</bcf:citekey>
-    <bcf:citekey order="17">elsberry2002</bcf:citekey>
-    <bcf:citekey order="18">czajkowski2011</bcf:citekey>
-    <bcf:citekey order="19">grabich2015</bcf:citekey>
-    <bcf:citekey order="19">grabich2016</bcf:citekey>
-    <bcf:citekey order="20">kinney2008</bcf:citekey>
-    <bcf:citekey order="21">zandbergen2009</bcf:citekey>
-    <bcf:citekey order="21">rappaport2000</bcf:citekey>
-    <bcf:citekey order="22">hurricaneexposure</bcf:citekey>
-    <bcf:citekey order="23">landsea2013</bcf:citekey>
-    <bcf:citekey order="24">landsea2013</bcf:citekey>
-    <bcf:citekey order="24">jarvinen1988</bcf:citekey>
-    <bcf:citekey order="25">landsea2013</bcf:citekey>
-    <bcf:citekey order="26">hurricaneexposure</bcf:citekey>
+    <bcf:citekey order="4">atallah2007</bcf:citekey>
+    <bcf:citekey order="4">moore2012</bcf:citekey>
+    <bcf:citekey order="5">moore2012</bcf:citekey>
+    <bcf:citekey order="6">czajkowski2011</bcf:citekey>
+    <bcf:citekey order="6">grabich2015</bcf:citekey>
+    <bcf:citekey order="6">grabich2016</bcf:citekey>
+    <bcf:citekey order="6">zandbergen2009</bcf:citekey>
+    <bcf:citekey order="6">tansel2010</bcf:citekey>
+    <bcf:citekey order="7">halverson2015</bcf:citekey>
+    <bcf:citekey order="8">moore2012</bcf:citekey>
+    <bcf:citekey order="9">atallah2003</bcf:citekey>
+    <bcf:citekey order="9">atallah2007</bcf:citekey>
+    <bcf:citekey order="9">zhu2013variations</bcf:citekey>
+    <bcf:citekey order="10">elsberry2002</bcf:citekey>
+    <bcf:citekey order="11">czajkowski2011</bcf:citekey>
+    <bcf:citekey order="12">grabich2015</bcf:citekey>
+    <bcf:citekey order="12">grabich2016</bcf:citekey>
+    <bcf:citekey order="13">kinney2008</bcf:citekey>
+    <bcf:citekey order="14">zandbergen2009</bcf:citekey>
+    <bcf:citekey order="14">rappaport2000</bcf:citekey>
+    <bcf:citekey order="15">hurricaneexposure</bcf:citekey>
+    <bcf:citekey order="16">landsea2013</bcf:citekey>
+    <bcf:citekey order="17">hurricaneexposure</bcf:citekey>
+    <bcf:citekey order="18">countycenters</bcf:citekey>
+    <bcf:citekey order="19">bivand2013applied</bcf:citekey>
+    <bcf:citekey order="20">countytimezones</bcf:citekey>
+    <bcf:citekey order="21">alhamdan2014environmental</bcf:citekey>
+    <bcf:citekey order="21">cdcwonder</bcf:citekey>
+    <bcf:citekey order="22">rui2013nldas</bcf:citekey>
+    <bcf:citekey order="23">rui2013nldas</bcf:citekey>
+    <bcf:citekey order="23">alhamdan2014environmental</bcf:citekey>
+    <bcf:citekey order="24">alhamdan2014environmental</bcf:citekey>
+    <bcf:citekey order="24">cdcwonder</bcf:citekey>
+    <bcf:citekey order="25">menne2012overview</bcf:citekey>
+    <bcf:citekey order="25">rnoaa</bcf:citekey>
+    <bcf:citekey order="25">countyweather</bcf:citekey>
+    <bcf:citekey order="26">spearman1904proof</bcf:citekey>
     <bcf:citekey order="27">countycenters</bcf:citekey>
-    <bcf:citekey order="28">bivand2013applied</bcf:citekey>
-    <bcf:citekey order="29">countytimezones</bcf:citekey>
-    <bcf:citekey order="30">rui2013nldas</bcf:citekey>
-    <bcf:citekey order="31">rui2013nldas</bcf:citekey>
-    <bcf:citekey order="31">alhamdan2014environmental</bcf:citekey>
-    <bcf:citekey order="32">alhamdan2014environmental</bcf:citekey>
-    <bcf:citekey order="32">cdcwonder</bcf:citekey>
-    <bcf:citekey order="33">cdcwonder</bcf:citekey>
-    <bcf:citekey order="33">alhamdan2014environmental</bcf:citekey>
-    <bcf:citekey order="34">cdcwonder</bcf:citekey>
-    <bcf:citekey order="34">alhamdan2014environmental</bcf:citekey>
-    <bcf:citekey order="35">menne2012overview</bcf:citekey>
-    <bcf:citekey order="35">rnoaa</bcf:citekey>
-    <bcf:citekey order="35">countyweather</bcf:citekey>
-    <bcf:citekey order="36">countycenters</bcf:citekey>
-    <bcf:citekey order="37">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="38">willoughby2006parametric</bcf:citekey>
-    <bcf:citekey order="39">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="40">phadke2003modeling</bcf:citekey>
-    <bcf:citekey order="40">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="41">landsea2013</bcf:citekey>
-    <bcf:citekey order="42">stormevents</bcf:citekey>
-    <bcf:citekey order="43">hurricaneexposuredata</bcf:citekey>
-    <bcf:citekey order="44">noaastormevents</bcf:citekey>
-    <bcf:citekey order="45">stormevents</bcf:citekey>
-    <bcf:citekey order="46">usgsgages</bcf:citekey>
-    <bcf:citekey order="46">countyfloods</bcf:citekey>
-    <bcf:citekey order="46">dataRetrieval</bcf:citekey>
-    <bcf:citekey order="47">jaccard1901distribution</bcf:citekey>
-    <bcf:citekey order="47">jaccard1908nouvelles</bcf:citekey>
-    <bcf:citekey order="48">chakraborty2005population</bcf:citekey>
-    <bcf:citekey order="48">anderson2003community</bcf:citekey>
-    <bcf:citekey order="48">cutter1996vulnerability</bcf:citekey>
-    <bcf:citekey order="49">empower</bcf:citekey>
-    <bcf:citekey order="50">peduzzi2009assessing</bcf:citekey>
-    <bcf:citekey order="51">peduzzi2009assessing</bcf:citekey>
-    <bcf:citekey order="52">franklin2006atlantic</bcf:citekey>
-    <bcf:citekey order="53">avila2013atlantic</bcf:citekey>
-    <bcf:citekey order="53">lawrence2000atlantic</bcf:citekey>
-    <bcf:citekey order="54">empower</bcf:citekey>
-    <bcf:citekey order="55">hurricaneexposure</bcf:citekey>
-    <bcf:citekey order="55">hurricaneexposuredata</bcf:citekey>
-    <bcf:citekey order="56">landsea2013</bcf:citekey>
-    <bcf:citekey order="57">savitz2016interpreting</bcf:citekey>
-    <bcf:citekey order="57">armstrong1998effect</bcf:citekey>
-    <bcf:citekey order="58">savitz2016interpreting</bcf:citekey>
-    <bcf:citekey order="59">savitz2016interpreting</bcf:citekey>
-    <bcf:citekey order="59">armstrong1998effect</bcf:citekey>
-    <bcf:citekey order="60">cerveny2000</bcf:citekey>
-    <bcf:citekey order="61">jiang2008</bcf:citekey>
-    <bcf:citekey order="62">kruk2010</bcf:citekey>
-    <bcf:citekey order="63">rappaport2000</bcf:citekey>
-    <bcf:citekey order="64">rezapour2014</bcf:citekey>
-    <bcf:citekey order="65">chen2015</bcf:citekey>
-    <bcf:citekey order="65">rees2001</bcf:citekey>
-    <bcf:citekey order="66">rees2001</bcf:citekey>
-    <bcf:citekey order="67">moore2012</bcf:citekey>
-    <bcf:citekey order="68">kossin2007more</bcf:citekey>
-    <bcf:citekey order="69">zandbergen2009</bcf:citekey>
-    <bcf:citekey order="70">kruk2010</bcf:citekey>
-    <bcf:citekey order="71">smith2009</bcf:citekey>
-    <bcf:citekey order="72">peduzzi2009assessing</bcf:citekey>
-    <bcf:citekey order="73">smith2009</bcf:citekey>
-    <bcf:citekey order="74">hurricaneexposuredata</bcf:citekey>
-    <bcf:citekey order="74">hurricaneexposure</bcf:citekey>
-    <bcf:citekey order="75">grabich2016</bcf:citekey>
-    <bcf:citekey order="75">zandbergen2009</bcf:citekey>
-    <bcf:citekey order="75">czajkowski2011</bcf:citekey>
-    <bcf:citekey order="75">kruk2010</bcf:citekey>
-    <bcf:citekey order="76">R</bcf:citekey>
-    <bcf:citekey order="77">chakraborty2005population</bcf:citekey>
-    <bcf:citekey order="77">peduzzi2009assessing</bcf:citekey>
-    <bcf:citekey order="78">smith2009</bcf:citekey>
-    <bcf:citekey order="79">landsea2013</bcf:citekey>
-    <bcf:citekey order="80">Ashley2008flood</bcf:citekey>
-    <bcf:citekey order="80">Curran2000</bcf:citekey>
-    <bcf:citekey order="81">Witt1998</bcf:citekey>
-    <bcf:citekey order="81">Ashley2007</bcf:citekey>
-    <bcf:citekey order="95">landsea2013</bcf:citekey>
-    <bcf:citekey order="96">landsea2013</bcf:citekey>
-    <bcf:citekey order="97">murtagh2012algorithms</bcf:citekey>
-    <bcf:citekey order="98">murtagh2012algorithms</bcf:citekey>
-    <bcf:citekey order="99">empower</bcf:citekey>
-    <bcf:citekey order="100">empower</bcf:citekey>
-    <bcf:citekey order="101">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="102">landsea2013</bcf:citekey>
-    <bcf:citekey order="103">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="104">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="105">landsea2013</bcf:citekey>
-    <bcf:citekey order="106">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="107">rui2013nldas</bcf:citekey>
-    <bcf:citekey order="107">alhamdan2014environmental</bcf:citekey>
-    <bcf:citekey order="108">menne2012overview</bcf:citekey>
-    <bcf:citekey order="108">rnoaa</bcf:citekey>
-    <bcf:citekey order="108">countyweather</bcf:citekey>
-    <bcf:citekey order="109">spearman1904proof</bcf:citekey>
-    <bcf:citekey order="110">rui2013nldas</bcf:citekey>
-    <bcf:citekey order="110">alhamdan2014environmental</bcf:citekey>
-    <bcf:citekey order="111">menne2012overview</bcf:citekey>
-    <bcf:citekey order="111">rnoaa</bcf:citekey>
-    <bcf:citekey order="111">countyweather</bcf:citekey>
-    <bcf:citekey order="112">spearman1904proof</bcf:citekey>
-    <bcf:citekey order="113">stormevents</bcf:citekey>
-    <bcf:citekey order="113">noaastormevents</bcf:citekey>
-    <bcf:citekey order="114">usgsgages</bcf:citekey>
-    <bcf:citekey order="114">countyfloods</bcf:citekey>
-    <bcf:citekey order="114">dataRetrieval</bcf:citekey>
-    <bcf:citekey order="115">stormevents</bcf:citekey>
-    <bcf:citekey order="115">noaastormevents</bcf:citekey>
-    <bcf:citekey order="116">countyfloods</bcf:citekey>
-    <bcf:citekey order="117">stormevents</bcf:citekey>
-    <bcf:citekey order="117">noaastormevents</bcf:citekey>
-    <bcf:citekey order="118">usgsgages</bcf:citekey>
-    <bcf:citekey order="118">countyfloods</bcf:citekey>
-    <bcf:citekey order="118">dataRetrieval</bcf:citekey>
-    <bcf:citekey order="119">stormevents</bcf:citekey>
-    <bcf:citekey order="119">noaastormevents</bcf:citekey>
-    <bcf:citekey order="120">countyfloods</bcf:citekey>
+    <bcf:citekey order="28">willoughby2006parametric</bcf:citekey>
+    <bcf:citekey order="29">willoughby2006parametric</bcf:citekey>
+    <bcf:citekey order="29">stormwindmodel</bcf:citekey>
+    <bcf:citekey order="30">phadke2003modeling</bcf:citekey>
+    <bcf:citekey order="30">stormwindmodel</bcf:citekey>
+    <bcf:citekey order="31">stormevents</bcf:citekey>
+    <bcf:citekey order="32">hurricaneexposuredata</bcf:citekey>
+    <bcf:citekey order="33">noaastormevents</bcf:citekey>
+    <bcf:citekey order="34">stormevents</bcf:citekey>
+    <bcf:citekey order="35">stormevents</bcf:citekey>
+    <bcf:citekey order="35">noaastormevents</bcf:citekey>
+    <bcf:citekey order="36">usgsgages</bcf:citekey>
+    <bcf:citekey order="36">countyfloods</bcf:citekey>
+    <bcf:citekey order="36">dataRetrieval</bcf:citekey>
+    <bcf:citekey order="37">countyfloods</bcf:citekey>
+    <bcf:citekey order="38">jaccard1901distribution</bcf:citekey>
+    <bcf:citekey order="38">jaccard1908nouvelles</bcf:citekey>
+    <bcf:citekey order="39">chakraborty2005population</bcf:citekey>
+    <bcf:citekey order="39">anderson2003community</bcf:citekey>
+    <bcf:citekey order="39">cutter1996vulnerability</bcf:citekey>
+    <bcf:citekey order="40">empower</bcf:citekey>
+    <bcf:citekey order="41">peduzzi2009assessing</bcf:citekey>
+    <bcf:citekey order="42">hurricaneexposuredata</bcf:citekey>
+    <bcf:citekey order="43">hurricaneexposure</bcf:citekey>
+    <bcf:citekey order="44">hurricaneexposuredata</bcf:citekey>
+    <bcf:citekey order="45">empower</bcf:citekey>
+    <bcf:citekey order="46">chakraborty2005population</bcf:citekey>
+    <bcf:citekey order="46">peduzzi2009assessing</bcf:citekey>
+    <bcf:citekey order="47">smith2009</bcf:citekey>
+    <bcf:citekey order="48">landsea2013</bcf:citekey>
+    <bcf:citekey order="49">hurricaneexposuredata</bcf:citekey>
+    <bcf:citekey order="50">Ashley2008flood</bcf:citekey>
+    <bcf:citekey order="50">Curran2000</bcf:citekey>
+    <bcf:citekey order="51">Witt1998</bcf:citekey>
+    <bcf:citekey order="51">Ashley2007</bcf:citekey>
+    <bcf:citekey order="52">rees2001</bcf:citekey>
+    <bcf:citekey order="53">moore2012</bcf:citekey>
+    <bcf:citekey order="54">kossin2007more</bcf:citekey>
+    <bcf:citekey order="55">zandbergen2009</bcf:citekey>
+    <bcf:citekey order="55">kruk2010</bcf:citekey>
+    <bcf:citekey order="56">cerveny2000</bcf:citekey>
+    <bcf:citekey order="57">jiang2008</bcf:citekey>
+    <bcf:citekey order="58">kruk2010</bcf:citekey>
+    <bcf:citekey order="59">rappaport2000</bcf:citekey>
+    <bcf:citekey order="60">rezapour2014</bcf:citekey>
+    <bcf:citekey order="61">chen2015</bcf:citekey>
+    <bcf:citekey order="61">rees2001</bcf:citekey>
+    <bcf:citekey order="62">avila2013atlantic</bcf:citekey>
+    <bcf:citekey order="62">lawrence2000atlantic</bcf:citekey>
+    <bcf:citekey order="63">savitz2016interpreting</bcf:citekey>
+    <bcf:citekey order="64">savitz2016interpreting</bcf:citekey>
+    <bcf:citekey order="64">armstrong1998effect</bcf:citekey>
+    <bcf:citekey order="65">smith2009</bcf:citekey>
+    <bcf:citekey order="66">peduzzi2009assessing</bcf:citekey>
+    <bcf:citekey order="67">smith2009</bcf:citekey>
+    <bcf:citekey order="72">landsea2013</bcf:citekey>
+    <bcf:citekey order="73">retirednames</bcf:citekey>
+    <bcf:citekey order="74">landsea2013</bcf:citekey>
+    <bcf:citekey order="75">retirednames</bcf:citekey>
+    <bcf:citekey order="76">landsea2013</bcf:citekey>
+    <bcf:citekey order="77">landsea2013</bcf:citekey>
+    <bcf:citekey order="78">murtagh2012algorithms</bcf:citekey>
+    <bcf:citekey order="79">murtagh2012algorithms</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

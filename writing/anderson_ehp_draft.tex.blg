@@ -1,0 +1,5 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'anderson_ehp_draft.tex.blg'
+[30] biber-darwin:315> INFO - === Tue Jul  2, 2019, 11:34:10
+[159] Utils.pm:209> ERROR - Cannot find control file 'anderson_ehp_draft.tex.bcf'! - Did latex run successfully on your .tex file before you ran biber?
+[159] Biber.pm:114> INFO - ERRORS: 1
