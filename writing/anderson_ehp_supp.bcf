@@ -1996,39 +1996,6 @@
     <bcf:datasource type="file" datatype="bibtex">hurr_exposure.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" nocite="1">logan2015</bcf:citekey>
-    <bcf:citekey order="2" nocite="1">gares2014</bcf:citekey>
-    <bcf:citekey order="3" nocite="1">esnard2011</bcf:citekey>
-    <bcf:citekey order="4" nocite="1">zandbergen2009</bcf:citekey>
-    <bcf:citekey order="5" nocite="1">horney2016</bcf:citekey>
-    <bcf:citekey order="6" nocite="1">grabich2016</bcf:citekey>
-    <bcf:citekey order="7" nocite="1">antipova2015post</bcf:citekey>
-    <bcf:citekey order="8" nocite="1">zahran2010</bcf:citekey>
-    <bcf:citekey order="9" nocite="1">currie2013</bcf:citekey>
-    <bcf:citekey order="10" nocite="1">grabich2015</bcf:citekey>
-    <bcf:citekey order="11" nocite="1">grabich2016hurricane</bcf:citekey>
-    <bcf:citekey order="12" nocite="1">amstadter2010</bcf:citekey>
-    <bcf:citekey order="13" nocite="1">acierno2006</bcf:citekey>
-    <bcf:citekey order="14" nocite="1">le2013</bcf:citekey>
-    <bcf:citekey order="15" nocite="1">lieberman2017</bcf:citekey>
-    <bcf:citekey order="16" nocite="1">mckinney2011</bcf:citekey>
-    <bcf:citekey order="17" nocite="1">dosa2012evacuate</bcf:citekey>
-    <bcf:citekey order="18" nocite="1">swerdel2014</bcf:citekey>
-    <bcf:citekey order="19" nocite="1">czajkowski2011</bcf:citekey>
-    <bcf:citekey order="20" nocite="1">mongin2017</bcf:citekey>
-    <bcf:citekey order="21" nocite="1">kessler2007hurricane</bcf:citekey>
-    <bcf:citekey order="22" nocite="1">caillouet2008increase</bcf:citekey>
-    <bcf:citekey order="23" nocite="1">rosenheim2018disaster</bcf:citekey>
-    <bcf:citekey order="24" nocite="1">domino2003disasters</bcf:citekey>
-    <bcf:citekey order="25" nocite="1">kim2016</bcf:citekey>
-    <bcf:citekey order="26" nocite="1">kinney2008</bcf:citekey>
-    <bcf:citekey order="27" nocite="1">kim2015</bcf:citekey>
-    <bcf:citekey order="28" nocite="1">tansel2010</bcf:citekey>
-    <bcf:citekey order="29" nocite="1">escobedo2009</bcf:citekey>
-    <bcf:citekey order="30" nocite="1">fuller2014</bcf:citekey>
-    <bcf:citekey order="31" nocite="1">baggerly2008impact</bcf:citekey>
-    <bcf:citekey order="32" nocite="1">strobl2011economic</bcf:citekey>
-    <bcf:citekey order="33" nocite="1">mukherjee2017</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
