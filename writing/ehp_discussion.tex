@@ -70,14 +70,29 @@ metric or for sensitivity analysis, we have include county-level wind estimates
 for each storm based on these wind radii, in addition to the continuous modeled
 windspeeds, in the open-source data \cite{hurricaneexposuredata}.
 
-The flood and tornado data came from the \ac{NOAA} Storm Events database,
-which, while a widely-used database of events maintained by \ac{NOAA}, is based
-on reports, and so may be prone to underreporting~\parencite{Ashley2008flood,
-Curran2000}, especially in less populated areas~\parencite{Witt1998,
-Ashley2007}, as well as to other reporting errors. While these are important
-limitations, we selected these data sources as among the best currently
-available for measuring each of these hazards at a multi-county, multi-year
-scale.
+For the flooding events data, we found it often corresponded with measurements
+from \ac{US} Geographical Survey streamgages, with flood event listings more
+likely during storms which elevated stream flows. However, there are
+differences between the two flooding datasets, and these highlight both the
+difficulty of measuring flood exposure at the county level and inherent
+challenges in using the storm event database for epidemiologic exposure
+assessment.  The flood and tornado data came from the \ac{NOAA} Storm Events
+database, which, while a widely-used database of events maintained by
+\ac{NOAA}, is based on reports, and so may be prone to
+underreporting~\parencite{Ashley2008flood, Curran2000}, especially in less
+populated areas~\parencite{Witt1998, Ashley2007}, as well as to other reporting
+errors. 
+
+\begin{comment}
+[For discussion?] Based on these results, the two data sources were generally
+in agreement, but the analysis highlights the difficulty of assessing
+storm-related flooding at a multi-county, multi-year scale, as flooding can be
+very localized within a county or can \ldots .   
+\end{comment}
+
+While these are important caveats for the data, we selected these data sources
+as among the best currently available for measuring each of these hazards at a
+multi-county, multi-year scale.
 
 \subsection*{Patterns in tropical cyclone exposures}
 
@@ -207,18 +222,14 @@ multiple hazards of the tropical cyclone.
 
 \subsection*{Case study}
 
-Dissimilarity in exposure to specific hazards of tropical cyclones can result
-in differing patterns in estimates of county-level exposure
-(Figure~\ref{fig:ivanexposure}), which can lead to substantial differences
-in estimates of population physical exposure
-(Figure~\ref{fig:topelecdependexposure}), based on which storm hazard is
-considered. The measure of a hurricane's intensity, the Saffir-Simpson scale,
-expresses intensity as a function of wind speed, and so fails to capture
-potential risks from other hazards of the storm~\parencite{smith2009}, and
-previous assessments of physical exposure to tropical cyclones have often
-focused on winds or distance from the storm. For example, a global study of
-exposure and vulnerability to natural hazards used a combination of windspeed
-above a certain threshold and distance from the storm's track to assess
+The conducted case study demonstrates how differences in exposure assessment
+across storm exposure metrics can result in differing estimates of expected
+physical exposure to tropical cyclones among a population
+(Figure~\ref{fig:topelecdependexposure}).  Previous assessments of physical
+exposure to tropical cyclones have often focused on solely storm winds and
+storm proximity. For example, a global study of exposure and vulnerability to
+natural hazards used a combination of windspeed above a certain threshold and
+distance from the storm's track to assess
 exposure~\parencite{peduzzi2009assessing}. While many storm impacts might be
 most strongly linked to wind hazards, there is a growing recognition of the
 potential risks of adverse health outcomes and property damage from rain- and

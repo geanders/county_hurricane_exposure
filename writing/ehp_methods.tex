@@ -120,7 +120,7 @@ of study counties that were classified in the same wind speed category.
 
 \subsection*{Flood- and tornado-based exposure metrics}
 
-To identify flood- and tornado-based exposures to tropical cyclones in \ac{US}
+To identify flood- and tornado-based tropical cyclone exposures in \ac{US}
 counties, we used event listings from the National Oceanic and Atmospheric
 Administration (NOAA)'s Storm Event Database~\parencite{stormevents}. For each
 tropical cyclone, we identified all events with event types related to flooding
@@ -129,41 +129,45 @@ that occurred in a county within~500 \si{\kilo\metre} of the tropical cyclone's
 track and with a start date within a five-day window centered on the date of
 the tropical cyclone's closest approach to the
 county~\parencite{hurricaneexposuredata}. ``Flood", ``Flash Flood" and
-``Tornado" events in this database were reported by county \ac{FIPS} code.
-``Coastal Flood" events were reported by forecast zone; for these, the event
-was matched to the appropriate county if possible using regular expression
-matching of listed county names~\parencite{noaastormevents}. While this
-database has recorded storm data since~1950, its coverage changed substantially
-in~1996 to cover a wider variety of storm events~\parencite{stormevents}. We
-therefore only considered these metrics of hurricane exposure for tropical
-cyclones in~1996 and later.
+``Tornado" events in this database were reported by county \ac{FIPS} code and
+so could be directly linked to counties.  ``Coastal Flood" events were reported
+by forecast zone; for these, the event was matched to the appropriate county if
+possible using regular expression matching of listed county
+names~\parencite{noaastormevents}. While this database has recorded storm data
+since~1950, its coverage changed substantially in~1996 to cover a wider variety
+of storm events~\parencite{stormevents}. We therefore only considered these
+metrics of hurricane exposure for tropical cyclones in~1996 and later.
 
-The tornado observations from this dataset form the traditional tornado
-tracking dataset for the \ac{US} [ref for this?], and so we did not conduct
-analyses to validate the tornado event data.  As validation for the
-flood data, we investigated a sample of study counties, comparing the flood
-status, based on NOAA Storm Events listings~\parencite{stormevents,
-noaastormevents}, with streamflow measurements at \ac{US} Geological Survey county
-streamflow gages during tropical storms~\parencite{usgsgages, countyfloods,
-dataRetrieval}.  We considered nine study counties, selecting counties
-geographically spread through storm-prone areas of the eastern \ac{US} and with
-multiple streamflow gages reporting data during events (Baltimore County, MD;
-Bergen County, NJ; Escambia County, FL; Fairfield County, CT; Fulton County,
-GA; Harris County, TX; Mobile County, AL; Montgomery County, PL; and Wake
-County, NC). For each county, we first identified all streamflow gages in the
-county that had complete data for Jan.~1~1996\,--\,Dec.~31,~2015. For each
-tropical cyclone that came within~500~\si{\kilo\metre} of one of these counties
-between~1996 and~2015, we calculated the highest daily total streamflow (cubic
-feet / second), summed across all identified streamgages in the county, for a
-five-day window centered on the day of the storm's closest approach to the
-county.  We also calculated the percent of streamflow gages in the county with
-a daily streamflow that exceeded a threshold of flooding (the streamgage's
-median value for annual peak flow~\parencite{countyfloods}) on any day during
-the five-day window. We compared these measurements to each county's flood
-status based on NOAA Storm Events listings for each tropical cyclone that came
-within~500~\si{\kilo\metre} between~1996 and~2015, to explore if flood event
-listings in the NOAA Storm Events database concurrent with tropical cyclones
-were associated with higher streamflows at gages within the county.
+The tornado observations from this dataset form the traditional tornado event
+database for the \ac{US}, and so we did not conduct analyses to validate the
+tornado event data. It is difficult to characterize flooding at the county
+level because flooding can be very localized and can be triggered by a variety
+of causes. To investigate the extent to which the NOAA flood event data
+captures extremes that might be identified with other flooding data sources, we
+investigated a sample of study counties, comparing the flood event data during
+tropical storms with streamflow measurements at \ac{US} Geological Survey
+county streamflow gages \parencite{usgsgages, countyfloods, dataRetrieval}.  
+
+We considered nine study counties, selecting counties geographically spread
+through storm-prone areas of the eastern \ac{US} and with multiple streamflow
+gages reporting data during events (Baltimore County, MD; Bergen County, NJ;
+Escambia County, FL; Fairfield County, CT; Fulton County, GA; Harris County,
+TX; Mobile County, AL; Montgomery County, PL; and Wake County, NC). For each
+county, we first identified all streamflow gages in the county that had
+complete data for Jan.~1~1996\,--\,Dec.~31,~2015. If a storm did not come
+within~500~\si{\kilo\metre} of a county, it was excluded from this analysis,
+but all other study storms were considered. For each storm and county, we
+summed daily total streamflow across all streamgages for each day in the
+five-day window around the storm's closest approach. We took the maximum daily
+streamflow total during those five days as a measure of the county's maximum
+streamflow during that storm. We also calculated the percent of streamflow
+gages in the county with a daily streamflow that exceeded a threshold of
+flooding (the streamgage's median value for annual peak
+flow~\parencite{countyfloods}) on any day during the five-day window. We
+investigate how these measurements varied between storms with associated flood
+events in the NOAA Storm Events data versus storms without an event listing, to
+explore if storms with flood event listings tended to be  associated with
+higher streamflows at gages within the county.
 
 \subsection*{Binary storm exposure classifications based on different metrics}
 

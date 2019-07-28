@@ -60,45 +60,43 @@ data, we have included estimates from the \ac{HURDAT2} wind radii as a
 secondary measure of wind speeds in the open-source dataset
 \parencite{hurricaneexposuredata}.
 
-\paragraph{Flood data validation}
+\paragraph{Flood data analysis}
 
-For flood data, we compared the flood status measurements, based on event
-listings in the NOAA Storm Events database, to streamflow measurements at
-\ac{US} Geological Survey gages within nine sample counties
-(Figure~\ref{fig:floodcomparison}). Each small plot in
-Figure~\ref{fig:floodcomparison} shows results for one of the sample counties.
-Each point represents a single tropical storm, and the point's position along
-the x-axis shows the highest daily total streamflow (cubic feet per second),
-summed across all identified streamgages in the county, for a five-day window
-centered on the day of the storm's closest approach to the county. The y-axis
-separates storms for which a flood event was reported in NOAA's Storm Events
-database for the county with a start date within the five-day window of the
-storm's closest approach to the county. The color of each point gives the
-percent of streamflow gages in the county with a daily streamflow that exceeded
-a threshold of flooding on any day during the five-day window.  Stream gage
-data generally indicated higher discharge in these counties on dates identified
-as flood events, particularly in counties with more reporting stream gages
-(e.g., Harris County, TX, with~10 reporting stream gages;
-Figure~\ref{fig:floodcomparison}). There were some cases, however, where the
-two flooding data sources were not completely consistent. 
-For example, there
+For flood data, we compared flood status, based on event listings in the NOAA
+Storm Events database, to streamflow measurements at \ac{US} Geological Survey
+gages within nine sample counties (Figure~\ref{fig:floodcomparison}). Each
+small plot in Figure~\ref{fig:floodcomparison} shows results for one of the
+sample counties.  Each point represents a single tropical storm, and the
+point's position along the x-axis shows the highest daily total streamflow
+(cubic feet per second), summed across all identified streamgages in the
+county, for a five-day window centered on the day of the storm's closest
+approach to the county. The y-axis separates storms for which a flood event was
+reported in NOAA's Storm Events database for the county with a start date
+within the five-day window of the storm's closest approach to the county. The
+color of each point gives the percent of streamflow gages in the county with a
+daily streamflow that exceeded a threshold of flooding on any day during the
+five-day window.  
+
+For flood data, we compared flood status, based on event listings in the NOAA
+Storm Events database, to streamflow measurements at \ac{US} Geological Survey
+gages within nine sample counties (Figure~\ref{fig:floodcomparison}).  Across
+the sampled counties, streamgage data generally indicated higher discharge in
+on dates identified as flood events, particularly in counties with more
+reporting stream gages (e.g., Harris County, TX, with~10 reporting stream
+gages; Figure~\ref{fig:floodcomparison}). There were some cases, however, where
+the two flooding data sources were somewhat inconsistent.  For example, there
 were one or two tropical cyclones in several of the counties (Mobile County,
 AL, Escambia County, FL, and Montgomery County, PA) which were classified as
 flood events based on NOAA storm event listings but for which the total
 discharge across county streamflow gages was below the 25\textsuperscript{th}
-percentile of measurements during storms without a flood event listing. 
-For tropical cyclones that did not have an associated flood listing in 
+percentile of measurements taken during storms that did not have a flood event
+listing. For tropical cyclones that did not have an associated flood listing in
 the NOAA Storm Events database, most had lower total streamflow discharge
-across county gages compareed to storms with flood event listings, and in all
-cases but one none of the gages were over the flooding threshold. The exception
-was \ldots in Fulton County, GA. [More on which storm and why---I think there
-was already a flood event that had started earlier, so it missed the cutoff for
-the startdate being within the range.]
-
-[For discussion?] Based on these results, the two data sources were generally
-in agreement, but the analysis highlights the difficulty of assessing
-storm-related flooding at a multi-county, multi-year scale, as flooding can be
-very localized within a county or can \ldots .   
+across county gages compared to storms with flood event listings, and in all
+cases but one all gages were below the flooding threshold.  The exception was
+one storm in Fulton County, GA (Ida in 2009). [More on which storm and why---I
+think there was already a flood event that had started earlier, so it missed
+the cutoff for the startdate being within the range.]
 
 \subsection*{Patterns in tropical cyclone exposures in eastern \ac{US} counties}
 
@@ -228,13 +226,13 @@ electricity-dependent Medicare beneficiaries.
 Figure~\ref{fig:topelecdependexposure} shows the study counties with the
 highest expected physical exposures in this subpopulation based on each
 exposure metric. A few counties (Miami-Dade County, FL; Harris County, TX) were
-ranked in the top three counties of physical exposure for almost all exposure
-metrics (Figure~\ref{fig:topelecdependexposure}). However, there were key
-differences when using different exposure metrics. For example, Florida
-counties made up most of the counties counties with highest expected physical
-exposure based on wind- and tornado-based metrics, while over half of the
-counties with highest expected physical exposures for the flood-based metric
-were in Mid-Atlantic states (PA, NY).
+ranked in the top three counties for expected physical exposure in this
+subpopulation for almost all exposure metrics
+(Figure~\ref{fig:topelecdependexposure}). However, there were key differences
+across exposure metrics. For example, most of the top counties based on wind-
+and tornado-based metrics were in Florida, while over half of the counties with
+highest expected physical exposures for the flood-based metric were in
+Mid-Atlantic states (PA, NY).
 
 
 
