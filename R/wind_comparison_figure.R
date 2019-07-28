@@ -24,19 +24,19 @@ fig <- wind_comp %>%
         summarize(perc_same = sum(cats_equal) / n(),
                   non_zero = sum(vmax_sust_ext != 0)) %>%
         filter(non_zero > 0) %>%
-        ggplot(aes(x = perc_same, y = reorder(storm_id, perc_same), color = non_zero)) +
-        geom_point(size = 2) +
+        ggplot(aes(x = perc_same, y = reorder(storm_id, perc_same), fill = non_zero)) +
+        geom_point(size = 2, shape = 21, color = "black") +
         scale_x_continuous(labels = scales::percent) +
         theme_classic() +
         labs(x = "% of counties classified in same wind category\nby modeled storm wind and Extended Best Tracks",
              y = "",
-             color = "Number of counties with modeled\nsustained winds of \u2265 34 knots",
+             fill = "Number of counties with modeled\nsustained winds of \u2265 34 knots",
              parse = TRUE
              ) +
-        viridis::scale_color_viridis(direction = -1, option = "B") +
+        viridis::scale_fill_viridis(direction = -1, option = "B") +
         theme(legend.position = "bottom")
 
-quartz.save(file = "figures/windcomparison.pdf", type = "pdf", width = 5.25, height = 7)
+quartz.save(file = "figures/windcomparison.pdf", type = "pdf", width = 5.25, height = 8)
 print(fig)
 dev.off()
 
