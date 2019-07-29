@@ -42,8 +42,8 @@ linear models) that incorporate multiple tropical cyclone hazard measurements.
 \end{comment}
 
 We investigated how well these data correspond with data from other available
-sources (Figures~\ref{fig:windcomparison}\,--\,\ref{fig:floodcomparison}
-and~S6\,--\,7). While generally in agreement with data from other sources,
+sources (Figures~\ref{fig:raincomparison}\,--\,\ref{fig:floodcomparison}
+and~S2). While generally in agreement with data from other sources,
 there are a few caveats that should be considered when applying these data in
 future studies. The rainfall data are from re-analysis data are generally
 well-correlated with observed ground-based station data, but may sometimes
@@ -61,27 +61,27 @@ there were a few storms where the two datasets did not agree as well ($<$90\%
 of counties classified into the same wind categories by the two sources of wind
 estimates). These storms were exceptionally large systems for which high winds
 persisted well inland from landfall, like Hurricanes Sandy and Ike
-(Figures~\ref{fig:windcomparison} and\~S6). Since the wind radii are based on
+(Figures~\ref{fig:windcomparison} and~S2). Since the wind radii are based on
 \ldots, they have [advantages]; their main disadvantages is that they provide
 categorical, rather than continuous, estimates of wind speed, and in many cases
 researchers might prefer more precise estimates of storm wind speeds. However,
 since the wind radii data may be useful in some cases as either a primary
 metric or for sensitivity analysis, we have include county-level wind estimates
 for each storm based on these wind radii, in addition to the continuous modeled
-windspeeds, in the open-source data \cite{hurricaneexposuredata}.
+windspeeds, in the open-source data \parencite{hurricaneexposuredata}.
 
 For the flooding events data, we found it often corresponded with measurements
 from \ac{US} Geographical Survey streamgages, with flood event listings more
-likely during storms which elevated stream flows. However, there are
-differences between the two flooding datasets, and these highlight both the
-difficulty of measuring flood exposure at the county level and inherent
-challenges in using the storm event database for epidemiologic exposure
-assessment.  The flood and tornado data came from the \ac{NOAA} Storm Events
-database, which, while a widely-used database of events maintained by
-\ac{NOAA}, is based on reports, and so may be prone to
-underreporting~\parencite{Ashley2008flood, Curran2000}, especially in less
-populated areas~\parencite{Witt1998, Ashley2007}, as well as to other reporting
-errors. 
+likely during storms which elevated stream flows
+(Figure~\ref{fig:floodcomparison}. However, there are differences between the
+two flooding datasets, and these highlight both the difficulty of measuring
+flood exposure at the county level and inherent challenges in using the storm
+event database for epidemiologic exposure assessment.  The flood and tornado
+data came from the \ac{NOAA} Storm Events database, which, while a widely-used
+database of events maintained by \ac{NOAA}, is based on reports, and so may be
+prone to underreporting~\parencite{Ashley2008flood, Curran2000}, especially in
+less populated areas~\parencite{Witt1998, Ashley2007}, as well as to other
+reporting errors. 
 
 \begin{comment}
 [For discussion?] Based on these results, the two data sources were generally
@@ -97,27 +97,28 @@ multi-county, multi-year scale.
 \subsection*{Patterns in tropical cyclone exposures}
 
 We found geographic patterns in tropical cyclones based on the different
-exposure metrics that. These patterns were not unexpected based on what is
-known about tropical cyclone hazards, but still highlight variations across
-metrics that are critical to consider in designing studies for tropical cyclone
-epidemiology, and they demonstrate the need for multi-hazard exposure datasets
-for tropical cyclone epidemiology. Wind-based exposures had a strong coastal
-pattern, which is consistent with the dramatic decrease in wind intensity that
-typically characterizes the landfall of tropical cyclones. Exposures by rain-
-and distance-based metrics often extended further inland compared to the
-wind-based metric, up to the Appalachian mountains. This agrees with previous
-research indicating that the Appalachian mountains' topography both enhances
-precipitation during tropical cyclones and provides hydrological conditions for
-severe flooding~\parencite{rees2001}.  Almost all tornado-based exposures were
-in southern coastal states, echoing previous findings that most noteworthy
-tropical cyclone-related tornadoes occur on the right-side of the tropical
-cyclone track in Atlantic-basin \ac{US} storms~\parencite{moore2012}.  These
-exposure averages are somewhat limited as estimates of long-term frequencies,
-as tropical cyclones follow decadal patterns~\parencite{kossin2007more} likely
-not adequately captured in the available data. However, exposure assessments
-spanning over a century have found similar patterns for distance- and
-wind-based metrics~\textcite{zandbergen2009, kruk2010} [double-check that refs
-found similar patterns].
+exposure metrics (Figure~\ref{fig:averageexposures}). These patterns were not
+unexpected based on what is known about tropical cyclone hazards, but still
+highlight variations across metrics that are critical to consider in designing
+studies for tropical cyclone epidemiology, and they demonstrate the need for
+multi-hazard exposure datasets for tropical cyclone epidemiology. Wind-based
+exposures had a strong coastal pattern, which is consistent with the dramatic
+decrease in wind intensity that typically characterizes the landfall of
+tropical cyclones. Exposures by rain- and distance-based metrics often extended
+further inland compared to the wind-based metric, up to the Appalachian
+mountains. This agrees with previous research indicating that the Appalachian
+mountains' topography both enhances precipitation during tropical cyclones and
+provides hydrological conditions for severe flooding~\parencite{rees2001}.
+Almost all tornado-based exposures were in southern coastal states, echoing
+previous findings that most noteworthy tropical cyclone-related tornadoes occur
+on the right-side of the tropical cyclone track in Atlantic-basin \ac{US}
+storms~\parencite{moore2012}.  These exposure averages are somewhat limited as
+estimates of long-term frequencies, as tropical cyclones follow decadal
+patterns~\parencite{kossin2007more} likely not adequately captured in the
+available data. However, exposure assessments spanning over a century have
+found similar patterns for distance- and wind-based
+metrics~\textcite{zandbergen2009, kruk2010} [double-check that refs found
+similar patterns].
 
 \begin{comment}
 However, these frequency maps, together with evidence from
@@ -142,9 +143,11 @@ flooding).
 
 We found that there was typically only moderate or low agreement between
 county-level exposure classifications for a tropical cyclone when comparing
-different exposure metrics. This suggests that the use of one of these metrics
-as a proxy for all storm-based hazards in epidemiological research would often
-be problematic, introducing exposure misclassification.
+different exposure metrics
+(Figures~\ref{fig:ivanexposure}\,--\,\ref{fig:jaccard}  and S4\,--\,S5). This
+suggests that the use of one of these metrics as a proxy for all storm-based
+hazards in epidemiological research would often be problematic, introducing
+exposure misclassification.
 
 \begin{comment}
 For example, distance from a tropical cyclone's track is relatively easy to
@@ -179,19 +182,19 @@ network~\parencite{chen2015, rees2001}.
 
 However, we did find a small set of tropical cyclones for which for which
 agreement between metrics were unusually high (e.g., Floyd in~1999, Irene in
-2011, Hannah in~2008, Bertha in~1996).  Hurricanes Floyd in~1999 and Irene
-in~2011 both made their first \ac{US} landfall in North Carolina at minor
-hurricane windspeeds (Category~2 and~1, respectively) and then skimmed the
-eastern coast of the \ac{US} north through New England, bringing large rainfall
-to much of the eastern coast from North Carolina north and causing extensive
-inland flooding in North Carolina (Floyd) and New England
-(Irene)~\parencite{avila2013atlantic, lawrence2000atlantic}.  Hurricanes Hannah
-in~2008 and Bertha in~1996 followed the eastern coastline north of North
-Carolina in a pattern similar to Floyd and Irene. For this set of storms, the
-tropical cyclones' persistent proximity to water may have helped maintain wind
-speeds in similar patterns to rain and distance exposures, resulting in this
-moderate to good agreement among exposure assessments based on different
-metrics. 
+2011, Hannah in~2008, Bertha in~1996; Figure~\ref{fig:jaccard}).  Hurricanes
+Floyd in~1999 (Figure~S4) and Irene in~2011 both made their first \ac{US}
+landfall in North Carolina at minor hurricane windspeeds (Category~2 and~1,
+respectively) and then skimmed the eastern coast of the \ac{US} north through
+New England, bringing large rainfall to much of the eastern coast from North
+Carolina north and causing extensive inland flooding in North Carolina (Floyd)
+and New England (Irene)~\parencite{avila2013atlantic, lawrence2000atlantic}.
+Hurricanes Hannah in~2008 and Bertha in~1996 followed the eastern coastline
+north of North Carolina in a pattern similar to Floyd and Irene. For this set
+of storms, the tropical cyclones' persistent proximity to water may have helped
+maintain wind speeds in similar patterns to rain and distance exposures,
+resulting in this moderate to good agreement among exposure assessments based
+on different metrics. 
 
 In some cases, exposure misclassification from using one of these exposure
 metrics to capture one or more of the other storm hazards may be differential
