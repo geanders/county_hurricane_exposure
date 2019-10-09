@@ -1,0 +1,105 @@
+Supplemental Material for "Assessing United States county-level exposure for research on tropical cyclones and human health"
+G. Brooke Anderson1,* , Joshua Ferreri1,2 , Mohammad Al-Hamdan3 , William Crosson3 , Andrea Schumacher4 , Seth Guikema5 , Steven Quiring6 , Dirk Eddelbuettel7 , Meilin Yan1 , and Roger D. Peng8
+1
+
+Department of Environmental & Radiological Health Sciences, Colorado State University, Fort Collins, CO, 80523 2 University of Colorado Denver School of Medicine, Aurora, CO, 80045 3 Universities Space Research Association, NASA Marshall Space Flight Center, Huntsville, AL, 35805 4 Cooperative Institute for Research in the Atmosphere, Colorado State University, Fort Collins, CO, 80523 5 Department of Industrial and Operations Engineering, University of Michigan, Ann Arbor, MI, 48109 6 Department of Geography, Ohio State University, Columbus, OH, 43210 7 Debian and R Projects; Department of Statistics, University of Illinois at Urbana-Champaign, Champaign, IL, 61820 8 Department of Biostatistics, Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, 21205 * Corresponding author: Brooke Anderson, brooke.anderson@colostate.edu
+
+Cumulative precipitation (mm)
+0 50 100 150 200 250 Hurricane Ike (2008) Tropical Storm Lee (2011)
+
+Figure S1: Examples of storms where some storm-related rainfall occured 500 km or further from the storm's track. The red line on each map shows the track of the storm. The color of each county in the map gives the cumulative precipitation in the county from two days before to one day after the storm's closest approach (in mm). The blue outline identifies the collection of counties that were classified as "exposed" based on the rainfall exposure criteria (Table 1 of main text), which includes the constraint that the storm must have come within 500 km of the county.
+
+Windspeed
+
+0-33.9 knots
+
+34-49.9 knots
+
+50-63.9 knots
+
+64+ knots
+
+Modeled
+
+Extended Best Tracks
+
+Hurricane Ike (2008)
+
+Hurricane Sandy (2012)
+
+Figure S2: Comparison of county-level estimates of maximum sustained surface wind speeds for Hurricane Ike in 2008 (top) and Hurriance Sandy in 2012 (bottom). Each map shows the estimated maximum sustained surface wind speed classification (<34 kn; 34 ­ 49.9 kn; 50 ­ 63.9 kn; 64 kn) for each study county. The maps labelled "Modeled" (left) shows the classifications based on modeled sustained surface wind speeds, which were included in the open-source data as the main wind metric and used in further analysis in this research. The maps labelled "Extended Best Tracks" (right) show classifications based on the wind radii given in HURDAT 2 (included as a secondary wind metric in the open-source data). The red lines show the storms' tracks.
+
+Average county storm exposures per decade by metric
+Distance-based metric Rain-based metric Wind-based metric
+
+Flood-based metric
+
+Tornado-based metric
+
+Hits per county per decade
+
+0-1 1-2
+
+2-3 3-4
+
+4-5 5-6
+
+6-7 7-8
+
+8+
+
+Figure S3: Average number of storm exposures per decade in U.S. counties for each exposure metric, limited analysis to years for which data on all five exposures were available (1996 ­ 2011). The criteria behind each of the five metrics is given in Table 1 of the main text.
+
+Floyd (1999)
+Distance-based metric Rain-based metric Wind-based metric
+
+Lee (2011)
+Distance-based metric Rain-based metric Wind-based metric
+
+Flood-based metric
+
+Tornado-based metric
+
+Flood-based metric
+
+Tornado-based metric
+
+Unexposed Exposed
+
+Unexposed Exposed
+
+Cindy (2005)
+Distance-based metric Rain-based metric Wind-based metric
+
+Katrina (2005)
+Distance-based metric Rain-based metric Wind-based metric
+
+Flood-based metric
+
+Tornado-based metric
+
+Flood-based metric
+
+Tornado-based metric
+
+Unexposed Exposed
+
+Unexposed Exposed
+
+Figure S4: Differences in the counties assessed as "exposed", based on different exposure metrics, for a sample of storms. These sample storms were selected as the storms with largest extent (as measured by the number of counties exposed based on any metric) from each of the clusters shown in the Jaccard heatmap in the main text (Figure 7).
+
+Frances (2004)
+Rain-based metric Wind-based metric
+
+Isidore (2002)
+Rain-based metric Wind-based metric
+
+Hugo (1989)
+Rain-based metric Wind-based metric
+
+Isabel (2003)
+Rain-based metric Wind-based metric
+
+Figure S5: Examples of storms for which exposure assessments differed substantially between rain-based and wind-based metrics. Counties shown in orange were classified as exposed to a given storm by a given metric; those in yellow were classified as not exposed. The storm's track is shown in red. For both Frances (2004) and Isidore (2002) (top panel), substantially more counties were assessed as exposed when measuring exposure based on rain rather than wind. Conversely, for both Hugo (1989) and Isabel (2003) (bottom panel), substantially more counties were assessed as exposed based on wind compared to rain.
+
+

@@ -26,7 +26,7 @@ rain_data <- filter_storm_data(storm = storm,
 wind_data <- filter_wind_data(storm = storm, wind_source = "modeled",
                              output_vars = c("fips", "vmax_sust")) %>%
         `colnames<-`(c("fips", "wind_value")) %>%
-        dplyr::mutate_(wind = ~ wind_value >= 15) %>%
+        dplyr::mutate_(wind = ~ wind_value >= 17.5) %>%
         dplyr::select(fips, wind) %>%
         dplyr::tbl_df()
 
@@ -74,6 +74,9 @@ storm_data <- distance_data %>%
 
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
+out_data <- out_data %>% 
+        dplyr::filter(metric != "Distance-based metric")
+
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
                               ggplot2::aes_(x = ~ long, y = ~ lat, group = ~ group,
@@ -101,8 +104,8 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 3) +
-        theme(legend.position=c(.8,.15))
+        facet_wrap(~ metric, ncol = 4) +
+        theme(legend.position="none")
 
 floyd <- map_tracks(storm, plot_object = out) +
         ggtitle("Floyd (1999)")
@@ -176,6 +179,10 @@ storm_data <- distance_data %>%
 
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
+
+out_data <- out_data %>% 
+        dplyr::filter(metric != "Distance-based metric")
+
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
                               ggplot2::aes_(x = ~ long, y = ~ lat, group = ~ group,
@@ -203,8 +210,8 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 3) +
-        theme(legend.position=c(.8,.15))
+        facet_wrap(~ metric, ncol = 4) +
+        theme(legend.position="none")
 
 lee <- map_tracks(storm, plot_object = out) +
         ggtitle("Lee (2011)")
@@ -278,6 +285,10 @@ storm_data <- distance_data %>%
 
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
+
+out_data <- out_data %>% 
+        dplyr::filter(metric != "Distance-based metric")
+
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
                               ggplot2::aes_(x = ~ long, y = ~ lat, group = ~ group,
@@ -305,8 +316,8 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 3) +
-        theme(legend.position=c(.8,.15))
+        facet_wrap(~ metric, ncol = 4) +
+        theme(legend.position="none")
 
 cindy <- map_tracks(storm, plot_object = out) +
         ggtitle("Cindy (2005)")
@@ -380,6 +391,10 @@ storm_data <- distance_data %>%
 
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
+
+out_data <- out_data %>% 
+        dplyr::filter(metric != "Distance-based metric")
+
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
                               ggplot2::aes_(x = ~ long, y = ~ lat, group = ~ group,
@@ -407,13 +422,13 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 3) +
-        theme(legend.position=c(.8,.15))
+        facet_wrap(~ metric, ncol = 4) +
+        theme(legend.position="none")
 
 katrina <- map_tracks(storm, plot_object = out) +
         ggtitle("Katrina (2005)")
 
 pdf("figures/othertopstorms.pdf", width = 10, height = 7)
-grid.arrange(floyd, lee, cindy, katrina, ncol = 2)
+grid.arrange(floyd, lee, cindy, katrina, ncol = 1)
 dev.off()
 

@@ -1,9 +1,9 @@
 [0] Config.pm:304> INFO - This is Biber 2.12
 [0] Config.pm:307> INFO - Logfile is 'anderson_ehp_supp.blg'
-[45] biber-darwin:315> INFO - === Sun Jul 28, 2019, 20:00:35
-[70] Biber.pm:371> INFO - Reading 'anderson_ehp_supp.bcf'
-[145] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
-[152] Utils.pm:193> WARN - The file 'anderson_ehp_supp.bcf' does not contain any citations!
-[157] bbl.pm:636> INFO - Writing 'anderson_ehp_supp.bbl' with encoding 'UTF-8'
-[157] bbl.pm:739> INFO - Output to anderson_ehp_supp.bbl
-[158] Biber.pm:110> INFO - WARNINGS: 1
+[44] biber-darwin:315> INFO - === Tue Oct  8, 2019, 15:22:56
+[65] Biber.pm:371> INFO - Reading 'anderson_ehp_supp.bcf'
+[141] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[148] Utils.pm:193> WARN - The file 'anderson_ehp_supp.bcf' does not contain any citations!
+[153] bbl.pm:636> INFO - Writing 'anderson_ehp_supp.bbl' with encoding 'UTF-8'
+[154] bbl.pm:739> INFO - Output to anderson_ehp_supp.bbl
+[154] Biber.pm:110> INFO - WARNINGS: 1

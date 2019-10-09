@@ -9,7 +9,7 @@ library(maptools)
 library(RColorBrewer)
 library(choroplethr)
 data(closest_dist)
-load("clean_empower.RData") # Loads dataframe named `medi`
+load("data/clean_empower.RData") # Loads dataframe named `medi`
 
 my_fips <- unique(closest_dist$fips)
 dist <- county_distance(counties = my_fips, start_year = 1988,
@@ -26,7 +26,7 @@ rain <- county_rain(counties = my_fips, start_year = 1988,
         mutate(metric = "rain")
 
 wind <- county_wind(counties = my_fips, start_year = 1988,
-                             end_year = 2015, wind_limit = 15) %>%
+                             end_year = 2015, wind_limit = 17.5) %>%
         group_by(fips) %>%
         dplyr::summarize(n_exposures = n() / 28) %>%
         mutate(metric = "wind")

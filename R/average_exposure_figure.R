@@ -25,7 +25,7 @@ rain <- county_rain(counties = my_fips, start_year = 1988,
         mutate(metric = "rain")
 
 wind <- county_wind(counties = my_fips, start_year = 1988,
-                             end_year = 2015, wind_limit = 15) %>%
+                             end_year = 2015, wind_limit = 17.4) %>%
         group_by(fips) %>%
         dplyr::summarize(n_exposures = n() / 28) %>%
         mutate(metric = "wind")
@@ -78,6 +78,9 @@ out_data$value <- cut(out_data$n_exposures, c(0,
                                        "6-7", "7-8", "8+"),
                             include.lowest = TRUE, right = FALSE)
 
+out_data <- out_data %>% 
+        dplyr::filter(metric != "Distance-based metric")
+
 
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
@@ -101,14 +104,14 @@ out <- ggplot2::ggplot() +
                                     discrete = TRUE, direction = -1, option = "A") +
         viridis::scale_color_viridis(name = "Hits per\ncounty per\ndecade",
                                      discrete = TRUE, direction = -1, option = "A") +
-        facet_wrap(~ metric) +
-        theme(legend.position = c(.85, .3),
+        facet_wrap(~ metric, ncol = 1) +
+        theme(legend.position = "bottom",
               legend.direction = "horizontal",
               legend.key.size = unit(0.8, "lines"),
               legend.title = element_text(size = 8),
               legend.text = element_text(size = 7),
-              strip.background = element_rect(colour = "black", fill = "white")) # +
-        # ggtitle("Average county storm exposures per decade by metric")
+              strip.background = element_rect(colour = "black", fill = "white"))  +
+         ggtitle("")
 
 storm <- "Ivan-2004"
 
@@ -131,7 +134,7 @@ rain_data <- filter_storm_data(storm = storm,
 wind_data <- filter_wind_data(storm = storm, wind_source = "modeled",
                               output_vars = c("fips", "vmax_sust")) %>%
         `colnames<-`(c("fips", "wind_value")) %>%
-        dplyr::mutate_(wind = ~ wind_value >= 15) %>%
+        dplyr::mutate_(wind = ~ wind_value >= 17.4) %>%
         dplyr::select(fips, wind) %>%
         dplyr::tbl_df()
 
@@ -215,7 +218,7 @@ pdf("figures/averageexposure.pdf", width = 9, height = 11)
 grid.arrange(out, out2, ncol = 1)
 dev.off()
 
-pdf("figures/averageexposureonly.pdf", width = 9, height = 5)
+pdf("figures/averageexposureonly.pdf", width = 3, height = 9)
 print(out)
 dev.off()
 
@@ -238,7 +241,7 @@ rain <- county_rain(counties = my_fips, start_year = 1996,
         mutate(metric = "rain")
 
 wind <- county_wind(counties = my_fips, start_year = 1996,
-                    end_year = 2011, wind_limit = 15) %>%
+                    end_year = 2011, wind_limit = 17.4) %>%
         group_by(fips) %>%
         dplyr::summarize(n_exposures = n() / 16) %>%
         mutate(metric = "wind")
@@ -289,7 +292,10 @@ out_data$value <- cut(out_data$n_exposures, c(0,
                                  "2-3", "3-4",
                                  "4-5", "5-6",
                                  "6-7", "7-8", "8+"),
-                      include.lowest = TRUE, right = FALSE)
+                      include.lowest = TRUE, right = FALSE) 
+
+out_data <- out_data %>% 
+        dplyr::filter(metric != "Distance-based metric")
 
 
 out <- ggplot2::ggplot() +
@@ -316,15 +322,15 @@ out <- ggplot2::ggplot() +
         viridis::scale_color_viridis(name = "Hits per\ncounty per\ndecade",
                                      discrete = TRUE, direction = -1,
                                      option = "A") +
-        facet_wrap(~ metric) +
-        theme(legend.position = c(.85, .3),
+        facet_wrap(~ metric, ncol = 1) +
+        theme(legend.position = "bottom",
               legend.direction = "horizontal",
               legend.key.size = unit(0.8, "lines"),
               legend.title = element_text(size = 8),
               legend.text = element_text(size = 7),
               strip.background = element_rect(colour = "black", fill = "white")) +
-        ggtitle("Average county storm exposures per decade by metric")
+        ggtitle("")
 
-pdf("figures/averageexposureonlysupp.pdf", width = 9, height = 5.5)
+pdf("figures/averageexposureonlysupp.pdf", width = 3, height = 9)
 print(out)
 dev.off()

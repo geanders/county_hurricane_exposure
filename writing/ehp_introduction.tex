@@ -3,157 +3,98 @@
 \acresetall
 
 Recently, several major tropical cyclones have hit \ac{US} cities, including
-Hurricanes Harvey, Irma, and Maria in 2017 and Hurricanes Florence and Michael
-in 2018. Researchers are currently exploring how these storms impacted human
-health (e.g., [Maria refs, others?]), including through projects funded through
-NIH Rapid Response grants [NIH RePorter ref].  Evidence from this research will
-add to evidence from previous hurricanes, including Sandy in 2012 [refs] and
-Katrina in 2005 [refs], which found these storms can create substantial risk
-not only for accidental health outcomes (e.g., drowning, crushing deaths and
-injuries, electrocution, carbon monoxide poisoning) but also for
-non-accidental, non-communicable diseases [refs]. However, much of the
-epidemiological research to date on the health impacts of tropical cyclones has
-focused on a single storm (e.g., [refs]), or has relied on death and injury
-counts for which a link to the storm was identifiable through mention on a
-death certificate or other information about the death [refs], an approach that
-may miss many of the health impacts of storms, particularly from non-accidental
-causes, as evidenced with Hurricane Maria [ref for this?]. 
+Hurricanes Harvey, Irma, and Maria in 2017 \parencite{blake20182017} and
+Hurricanes Florence and Michael in 2018 \parencite{avila20192018}. Researchers
+are exploring how these storms impacted human health (e.g.,
+\parencite{santos2018use, rivera2018estimating, santos2018differential,
+grineski2019impact, issa2018deaths, tanz2019notes, paul2019brief}), including
+through projects funded through \ac{NIH} Rapid Response grants
+\parencite{nihreporter}. These projects will add to evidence from previous
+hurricanes, including Sandy in 2012 (e.g., \parencite{swerdel2014}) and Katrina
+in 2005 (e.g., \parencite{burton2009health}), characterizing the health impacts
+of hurricanes. 
 
-A recent review highlights the need to move beyond single-storm and descriptive
-analyses to larger-scale studies with consistently [defined?] exposure and
-outcome assessment [ref].  Key to expanding tropical cyclone epidemiology are
-exposure assessment methods that appropriately capture those hazards of the
-storm that are relevant to human health, methods that can be applied
-consistently across multiple storms, locations, and years. 
+A recent review highlights the need to supplement these single-storm studies
+with multi-year, multi-storm studies, to identify patterns that are common
+across multiple storms [ref]. While multi-year studies of hurriance mortality
+impacts have been conducted using disaster surveillance data, studies based on
+administrative data could identify risks for non-accidental mortality and
+morbidity that those studies likely undercount [ref]. Multi-storm studies with
+administrative data require exposure assessment that is consistent across time
+and space, allowing the administrative data to be linked to disaster exposure
+[ref]. Key to expanding tropical cyclone epidemiology are therefore exposure
+assessment methods that appropriately capture hazards of the storm that are
+relevant to human health, methods that can be applied consistently across
+multiple storms, locations, and years. 
 
-The \ac{NHC}'s ``Best Tracks'' dataset is considered the gold standard in
-recording the location and central intensity of Atlantic-basin tropical
-cyclones. This data is provided through the \ac{HURDAT2} dataset, a post-storm
-assessment conducted by the \ac{US} \ac{NHC} that incorporates data from a
-variety of sources, including satellite data and, when available, aircraft
-reconnaissance data~\parencite{landsea2013, jarvinen1988}. This dataset records
-the central position of a storm every six hours (at the synoptic times of
-6:00~am, 12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}) as well as measures of the
-minimum pressure [at the storm's center?] and the storm's central maximum
-sustained winds (typically located in the eye wall [?] if the storm has
-developed an eye).  From the ``Best Tracks'' data, it is straightforward to
-measure whether a study location was in the direct path, or within a certain
-distance of the path, of a storm using geographical software. Some studies have
-used distance to a storm's track either in assessing average exposure patterns
-to tropical storms [refs] or for assigning exposure for health studies [refs].
+The \ac{NHC} publishes a ``Best Tracks'' dataset that is considered the gold
+standard for Atlantic-basin tropical cyclone tracks.  It records the central
+position of a tropical cyclone every six hours, as well as the storm's
+\underline{minimum pressure} and \underline{central maximum sustained winds}. This data is openly
+available through the \ac{HURDAT2}, a post-storm assessment conducted
+by the \ac{US} \ac{NHC} that incorporates data from a variety of sources,
+including satellite data and, when available, aircraft reconnaissance
+data~\parencite{landsea2013, jarvinen1988}. With this data, it is
+straightforward to measure whether a community was in the direct path, or
+within a certain distance of the path, of a storm. Some studies have indeed
+used this data to assess tropical cyclone exposure based on how near the
+storm's central track came to the county, either to assess average exposure
+patterns to tropical storms [refs] or to characterize exposure for health
+studies [refs].
 
-However, the hazards that tropical cyclones bring that threaten human health
-are not perfectly aligned with distance from the storm's track.  Tropical
-cyclones are multi-hazard events. Recent storms have shown how much storms can
-differ in intensity of these hazards; Hurricanes Michael and Maria demonstrated
-the threats of extreme storm-related winds, for example, while Hurricanes
-Florence and Harvey were more notable for extreme rain and flooding [refs].
-Depending on the health outcome considered, some storm hazards might be more
-plausible as a risk factor than others. Respiratory outcomes in the months
-after a storm, for example, might be increased through a pathway of heightened
-mold exposure from flooding, while heat stroke and other heat-related outcomes
-in the days immediately after a storm might follow from a pathway of extreme
-winds causing power outages, resulting in loss of air conditioning [refs].
-Geographical patterns can differ for these different storm hazards, and so
-exposure assessment based on one hazard could create exposure misclassification
-if the pathway for health risks is through a different storm hazard.   
+When epidemiological studies assess exposure to a tropical cyclone based on 
+how close the storm came to a community, however, they may misclassify exposure. 
+Tropical cyclones vary dramatically in size: \ac{US} tropical
+cyclones have been observed with radii to maximum winds as small
+as~20~\si{\kilo\metre} and as large
+as~200~\si{\kilo\metre}~\parencite{mallin2006, quiring2011variations}.  While a
+number of tropical cyclone hazards are strongly associated with distance from
+the tropical cyclone's center (e.g., wind and, at the coast, storm surge and
+waves~\parencite{rappaport2000, kruk2010}), other hazards like heavy rainfall,
+floods, and tornadoes can occur well away from the tropical cyclone's central
+track~\parencite{rappaport2000, atallah2007, moore2012}.  For example, fatal
+tropical cyclone tornadoes, which were linked to over~300 deaths in the \ac{US}
+between~1995 and~2009, most often occur~200\,--\,500~\si{\kilo\metre} from the
+tropical cyclone's center~\parencite{moore2012}.  
 
-% Tropical cyclones, including hurricanes, can have disastrous impacts in the
-% \ac{US}. A tropical cyclone's high winds can bring health risks
-% and property damage through structural damage of houses and other buildings,
-% falling trees, and wind-borne debris~\parencite{rappaport2000} and cause power
-% outages~\parencite{liu2005, han2009}, which introduce a number of threats to human
-% and ecological health, including water quality risks if the outage affects
-% wastewater treatment plants~\parencite{mallin2006}.  Other risks can exist without
-% severe wind; for example, one study found that most of the direct
-% hurricane-related deaths in the \ac{US} between~1970 and~1999 occurred in cases
-% when wind was below hurricane strength, including for Tropical Storms Charley
-% in~1998 and Alberto in~1994~\parencite{rappaport2000}.  Tropical cyclones can
-% produce excessive rain, especially in certain topographies (e.g., near
-% mountains), so counties well inland sometimes experience more extreme rain than
-% coastal counties. Flood risks from tropical cyclones can result from this rain,
-% although the two risks are not perfectly correlated~\parencite{chen2015}. In the
-% \ac{US}, over half of hurricane-related direct deaths from~1970 to~1999 from
-% Atlantic basin storms were a result of freshwater flooding~\parencite{rappaport2000}. 
-% Flooding can also degrade water quality~\parencite{mallin2006}, which can threaten both 
-% human and ecological health.
-
-% To measure tropical cyclone exposure for either investigations of exposure
-% patterns or for estimation of tropical cyclone risks and impacts, including
-% those related to human health, studies have varied widely in how they determine
-% tropical cyclone exposure (some examples shown in Figure~S1). While some
-% studies have measured exposure based on specific hazards of the tropical
-% cyclone (e.g., wind, rain), many have used distance from the tropical cyclone's
-% central track as a surrogate in identifying exposure to the hazards of a
-% tropical cyclone (e.g.,~\textcite{czajkowski2011, tansel2010, kinney2008,
-% caillouet2008increase}).  
-
-% Distance from the tropical cyclone's central track can be easily measured using
-% widely-available hurricane tracking data. There are, however, a number of
-% limitations to using distance to assess exposure to tropical cyclones, and
-
-% Geographical patterns likely differ for these different storm hazards, and so
-% exposure assessment based on one hazard could create exposure misclassification
-% if the pathway for health risks is through a different storm hazard.  
- 
-There are reasons to suspect that exposure classifications based on tropical
-cyclone hazards like wind and rain may disagree with distance-based
-classifications, based only on distance from the storm's path. Further, an
-assessment based on one storm hazard (e.g., wind) might disagree with assessments based on
-other hazards (e.g., rain or flooding).
-Tropical cyclones vary dramatically in size: \ac{US} tropical cyclones have
-been observed with radii to maximum winds as small as~20~\si{\kilo\metre} and
-as large as~200~\si{\kilo\metre}~\parencite{mallin2006, quiring2011variations}.
-While a number of tropical cyclone hazards are strongly associated with
-distance from the tropical cyclone's center (e.g., wind and, at the coast,
-storm surge and waves~\parencite{rappaport2000, kruk2010}), other hazards like
-dangerous rain, floods, and tornadoes can occur well away from the tropical
-cyclone's central track~\parencite{rappaport2000, atallah2007, moore2012}.  For
-example, fatal tropical cyclone tornadoes, which were linked to over~300 deaths
-in the \ac{US} between~1995 and~2009, most often
-occur~200\,--\,500~\si{\kilo\metre} from the tropical cyclone's
-center~\parencite{moore2012}. 
-
-Further, studies that have used distance-based exposure metrics have tended to
-use an equal buffer distance on each side of the tropical cyclone track
-(e.g.,~\cite{czajkowski2011, grabich2015, grabich2016, zandbergen2009,
-tansel2010}), but the forces of a tropical cyclone tend to be distributed
-around the center in a non-symmetrical way. For example, extreme winds are more
-common to the right of the track, where counter-clockwise cyclonic winds move
-in concert with the tropical cyclone's forward
-motion~\parencite{halverson2015}, and the fatal tornadoes associated with
-\ac{US} tropical cyclones between~1995 and~2009 occurred almost exclusively to
-the right of the tropical cyclone's track, mostly in the right front quadrant
-of the tropical cyclone~\parencite{moore2012}. Rain, conversely, is often
-heaviest to the left of the tropical cyclone's track, especially when the
-tropical cyclone interacts with other weather systems~\parencite{atallah2003,
-atallah2007, zhu2013variations} or undergoes an extratropical
+Further, when studies use distance from the storm's track to assess exposure,
+they often use an equal buffer distance on each side of the tropical cyclone
+track (e.g.,~\cite{czajkowski2011, grabich2015, grabich2016, zandbergen2009,
+tansel2010}). However, the forces of a tropical cyclone tend to be distributed
+around the center in a non-symmetrical way. Extreme winds are more common to
+the right of the track, where counter-clockwise cyclonic winds move in concert
+with the tropical cyclone's forward motion~\parencite{halverson2015}, and the
+fatal tornadoes associated with \ac{US} tropical cyclones between~1995 and~2009
+occurred almost exclusively to the right of the tropical cyclone's track,
+mostly in the right front quadrant of the tropical
+cyclone~\parencite{moore2012}. Rain, conversely, is often heaviest to the left
+of the tropical cyclone's track, especially when the tropical cyclone interacts
+with other weather systems~\parencite{atallah2003, atallah2007,
+zhu2013variations} or undergoes an extratropical
 transition~\parencite{elsberry2002}.
 
-If a study misclassifies exposure to the hazard or hazards that cause an
-impact, estimates of tropical cyclone risks or impacts will be biased, making
-it hard to identify true associations. The use of different exposure metrics
-across studies hampers the development of a scientific consensus on tropical
-cyclone-related risks, as differences observed between studies could result
-from differences in exposure assessment.  These concerns are particularly
-important if there are large differences in the locations that are determined
-to be exposed based on different metrics.  
+If a study misclassifies exposure to the hazard or hazards that cause the
+health risk being studied, the study will generate biased estimates of tropical
+cyclone risks and impacts. Further, when different studies use different
+methods to assess exposure to tropical cyclones, their results are difficult to
+meaningfully compare and aggregate. If different methods identify
+similar sets of communities as ``exposed'',  these concerns are less serious.
+However, if different methods differ substantially in which communities they
+identify as ``exposed'', it makes it very important that epidemiological
+studies are thoughtful in how they assess exposure.
 
-To investigate this, and to provide open-source data on tropical cyclone exposures
-to other researchers, we developed a dataset of county-level exposure to
-tropical cyclones in all eastern \ac{US} counties for five different metrics
+To provide open-source data on tropical cyclone exposures to other researchers,
+we developed a dataset of county-level exposure to tropical cyclones in all
+eastern \ac{US} counties for five different metrics
 (Table~\ref{tab:exposuremetrics}): (1)~distance to tropical cyclone track;
 (2)~maximum sustained wind speed; (3)~cumulative rainfall; (4)~flood events;
-and (5)~tornado events.  We assessed exposure at the county level since data on
-many potential impacts are available at county-level aggregations (e.g., direct
-hurricane-related deaths~\parencite{czajkowski2011}; birth
-outcomes~\parencite{grabich2015, grabich2016}; autism
-prevalence~\parencite{kinney2008}) and since decisions and policies to prepare
-for, and respond to, tropical cyclones are often undertaken at the county
-level~\parencite{zandbergen2009, rappaport2000}.  We explored patterns in these
-exposure assessments and measured how well exposure classification agreed
-across these five metrics in terms of classifying specific counties as exposed
-to a tropical cyclone.  Finally, to make this hazard-specific tropical cyclone
-exposure data available to other researchers, we published open source software
-for county-based hurricane exposure assessment in \ac{US}
-counties~\parencite{hurricaneexposure}.
+and (5)~tornado events~\parencite{hurricaneexposure}. This data is provided at
+the county level since data on many potential impacts are available at
+county-level aggregations (e.g., direct hurricane-related
+deaths~\parencite{czajkowski2011}; birth outcomes~\parencite{grabich2015,
+grabich2016}; autism prevalence~\parencite{kinney2008}) and since decisions and
+policies to prepare for, and respond to, tropical cyclones are often undertaken
+at the county level~\parencite{zandbergen2009, rappaport2000}. Further, we
+explored patterns in these exposure assessments across storm hazards and
+measured how well exposure classification agreed across these five metrics in
+terms of classifying specific counties as exposed to a tropical cyclone.  

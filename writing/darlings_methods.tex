@@ -1,0 +1,62 @@
+These data typically give measurements of
+the tropical cyclone center's location [and central pressure / maximum
+windspeed?] at~6-\si{\hour} intervals at synoptic times (i.e., 6:00~am,
+12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}); some landfalling tropical cyclones
+have an additional observation at the time of landfall~\parencite{landsea2013}.
+
+, using the Great Circle %
+(WGS84 ellipsoid) method
+
+We selected re-analysis data because of
+this completeness. 
+
+We selected re-analysis data over other data
+sources as it included data for every county and every day through a continuous
+period of the study (1988\,--\,2011)~\parencite{alhamdan2014environmental,
+cdcwonder}. By comparison, observations from ground-based monitoring networks
+had missing values spatially (i.e., for some study counties), temporally (for
+some days), or both.  
+
+We estimated daily rainfall for each study county by aggregating
+hourly~1/8\si{\degree} gridded data from the \ac{NLDAS-2} precipitation data
+files~\parencite{rui2013nldas}. These data integrate satellite-based and
+land-based monitoring, applying a land-surface model to create a reanalysis
+dataset that is spatially and temporally complete across the continental
+\ac{US}~\parencite{rui2013nldas, alhamdan2014environmental}. To aggregate to
+county-level, the hourly data at each grid point were summed to create a daily
+rainfall total, and these grid point rainfall totals were then averaged across
+all grid points within a county's~1990 \ac{US} Census
+boundaries~\parencite{alhamdan2014environmental, cdcwonder}. These aggregated
+county-level daily precipitation data are also available through the \ac{US}
+Centers for Disease Control's WONDER database [ref] and are available for all
+study counties for 1988\,--\,2011.
+
+When combined with estimates of vulnerability of a
+population to a natural hazard, such measurements of physical exposure can be
+used to calculate risk of human losses from the
+hazard~\parencite{peduzzi2009assessing}.
+
+These measurements
+captured the distance between the storm's central track and each study county
+throughout the storm tracking period. 
+
+To measure storm-associated rainfall in each county, we used re-analysis data.
+Re-analysis data integrate data from multiple sources, including
+satellite-based and ground-based monitoring, using a land-surface model to
+combine data in a dataset that is spatially and temporally complete over a
+certain period [ref]. By comparison, observations from ground-based monitoring
+networks typically have missing values spatially (i.e., for some study
+counties), temporally (for some days), or both. 
+
+We included more days prior to the storm because
+storm-related rains often precede the passing of the storm's center [ref]. 
+
+Ground-based observations of wind speed are problematic for measuring exposure
+to tropical cyclones, as instruments often fail at high wind speed, while
+reanalysis data---often available at hourly or higher resolution---can lack a
+fine enough temporal resolution to capture wind extremes associated with a
+tropical cyclone. 
+A tropical cyclone's rainfall can can begin a day or more before a
+storm and last a day or more after, so this functionality makes it possible to
+quantify the cumulative precipitation throughout several days surrounding the
+storm's approach. 

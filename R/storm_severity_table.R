@@ -44,7 +44,7 @@ rain_sum <- rain_exposure %>%
             which_max = storm_id[which.max(n)])
 
 wind_exposure <- county_wind(counties = my_fips, start_year = 1988,
-                             end_year = 2015, wind_limit = 15) %>%
+                             end_year = 2015, wind_limit = 17.4) %>%
         select(storm_id, fips) %>%
         mutate(exposed = TRUE,
                storm_id = as.character(storm_id))
@@ -161,6 +161,7 @@ total_sum <- bind_rows(bind_cols(dist_sum, dist_sum2),
   select(metric, yearly_sum, sum, max_storm)
 
 total_sum %>% 
+  filter(metric != "Distance") %>% 
   rename(Metric = metric,
          `Mean (interquartile range) of county exposures per year` = yearly_sum,
          `Median (interquartile range) of county exposures per tropical cyclone` = sum,

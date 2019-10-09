@@ -103,7 +103,7 @@ out <- county_gage_data %>%
                county_cd = factor(county_cd)) %>%
         ggplot(aes(x = flood, y = max_total)) +
         geom_boxplot(color = "darkgray", fill = NA, outlier.alpha = 0, width = 0.3) +
-        geom_point(aes(color = perc_flooded), size = 1.7,
+        geom_point(aes(fill = perc_flooded), color = "black", shape = 21, size = 1.7,
                    position = position_jitter(width = 0.1)) +
         facet_wrap(~ county_cd, ncol = 3, scales = "free_x") +
         theme_classic() +
@@ -111,7 +111,7 @@ out <- county_gage_data %>%
         coord_flip() +
         scale_y_log10() +
         theme(legend.position = "bottom") +
-        scale_color_viridis(name = "% streamflow gages over threshold for flooding",
+        scale_fill_viridis(name = "% streamflow gages over threshold for flooding",
                             breaks = c(0, .5, 1), labels = c("0%", "50%", "100%")) +
         theme(plot.margin = unit(c(5.5, 11, 5.5, 11), "points"))
 
