@@ -260,12 +260,12 @@ ha_row <- HeatmapAnnotation(counties_exposed = counties_exposed$counties_exposed
                                                                                    title_gp = gpar(fontsize = 9,
                                                                                                    lineheight = 0.7,
                                                                                                    font = 2))),
-                            # col = list(counties_exposed = colorRamp2(c(100, 275, 450, 625),
-                            #                                          viridis::viridis(4, option = "D", direction = -1))),
+                            col = list(counties_exposed = colorRamp2(c(100, 275, 450, 625),
+                                                                     viridis::viridis(4, option = "D", direction = -1))),
                             which = "row", width = unit(0.25, "cm"))
 
 heat_map <- Heatmap(for_heatmap, col = viridis(256, option = "A", direction = -1),
-        cluster_rows = row_dend, split = 5,
+        cluster_rows = row_dend, split = 5, show_row_dend = FALSE,
         row_names_side = "left", row_names_gp = gpar(fontsize = 8),
         show_column_names = FALSE, show_column_dend = FALSE, #column_dend_side = "bottom",
         column_dend_height = unit(6, "mm"),
@@ -274,7 +274,8 @@ heat_map <- Heatmap(for_heatmap, col = viridis(256, option = "A", direction = -1
         # bottom_annotation = ha_col,
         top_annotation = ha_rot_cn,
         rect_gp = gpar(col = "white", lwd = 1),
-        row_dend_reorder = TRUE)
+        row_dend_reorder = TRUE, 
+        row_title = NULL)
 
 pdf(file = "figures/jaccard_heatmap.pdf", height = 8.4, width = 5)
 draw(heat_map + ha_row, padding = unit(c(2, 2, 18, 2), "mm"), annotation_legend_side = "bottom")
