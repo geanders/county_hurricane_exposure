@@ -74,8 +74,8 @@ storm_data <- distance_data %>%
 
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
-out_data <- out_data %>% 
-        dplyr::filter(metric != "Distance-based metric")
+# out_data <- out_data %>% 
+#         dplyr::filter(metric != "Distance-based metric")
 
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
@@ -104,7 +104,7 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 4) +
+        facet_wrap(~ metric, ncol = 5) +
         theme(legend.position="none")
 
 floyd <- map_tracks(storm, plot_object = out) +
@@ -180,8 +180,8 @@ storm_data <- distance_data %>%
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
 
-out_data <- out_data %>% 
-        dplyr::filter(metric != "Distance-based metric")
+# out_data <- out_data %>% 
+#         dplyr::filter(metric != "Distance-based metric")
 
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
@@ -210,7 +210,7 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 4) +
+        facet_wrap(~ metric, ncol = 5) +
         theme(legend.position="none")
 
 ike <- map_tracks(storm, plot_object = out) +
@@ -288,8 +288,8 @@ storm_data <- distance_data %>%
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
 
-out_data <- out_data %>% 
-        dplyr::filter(metric != "Distance-based metric")
+# out_data <- out_data %>% 
+#         dplyr::filter(metric != "Distance-based metric")
 
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
@@ -318,7 +318,7 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 4) +
+        facet_wrap(~ metric, ncol = 5) +
         theme(legend.position="none")
 
 katrina <- map_tracks(storm, plot_object = out) +
@@ -394,8 +394,8 @@ storm_data <- distance_data %>%
 out_data <- hurricaneexposure:::get_eastern_map() %>%
         dplyr::left_join(storm_data, by = "fips")
 
-out_data <- out_data %>% 
-        dplyr::filter(metric != "Distance-based metric")
+# out_data <- out_data %>% 
+#         dplyr::filter(metric != "Distance-based metric")
 
 out <- ggplot2::ggplot() +
         ggplot2::geom_polygon(data = out_data,
@@ -424,7 +424,7 @@ out <- ggplot2::ggplot() +
         # ggplot2::scale_fill_manual(name = "",
         #                            values = c("white", "dodgerblue"),
         #                            labels = c("Unexposed", "Exposed")) +
-        facet_wrap(~ metric, ncol = 4) +
+        facet_wrap(~ metric, ncol = 5) +
         theme(legend.position="none")
 
 dennis <- map_tracks(storm, plot_object = out) +

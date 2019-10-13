@@ -133,7 +133,7 @@ out2 <- top_exposures %>%
         geom_col() +
         coord_flip() +
         labs(x = "", y = "Average # of electricity-dependent Medicare beneficiaries exposed per year",
-             fill = "# of electricity-dependent\nMedicare beneficiaries\nin the county") +
+             fill = "# of electricity-dependent\nMedicare beneficiaries\nin the county (2017)") +
         scale_fill_viridis(breaks = c(6000, 9000, 12000),
                            labels = c("6,000", "9,000", "12,000")) +
         facet_wrap(~ metric, scales = "free_y", drop = TRUE) +
