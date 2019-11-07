@@ -2,7 +2,7 @@
 
 \subsection*{Exposure assessment data, data validation, and software}
 
-We created and published this tropical cyclone exposure data as open-source
+\textit{We created and published this tropical cyclone exposure data as open-source
 data, so they can be used by epidemiological
 researchers~\parencite{hurricaneexposuredata}. These data include continuous
 county-level measurements for the closest distance of each storm, cumulative
@@ -12,63 +12,60 @@ selected by the user, or can be used as continuous metrics. The dataset also
 include binary data on flood and tornado events associated with each storm in
 each county. To accompany these data, we published software tools to explore
 and map the data and to integrate it with human health
-datasets~\parencite{hurricaneexposure}. 
+datasets~\parencite{hurricaneexposure}.}
 
 We explored potential limitations in these data by comparing them with data
 from other available sources.  For estimates of storm-associated rainfall, we
-compared estimates from NLDAS-2 re-analysis precipitation data (used as the
-rainfall estimates in the open-source data) with ground-based observations in
-nine sample counties (Figure~\ref{fig:raincomparison}). Within these counties,
-storm-related rainfall measurements were well-correlated between the two data
-sources, with rank correlations (bottom right of each graph in
+compared estimates used in the open-source data with ground-based observations
+in nine sample counties (Figure~\ref{fig:raincomparison}). Within these
+counties, storm-related rainfall measurements were well-correlated between the
+two data sources, with rank correlations (bottom right of each graph in
 Figure~\ref{fig:raincomparison}) between 0.87 and 0.98. There was some evidence
-that the reanalysis data may tend to underestimate rainfall totals in storms
-with extremely high rainfall, based on a few heavy-rainfall storms in Harris
-County, TX, Mobile County, AL, Charleston County, SC, and Wake County, NC
-(Figure~\ref{fig:raincomparison}). However, even in these cases, it was rare
-for a storm to be classified differently (under the precipitation threshold
-of 75~\si{\milli\metre} we used for binary exposure classification for later
-analysis) based on the source of precipitation data---horizontal and vertical
-lines in each small plot in Figure~\ref{fig:raincomparison} show the threshold
-of 75~\si{\milli\metre}, so storms in the lower left and upper right quadrants
-would be classified the same (``exposed'' or ``unexposed'') regardless of the
-precipitation data source, while storms in the upper left and lower right
-quadrants would be classified differently. Such cases are rare.
+that the reanalysis data included in the open-source dataset may tend to
+underestimate rainfall totals in storms with extremely high rainfall, based on
+a few heavy-rainfall storms in Harris County, TX, Mobile County, AL, Charleston
+County, SC, and Wake County, NC (Figure~\ref{fig:raincomparison}). However,
+even in these cases, it was rare for a storm to be classified differently
+(under the precipitation threshold of 75~\si{\milli\metre} we used for binary
+exposure classification for later analysis) based on the source of
+precipitation data---horizontal and vertical lines in each small plot in
+Figure~\ref{fig:raincomparison} show the threshold of 75~\si{\milli\metre}, so
+storms in the lower left and upper right quadrants would be classified the same
+(``exposed'' or ``unexposed'') regardless of the precipitation data source,
+while storms in the upper left and lower right quadrants would be classified
+differently. Such cases are rare.
 
-For maximum sustained surface wind estimates, we found that the modeled
-estimates, which we included as the primary wind exposure metric in the open
-source data and used for further analysis in this study, generally agreed well
-with estimates based on the wind radii reported in \ac{HURDAT2}. For most
-storms, $\ge$95\% of counties were assigned the same category of wind speed
-($<$34~\si{\knot}; 34\,--\,49.9~\si{\knot}; 50\,--\,63.9~\si{\knot};
-$\ge$64~\si{\knot}) by both data sources (Figure~\ref{fig:windcomparison}).
-Disagreement was limited to large storms that were characterized by high winds
-well inland, like Hurricanes Sandy in 2012 and Ike in 2008. For these two
-storms, the modeled wind speed values somewhat overestimated the extent of the
-storm's most severe winds at landfall but then underestimated the extent of
-34\,--\,49.9 \si{\knot} storm winds further inland (Figure~S2). For
-epidemiology researchers who would like to conduct sensitivity analysis
-between these two sets of wind data, we have included estimates from the
-\ac{HURDAT2} wind radii as a secondary measure of wind speeds in the
+For maximum sustained surface wind estimates, we found that the primary wind
+exposure metric in the open source data generally agreed well with the wind
+radii reported in \ac{HURDAT2}. For most storms, $\ge$95\% of counties were
+assigned the same category of wind speed ($<$34~\si{\knot};
+34\,--\,49.9~\si{\knot}; 50\,--\,63.9~\si{\knot}; $\ge$64~\si{\knot}) by both
+data sources (Figure~\ref{fig:windcomparison}).  Disagreement was limited to a
+few storms (e.g., Hurricanes Sandy in 2012 and Ike in 2008). For these two
+storms, the modeled wind speed values used in the open-source data somewhat
+overestimated the extent of the storm's most severe winds at landfall but then
+underestimated the extent of 34\,--\,49.9 \si{\knot} storm winds further inland
+(Figure~S2). For epidemiology researchers who would like to conduct sensitivity
+analysis between these two sets of wind data, we have included estimates from
+the \ac{HURDAT2} wind radii as a secondary measure of wind speeds in the
 open-source dataset \parencite{hurricaneexposuredata}.
 
-For flood data, we compared flood status, based on event listings in the NOAA
-Storm Events database and included in the open-source data, to streamflow
-measurements at \ac{US} Geological Survey gages within nine sample counties
-(Figure~\ref{fig:floodcomparison}). Across the sampled counties, streamgage
-data generally indicated higher discharge during periods identified as flood
-events based on the NOAA Storm Events database, particularly in counties with
-more reporting streamgages (e.g., Harris County, TX, with~10 reporting stream
-gages; Figure~\ref{fig:floodcomparison}). There were some cases, however, where
-the two flooding data sources were somewhat inconsistent.  For example, there
-were one or two tropical cyclones in several of the counties (Mobile County,
-AL, Escambia County, FL, and Montgomery County, PA) with associated flood event
-listings but for which the total discharge across county streamflow gages was
-relatively low. For storms without a flood listing for the county, in most
-cases the total streamflow discharge in the county was relatively low, and, in
-all but one of these cases all streamgage flows were below the flooding
-threshold. The exception was for one storm in Fulton County, GA (Hurricane Ida
-in 2009). 
+For flood data, we compared the flood status values included in the open-source
+data to streamflow measurements at \ac{US} Geological Survey gages within nine
+sample counties (Figure~\ref{fig:floodcomparison}). Across the sampled
+counties, streamgage data generally indicated higher discharge during periods
+identified as flood events based on the NOAA Storm Events database,
+particularly in counties with more reporting streamgages (e.g., Harris County,
+TX, with~10 reporting stream gages; Figure~\ref{fig:floodcomparison}). There
+were some cases, however, where the two flooding data sources were somewhat
+inconsistent.  For example, there were one or two tropical cyclones in several
+of the counties (Mobile County, AL, Escambia County, FL, and Montgomery County,
+PA) with associated flood event listings but for which the total discharge
+across county streamflow gages was relatively low. For storms without a flood
+listing for the county, in most cases the total streamflow discharge in the
+county was relatively low, and, in all but one of these cases all streamgage
+flows were below the flooding threshold. The exception was for one storm in
+Fulton County, GA (Hurricane Ida in 2009). 
 
 \subsection*{Patterns in tropical cyclone exposures}
 
@@ -83,7 +80,7 @@ County exposures were more frequent for tropical cyclone wind exposures ($>$140
 ($>$200 / yr on average), and most frequent for tropical cyclone rain exposure
 ($>$400 / yr on average). 
 
-We also measured the average number of counties exposed per storm to each
+\textit{We also measured the average number of counties exposed per storm to each
 hazard (limiting this analysis to tropical cyclones that exposed at least one
 county to that hazard; Table~\ref{tab:exposuresummaries}).  If a tropical
 cyclone exposed any counties to tornadoes, it was typically only a few (median
@@ -95,7 +92,7 @@ cyclone tornadoes, we identified at least one tropical cyclone that exposed
 over~250 counties (Table~\ref{tab:exposuresummaries}).  However, the
 largest-extent tropical cyclone varied across hazards: Frances in~2004 exposed
 the most counties based on rain, Ike in~2008 based on wind, and Ivan in 2004
-based on flooding and tornadoes (Table~\ref{tab:exposuresummaries}).
+based on flooding and tornadoes (Table~\ref{tab:exposuresummaries}).}
 
 When we calculated and mapped the average number of exposures per decade in
 each county for single-hazard exposures (Figure~\ref{fig:averageexposure}),
@@ -103,28 +100,27 @@ strong geographical patterns were clear. Tropical cyclone wind exposure had a
 strong coastal pattern, with almost all exposures in counties within about~200
 \si{\kilo\metre} (124~mi) of the coastline. While tropical cyclone rain
 exposure was also more frequent in coastal areas compared to inland areas,
-there were also inland exposures in counties that were never to extreme storm
-winds. Rain and, to some extent, flood exposures were characterized by a
+there were also inland exposures in counties that were never classified as
+exposed based on winds. Flood-based exposures were frequently in the
+Mid-Atlantic region, with a pattern that skewed north compared with other
+exposures.Rain and, to some extent, flood exposures were characterized by a
 pattern defined by the Appalachian Mountains, with fewer exposures west of the
 mountain range than to the east. Almost all tornado-based exposures were in
 coastal states, with many in Florida, and almost none north of Maryland.
-Flood-based exposures were frequently in the Mid-Atlantic region, with a
-pattern that skewed north compared with other exposures.  Patterns were similar
-when analysis was restricted to years with exposure data for all four hazards
-available (1996\,--\,2011; Figure~S3). 
+Patterns were similar when analysis was restricted to years with exposure data
+for all four hazards available (1996\,--\,2011; Figure~S3). 
 
 \subsection*{Agreement across exposure metrics}
 
 Next, we measured the agreement between exposure classifications for each pair
 of hazards, as well as between each hazard and exposure assessment based on
-distance from the storm's track as a proxy for exposure to storm hazards. We
-found that these exposure classifications typically did not strongly agree
-between pairs of metrics. The set of counties identified as ``exposed'' based
-on one metric often overlap little with the set identified as ``exposed'' by
-another metric, as storms frequently brought different hazards to different 
-locations. 
+distance from the storm's track. We found that these exposure classifications
+typically did not strongly agree between pairs of metrics---the set of counties
+identified as ``exposed'' based on one metric often overlapped little with the set
+identified as ``exposed'' by another metric, as storms frequently brought
+different hazards to different locations. 
 
-Figure~\ref{fig:ivanexposure} shows shows an example: Hurricane Ivan in 2004.
+Figure~\ref{fig:ivanexposure} shows as an example Hurricane Ivan in 2004.
 For the distance-based metric, the counties assessed as exposed follow the
 tropical cyclone's track. For the wind-based metric,
 only counties near the tropical cyclone's first landfall were assessed as
@@ -142,46 +138,31 @@ between~1996 and~2011 (the period for which data for all five metrics were
 available) for which~100 or more counties were exposed based on at least one
 metric (Figure~\ref{fig:jaccard}). In this figure, each row provides results
 for one tropical cyclone, and each box in that row shows the measured Jaccard
-coefficient for a pair of metrics. For most tropical cyclones,
-distance-based county-level exposure assessment was, at best, in moderate
-agreement with exposure assessments based on the four hazard-based metrics. For
-almost all tropical cyclones, Jaccard index values between distance and any of
-the four hazard-based metrics were~$\le0.6$ (i.e., out of the counties assessed
-as exposed by at least one of the two metrics in the pair,~60\si{\percent} or
-fewer were assessed the same under both metrics in the pair). For many tropical
-cyclones, the Jaccard index values were~$\le0.4$, indicating poor agreement.
-Among the four hazard-based metrics, the tornado-based metric had
-universally poor agreement with other metrics in county-level classification
-across the tropical cyclones considered.  
+coefficient for a pair of metrics.  For almost all tropical cyclones, Jaccard
+index values between distance and any of the four hazard-based metrics
+were~$\le0.6$ (i.e., out of the counties assessed as exposed by at least one of
+the two metrics in the pair,~60\si{\percent} or fewer were assessed the same
+under both metrics in the pair). For many tropical cyclones, the Jaccard index
+values were~$\le0.5$, indicating at best moderate agreement.  Among the four
+hazard-based metrics, the tornado-based metric had universally poor agreement
+with other metrics in county-level classification across the tropical cyclones
+considered.  Agreement between other pairs of metrics were better, but still
+typically at best moderate (Jaccard index values usually $\le0.5$).
 
 There were, however, exceptions\,---\,tropical cyclones in which exposure
 assessment agreed well across several of the metrics considered.  For Floyd
 in~1999 (Figure~S4) and Irene in~2011, for example, county-level classification
 agreed moderately to well for all pairs of exposure metrics except those
-including the tornado-based metric (Figure~\ref{fig:jaccard}). For another set
+involving the tornado-based metric (Figure~\ref{fig:jaccard}). For another set
 of tropical cyclones (e.g., Ernesto in~2006, and Bertha in~1996, Isabel
 in~2003), there was moderate to good agreement for all pairwise combinations of
-distance, rain, and wind, but poor agreement for all other combinations of
+distance, rain, and wind, but poor agreement for other combinations of
 metrics, while for another set of storms (e.g., Matthew in~2004 and Katrina
 in~2005), there was moderate to good agreement between distance and rain.
 However, these sets of tropical cyclones represented the minority of tropical
 cyclones considered; for most tropical cyclones, there was low overlap in the
 counties determined to be exposed to the tropical cyclones between most
 pairings of metrics.
-
-\subsection*{Case study}
-
-We conducted a case study comparing estimates of physical exposure to
-tropical cyclones that were measured using each exposure metric.
-Figure~\ref{fig:topelecdependexposure} shows the study counties with the
-highest expected rates of physical exposure to tropical cyclones among
-electricity-dependent Medicare beneficiaries based on each metric. A few
-counties (Miami-Dade County, FL; Harris County, TX) were ranked in the top
-three under almost all exposure metrics
-(Figure~\ref{fig:topelecdependexposure}). However, there were key differences
-across exposure metrics. For example, most of the top counties based on wind-
-and tornado-based metrics were in Florida, while over half of the top counties
-based on the flood-based metric were in Mid-Atlantic states (PA, NY).
 
 
 

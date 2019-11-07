@@ -222,7 +222,7 @@ pdf("figures/averageexposureonly.pdf", width = 3, height = 9)
 print(out)
 dev.off()
 
-pdf("figures/ivanonly.pdf", width = 9, height = 5)
+pdf("figures/ivanonly.pdf", width = 6, height = 3.3)
 print(out2)
 dev.off()
 

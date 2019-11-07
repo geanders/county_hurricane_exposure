@@ -61,7 +61,7 @@
 
 \begin{figure}[tbhp!]
 \centering
-\includegraphics[width=0.8\linewidth]{floodcomparison}
+\includegraphics[width=\linewidth]{floodcomparison}
 \caption{Comparison for a sample of study counties of flood status based on
 	matching NOAA Storm Events listings to \ac{HURDAT2} storm track data
 	versus five-day total streamflows at county streamflow gages during
@@ -116,30 +116,35 @@
 \clearpage
 
 \begin{figure}%[tbhp] 
-\centering 
-\includegraphics[width = 0.6\linewidth]{jaccard_heatmap.pdf} 
-\caption{Agreement between exposure classifications based on different
-         exposure metrics for all storms between~1996 and~2011 for which 
-	 at least~100 counties were exposed based on at least one metric.
-	 Each row shows one storm, and the color of each cell shows the 
-	 measured Jaccard index for each pair of exposure metrics 
-	 (proportion of counties classified as exposed by both metrics out 
-	 of storms classified as exposed by either metric). The colors to the 
-	 right of the main heatmap for each storm indicate the total number of 
-	 counties classified as exposed to the storm by any of the five metrics, 
-	 providing an indication of each storm's extent. Storms are displayed 
-	 within clusters that have similar patterns in county-level exposure 
-	 agreement for metric pairs, based on hierarchical clustering using the 
-	 complete link method~\parencite{murtagh2012algorithms}; columns are also 
-	 ordered based on hierarchical clustering. Maps are available showing the 
-	 counties identified as exposed under each of five metrics for the widest-extent 
-	 storm in each cluster: Hurricane Ivan in~2004 (Figure~\ref{fig:ivanexposure}) 
-	 and Hurricanes Floyd in~1999, Lee in~2011, Cindy in~2005, and Katrina 
-	 in~2005 (Figure~S4).
-} 
-\label{fig:jaccard}
+	\centering 
+	\includegraphics[width = 0.6\linewidth]{jaccard_heatmap.pdf}
+	\caption{Agreement between exposure
+	classifications based on different exposure metrics for all storms
+	between~1996 and~2011 for which at least~100 counties were exposed
+	based on at least one metric.  Each row shows one storm, and the color
+	of each cell shows the measured Jaccard index for each pair of exposure
+	metrics (proportion of counties classified as exposed by both metrics
+	out of storms classified as exposed by either metric). For two storms
+	(Grace in 2003 and Ida in 2009), there were no county exposures for
+	either the tornado-based metric or the wind-based metric, and so for
+	these storms the Jaccard index between these two metrics could not be
+	calculated (indicated by gray squares). The colors to the right of the
+	main heatmap for each storm indicate the total number of counties
+	classified as exposed to the storm by any of the five metrics,
+	providing an indication of each storm's extent. Storms are displayed
+	within clusters that have similar patterns in county-level exposure
+	agreement for metric pairs, based on hierarchical clustering using the
+	complete link method~\parencite{murtagh2012algorithms}; columns are
+	also ordered based on hierarchical clustering. Maps are available
+	showing the counties identified as exposed under each of five metrics
+	for the widest-extent storm in each cluster: Hurricane Ivan in~2004
+	(Figure~\ref{fig:ivanexposure}) and Hurricanes Floyd in~1999, Lee
+	in~2011, Cindy in~2005, and Katrina in~2005 (Figure~S4).  }
+\label{fig:jaccard} 
 \end{figure}
 
+
+\begin{comment}
 \clearpage
 
 \begin{figure*}%[tbhp]
@@ -156,4 +161,4 @@
 \label{fig:topelecdependexposure}
 \end{figure*}
 
-
+\end{comment}

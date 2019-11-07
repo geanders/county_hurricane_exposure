@@ -107,15 +107,16 @@ out <- county_gage_data %>%
                    position = position_jitter(width = 0.1)) +
         facet_wrap(~ county_cd, ncol = 3, scales = "free_x") +
         theme_classic() +
-        labs(x = "", y = "Total discharge across county streamflow gages") +
+        labs(x = "", 
+             y = bquote('Total discharge across county streamflow gages '~(ft^3/s))) +
         coord_flip() +
-        scale_y_log10() +
+        scale_y_log10(label = scales::comma) +
         theme(legend.position = "bottom") +
         scale_fill_viridis(name = "% streamflow gages over threshold for flooding",
                             breaks = c(0, .5, 1), labels = c("0%", "50%", "100%")) +
         theme(plot.margin = unit(c(5.5, 11, 5.5, 11), "points"))
 
 
-pdf(file = "figures/floodcomparison.pdf", height = 6, width = 7.5)
+pdf(file = "figures/floodcomparison.pdf", height = 6, width = 9)
 print(out)
 dev.off()
