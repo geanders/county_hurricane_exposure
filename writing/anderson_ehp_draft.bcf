@@ -2131,14 +2131,6 @@
     <bcf:citekey order="81">lawrence2000atlantic</bcf:citekey>
     <bcf:citekey order="82">stormwindmodel</bcf:citekey>
     <bcf:citekey order="83">shiny2019</bcf:citekey>
-    <bcf:citekey order="88">landsea2013</bcf:citekey>
-    <bcf:citekey order="89">retirednames</bcf:citekey>
-    <bcf:citekey order="90">landsea2013</bcf:citekey>
-    <bcf:citekey order="91">retirednames</bcf:citekey>
-    <bcf:citekey order="92">landsea2013</bcf:citekey>
-    <bcf:citekey order="93">landsea2013</bcf:citekey>
-    <bcf:citekey order="94">murtagh2012algorithms</bcf:citekey>
-    <bcf:citekey order="95">murtagh2012algorithms</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
