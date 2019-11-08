@@ -2,17 +2,20 @@
 
 \subsection*{Exposure assessment data, data validation, and software}
 
-\textit{We created and published this tropical cyclone exposure data as open-source
-data, so they can be used by epidemiological
-researchers~\parencite{hurricaneexposuredata}. These data include continuous
-county-level measurements for the closest distance of each storm, cumulative
-rainfall, and maximum sustained surface wind speed. These continuous metrics
-can be used for classifying counties as exposed or unexposed, using thresholds
-selected by the user, or can be used as continuous metrics. The dataset also
-include binary data on flood and tornado events associated with each storm in
-each county. To accompany these data, we published software tools to explore
-and map the data and to integrate it with human health
-datasets~\parencite{hurricaneexposure}.}
+We created and published this tropical cyclone exposure data as an R
+package~\parencite{hurricaneexposuredata}.  The package size exceeded the
+recommended maximum size for the standard repository for publishing R packages
+(\ac{CRAN}). Therefore, we used the \textit{drat} framework to set up our own
+repository to host the package~\parencite{anderson2017hosting}. These data
+include continuous county-level measurements for the closest distance of each
+storm, cumulative rainfall, and maximum sustained surface wind speed. These
+continuous metrics can be used for classifying counties as exposed or
+unexposed---using thresholds selected by the user---or can be extracted
+directly as continuous metrics. The dataset also include binary data on flood
+and tornado events associated with each storm in each county. To accompany
+these data, we published an associated R package on \ac{CRAN} with software
+tools to explore and map the data and to integrate it with human health
+datasets~\parencite{hurricaneexposure}.
 
 We explored potential limitations in these data by comparing them with data
 from other available sources.  For estimates of storm-associated rainfall, we
@@ -64,8 +67,8 @@ PA) with associated flood event listings but for which the total discharge
 across county streamflow gages was relatively low. For storms without a flood
 listing for the county, in most cases the total streamflow discharge in the
 county was relatively low, and, in all but one of these cases all streamgage
-flows were below the flooding threshold. The exception was for one storm in
-Fulton County, GA (Hurricane Ida in 2009). 
+flows were below the flooding threshold. The exception was for Hurricane Ida in
+2009 in Fulton County, GA. 
 
 \subsection*{Patterns in tropical cyclone exposures}
 
@@ -78,21 +81,12 @@ there were on average about 50 county exposures per year within our study.
 County exposures were more frequent for tropical cyclone wind exposures ($>$140
 / yr on average), even more frequent for tropical cyclone flood exposures
 ($>$200 / yr on average), and most frequent for tropical cyclone rain exposure
-($>$400 / yr on average). 
-
-\textit{We also measured the average number of counties exposed per storm to each
-hazard (limiting this analysis to tropical cyclones that exposed at least one
-county to that hazard; Table~\ref{tab:exposuresummaries}).  If a tropical
-cyclone exposed any counties to tornadoes, it was typically only a few (median
-counties exposed per storm:~7). When a storm exposed any counties to other
-tropical cyclone exposures, the swath of exposed counties tended to be much
-larger: a median of~25 counties exposed for high winds per storm,~26 for
-flooding, and~68 for extreme rainfall.  For every hazard except tropical
-cyclone tornadoes, we identified at least one tropical cyclone that exposed
-over~250 counties (Table~\ref{tab:exposuresummaries}).  However, the
-largest-extent tropical cyclone varied across hazards: Frances in~2004 exposed
-the most counties based on rain, Ike in~2008 based on wind, and Ivan in 2004
-based on flooding and tornadoes (Table~\ref{tab:exposuresummaries}).}
+($>$400 / yr on average). For every hazard except tornadoes, we identified at
+least one tropical cyclone that exposed over~250 counties
+(Table~\ref{tab:exposuresummaries}).  However, the largest-extent tropical
+cyclone varied across hazards: Frances in~2004 exposed the most counties based
+on rain, Ike in~2008 based on wind, and Ivan in 2004 based on flooding and
+tornadoes (Table~\ref{tab:exposuresummaries}).
 
 When we calculated and mapped the average number of exposures per decade in
 each county for single-hazard exposures (Figure~\ref{fig:averageexposure}),
