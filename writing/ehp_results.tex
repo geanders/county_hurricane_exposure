@@ -19,24 +19,23 @@ datasets~\parencite{hurricaneexposure}.
 
 We explored potential limitations in these data by comparing them with data
 from other available sources.  For estimates of storm-associated rainfall, we
-compared estimates used in the open-source data with ground-based observations
-in nine sample counties (Figure~\ref{fig:raincomparison}). Within these
-counties, storm-related rainfall measurements were well-correlated between the
-two data sources, with rank correlations (bottom right of each graph in
-Figure~\ref{fig:raincomparison}) between 0.87 and 0.98. There was some evidence
-that the reanalysis data included in the open-source dataset may tend to
-underestimate rainfall totals in storms with extremely high rainfall, based on
-a few heavy-rainfall storms in Harris County, TX, Mobile County, AL, Charleston
-County, SC, and Wake County, NC (Figure~\ref{fig:raincomparison}). However,
-even in these cases, it was rare for a storm to be classified differently
-(under the precipitation threshold of 75~\si{\milli\metre} we used for binary
-exposure classification for later analysis) based on the source of
-precipitation data---horizontal and vertical lines in each small plot in
-Figure~\ref{fig:raincomparison} show the threshold of 75~\si{\milli\metre}, so
-storms in the lower left and upper right quadrants would be classified the same
-(``exposed'' or ``unexposed'') regardless of the precipitation data source,
-while storms in the upper left and lower right quadrants would be classified
-differently. Such cases are rare.
+compared estimates included in the open-source data with ground-based
+observations in nine sample counties (Figure~\ref{fig:raincomparison}). Within
+these counties, storm-related rainfall measurements were well-correlated
+between the two data sources, with rank correlations (bottom right of each
+graph in Figure~\ref{fig:raincomparison}) between 0.87 and 0.98. There was some
+evidence that the primary rainfall metric may tend to underestimate rainfall
+totals in storms with extremely high rainfall, based on a few heavy-rainfall
+storms in Harris County, TX, Mobile County, AL, Charleston County, SC, and Wake
+County, NC (Figure~\ref{fig:raincomparison}). However, even in these cases, it
+was rare for a storm to be classified differently (under the precipitation
+threshold of 75~\si{\milli\metre} we used for binary exposure classification
+for later analysis) based on the source of precipitation data---horizontal and
+vertical lines in each small plot in Figure~\ref{fig:raincomparison} show the
+threshold of 75~\si{\milli\metre}, so storms in the lower left and upper right
+quadrants would be classified the same (``exposed'' or ``unexposed'')
+regardless of the precipitation data source, while storms in the upper left and
+lower right quadrants would be classified differently. Such cases were rare.
 
 For maximum sustained surface wind estimates, we found that the primary wind
 exposure metric in the open source data generally agreed well with the wind
@@ -76,7 +75,7 @@ We used this storm exposure data to classify counties as exposed or unexposed
 to four different hazards for each tropical cyclone and then explored patterns
 over years with available data. Across the four storm hazards considered, there
 was wide variation in the average number of county exposures per year
-(Table~\ref{tab:exposuresummaries}). For the tropical cyclone tornado exposure,
+(Table~\ref{tab:exposuresummaries}). For tropical cyclone tornadoes,
 there were on average about 50 county exposures per year within our study.
 County exposures were more frequent for tropical cyclone wind exposures ($>$140
 / yr on average), even more frequent for tropical cyclone flood exposures
@@ -94,10 +93,10 @@ strong geographical patterns were clear. Tropical cyclone wind exposure had a
 strong coastal pattern, with almost all exposures in counties within about~200
 \si{\kilo\metre} (124~mi) of the coastline. While tropical cyclone rain
 exposure was also more frequent in coastal areas compared to inland areas,
-there were also inland exposures in counties that were never classified as
+there were also inland rain exposures in counties that were never classified as
 exposed based on winds. Flood-based exposures were frequently in the
 Mid-Atlantic region, with a pattern that skewed north compared with other
-exposures.Rain and, to some extent, flood exposures were characterized by a
+exposures. Rain and, to some extent, flood exposures were characterized by a
 pattern defined by the Appalachian Mountains, with fewer exposures west of the
 mountain range than to the east. Almost all tornado-based exposures were in
 coastal states, with many in Florida, and almost none north of Maryland.
@@ -107,9 +106,9 @@ for all four hazards available (1996\,--\,2011; Figure~S3).
 \subsection*{Agreement across exposure metrics}
 
 Next, we measured the agreement between exposure classifications for each pair
-of hazards, as well as between each hazard and exposure assessment based on
+of hazards, as well as between with a proxy measurement based on
 distance from the storm's track. We found that these exposure classifications
-typically did not strongly agree between pairs of metrics---the set of counties
+typically did not agree strongly between pairs of metrics---the set of counties
 identified as ``exposed'' based on one metric often overlapped little with the set
 identified as ``exposed'' by another metric, as storms frequently brought
 different hazards to different locations. 
@@ -131,17 +130,17 @@ We drew similar conclusions when we investigated all~46 tropical cyclones
 between~1996 and~2011 (the period for which data for all five metrics were
 available) for which~100 or more counties were exposed based on at least one
 metric (Figure~\ref{fig:jaccard}). In this figure, each row provides results
-for one tropical cyclone, and each box in that row shows the measured Jaccard
+for one tropical cyclone, and each box in that row shows the Jaccard
 coefficient for a pair of metrics.  For almost all tropical cyclones, Jaccard
-index values between distance and any of the four hazard-based metrics
-were~$\le0.6$ (i.e., out of the counties assessed as exposed by at least one of
-the two metrics in the pair,~60\si{\percent} or fewer were assessed the same
-under both metrics in the pair). For many tropical cyclones, the Jaccard index
-values were~$\le0.5$, indicating at best moderate agreement.  Among the four
-hazard-based metrics, the tornado-based metric had universally poor agreement
-with other metrics in county-level classification across the tropical cyclones
-considered.  Agreement between other pairs of metrics were better, but still
-typically at best moderate (Jaccard index values usually $\le0.5$).
+coefficients were~$\le0.6$ between the distance-based metric and any of the
+four hazard-based metrics (i.e., out of the counties assessed as exposed by at
+least one of the two metrics in the pair,~60\si{\percent} or fewer were
+assessed the same under both metrics). For many tropical cyclones, Jaccard
+coefficients were~$\le0.5$, indicating at best moderate agreement.  Among the
+four hazard-based metrics, the tornado-based metric had universally poor
+agreement with other metrics in county-level classification across the tropical
+cyclones considered.  Agreement between other pairs of metrics were better, but
+still typically at best moderate (Jaccard coefficients usually $\le0.5$).
 
 There were, however, exceptions\,---\,tropical cyclones in which exposure
 assessment agreed well across several of the metrics considered.  For Floyd
@@ -150,12 +149,12 @@ agreed moderately to well for all pairs of exposure metrics except those
 involving the tornado-based metric (Figure~\ref{fig:jaccard}). For another set
 of tropical cyclones (e.g., Ernesto in~2006, and Bertha in~1996, Isabel
 in~2003), there was moderate to good agreement for all pairwise combinations of
-distance, rain, and wind, but poor agreement for other combinations of
-metrics, while for another set of storms (e.g., Matthew in~2004 and Katrina
-in~2005), there was moderate to good agreement between distance and rain.
-However, these sets of tropical cyclones represented the minority of tropical
-cyclones considered; for most tropical cyclones, there was low overlap in the
-counties determined to be exposed to the tropical cyclones between most
+distance, rain, and wind, but poor agreement for other combinations of metrics,
+while for another set of storms (e.g., Matthew in~2004 and Katrina in~2005),
+there was moderate to good agreement between distance and rain.  However, these
+sets of tropical cyclones represented the minority of tropical cyclones
+considered; for most tropical cyclones, there was low to moderate overlap in
+the counties determined to be exposed to the tropical cyclones between most
 pairings of metrics.
 
 
