@@ -14,8 +14,8 @@ different metrics, and we find that county-level tropical cyclone exposure
 assessments vary substantially when using different metrics, based either on
 storm hazards or on how close the storm's central track came to the community.
 Our results can inform exposure assessment for future county-level studies of
-the health risks and impacts associated with tropical cyclones exposures as
-well as insights to help in designing studies.  
+the health risks and impacts associated with tropical cyclones exposure as
+well as insights to inform epidemiological study design.  
 
 \subsection*{Exposure assessment data and software}
 
@@ -62,7 +62,7 @@ event start dates to storm dates, many false positives would be
 captured, for which the occurrance of a storm in the midst of an ongoing storm
 event might be improperly attributed to the storm.  However, distance
 and time restrictions, like those we used in matching NOAA Storm Event listings
-with tropical storm locations and dates, do create the opportunity for
+with tropical cyclone locations and dates, do create the opportunity for
 occasional false negatives, as for Hurricane Ida in Fulton County, GA, where a
 storm contributes meaningfully to an ongoing event, but the event is not
 captured for the storm in the exposure data.  
@@ -115,7 +115,7 @@ available data, which covered less than 20 years.
 \subsection*{Agreement between exposure metrics}
 
 We found that tropical cyclones tended to bring different hazards to different
-counties and also that agreement was typically low between distance-based
+counties, and so agreement was typically low between distance-based
 tropical cyclone exposure assessment and each of the single hazard-specific
 exposures, as well as between pairs of hazard-specific metrics
 (Figures~\ref{fig:ivanexposure}\,--\,\ref{fig:jaccard} and S4\,--\,S5).  These
@@ -182,30 +182,30 @@ The dataset presented here does have several limitations, in addition to the
 caveats previously discussed. First, the dataset is not comprehensive of all
 possible tropical cyclone hazards. For example, coastal counties can experience
 dangerous storm surge, which is not specifically covered in this dataset
-(although some resulting coastal flooding is captured). We are exploring ways to
-include this in future versions of the dataset, although to date we have
+(although some resulting coastal flooding is captured). We are exploring ways
+to include this in future versions of the dataset, although to date we have
 focused on exposures that could affect any county, whether inland or coastal.
 Second, this data is aggregated to the county level. Many health outcome
 datasets are aggregated at this level, but some may be aggregated at a finer
-spatial resolution (e.g., Census tract or ZIP code) or unaggregated (i.e., point locations
-for each outcome). We have published the wind
-model we used to create this dataset as its own open-source R package
-\parencite{stormwindmodel}, and it can be used to model
-storm-associated winds at a finer spatial resolution; however, measurements of
-other hazards cannot similarly be re-scaled through tools we provide. Next,
-we provide these data and associated software tools through R packages, and so
-some experience in the R programming language is required to make full use of
-them. However, R is currently a popular programming language for environmental
-epidemiology, allowing the data to reach a large audience, and we are exploring
-options to create a web application using the Shiny platform to allow more
-user-friendly web-based access of the data \parencite{shiny2019}. 
-Finally, to assess patterns and agreement for binary exposure classifications, 
-we have chosen one set of sensible thresholds for binary classifications based
-on continuous metrics (rainfall, maximum sustained winds, and distance from 
-the storm's track). Results and conclusions would differ somewhat with other
-threshold choices. We have published all our code for this analysis online
-[web address], in case other researchers would like to explore other 
-threshold choices for these analyses.
+spatial resolution (e.g., Census tract or ZIP code) or unaggregated (i.e.,
+point locations for each outcome). We have published the wind model used to
+create this dataset as its own open-source R package
+\parencite{stormwindmodel}, and it can be used to model storm-associated winds
+at a finer spatial resolution; however, measurements of other hazards cannot
+similarly be re-scaled through tools we provide. Next, we provide these data
+and associated software tools through R packages, and so some experience in the
+R programming language is required to make full use of them. However, R is
+currently a popular programming language for environmental epidemiology,
+allowing the data to reach a large audience, and we are exploring options to
+create a web application using the Shiny platform to allow broader web-based
+access of the data \parencite{shiny2019}.  Finally, to assess patterns and
+agreement for binary exposure classifications, we have chosen one set of
+sensible thresholds for binary classifications based on continuous metrics
+(rainfall, maximum sustained winds, and distance from the storm's track).
+Results and conclusions would differ somewhat with other threshold choices. We
+have published code for this analysis online, allowing
+other researchers can explore other threshold choices for these
+analyses.
 
 \subsection*{Conclusions}
 
@@ -216,15 +216,14 @@ dataset that provides these data for counties in the United States over
 multiple years. Despite some limitations in these data, they provide a powerful
 tool for expanding tropical cyclone epidemiology studies to more extensively
 leverage existing administrative health data, allowing researchers to
-investigate how these storms affect county-wide health risk, including for
-outcomes also common outside of storm periods.  Further, this dataset provides
-hazard measurements that are comparable across communities and storms, which
-allows epidemiological researchers to design studies to explore how health
-risks are modified by characteristics of both the storms and the communities
-that are hit. The data are given in an open-source format, along with
-associated software tools, which allows them to be freely used and for others
-to explore all associated code and to contribute additions through platforms
-like GitHub.
+investigate how these storms affect county-wide health risk.  Further, this
+dataset provides hazard measurements that are comparable across communities and
+storms, which allows epidemiological researchers to design studies to explore
+how health risks are modified by characteristics of both the storms and the
+communities that are hit. The data are given in an open-source format, along
+with associated software tools, which allows them to be freely used and for
+others to explore all associated code and to contribute additions through
+platforms like GitHub.
 
 Based on our analysis in this paper, these data are typically in agreement with
 measurements from other sources of data available to characterize
@@ -238,4 +237,4 @@ county (e.g., severe winds) does not imply exposure to other hazards (e.g.,
 excessive rainfall, flooding). As a result, it is critical that researchers
 consider which storm hazards are likely on the causal pathway for the outcomes
 they are studying, and to characterize storm exposure in a way that captures
-those specific hazards. 
+those specific hazards, to avoid exposure misclassification. 
