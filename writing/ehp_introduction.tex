@@ -3,20 +3,29 @@
 \acresetall
 
 Hurricanes and other tropical cyclones can severely impact human health in
-\ac{US} communities, impacts that have been characterized based on fatality
-data from post-disaster surveillance~\parencite{rappaport2000,
-rappaport2014fatalities, rappaport2016fatalities, czajkowski2010fatal,
-czajkowski2011, moore2012}.  For several types of climate-related
-disasters---including heat waves, floods, and wildfires---research based on
-post-disaster surveillance data has been richly supplemented by studies
-analyzing trends in community-wide administrative or vital data, including time
-series or case-crossover studies (e.g.,~\cite{anderson2010heat, son2012impact,
-haikerwal2015impact, liu2017wildfire, milojevic2017mental}).  These studies
-typically compare the rate of a health outcome in a community during a disaster
-to rates during comparable non-disaster periods.  While such studies cannot
-attribute specific cases (e.g., a specific death) to a disaster, they
-can help characterize the community-wide change in health risk during disasters
-and capture impacts that might be missed or underestimated in post-disaster
+\ac{US} communities, as has been characterized in several long-term national
+studies~\parencite{rappaport2000, rappaport2014fatalities,
+rappaport2016fatalities, czajkowski2010fatal, czajkowski2011, moore2012}.
+These studies characterize tropical cyclone health impacts using fatality data
+aggregated in large part from disaster-related mortality ascertainment and
+surveillance conducted by agencies like the \ac{US} Centers for Disease Control
+and Prevention, the \ac{US} National Weather Service, and local vital
+statistics departments. These fatality data are based on case-by-case
+ascertainment: identifying and characterizing deaths for which there is a clear
+link with a disaster, through death certificate coding or other indicators
+\parencite{rocha2017medicolegal}.  
+
+For several types of climate-related disasters---including heat waves, floods,
+and wildfires---such research has been richly supplemented by studies that
+estimate community-wide excess mortality and morbidity associated with the
+disaster (e.g.,~\cite{anderson2010heat, son2012impact, haikerwal2015impact,
+liu2017wildfire, milojevic2017mental}).  These studies, which often use time
+series or case-crossover study designs, typically compare the rate of a health
+outcome in a community during a disaster to rates during comparable
+non-disaster periods.  While such studies cannot attribute specific cases
+(e.g., a specific death) to a disaster, they can quantify the community-wide
+change in health risk during disasters and capture impacts that might be missed
+or underestimated with traditional disaster-related mortality ascertainment and
 surveillance.  In many cases, these studies analyze multi-year, multi-community
 data, allowing them to estimate average associations over many disasters and to
 explore how a disaster's characteristics, or the characteristics of the
@@ -26,21 +35,21 @@ have begun to use this approach to study the health impacts of tropical
 cyclones, including several studies of Hurricane Maria
 (e.g.,~\cite{santos2018use, santos2018differential}), Hurricane Sandy
 (e.g.,~\cite{kim2016, mongin2017, swerdel2014}), and the 2004 hurricane season
-in Florida~\parencite{mckinney2011}.  However, to expand this approach to study
-longer time periods for large sets of communities, researchers must be able to
+in Florida~\parencite{mckinney2011}.  However, to expand this approach to
+longer time periods and large sets of communities, researchers must be able to
 assess exposure to tropical cyclones consistently and comparably across storms,
 years, and communities.  
 
 The \ac{NHC} publishes a ``Best Tracks'' dataset that is considered the gold
 standard for Atlantic-basin tropical cyclone tracks.  It records the central
 position of a tropical cyclone every six hours, as well as the storm's minimum
-central pressure and maximum wind speed.  These data are openly available
-through the \ac{HURDAT2}, a post-storm assessment that incorporates data from
-several sources, including satellite data and, when available, aircraft
-reconnaissance data~\parencite{landsea2013, jarvinen1988}.  With these data, it
-is straightforward to measure whether a community was in the direct path, or
-within a certain distance of the central track, of a storm, as some previous
-epidemiological studies have done to assess exposure to a tropical storm
+central pressure and maximum sustained surface wind.  These data are openly
+available through the \ac{HURDAT2}, a post-storm assessment that incorporates
+data from several sources, including satellite data and, when available,
+aircraft reconnaissance data~\parencite{landsea2013, jarvinen1988}.  With these
+data, it is straightforward to measure whether a community was in a storm's
+direct path or within a certain distance of its central track; some previous
+epidemiological studies have done this to assess exposure to a tropical storm
 (e.g.,~\cite{currie2013, kinney2008, caillouet2008increase}).
 
 However, when epidemiological studies assess exposure to a tropical cyclone
@@ -73,47 +82,46 @@ developed to incorporate storm hazards, particulary wind, into exposure
 assessment (e.g., \cite{grabich2015measuring, zandbergen2009, czajkowski2011}),
 there is not yet a standard approach, and when different studies use different
 datasets or storm hazards when assessing storm exposure, it becomes difficult
-to compare and aggregate findings from different studies. 
+to compare and aggregate findings. 
 
 To help epidemiological researchers assess exposure to tropical cyclones, we
-developed an open-source dataset~\parencite{hurricaneexposure}.  These data
-cover all counties in states in the eastern half of the \ac{US} over multiple
-years and include five metrics characterizing exposure to tropical cyclones
-(Table~\ref{tab:exposuremetrics}): (1)~closest distance the storm's central
-track came to the county's center (a proxy measurement of storm exposure used
-in some previous studies); (2)~maximum sustained wind speed at the county's
-center over the course of the storm; (3)~cumulative rainfall in the county over
-the course of the storm; (4)~flooding in the county
-concurrent with the storm; and (5)~tornadoes in the county
-concurrent with the storm.  We aggregated these data at the county level since
-data for epidemiological studies are often available at county-level
+developed an open-source dataset~\parencite{hurricaneexposure}, which we
+present here.  These data cover all counties in states in the eastern half of
+the \ac{US} over multiple years and include five metrics characterizing
+exposure to tropical cyclones (Table~\ref{tab:exposuremetrics}): (1)~closest
+distance the storm's central track came to the county's center (a proxy
+measurement of storm exposure used in some previous studies); (2)~peak
+sustained surface wind at the county's center over the course of the storm;
+(3)~cumulative rainfall in the county over the course of the storm;
+(4)~flooding in the county concurrent with the storm; and (5)~tornadoes in the
+county concurrent with the storm.  We aggregated these data at the county level
+since data for epidemiological studies are often available at county-level
 aggregations (e.g., direct hurricane-related deaths~\parencite{czajkowski2011};
 birth outcomes~\parencite{grabich2015, grabich2015measuring}; autism
 prevalence~\parencite{kinney2008}) and since decisions and policies to prepare
 for, and respond to, tropical cyclones are often undertaken at the county
 level~\parencite{zandbergen2009, rappaport2000}.  We also wrote functions to
 explore and map these data and to link it with county-level health
-data~\parencite{hurricaneexposuredata} 
+data~\parencite{hurricaneexposuredata}. 
 
 Here, we describe how we developed this dataset and explore how its
 measurements compare to other data that could be used to characterize tropical
-cyclone hazards for epidemiological research. Further, we expand
-on previous research that investigated methods to measure exposure to tropical
-cyclones for epidemiological research~\parencite{grabich2015measuring}.  The
-previous study investigated differences in which communities were assessed as
-exposed to tropical cyclones during the 2004 hurricane season in Florida,
-depending on whether exposure assessment was based on distance to the storm's
-track or used a metric incorporating storm-related winds within the county
-during the storm.  They found important differences across methods of assessing
-storm exposure, concluding that a study may be prone to bias from exposure
-misclassification if distance to the storm track is used as a proxy measurement
-for exposure assessment~\parencite{grabich2015measuring}.  Here we expand to
-investigate this question across a large set of counties and storm seasons.
-Further, we investigate patterns in exposure classification based on other
-metrics of storm-related hazards---rainfall, flooding, and tornadoes---that are
-important to characterize to improve understanding of the inland health impacts
-of tropical cyclones~\parencite{czajkowski2011, moore2012}. These results can
-help epidemiologists design studies and plan statistical analysis for
-multi-year, multi-community studies that investigate changes in community-wide
-rates of health outcomes during exposure to the hazards brought by tropical
-cyclones, including counties inland from a storm's landfall. 
+cyclone hazards for epidemiological research. Further, we expand on previous
+research on methods to measure exposure to tropical cyclones for
+epidemiological research~\parencite{grabich2015measuring}.  The previous study
+investigated differences in which communities were assessed as exposed to
+tropical cyclones during the 2004 hurricane season in Florida, depending on
+whether exposure assessment was based on distance to the storm's track or a
+metric incorporating storm-related winds within the county during the storm.
+They found important differences across methods of assessing storm exposure,
+concluding that a study may be prone to bias from exposure misclassification if
+distance to the storm track is used as a proxy measurement for exposure
+assessment~\parencite{grabich2015measuring}.  Here we expand to investigate
+this question across a large set of counties and storm seasons.  Further, we
+investigate patterns in exposure classification based on other metrics of
+storm-related hazards---rainfall, flooding, and tornadoes---which are important
+for inland health impacts of tropical cyclones~\parencite{czajkowski2011,
+moore2012}. These results can help epidemiologists design studies and plan
+statistical analysis for multi-year, multi-community studies that estimate
+excess mortality and morbidity exposure to the hazards brought by tropical
+cyclones. 

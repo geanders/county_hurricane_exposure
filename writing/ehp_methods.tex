@@ -1,12 +1,12 @@
 \section*{Methods and Materials}
 
-We aggregated data for all counties in the eastern half of the \ac{US}
-(Figure~\ref{fig:hurrtracks}). We
-included all tracked land-falling or near-land Atlantic-basin tropical cyclones
-between~1988 and~2015 by covering all 136 storms in \ac{HURDAT2}
-\parencite{landsea2013} that came within~250 \si{\kilo\metre} of at least one
-eastern \ac{US} county in this period (the tracks of the study storms are shown in 
-Figure~\ref{fig:hurrtracks}). 
+We aggregated these data for all counties in the eastern half of the \ac{US}
+(Figure~\ref{fig:hurrtracks}).  We included all tropical cyclones in
+\ac{HURDAT2} \parencite{landsea2013} that came within~250 \si{\kilo\metre} of
+at least one eastern \ac{US} county between 1988 and 2015.  This ensured we
+were including all land-falling or near-land Atlantic basin tropical cyclones
+in this period (the tracks of the study storms are shown in
+Figure~\ref{fig:hurrtracks}).
 
 \subsection*{Distance-based exposure metric}
 
@@ -73,54 +73,51 @@ station-specific measurements from two days before to one day after each
 storm's closest approach and then averaged these cumulative station-based
 precipitation totals for each county to create a county-wide estimate of
 cumulative storm-related precipitation based on ground-based monitoring. We
-measured the rank correlation (Spearman's~$\rho$~\parencite{spearman1904proof})
+measured the rank correlation (Spearman's~$\rho$;~\textcite{spearman1904proof})
 between storm-specific cumulative precipitation estimates for the two data
 sources (\ac{NLDAS-2} re-analysis data versus ground-based monitoring) within
 each sample county.
 
 \subsection*{Wind-based exposure metric}
 
-To create a dataset of county-level maximum sustained winds during historical
-tropical cyclones, we modeled maximum sustained wind speeds at each county's
-population mean center~\parencite{countycenters} using a wind speed model based
-on results from Willoughby~\parencite{willoughby2006parametric}. For each
-storm, we modeled the maximum ground-level sustained wind speed that the storm
-generated at each county center for each~15-\si{\minute} increment throughout
-the storm tracking period. We used a double exponential wind speed model with
-inputs for the storm's forward speed, direction, and maximum wind
-speed~\parencite{willoughby2006parametric, stormwindmodel}, incorporating the
-asymmetry in wind speeds around the tropical cyclone center that results from
-the storm's forward movement~\parencite{phadke2003modeling}. From these
-15-\si{\minute} interval estimates, we identified the maximum sustained surface
-wind speed in each county over the course of each storm.
+We created a dataset of county-level peak sustained surface wind during each
+storm. To do this, we first modeled each storm's wind field to each county's
+population mean center~\parencite{countycenters} at 15-minute intervals
+throughout the course of the storm. We used a double exponential wind model
+based on results from Willoughby~\parencite{willoughby2006parametric} to model
+1-minute surface wind (10 meters above ground) at each county center, based on
+inputs of the storm's forward speed, direction, and maximum wind
+speed~\parencite{stormwindmodel}. Our model incorporated the asymmetry in wind
+speeds around the tropical cyclone center that results from the storm's forward
+movement~\parencite{phadke2003modeling}.  From these 15-\si{\minute} interval
+estimates, we identified the peak sustained surface wind in each county over
+the course of each storm.
 
-To validate these modeled county-level wind speed estimates, we compared them
+To validate these modeled county-level peak wind estimates, we compared them
 to the  post-season wind radii values, which have been routinely published
-since 2004 \parencite{knaff2016using}. These wind radii characterize storm
-size, estimating the maximum distance from the storm's center that winds of a
-certain intensity extend. They give separate estimates for four quadrants of
-the storm to capture asymmetry in the storm's wind field and are 
-based on a post-season
-re-analysis that incorporates available data (e.g., satellite data, aircraft
-reconnaissance and ground-based data if available)
-\parencite{knaff2016using}. Wind radii are estimated
-for three thresholds of maximum surface wind speeds: 64,~50, and~34 \si{\knot}.
-They therefore allow for the classification of counties into four categories of
-maximum sustained wind speeds: $<$34~\si{\knot}; 34\,--\,49.9~\si{\knot};
-50\,--\,63.9~\si{\knot}; $\ge$64~\si{\knot}. 
+since 2004 \parencite{knaff2016using}. These wind radii estimate the maximum
+distance from the storm's center that winds of a certain intensity extend. They
+give separate estimates for four quadrants of the storm to capture asymmetry in
+the storm's wind field and are based on a post-season re-analysis that
+incorporates available data (e.g., satellite data, aircraft reconnaissance and
+ground-based data if available) \parencite{knaff2016using}. Wind radii are
+estimated for three thresholds of peak sustained surface wind: 64,~50, and~34
+kt.  They therefore allow for the classification of counties into four
+categories of peak sustained surface wind: $<$34~kt; 34\,--\,49.9~kt;
+50\,--\,63.9~kt; $\ge$64~kt. 
 
-We interpolated the wind radii data to~15-\si{\minute} increments and
+We interpolated the wind radii data to~15-minute increments and
 classified a county as exposed to winds in a given wind speed category if its
 population mean center was within~85\% of the maximum radius for that wind
 speed in that quadrant of the storm. The~85\% adjustment is based on previous
 research that found that this ratio helps capture average wind extents within a
 quadrant from these maximum wind radii \parencite{knaff2016using}.  We compared
-these wind radii--based estimates of county-level maximum sustained surface
-winds during a storm with the modeled wind speed estimates, comparing all study
-storms since 2004 for which at least one study county experienced sustained
-winds of~$\ge$34 \si{\knot} (based on the \ac{HURDAT2} wind radii). For each of
-these storms, we calculated the percent of study counties that were classified
-in the same wind speed category based on both data sources.
+these wind radii--based estimates of county-level peak sustained surface wind
+during a storm with the modeled wind estimates, comparing all study storms
+since 2004 for which at least one study county experienced peak sustained winds
+of~$\ge$34 kt (based on the \ac{HURDAT2} wind radii). For each of these storms,
+we calculated the percent of study counties that were classified in the same
+wind category based on both data sources.
 
 \subsection*{Flood- and tornado-based exposure metrics}
 
@@ -128,7 +125,7 @@ To identify flood- and tornado-based tropical cyclone exposures in \ac{US}
 counties, we matched storm tracks with event listings from the National Oceanic
 and Atmospheric Administration (NOAA)'s Storm Event
 Database~\parencite{stormevents}. While this database has recorded storm data
-since~1950, its coverage changed substantially in~1996 to cover a more types of
+since~1950, its coverage changed substantially in~1996 to cover more types of
 storm events~\parencite{stormevents}. We therefore only considered these
 metrics of hurricane exposure for tropical cyclones in~1996 and later.
 
@@ -179,12 +176,13 @@ tended to be associated with higher streamflow at gages within the county.
 \subsection*{Binary storm exposure classifications}
 
 In our open-source data, we provide continuous measurements of some of the
-exposure metrics: closest distance of each storm to each county, maximum
-sustained winds at the county center, and cumulative rainfall. However,
+exposure metrics: closest distance of each storm to each county, peak sustained
+surface wind at the county center, and cumulative rainfall. However,
 epidemiologic studies of tropical cyclones often use a binary exposure
 classification (``exposed'' versus ``unexposed'') to assess storm-related
-health risks, and so we explored patterns in storm exposure based on binary
-clasifications of these exposure metrics. 
+health risks (e.g., \textcite{grabich2015, mckinney2011,
+caillouet2008increase}), and so we explored patterns in storm exposure based on
+binary clasifications of these exposure metrics. 
 
 Two of the exposure metrics (flood- and tornado-based) were inherently binary
 in our data, since these metrics were based on whether an event was listed in
@@ -212,14 +210,14 @@ data~\parencite{hurricaneexposure}.
 
 We characterized patterns in county-level exposure in the eastern \ac{US} for
 exposure assessment based on each of the measured tropical cyclone hazards
-(cumulative precipitation, maximum sustained winds, flooding, and tornadoes).
+(cumulative precipitation, peak sustained winds, flooding, and tornadoes).
 Depending on available exposure data, this assessment included some or all of
 the period from~1988 to~2015 (Table 1). For each binary metric of exposure to a
 tropical cyclone hazard, we first summed the total number of county-level
 exposures over available years and mapped patterns in
 these exposures. 
 
-Next, we investigated how well exposure assessment agreed across 
+Finally, we investigated how well exposure assessment agreed across 
 these metrics. For each storm we investigated the degree to which the 
 set of counties assessed as exposed based on one metric overlapped with the set
 assessed as exposed based on each other metric, including a metric that used
