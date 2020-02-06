@@ -264,3 +264,4 @@ out_d <- map_tracks(storm, plot_object = out) +
 pdf("figures/extentdisagreement.pdf", width = 9, height = 5)
 grid.arrange(out_a, out_d, out_b, out_c, ncol = 2)
 dev.off()
+

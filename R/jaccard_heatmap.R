@@ -194,7 +194,7 @@ for_heatmap <- as.matrix(a[ , 3:12])
 rownames(for_heatmap) <- a$storm_id
 
 row_dend <- hclust(stats::dist(for_heatmap), method = "complete")
-row_dend <- color_branches(row_dend, k = 5)
+row_dend <- color_branches(row_dend, k = 4)
 
 ha_rot_cn <- HeatmapAnnotation(text = anno_text(colnames(for_heatmap), rot = 45, just = "left",
                                                 gp = gpar(fontsize = 10),
@@ -265,7 +265,7 @@ ha_row <- HeatmapAnnotation(counties_exposed = counties_exposed$counties_exposed
                             which = "row", width = unit(0.25, "cm"))
 
 heat_map <- Heatmap(for_heatmap, col = viridis(256, option = "A", direction = -1),
-        cluster_rows = row_dend, split = 5, show_row_dend = FALSE,
+        cluster_rows = row_dend, split = 4, show_row_dend = FALSE,
         row_names_side = "left", row_names_gp = gpar(fontsize = 8),
         show_column_names = FALSE, show_column_dend = FALSE, #column_dend_side = "bottom",
         column_dend_height = unit(6, "mm"),

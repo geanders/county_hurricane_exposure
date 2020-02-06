@@ -1,11 +1,14 @@
 library(hurricaneexposuredata)
 library(dplyr)
+library(stringr)
 library(ggplot2)
 library(polycor)
+library(latex2exp)
 data(storm_winds)
 data(ext_tracks_wind)
 
 wind_comp <- storm_winds %>%
+        filter(str_remove(storm_id, ".+\\-") %>%  as.numeric() <= 2015) %>% 
         select(fips, vmax_sust, storm_id) %>%
         rename(vmax_sust_model = vmax_sust) %>%
         inner_join(select(ext_tracks_wind, fips, storm_id, vmax_sust),
@@ -26,23 +29,16 @@ fig <- wind_comp %>%
         filter(non_zero > 0) %>%
         ggplot(aes(x = perc_same, y = reorder(storm_id, perc_same), fill = non_zero)) +
         geom_point(size = 2, shape = 21, color = "black") +
-        scale_x_continuous(labels = scales::percent) +
+        scale_x_continuous(labels = scales::percent, lim = c(0, 1)) +
         theme_classic() +
         labs(x = "% of counties classified in same wind category\nby modeled storm wind and Extended Best Tracks",
              y = "",
-             fill = "Number of counties with modeled\nsustained winds of \u2265 34 knots",
-             parse = TRUE
+             fill = "Number of counties with modeled\n sustained winds of <= 34 knots"
              ) +
         viridis::scale_fill_viridis(direction = -1, option = "B") +
         theme(legend.position = "bottom")
 
-quartz.save(file = "figures/windcomparison.pdf", type = "pdf", width = 5.25, height = 8)
-print(fig)
-dev.off()
-
-tiff(filename = "figures/windcomparison.tiff", width = 525, height = 700)
-print(fig)
-dev.off()
+ggsave("figures/windcomparison.pdf", fig, width = 5.25, height = 8, units = "in")
 
 wind_comp_ordinal <- wind_comp %>%
         mutate(vmax_sust_ext = factor(vmax_sust_ext, ordered = TRUE,
