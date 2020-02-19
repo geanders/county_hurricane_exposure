@@ -12,36 +12,36 @@ data(closest_dist)
 
 my_fips <- unique(closest_dist$fips)
 dist <- county_distance(counties = my_fips, start_year = 1988,
-                                     end_year = 2015, dist_limit = 100) %>%
+                                     end_year = 2018, dist_limit = 100) %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 28) %>%
+        dplyr::summarize(n_exposures = n() / (2018 - 1988 + 1)) %>%
         mutate(metric = "distance")
 
 rain <- county_rain(counties = my_fips, start_year = 1988,
                              end_year = 2011, dist_limit = 500,
                              rain_limit = 75) %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 24) %>%
+        dplyr::summarize(n_exposures = n() / (2011 - 1988 + 1)) %>%
         mutate(metric = "rain")
 
 wind <- county_wind(counties = my_fips, start_year = 1988,
-                             end_year = 2015, wind_limit = 17.4) %>%
+                             end_year = 2018, wind_limit = 17.4) %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 28) %>%
+        dplyr::summarize(n_exposures = n() / (2018 - 1988 + 1)) %>%
         mutate(metric = "wind")
 
 flood <- county_events(counties = my_fips,
-                                start_year = 1996, end_year = 2015,
+                                start_year = 1996, end_year = 2018,
                                 event_type = "flood") %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 20) %>%
+        dplyr::summarize(n_exposures = n() / (2018 - 1996 + 1)) %>%
         mutate(metric = "flood")
 
 tornado <- county_events(counties = my_fips,
-                                start_year = 1996, end_year = 2015,
+                                start_year = 1988, end_year = 2018,
                                 event_type = "tornado") %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 20) %>%
+        dplyr::summarize(n_exposures = n() / (2018 - 1988 + 1)) %>%
         mutate(metric = "tornado")
 
 our_fips <- hurricaneexposure:::get_eastern_map() %>% dplyr::select(fips) %>% dplyr::distinct() %>%
@@ -230,34 +230,34 @@ my_fips <- unique(closest_dist$fips)
 dist <- county_distance(counties = my_fips, start_year = 1996,
                         end_year = 2011, dist_limit = 100) %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 16) %>%
+        dplyr::summarize(n_exposures = n() / (2011 - 1996 + 1)) %>%
         mutate(metric = "distance")
 
 rain <- county_rain(counties = my_fips, start_year = 1996,
                     end_year = 2011, dist_limit = 500,
                     rain_limit = 75) %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 16) %>%
+        dplyr::summarize(n_exposures = n() / (2011 - 1996 + 1)) %>%
         mutate(metric = "rain")
 
 wind <- county_wind(counties = my_fips, start_year = 1996,
                     end_year = 2011, wind_limit = 17.4) %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 16) %>%
+        dplyr::summarize(n_exposures = n() / (2011 - 1996 + 1)) %>%
         mutate(metric = "wind")
 
 flood <- county_events(counties = my_fips,
                        start_year = 1996, end_year = 2011,
                        event_type = "flood") %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 16) %>%
+        dplyr::summarize(n_exposures = n() / (2011 - 1996 + 1)) %>%
         mutate(metric = "flood")
 
 tornado <- county_events(counties = my_fips,
                          start_year = 1996, end_year = 2011,
                          event_type = "tornado") %>%
         group_by(fips) %>%
-        dplyr::summarize(n_exposures = n() / 16) %>%
+        dplyr::summarize(n_exposures = n() / (2011 - 1996 + 1)) %>%
         mutate(metric = "tornado")
 
 our_fips <- hurricaneexposure:::get_eastern_map() %>% dplyr::select(fips) %>% dplyr::distinct() %>%
