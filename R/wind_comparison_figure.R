@@ -8,7 +8,7 @@ data(storm_winds)
 data(ext_tracks_wind)
 
 wind_comp <- storm_winds %>%
-        filter(str_remove(storm_id, ".+\\-") %>%  as.numeric() <= 2015) %>% 
+        filter(str_remove(storm_id, ".+\\-") %>%  as.numeric() <= 2018) %>% 
         select(fips, vmax_sust, storm_id) %>%
         rename(vmax_sust_model = vmax_sust) %>%
         inner_join(select(ext_tracks_wind, fips, storm_id, vmax_sust),
@@ -36,9 +36,10 @@ fig <- wind_comp %>%
              fill = "Number of counties with modeled\n sustained winds of <= 34 knots"
              ) +
         viridis::scale_fill_viridis(direction = -1, option = "B") +
-        theme(legend.position = "bottom")
+        theme(legend.position = "bottom") + 
+        theme(panel.grid.major.y = element_line(colour = "lightgray"))
 
-ggsave("figures/windcomparison.pdf", fig, width = 5.25, height = 8, units = "in")
+ggsave("figures/windcomparison.pdf", fig, width = 5.25, height = 8.5, units = "in")
 
 wind_comp_ordinal <- wind_comp %>%
         mutate(vmax_sust_ext = factor(vmax_sust_ext, ordered = TRUE,
