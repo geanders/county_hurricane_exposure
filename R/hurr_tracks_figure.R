@@ -5,7 +5,7 @@ library(hurricaneexposure)
 
 data(closest_dist)
 storms <- unique(closest_dist$storm_id)
-storms <- storms[gsub("*.+-", "", storms) <= 2015 &
+storms <- storms[gsub("*.+-", "", storms) <= 2018 &
                          gsub("*.+-", "", storms) >= 1988]
 a <- map_tracks(storms, plot_points = FALSE, alpha = 0.3, color = "darkcyan")
 # Add storms whose names were retired
@@ -19,7 +19,10 @@ fig <- map_tracks(c("Hugo-1989", "Bob-1991", "Andrew-1992",
              "Dennis-2005", "Katrina-2005", "Rita-2005",
              "Wilma-2005", "Noel-2007",
              "Gustav-2008", "Ike-2008", "Paloma-2008",
-             "Irene-2011", "Sandy-2012"),
+             "Irene-2011", "Sandy-2012", "Matthew-2016",  
+             "Harvey-2017", "Irma-2017", "Nate-2017", 
+             "Florence-2018", "Michael-2018"
+             ),
            plot_object = a, plot_points = FALSE, color = "darkcyan",
            padding = 0) +
         theme_void() +
@@ -30,6 +33,3 @@ pdf(file = "figures/hurrtracks.pdf", width = 4.8, height = 4.0)
 print(fig)
 dev.off()
 
-tiff(filename = "figures/hurrtracks.tiff", width = 480, height = 400)
-print(fig)
-dev.off()
