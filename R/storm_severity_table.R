@@ -8,7 +8,7 @@ library(stringr)
 my_fips <- unique(closest_dist$fips)
 
 distance_exposure <- county_distance(counties = my_fips, start_year = 1988,
-                                     end_year = 2015, dist_limit = 100) %>%
+                                     end_year = 2018, dist_limit = 100) %>%
         select(storm_id, fips) %>%
         mutate(exposed = TRUE,
                storm_id = as.character(storm_id))
@@ -17,8 +17,8 @@ dist_sum <- distance_exposure %>%
   group_by(storm_id) %>% 
   count() %>% 
   ungroup() %>% 
-  summarize(n_storms = n() / (2015 - 1988 + 1),
-            n_exposures = sum(n) / (2015 - 1988 + 1),
+  summarize(n_storms = n() / (2018 - 1988 + 1),
+            n_exposures = sum(n) / (2018 - 1988 + 1),
             med = median(n),
             p25 = quantile(n, 0.25),
             p75 = quantile(n, 0.75),
@@ -44,7 +44,7 @@ rain_sum <- rain_exposure %>%
             which_max = storm_id[which.max(n)])
 
 wind_exposure <- county_wind(counties = my_fips, start_year = 1988,
-                             end_year = 2015, wind_limit = 17.4) %>%
+                             end_year = 2018, wind_limit = 17.4) %>%
         select(storm_id, fips) %>%
         mutate(exposed = TRUE,
                storm_id = as.character(storm_id))
@@ -52,8 +52,8 @@ wind_sum <- wind_exposure %>%
   group_by(storm_id) %>% 
   count() %>% 
   ungroup() %>% 
-  summarize(n_storms = n() / (2015 - 1988 + 1),
-            n_exposures = sum(n) / (2015 - 1988 + 1),
+  summarize(n_storms = n() / (2018 - 1988 + 1),
+            n_exposures = sum(n) / (2018 - 1988 + 1),
             med = median(n),
             p25 = quantile(n, 0.25),
             p75 = quantile(n, 0.75),
@@ -61,7 +61,7 @@ wind_sum <- wind_exposure %>%
             which_max = storm_id[which.max(n)])
 
 flood_exposure <- county_events(counties = my_fips,
-                                start_year = 1996, end_year = 2015,
+                                start_year = 1996, end_year = 2018,
                                 event_type = "flood") %>%
         select(storm_id, fips) %>%
         mutate(exposed = TRUE,
@@ -70,8 +70,8 @@ flood_sum <- flood_exposure %>%
   group_by(storm_id) %>% 
   count() %>% 
   ungroup() %>% 
-  summarize(n_storms = n() / (2015 - 1996 + 1),
-            n_exposures = sum(n) / (2015 - 1996 + 1),
+  summarize(n_storms = n() / (2018 - 1996 + 1),
+            n_exposures = sum(n) / (2018 - 1996 + 1),
             med = median(n),
             p25 = quantile(n, 0.25),
             p75 = quantile(n, 0.75),
@@ -79,7 +79,7 @@ flood_sum <- flood_exposure %>%
             which_max = storm_id[which.max(n)])
 
 tornado_exposure <- county_events(counties = my_fips,
-                                  start_year = 1996, end_year = 2015,
+                                  start_year = 1988, end_year = 2018,
                                   event_type = "tornado") %>%
         select(storm_id, fips) %>%
         mutate(exposed = TRUE,
@@ -88,8 +88,8 @@ tornado_sum <- tornado_exposure %>%
   group_by(storm_id) %>% 
   count() %>% 
   ungroup() %>%
-  summarize(n_storms = n() / (2015 - 1996 + 1),
-            n_exposures = sum(n) / (2015 - 1996 + 1),
+  summarize(n_storms = n() / (2018 - 1988 + 1),
+            n_exposures = sum(n) / (2018 - 1988 + 1),
             med = median(n),
             p25 = quantile(n, 0.25),
             p75 = quantile(n, 0.75),
@@ -154,8 +154,8 @@ total_sum <- bind_rows(bind_cols(dist_sum, dist_sum2),
          sum = paste(round(med), " (", round(p25), ", ", round(p75), ")", sep = ""),
          max_storm = paste(str_replace(which_max, "-", ", "),
                            " (", max, ")", sep = ""),
-         years = c("1988--2015", "1988--2015", "1988--2011",
-                   "1996--2015", "1996--2015"),
+         years = c("1988--2018", "1988--2018", "1988--2011",
+                   "1996--2018", "1988--2018"),
          yearly_sum = paste(round(mean_exp), " (", round(p25_exp), 
                             ", ", round(p75_exp), ")", sep = ""),
          metric = paste0(metric, " (", years, ")")) %>% 
