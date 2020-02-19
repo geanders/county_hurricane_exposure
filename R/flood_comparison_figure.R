@@ -25,10 +25,10 @@ library(scales)
 
 county_fips <- c("37183", "42091", "01097", "13121", "12033", "34003", "48201",
                  "24005", "09001")
-county_floods <- county_events(county_fips, start_year = 1996, end_year = 2015, event_type = "flood") %>%
+county_floods <- county_events(county_fips, start_year = 1996, end_year = 2018, event_type = "flood") %>%
         select(storm_id, fips) %>%
         mutate(flood = TRUE)
-county_storms <- county_distance(county_fips, start_year = 1996, end_year = 2015, dist_limit = 500) %>%
+county_storms <- county_distance(county_fips, start_year = 1996, end_year = 2018, dist_limit = 500) %>%
         left_join(county_floods, by = c("fips", "storm_id")) %>%
         mutate(flood = ifelse(is.na(flood), FALSE, flood),
                closest_date = ymd(closest_date)) %>%
@@ -47,10 +47,10 @@ county_storms <- county_distance(county_fips, start_year = 1996, end_year = 2015
                lag = str_replace(lag, "m", "-"),
                lag = as.numeric(lag))
 
-# county_gages <- get_gages(county_fips, start_date = "1996-01-01", end_date = "2015-12-31")
+# county_gages <- get_gages(county_fips, start_date = "1996-01-01", end_date = "2018-12-31")
 # gage_q2s <- find_q2(county_gages$site_no)
 # county_gages <- full_join(county_gages, gage_q2s, by = "site_no")
-# county_flow_data <- get_flow_data(county_gages, start_date = "1996-01-01", end_date = "2015-12-31")
+# county_flow_data <- get_flow_data(county_gages, start_date = "1996-01-01", end_date = "2018-12-31")
 # save(county_gages, file = "data/county_gages.Rdata")
 # save(county_flow_data, file = "data/county_flow_data.Rdata")
 
@@ -69,7 +69,7 @@ out <- county_gage_data %>%
         dplyr::mutate(min_date = min(date),
                       max_date = max(date),
                       n = n()) %>%
-        filter(min_date == ymd("1996-01-01") & max_date == ymd("2015-12-31") & n == 7305) %>%
+        filter(min_date == ymd("1996-01-01") & max_date == ymd("2018-12-31") & n == 8401) %>%
         ungroup() %>%
         right_join(county_storms, by = c("date" = "date", "county_cd" = "fips")) %>%
         filter(lag %in% -2:2) %>%
@@ -114,7 +114,7 @@ out <- county_gage_data %>%
         theme(legend.position = "bottom") +
         scale_fill_viridis(name = "% streamflow gages over threshold for flooding",
                             breaks = c(0, .5, 1), labels = c("0%", "50%", "100%")) +
-        theme(plot.margin = unit(c(5.5, 11, 5.5, 11), "points"))
+        theme(plot.margin = unit(c(5.5, 16, 5.5, 11), "points"))
 
 
 pdf(file = "figures/floodcomparison.pdf", height = 6, width = 9)
