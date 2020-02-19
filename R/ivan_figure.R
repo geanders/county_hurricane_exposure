@@ -110,7 +110,4 @@ pdf("figures/ivanexposure.pdf", width = 9, height = 6)
 print(out)
 dev.off()
 
-tiff("figures/ivanexposure.tiff", width = 800, height = 530)
-print(out)
-dev.off()
 
