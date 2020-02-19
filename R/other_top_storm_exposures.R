@@ -431,6 +431,6 @@ dennis <- map_tracks(storm, plot_object = out) +
         ggtitle("Dennis (2005)")
 
 pdf("figures/othertopstorms.pdf", width = 10, height = 7)
-grid.arrange(floyd, ike, katrina, dennis, ncol = 1)
+grid.arrange(floyd, ike, katrina, ncol = 1)
 dev.off()
 
