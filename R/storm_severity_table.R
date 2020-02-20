@@ -162,7 +162,7 @@ total_sum <- bind_rows(bind_cols(dist_sum, dist_sum2),
   select(metric, yearly_sum, max_storm)
 
 total_sum %>% 
-  filter(metric != "Distance") %>% 
+  slice(2:5) %>% 
   rename(`Metric (years available)` = metric,
          `Mean (interquartile range) of county exposures per year` = yearly_sum,
          `Tropical cyclone with most counties exposures (# exposed counties)` = max_storm) %>%
