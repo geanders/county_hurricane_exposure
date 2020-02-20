@@ -1,7 +1,7 @@
 \section*{Discussion}
 
-Epidemiological studies can help characterize which health risks are elevated
-during disasters, to what degree, and to
+Epidemiologic studies can help characterize which health risks are elevated
+during disasters, to what degree, and for
 whom~\parencite{ibrahim2005unfortunate, noji2005disasters}.  As a result, these
 studies help improve disaster preparedness and
 response~\parencite{noji2005disasters}.  However, tropical cyclones are
@@ -11,18 +11,17 @@ datasets.  Here, we provide open-source county-level data for several tropical
 cyclone exposures and explore limitations in that data.  
 Further, we explore patterns in storm exposure classifications based on
 different metrics, and we find that county-level tropical cyclone exposure
-assessments vary substantially when using different metrics, based either on
-storm hazards or on how close the storm's central track came to the community.
+assessments vary substantially when using different metrics.
 Our results can inform exposure assessment for future county-level studies of
-the health risks and impacts associated with tropical cyclones exposure as
-well as insights to inform epidemiological study design.  
+the health risk and impacts associated with tropical cyclones exposure as
+well as provide insights to inform epidemiologic study design.  
 
 \subsection*{Exposure assessment data and software}
 
 The open-source data generally correspond well with data from other potential
 sources (Figures~\ref{fig:raincomparison}\,--\,\ref{fig:floodcomparison}
 and~S2), but there are some caveats. The rainfall data are generally
-well-correlated with ground-based observations, but may sometimes oversmooth
+well-correlated with ground-based observations, but may sometimes underestimate
 very high rainfall values (Figure~\ref{fig:raincomparison}). When rainfall data
 is used to create binary exposure classifications, this disagreement is
 unlikely to influence results, as both data sources agree in identifying these
@@ -31,7 +30,7 @@ include rainfall as a continuous measurement.
 
 The peak sustained wind estimates are based on modeled, rather than observed,
 values, and while the modeled wind data generally agree well with post-analysis
-maximum wind radii from \ac{HURDAT2}~\parencite{landsea2013}
+maximum wind radii \parencite{landsea2013}
 (Figure~\ref{fig:windcomparison}), there were a few storms with some
 discrepancies. These storms---for example, Hurricane Sandy in 2012 and
 Hurricane Ike in 2008---were unusually large systems for which high winds
@@ -51,7 +50,7 @@ in November 2009, following a month with historic rainfall and flooding in
 Georgia~\parencite{shepherd2011overview}.  In this case, the flooding
 associated with Ida was incorporated into an ongoing flood event listing, with
 a start date well before the five-day window we used to temporally match storm
-event listings with tropical cyclone tracks. 
+event listings with tropical cyclone tracks for our data. 
 
 This disagreement highlights the difficulty of large-scale pairing of storm
 tracks with storm event listings---without criteria for temporally matching
@@ -59,7 +58,7 @@ event start dates to storm dates, many false positives would be
 captured, for which the occurrance of a storm in the midst of an ongoing storm
 event might be improperly attributed to the storm.  However, distance
 and time restrictions, like those we used in matching NOAA Storm Event listings
-with tropical cyclone locations and dates, do create the opportunity for
+with tropical cyclone locations and dates, do cause 
 occasional false negatives, as for Hurricane Ida in Fulton County, GA, where a
 storm contributes meaningfully to an ongoing event, but the event is not
 captured for the storm in the exposure data.  
@@ -101,13 +100,13 @@ the Appalachian mountains. This agrees with previous research indicating that
 the Appalachian mountains' topography both enhances precipitation during
 tropical cyclones and provides hydrological conditions for severe
 flooding~\parencite{rees2001}.  Almost all tropical cyclone tornado exposures
-were in southern coastal states, consistent with previous evidence that most
-noteworthy tropical cyclone-related tornadoes occur on the right-side of the
-tropical cyclone track in Atlantic-basin \ac{US} storms~\parencite{moore2012}.
-The exposure averages we calculated may be limited as estimates of
-long-term frequencies, as tropical cyclones follow decadal
-patterns~\parencite{kossin2007more} likely not adequately captured in the
-available data, which covered less than 20 years. 
+were in southern coastal states, consistent with previous evidence that
+tropical cyclone-related tornadoes typically occur to the right of tropical
+cyclone tracks in Atlantic-basin \ac{US} storms~\parencite{moore2012}.  It is
+important to note, however, that the exposure averages we calculated may be
+limited as estimates of long-term frequencies, as tropical cyclones follow
+decadal patterns~\parencite{kossin2007more} that may not adequately captured in
+the available data. 
 
 \subsection*{Agreement between exposure metrics}
 
@@ -123,7 +122,7 @@ water~\parencite{cerveny2000}, this relationship often weakens once the
 hurricane has made landfall~\parencite{jiang2008}.  Fast-moving tropical
 cyclones bring higher risks of dangerous winds inland~\parencite{kruk2010},
 while slow-moving tropical cyclones are likely to bring more
-rain~\parencite{rappaport2000} and cause more damage because of sustained
+rain~\parencite{rappaport2000} and may cause more damage because of sustained
 hazardous conditions~\parencite{rezapour2014}. Further, while the likelihood
 and extent of flooding during a tropical cyclone is related to the tropical
 cyclone's rainfall, it is also driven by factors like top soil saturation and
@@ -137,7 +136,7 @@ misclassification. This conclusion reinforces similar findings from a study of
 Florida's 2004 storm season~\parencite{grabich2015measuring}.  For some
 studies, such exposure misclassification might plausibly be differential.  For
 example, tropical cyclone wind exposures tend to be concentrated in counties
-near the coast, while tropical cyclone wind exposures sometimes extend well
+near the coast, while tropical cyclone rain exposures sometimes extend well
 inland.  If the etiologically-relevant exposure for a health outcome is extreme
 rainfall but exposure is classified based on measurements of wind, the
 probability of being misclassified as unexposed would be higher in inland
@@ -151,7 +150,7 @@ towards the null (estimating a lower or null association compared to the true
 association that exists) or away from the null (estimating a larger association
 than actually exists)~\parencite{savitz2016interpreting, armstrong1998effect}.  
 
-We did, however, find a small set of tropical cyclones for which for which
+We did find a small set of tropical cyclones for which for which
 agreement was high across several single-hazard exposure assessments (e.g.,
 Floyd in~1999, Irene in 2011, Hannah in~2008, Bertha in~1996; Ernesto in~2006
 (Figure~\ref{fig:jaccard})).  Hurricanes Floyd in~1999 and Irene in~2011 both
@@ -164,10 +163,10 @@ flooding in North Carolina (Floyd) and New England
 in~2008, Bertha in~1996, and Ernesto in~2006 also followed the eastern
 coastline. For these storms, the tropical cyclones' persistent proximity to
 water may have helped maintain wind speeds in similar patterns to rain and
-distance-based exposure assessments, resulting in more similarities across
+distance-based exposures, resulting in more similarities across
 exposure assessments compared to other tropical cyclones.  For these storms, it
 may be possible to assess exposure to multiple hazards of the storm using a
-single metric, in some cases even a proxy like the distance between the county
+single metric, perhaps even a proxy like the distance between the county
 and the storm's track.  However, for these storms it may be difficult to
 untangle the contribution of each hazard to the overall effect of the storm,
 given that several hazards have similar geographical patterns. 
@@ -181,7 +180,7 @@ dangerous storm surge, which is not specifically covered in this dataset
 (although some resulting coastal flooding is captured). We are exploring ways
 to include this in future versions of the dataset, but to date we have
 focused on exposures that could affect any county, whether inland or coastal.
-Second, this data is aggregated to the county level. Many health outcome
+Second, these data are aggregated to the county level. Many health outcome
 datasets are aggregated at this level, but some may be aggregated at a finer
 spatial resolution (e.g., Census tract or ZIP code) or unaggregated (i.e.,
 point locations for each outcome). We have published the wind model used to

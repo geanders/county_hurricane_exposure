@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.12
 [0] Config.pm:307> INFO - Logfile is 'anderson_ehp_draft.blg'
-[36] biber-darwin:315> INFO - === Wed Feb 19, 2020, 11:35:47
-[59] Biber.pm:371> INFO - Reading 'anderson_ehp_draft.bcf'
-[147] Biber.pm:889> INFO - Found 77 citekeys in bib section 0
-[158] Biber.pm:4093> INFO - Processing section 0
-[168] Biber.pm:4254> INFO - Looking for bibtex format file 'hurr_exposure.bib' for section 0
-[174] bibtex.pm:1523> INFO - LaTeX decoding ...
-[336] bibtex.pm:1340> INFO - Found BibTeX data source 'hurr_exposure.bib'
-[686] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/83/ffl13dn505z0jvklj1y612kw0000gn/T/yRhfIqWan3/hurr_exposure.bib_74651.utf8, line 188, warning: undefined macro "Second"
-[779] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[779] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[779] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[779] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
-[853] bbl.pm:636> INFO - Writing 'anderson_ehp_draft.bbl' with encoding 'UTF-8'
-[879] bbl.pm:739> INFO - Output to anderson_ehp_draft.bbl
-[879] Biber.pm:110> INFO - WARNINGS: 1
+[41] biber-darwin:315> INFO - === Thu Feb 20, 2020, 09:52:30
+[65] Biber.pm:371> INFO - Reading 'anderson_ehp_draft.bcf'
+[152] Biber.pm:889> INFO - Found 77 citekeys in bib section 0
+[164] Biber.pm:4093> INFO - Processing section 0
+[173] Biber.pm:4254> INFO - Looking for bibtex format file 'hurr_exposure.bib' for section 0
+[179] bibtex.pm:1523> INFO - LaTeX decoding ...
+[339] bibtex.pm:1340> INFO - Found BibTeX data source 'hurr_exposure.bib'
+[692] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/83/ffl13dn505z0jvklj1y612kw0000gn/T/8iNiLkJenm/hurr_exposure.bib_88866.utf8, line 188, warning: undefined macro "Second"
+[785] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[785] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[785] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[785] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
+[861] bbl.pm:636> INFO - Writing 'anderson_ehp_draft.bbl' with encoding 'UTF-8'
+[885] bbl.pm:739> INFO - Output to anderson_ehp_draft.bbl
+[885] Biber.pm:110> INFO - WARNINGS: 1
