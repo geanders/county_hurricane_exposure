@@ -188,11 +188,12 @@ binary clasifications of these exposure metrics.
 
 Two of the exposure metrics (flood- and tornado-based) were inherently binary
 in our data, since these metrics were based on whether an event was listed in
-the NOAA Storm Events database.  For other exposure metrics, each county
-was classified as exposed to a tropical cyclone based on whether the exposure
+the NOAA Storm Events database.  For other exposure metrics, each county was
+classified as exposed to a tropical cyclone based on whether the exposure
 metric exceeded a certain threshold (Table~\ref{tab:exposuremetrics}). We
-picked reasonable thresholds, but others could be used with the open-source
-data and its associated software. 
+picked reasonable thresholds (e.g., the threshold for gale-force wind for the
+wind exposure), but others could be used with the open-source data and its
+associated software. 
 
 For the rainfall metric, a distance constraint was also necessary, to ensure
 that rainfall unrelated and far from the storm track was not misattributed to a
@@ -243,4 +244,8 @@ tropical cyclone. We calculated these values for all study storms that affected
 $\ge$100 study counties (based on at least one exposure metric) during the
 years when all exposure data were available (1996\,--\,2011).
 
+\subsection*{Data and code access}
 
+We have posted study data as an open-source R package
+\cite{hurricaneexposuredata}. We have posted additional data and code at
+\url{https://github.com/geanders/county_hurricane_exposure}.
