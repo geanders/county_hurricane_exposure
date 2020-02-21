@@ -55,7 +55,7 @@ event listings with tropical cyclone tracks for our data.
 This disagreement highlights the difficulty of large-scale pairing of storm
 tracks with storm event listings---without criteria for temporally matching
 event start dates to storm dates, many false positives would be
-captured, for which the occurrance of a storm in the midst of an ongoing storm
+captured, for which the occurrence of a storm in the midst of an ongoing storm
 event might be improperly attributed to the storm.  However, distance
 and time restrictions, like those we used in matching NOAA Storm Event listings
 with tropical cyclone locations and dates, do cause 
@@ -95,7 +95,7 @@ epidemiology, especially in capturing inland risks.
 Tropical cyclone wind exposures had a strong coastal pattern, which is
 consistent with the dramatic decrease in wind intensity that typically
 characterizes the landfall of tropical cyclones.  Tropical cyclone rain
-exposures tended to extended further inland compared to wind exposures, up to
+exposures tended to extend further inland compared to wind exposures, up to
 the Appalachian mountains. This agrees with previous research indicating that
 the Appalachian mountains' topography both enhances precipitation during
 tropical cyclones and provides hydrological conditions for severe
@@ -178,29 +178,29 @@ caveats previously discussed. First, the dataset is not comprehensive of all
 tropical cyclone hazards. For example, coastal counties can experience
 dangerous storm surge, which is not specifically covered in this dataset
 (although some resulting coastal flooding is captured). We are exploring ways
-to include this in future versions of the dataset, but to date we have
-focused on exposures that could affect any county, whether inland or coastal.
-Second, these data are aggregated to the county level. Many health outcome
-datasets are aggregated at this level, but some may be aggregated at a finer
-spatial resolution (e.g., Census tract or ZIP code) or unaggregated (i.e.,
-point locations for each outcome). We have published the wind model used to
-create this dataset as its own open-source R package
-\parencite{stormwindmodel}, and it can be used to model storm-associated winds
-at a finer spatial resolution; however, measurements of other hazards cannot
-similarly be re-scaled through tools we provide. Next, we provide these data
-and associated software tools through R packages, and so some experience in the
-R programming language is required to make full use of them. However, R is
-currently a popular programming language for environmental epidemiology,
-allowing the data to reach a large audience, and we are exploring options to
-create a web application using the Shiny platform to allow broader web-based
-access of the data \parencite{shiny2019}.  Finally, to assess patterns and
-agreement for binary exposure classifications, we have chosen one set of
-sensible thresholds for binary classifications based on continuous metrics
-(rainfall, maximum sustained surface wind, and distance from the storm's track).
-Results and conclusions would differ somewhat with other threshold choices. We
-have published code for this analysis online, allowing
-other researchers to explore other threshold choices for these
-analyses.
+to include this in future versions of the dataset, but to date we have focused
+on exposures that could affect any county, whether inland or coastal.  Second,
+these data are aggregated to the county level. Many health outcome datasets are
+aggregated at this level, but some may be aggregated at a finer spatial
+resolution (e.g., census tract or ZIP code) or unaggregated (i.e., point
+locations for each outcome). We have published the wind model used to create
+this dataset as its own open-source R package \parencite{stormwindmodel}, and
+it can be used to model storm-associated winds at a finer spatial resolution;
+however, measurements of other hazards cannot similarly be re-scaled through
+tools we provide. Next, we provide these data and associated software tools
+through R packages, and so some experience in the R programming language is
+required to make full use of them. However, R is currently a popular
+programming language for environmental epidemiology, allowing the data to reach
+a large audience, and we are exploring options to create a web application
+using the Shiny platform to allow broader web-based access of the data
+\parencite{shiny2019}.  Finally, to assess patterns and agreement for binary
+exposure classifications, we have chosen one set of sensible thresholds for
+binary classifications based on continuous metrics (rainfall, maximum sustained
+surface wind, and distance from the storm's track).  Results and conclusions
+would differ somewhat with other threshold choices. We have published code for
+this analysis online
+(\url{https://github.com/geanders/county_hurricane_exposure}), allowing other
+researchers to explore other threshold choices for these analyses.
 
 \subsection*{Conclusions}
 
