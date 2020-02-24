@@ -154,7 +154,7 @@ total_sum <- bind_rows(bind_cols(dist_sum, dist_sum2),
          sum = paste(round(med), " (", round(p25), ", ", round(p75), ")", sep = ""),
          max_storm = paste(str_replace(which_max, "-", ", "),
                            " (", max, ")", sep = ""),
-         years = c("1988--2018", "1988--2018", "1988--2011",
+         years = c("1988--2018", "1988--2011", "1988--2018",
                    "1996--2018", "1988--2018"),
          yearly_sum = paste(round(mean_exp), " (", round(p25_exp), 
                             ", ", round(p75_exp), ")", sep = ""),
@@ -164,8 +164,8 @@ total_sum <- bind_rows(bind_cols(dist_sum, dist_sum2),
 total_sum %>% 
   slice(2:5) %>% 
   rename(`Metric (years available)` = metric,
-         `Mean (interquartile range) of county exposures per year` = yearly_sum,
-         `Tropical cyclone with most counties exposures (# exposed counties)` = max_storm) %>%
+         `Mean of county exposures per year (interquartile range)` = yearly_sum,
+         `Tropical cyclone with most counties exposed (# exposed counties)` = max_storm) %>%
   xtable(align = "cp{4.5cm}p{4.5cm}p{4.5cm}",
          caption = "Summary statistics for the number of county tropical cyclone exposures under each metric.",
          label = "tab:exposuresummaries",

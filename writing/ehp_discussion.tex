@@ -19,22 +19,22 @@ well as provide insights to inform epidemiologic study design.
 \subsection*{Exposure assessment data and software}
 
 The open-source data generally correspond well with data from other potential
-sources (Figures~\ref{fig:raincomparison}\,--\,\ref{fig:floodcomparison}
-and~S2), but there are some caveats. The rainfall data are generally
-well-correlated with ground-based observations, but may sometimes underestimate
-very high rainfall values (Figure~\ref{fig:raincomparison}). When rainfall data
-is used to create binary exposure classifications, this disagreement is
-unlikely to influence results, as both data sources agree in identifying these
-as storms with high rainfall, but would be important to consider for cases that
-include rainfall as a continuous measurement. 
+sources (Figures~\ref{fig:raincomparison}\,--\,\ref{fig:floodcomparison}), but
+there are caveats. The rainfall data are generally well-correlated with
+ground-based observations, but may sometimes underestimate very high rainfall
+values (Figure~\ref{fig:raincomparison}). When rainfall data is used to create
+binary exposure classifications, this disagreement is unlikely to influence
+results, as both data sources agree in identifying these as storms with high
+rainfall, but would be important to consider for cases that include rainfall as
+a continuous measurement. 
 
 The peak sustained wind estimates are based on modeled, rather than observed,
-values, and while the modeled wind data generally agree well with post-analysis
-maximum wind radii \parencite{landsea2013}
-(Figure~\ref{fig:windcomparison}), there were a few storms with some
-discrepancies. These storms---for example, Hurricane Sandy in 2012 and
-Hurricane Ike in 2008---were unusually large systems for which high winds
-persisted well inland from landfall (Figures~\ref{fig:windcomparison} and~S2). 
+values, and while the modeled wind data generally agree well
+(Figure~\ref{fig:windcomparison}) with post-analysis maximum wind radii
+\parencite{landsea2013}, there were a few storms with some discrepancies. These
+storms---for example, Hurricane Sandy in 2012 and Hurricane Ike in 2008---were
+unusually large systems for which high winds persisted well inland from
+landfall (Figures~\ref{fig:windcomparison} and~S2). 
 
 For the flooding data, we found that flood event status, as determined based on
 the NOAA Storm Events listings, typically agreed with measurements from
@@ -55,13 +55,14 @@ event listings with tropical cyclone tracks for our data.
 This disagreement highlights the difficulty of large-scale pairing of storm
 tracks with storm event listings---without criteria for temporally matching
 event start dates to storm dates, many false positives would be
-captured, for which the occurrence of a storm in the midst of an ongoing storm
+captured, for which the occurrence of a storm in the midst of an ongoing 
 event might be improperly attributed to the storm.  However, distance
 and time restrictions, like those we used in matching NOAA Storm Event listings
 with tropical cyclone locations and dates, do cause 
 occasional false negatives, as for Hurricane Ida in Fulton County, GA, where a
 storm contributes meaningfully to an ongoing event, but the event is not
-captured for the storm in the exposure data.  
+captured for the storm in the exposure data because its start date is not
+close in time to the storm's date.  
 
 There are further limitations for the flood and tornado data---these data came
 from the \ac{NOAA} Storm Events database, which, while a widely-used database
@@ -120,7 +121,7 @@ fields on the characteristics of tropical cyclones. While tropical cyclone
 rainfall and windspeed can be well-correlated when the tropical cyclone is over
 water~\parencite{cerveny2000}, this relationship often weakens once the
 hurricane has made landfall~\parencite{jiang2008}.  Fast-moving tropical
-cyclones bring higher risks of dangerous winds inland~\parencite{kruk2010},
+cyclones heighten risk of dangerous winds inland~\parencite{kruk2010},
 while slow-moving tropical cyclones are likely to bring more
 rain~\parencite{rappaport2000} and may cause more damage because of sustained
 hazardous conditions~\parencite{rezapour2014}. Further, while the likelihood
@@ -155,7 +156,7 @@ agreement was high across several single-hazard exposure assessments (e.g.,
 Floyd in~1999, Irene in 2011, Hannah in~2008, Bertha in~1996; Ernesto in~2006
 (Figure~\ref{fig:jaccard})).  Hurricanes Floyd in~1999 and Irene in~2011 both
 made their first \ac{US} landfall in North Carolina at minor hurricane
-windspeeds (Category~2 and~1, respectively) and then skimmed the eastern coast
+intensity (Category~2 and~1, respectively) and then skimmed the eastern coast
 of the \ac{US} north through New England, bringing substantial rainfall to much
 of the eastern coast from North Carolina north and causing extensive inland
 flooding in North Carolina (Floyd) and New England
@@ -179,26 +180,29 @@ tropical cyclone hazards. For example, coastal counties can experience
 dangerous storm surge, which is not specifically covered in this dataset
 (although some resulting coastal flooding is captured). We are exploring ways
 to include this in future versions of the dataset, but to date we have focused
-on exposures that could affect any county, whether inland or coastal.  Second,
-these data are aggregated to the county level. Many health outcome datasets are
-aggregated at this level, but some may be aggregated at a finer spatial
-resolution (e.g., census tract or ZIP code) or unaggregated (i.e., point
-locations for each outcome). We have published the wind model used to create
-this dataset as its own open-source R package \parencite{stormwindmodel}, and
-it can be used to model storm-associated winds at a finer spatial resolution;
-however, measurements of other hazards cannot similarly be re-scaled through
-tools we provide. Next, we provide these data and associated software tools
-through R packages, and so some experience in the R programming language is
-required to make full use of them. However, R is currently a popular
-programming language for environmental epidemiology, allowing the data to reach
-a large audience, and we are exploring options to create a web application
-using the Shiny platform to allow broader web-based access of the data
-\parencite{shiny2019}.  Finally, to assess patterns and agreement for binary
-exposure classifications, we have chosen one set of sensible thresholds for
-binary classifications based on continuous metrics (rainfall, maximum sustained
-surface wind, and distance from the storm's track).  Results and conclusions
-would differ somewhat with other threshold choices. We have published code for
-this analysis online
+on exposures that could affect any county, whether inland or coastal.  
+
+Second, these data are aggregated to the county level. Many health outcome
+datasets are aggregated at this level, but some may be aggregated at a finer
+spatial resolution (e.g., census tract or ZIP code) or unaggregated (i.e.,
+point locations for each outcome). We have published the wind model used to
+create this dataset as its own open-source R package
+\parencite{stormwindmodel}, and it can be used to model storm-associated winds
+at a finer spatial resolution; however, measurements of other hazards cannot
+similarly be re-scaled through tools we provide. 
+
+Next, we provide these data and associated software tools through R packages,
+and so some experience in the R programming language is required to make full
+use of them. However, R is currently a popular programming language for
+environmental epidemiology, allowing the data to reach a large audience, and we
+are exploring options to create a web application using the Shiny platform to
+allow broader web-based access of the data \parencite{shiny2019}.  
+
+Finally, to assess patterns and agreement for binary exposure classifications,
+we have chosen one set of sensible thresholds for binary classifications based
+on continuous metrics (rainfall, maximum sustained surface wind, and distance
+from the storm's track).  Results and conclusions would differ somewhat with
+other threshold choices. We have published code for this analysis online
 (\url{https://github.com/geanders/county_hurricane_exposure}), allowing other
 researchers to explore other threshold choices for these analyses.
 
@@ -223,7 +227,7 @@ platforms like GitHub.
 Based on our analysis in this paper, these data are typically in agreement with
 measurements from other sources of data available to characterize
 storm-associated hazards (e.g., ground-based monitors, streamgages, post-storm
-wind radii estimates).  However, researchers who are planning to use the data
+wind radii).  However, researchers who are planning to use the data
 should explore the analyses presented in this paper to understand the strengths
 and weaknesses of the data.  Further, our results indicate that county-level storm
 exposure is not well-characterized by the closest distance that a storm's

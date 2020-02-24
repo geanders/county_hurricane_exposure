@@ -19,7 +19,7 @@ datasets~\parencite{hurricaneexposure}.
 
 We explored potential limitations in these data by comparing them with data
 from other available sources.  For estimates of storm-associated rainfall, we
-compared estimates included in the open-source data with ground-based
+compared data in the open-source package with ground-based
 observations in nine sample counties (Figure~\ref{fig:raincomparison}). Within
 these counties, storm-related rainfall measurements were well-correlated
 between the two data sources, with rank correlations (bottom right of each
@@ -40,18 +40,19 @@ differently. Such cases were rare.
 
 For peak sustained surface wind estimates, we found that the primary wind
 exposure metric in the open-source data generally agreed well with the wind
-radii reported in \ac{HURDAT2}. For most storms, $\ge$90\% of counties were
+radii reported in \ac{HURDAT2}. For most storms, $\>$90\% of counties were
 assigned the same category of wind speed ($<$34~kt; 34\,--\,49.9~kt;
 50\,--\,63.9~kt; $\ge$64~kt) by both data sources
 (Figure~\ref{fig:windcomparison}).  Disagreement was limited to a few storms
 (e.g., Hurricanes Sandy in 2012 and Ike in 2008). For these two storms, the
-modeled wind speed values used in the open-source data somewhat overestimated
-the severity of the storm's winds at landfall but then underestimated the
-extent of 34\,--\,49.9 kt winds from the storm's central track further inland
-(Figure~S2). For epidemiology researchers who would like to conduct sensitivity
-analysis between these two sets of wind data, we have included estimates from
-the \ac{HURDAT2} wind radii as a secondary measure of county-level peak
-sustained wind in the open-source dataset \parencite{hurricaneexposuredata}.
+modeled wind speed in the open-source data somewhat overestimated the severity
+of the storm's winds at landfall but then underestimated, particularly for
+Hurricane Sandy, how far 34\,--\,49.9 kt winds extended from the storm's
+central track further inland (Figure~S2). For epidemiology researchers who
+would like to conduct sensitivity analysis using both sets of wind data,
+we have included estimates from the \ac{HURDAT2} wind radii as a secondary
+measure of county-level peak sustained wind in the open-source dataset
+\parencite{hurricaneexposuredate}.
 
 For flood data, we compared the flood status values included in the open-source
 data to streamflow measurements at \ac{US} Geological Survey gages within nine
@@ -93,9 +94,9 @@ strong geographical patterns were clear. Peak sustained wind exposure had a
 strong coastal pattern, with almost all exposures in counties within about~200
 \si{\kilo\metre} (124~mi) of the coastline. While tropical cyclone rain
 exposure was also more frequent in coastal areas compared to inland areas,
-there were also inland rain exposures in counties that were never classified as
-exposed based on wind. Flood-based exposures were frequently in the
-Mid-Atlantic region, with a pattern that skewed north compared with other
+there were also inland rain exposures in counties that were rarely or never
+classified as exposed based on wind. Flood-based exposures were frequently in
+the Mid-Atlantic region, with a pattern that skewed north compared with other
 exposures. Rain and, to some extent, flood exposures were characterized by a
 pattern defined by the Appalachian Mountains, with fewer exposures west of the
 mountain range than to the east. Almost all tornado-based exposures were in
@@ -105,12 +106,12 @@ for all four hazards available (1996\,--\,2011; Figure~S3).
 
 \subsection*{Agreement across exposure metrics}
 
-Finally, we assessed agreement between exposure classifications for each pair
-of hazards, as well as with a proxy measurement based on
-distance from the storm's track. We found that these exposure classifications
-typically did not agree strongly between pairs of metrics---the set of counties
-identified as ``exposed'' based on one metric often overlapped little with the set
-identified as ``exposed'' by another metric, as storms frequently brought
+Finally, we assessed within-storm agreement between exposure classifications
+for each pair of hazards, as well as with a proxy measurement based on distance
+from the storm's track. We found that these exposure classifications typically
+did not agree strongly between pairs of metrics---the set of counties
+identified as ``exposed'' based on one metric often overlapped little with the
+set identified as ``exposed'' by another metric, as storms frequently brought
 different hazards to different locations. 
 
 Figure~\ref{fig:ivanexposure} shows as an example Hurricane Ivan in 2004.
@@ -142,16 +143,16 @@ had Jaccard indices above 0.6.  The tornado-based metric had universally poor
 agreement with other metrics in county-level classification across the tropical
 cyclones considered.  
 
-There were a few tropical cyclones in which exposure assessment agreed well
-across several of the metrics considered.  For Floyd in~1999 (Figure~S4) and
-Irene in~2011, for example, county-level classification agreed moderately to
-well for all pairs of exposure metrics except those involving the tornado-based
-metric (Figure~\ref{fig:jaccard}). For another set of tropical cyclones (e.g.,
-Ernesto in~2006, and Bertha in~1996, Isabel in~2003), there was moderate to
-good agreement for pairwise combinations of distance, rain, and wind, but poor
-agreement for other combinations of metrics, while for another set of storms
-(e.g., Matthew in~2004 and Katrina in~2005), there was moderate to good
-agreement between distance and rain.  
+There were a few exceptions---tropical cyclones in which exposure assessment
+agreed well across several of the metrics considered.  For Floyd in~1999
+(Figure~S4) and Irene in~2011, for example, county-level classification agreed
+moderately to well for all pairs of exposure metrics except those involving the
+tornado-based metric (Figure~\ref{fig:jaccard}). For another set of tropical
+cyclones (e.g., Ernesto in~2006, and Bertha in~1996, Isabel in~2003), there was
+moderate to good agreement for pairwise combinations of distance, rain, and
+wind, but poor agreement for other combinations of metrics, while for another
+set of storms (e.g., Matthew in~2004 and Katrina in~2005), there was moderate
+to good agreement between distance and rain.  
 
 
 

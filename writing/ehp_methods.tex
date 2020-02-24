@@ -1,15 +1,12 @@
 \section*{Methods and Materials}
 
-For our study domain, we aggregated data for all counties in the eastern half
-of the \ac{US} (Figure~\ref{fig:hurrtracks}).  In terms of storm coverage, we
-included all tropical cyclones between 1988 and 2018 in \ac{HURDAT2}
-\parencite{landsea2013} that came within~250 \si{\kilo\metre} of at least one
-eastern \ac{US} county, therefore including all land-falling or near-land
-Atlantic basin tropical cyclones while excluding storms that never neared the
-\ac{US}. The tracks of the study storms are shown in
-Figure~\ref{fig:hurrtracks}).
-
-\subsection*{Distance-based exposure metric}
+For our study domain, we used counties in the eastern half of the \ac{US}
+(Figure~\ref{fig:hurrtracks}).  We included all tropical cyclones between 1988
+and 2018 that were tracked in \ac{HURDAT2} \parencite{landsea2013} and came
+within~250 \si{\kilo\metre} of at least one eastern \ac{US} county
+(Figure~\ref{fig:hurrtracks}). We therefore including all land-falling or
+near-land Atlantic basin tropical cyclones while excluding storms that never
+neared the \ac{US}.  \subsection*{Distance-based exposure metric}
 
 We first measured how close each storm's central track came to each county. We
 used tracking data from \ac{HURDAT2}, which records the storm center's position
@@ -17,10 +14,10 @@ at the synoptic times of 6:00~am, 12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}.  We
 interpolated this position to~15-\si{\minute} intervals using natural cubic
 spline interpolation~\parencite{hurricaneexposure}. At each~15-\si{\minute}
 interval, we measured the distance between the storm's center and each county's
-population mean center~\parencite{bivand2013applied, countycenters}. We took
+population mean center~\parencite{countycenters}. We took
 the minimum distance for each county as a measure of how close the storm came
 to the county over its lifetime.  We also recorded the time when this occurred
-for each county, which we later used to link observed data on precipitation,
+for each county so we could later link observed data on precipitation,
 flooding, and tornadoes.  To allow matching with data recorded in
 local time (e.g., health data), we converted these times from \ac{UTC} to local
 time~\parencite{countytimezones}.
@@ -40,12 +37,12 @@ by day for each grid point.  This created a daily precipitation total for each
 grid point; these were then averaged for all grid points within a county's~1990
 \ac{US} Census boundaries~\parencite{alhamdan2014environmental, cdcwonder}.
 This process generated daily county-level precipitation estimates for each
-continental \ac{US} county for 1988\,--\,2011 \parencite{cdcwonder}.  We
-matched these county-level daily measurements by date with storm tracks, using
-the date when the storm was closest to each county. Given the location of
-storm-affected counties and the typical timing of tropical cyclones, these
-precipitation measures primarily represent rainfall, although occasionally they
-may represent snowfall or other types of precipitation.  
+continental \ac{US} county for 1988\,--\,2011 \parencite{cdcwonder}.  In this
+study, we matched these county-level daily measurements by date with storm
+tracks, using the date when the storm was closest to each county. Given the
+location of storm-affected counties and the typical timing of tropical
+cyclones, these precipitation measures primarily represent rainfall, although
+occasionally they may represent snowfall or other types of precipitation.  
 
 In the open-source data~\parencite{hurricaneexposuredata}, we provide
 precipitation values at a daily resolution for each county for the period from
@@ -95,30 +92,31 @@ estimates, we identified the peak sustained surface wind in each county over
 the course of each storm.
 
 To validate these modeled county-level peak wind estimates, we compared them
-to the  post-season wind radii values, which have been routinely published
-since 2004 \parencite{knaff2016using}. These wind radii estimate the maximum
+to the  post-season wind radii, which have been routinely published
+since 2004 \parencite{knaff2016using}. These estimate the maximum
 distance from the storm's center that winds of a certain intensity extend. They
 give separate estimates for four quadrants of the storm to capture asymmetry in
 the storm's wind field and are based on a post-season re-analysis that
-incorporates all available data (e.g., satellite data, aircraft reconnaissance and
+incorporates all available data (e.g., satellite data, aircraft reconnaissance, and
 ground-based data if available) \parencite{knaff2016using}. Wind radii are
 estimated for three thresholds of peak sustained surface wind: 64,~50, and~34
 kt.  They therefore allow for the classification of counties into four
 categories of peak sustained surface wind: $<$34~kt; 34\,--\,49.9~kt;
 50\,--\,63.9~kt; and $\ge$64~kt. 
 
-We interpolated the wind radii data to~15-minute increments and
-classified a county as exposed to winds in a given wind speed category if its
-population mean center was within~85\% of the maximum radius for that wind
-speed in that quadrant of the storm. The~85\% adjustment is based on previous
-research that found that this ratio helps capture average wind extents within a
-quadrant from these maximum wind radii \parencite{knaff2016using}.  We compared
-these wind radii--based estimates of county-level peak sustained surface wind
-during a storm with the modeled wind estimates, comparing all study storms
-since 2004 for which at least one study county experienced peak sustained winds
-of~$\ge$34 kt (based on the \ac{HURDAT2} wind radii). For each of these storms,
-we calculated the percent of study counties that were classified in the same
-wind category based on both data sources.
+We interpolated the wind radii data to~15-minute increments using linear
+interpolation \parencite{hurricaneexposuredata} and classified a county as
+exposed to winds in a given wind speed category if its population mean center
+was within~85\% of the maximum radius for that wind speed in that quadrant of
+the storm. The~85\% adjustment is based on previous research that found that
+this ratio helps capture average wind extents within a quadrant based on these
+maximum wind radii \parencite{knaff2016using}.  We compared these wind
+radii--based estimates of county-level peak sustained surface wind during a
+storm with the modeled wind estimates, comparing all study storms since 2004
+for which at least one study county experienced peak sustained winds of~$\ge$34
+kt (based on the post-season wind radii). For each of these storms, we
+calculated the percent of study counties that were classified in the same wind
+category based on both data sources.
 
 \subsection*{Flood- and tornado-based exposure metrics}
 
@@ -129,7 +127,7 @@ Database~\parencite{stormevents}. While this database has recorded storm data,
 particularly tornadoes, since~1950, its coverage changed substantially in~1996
 to cover more types of storm events, including flood
 events~\parencite{stormevents}. We therefore only considered flood metrics of
-hurricane exposure for tropical cyclones in~1996 and later.
+tropical cyclone exposure for storms in~1996 and later.
 
 For each tropical cyclone, we identified all events with event types related to
 flooding (``Flood,'' ``Flash Flood,'' ``Coastal Flood'') or tornadoes
@@ -155,25 +153,27 @@ investigated a sample of study counties, comparing the flood event data during
 tropical storms with streamflow measurements at \ac{US} Geological Survey
 county streamflow gages \parencite{usgsgages, countyfloods, dataRetrieval}.  
 We considered nine study counties, selecting counties geographically spread
-through storm-prone areas of the eastern \ac{US} and with multiple streamflow
-gages reporting data during events. The sample counties were: Baltimore County,
+through storm-prone areas of the eastern \ac{US} and with at least one streamflow
+gage reporting data during all events. The sample counties were: Baltimore County,
 MD; Bergen County, NJ; Escambia County, FL; Fairfield County, CT; Fulton
 County, GA; Harris County, TX; Mobile County, AL; Montgomery County, PA; and
-Wake County, NC. For each county, we first identified all streamflow gages in
-the county with complete data for Jan.~1~1996\,--\,Dec.~31,~2018. If a storm
-did not come within~500~\si{\kilo\metre} of a county, it was excluded from this
-analysis, but all other study storms were considered. 
-For each storm and county, we summed streamflow measurements across all county
-gages to generate daily totals for the five-day window around the storm's
-closest approach. We took the maximum of these daily streamflow totals as a
-measure of the county's maximum daily streamflow during that storm. We also
-calculated the percent of streamflow gages in the county with a daily
-streamflow that exceeded a threshold of flooding (the streamgage's median value
-for annual peak flow) on any day during the five-day
-window. We investigated how these measurements varied between storms with
-associated flood events listings versus storms without an
-event listing for the county, to explore if storms with flood event listings
-tended to be associated with higher streamflow at gages within the county.
+Wake County, NC. 
+
+For each county, we first identified all streamflow gages in the county with
+complete data for Jan.~1~1996\,--\,Dec.~31,~2018. If a storm did not come
+within~500~\si{\kilo\metre} of a county, it was excluded from this analysis,
+but all other study storms were considered.  For each storm and county, we
+summed streamflow measurements across all county gages to generate daily totals
+for the five-day window around the storm's closest approach. We took the
+maximum of these daily streamflow totals as a measure of the county's maximum
+daily streamflow during that storm. We also calculated the percent of
+streamflow gages in the county with a daily streamflow that exceeded a
+threshold of flooding (the streamgage's median value for annual peak flow) on
+any day during the five-day window. We investigated how these measurements
+varied between storms with associated flood events listings versus storms
+without an event listing for the county, to explore if storms with flood event
+listings tended to be associated with higher streamflow at gages within the
+county.
 
 \subsection*{Binary storm exposure classifications}
 
@@ -191,7 +191,7 @@ in our data, since these metrics were based on whether an event was listed in
 the NOAA Storm Events database.  For other exposure metrics, each county was
 classified as exposed to a tropical cyclone based on whether the exposure
 metric exceeded a certain threshold (Table~\ref{tab:exposuremetrics}). We
-picked reasonable thresholds (e.g., the threshold for gale-force wind for the
+picked reasonable thresholds (e.g., the threshold for gale-force wind for 
 wind exposure), but others could be used with the open-source data and its
 associated software. 
 
@@ -213,7 +213,7 @@ data~\parencite{hurricaneexposure}.
 
 We characterized patterns in county-level exposure in the eastern \ac{US} for
 exposure assessment based on each of the measured tropical cyclone hazards
-(cumulative precipitation, peak sustained winds, flooding, and tornadoes).
+(cumulative precipitation, peak sustained wind, flooding, and tornadoes).
 Depending on available exposure data, this assessment included some or all of
 the period from~1988 to~2018 (Table 1). For each binary metric of exposure to a
 tropical cyclone hazard, we first summed the total number of county-level
@@ -246,6 +246,6 @@ years when all exposure data were available (1996\,--\,2011).
 
 \subsection*{Data and code access}
 
-We have posted study data as an open-source R package
-\parencite{hurricaneexposuredata}. We have posted additional data and code at
+We have posted most study data as an open-source R package
+\parencite{hurricaneexposuredata}. We have posted remaining data and code at
 \url{https://github.com/geanders/county_hurricane_exposure}.
