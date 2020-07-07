@@ -1,0 +1,523 @@
+---
+title: "Response to reviewers' comments for *\"Assessing United States county-level exposure for research on tropical cyclones and human health\"*"
+output: bookdown::pdf_document2
+toc: false
+bibliography: hurr_exposure.bib
+header-includes:
+- \usepackage{xcolor}
+- \usepackage{framed}
+- \usepackage{bm}
+- \usepackage{subcaption}
+- \usepackage{gensymb}
+- \renewcommand\familydefault{\sfdefault}
+- \usepackage{sansmath}
+- \usepackage{bm}
+- \usepackage{soul}
+- \sansmath
+- \usepackage{booktabs}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{pdflscape}
+- \usepackage{float}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage{threeparttablex}
+- \usepackage[normalem]{ulem}
+- \usepackage{makecell}
+- \usepackage{fullpage}
+- \usepackage{pdflscape}
+- \usepackage{tcolorbox}
+- \tcbuselibrary{skins,breakable}
+- \usepackage{amsmath}
+- \usepackage{xtab}
+- \usepackage{rotating}
+- \allowdisplaybreaks
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overall comments {-#overall-comments}
+
+\colorlet{shadecolor}{blue!8}
+\begin{shaded}
+\textbf{Associate Editor's Overview:}
+Developing a consistent and comparable metric for exposure to tropical cyclones
+would be a valuable addition to the literature. All reviewers had questions
+about the exposure metric, including the challenges of using county-level data
+where not everyone in a county would have been exposed and the difficulties of
+going from country-level to individual -level risks. Further the comparison of
+different storm hazards could be clarified. The reviewers identified several
+issues where further explanation would increase the accessibility of the
+manuscript.
+\end{shaded}
+
+# Reviewer 1: {-#reviewer-1:}
+
+## Overall comments {-#overall-comments}
+\colorlet{shadecolor}{blue!8}
+\begin{shaded}
+\textbf{Reviewer 1 Overview:}
+I applaud the authors for this work, and their efforts to develop standardized
+ways to measure exposure to tropical cyclones. As a disaster scientist, I very
+much appreciate efforts that promote our collective ability to learn from and
+across disasters to build cumulative science. 
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{Reviewer 1 (R1) Comment 1:}
+I very much appreciate the rationale for authors' decision to focus at the
+county level, especially given the available health-related data. But, since
+tropical cyclones don't necessarily have consistent impacts across an entire
+county, I think the limitations of this decision are worthy of further
+discussion in the discussion section.
+\end{shaded}
+
+**Response:** 
+
+
+\begin{shaded}
+\textbf{R1 Comment 2:}
+Are there opportunities to expand this approach internationally? Some decisions
+(e.g., county-level) data may restrict cross-country comparisons. Can the
+authors discuss this? 
+\end{shaded}
+
+**Response:** 
+
+
+\begin{shaded}
+\textbf{R1 Comment 3:}
+In non-health fields, a county's inclusion in a FEMA major disaster declaration
+or eligibility for public/individual assistance (all of which are somewhat
+reflective of level of damage) is sometimes used as an "exposure" proxy. Have
+you considered if/how your exposure assessments relate to inclusion in a FEMA
+disaster declaration? In other words, does exposure to any of the hazards align
+with the level of damage required for a county to be considered a "disaster
+area" and/or worthy of federal assistance by current federal policy? Does this
+matter?
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R1 Comment 4:}
+Line 95---wondering if there is a better word for "hits" here. Maybe "exposed?"
+
+\textit{Lines 92--95 in the original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"In many cases, these studies analyze multi-year, multi-community data,
+allowing them to estimate average associations over many disasters and to
+explore how a disaster’s characteristics, or the characteristics of the
+community it hits, modify associated health risks (e.g., Anderson and Bell 2010;
+Son et al. 2012; Liu et al. 2017)."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R1 Comment 5:}
+Lines 137--139, suggest breaking into two sentences
+
+\textit{Lines 137--141 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"While other approaches have been developed to incorporate storm
+hazards, particularly wind, into exposure assessment (e.g., Grabich et al.
+2015a; Zandbergen 2009; Czajkowski et al. 2011), there is not yet a standard
+approach, and when different studies use different datasets or storm hazards
+when assessing storm exposure, it becomes difficult to compare and aggregate
+findings."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R1 Comment 6:}
+This is not a comment on the paper, but the authors may also want to consider
+publishing their work in DesignSafe, which is "the web-based research platform
+of the NHERI  [NSF-Funded Natural Hazards Engineering Research Infrastructure]
+Network that provides the computational tools needed to manage, analyze, and
+understand critical data for natural hazards research." It is the data
+repository widely used by interdisciplinary hazards and disaster researchers.
+\end{shaded}
+
+**Response:** 
+
+# Reviewer 2: {-#reviewer-2}
+
+\begin{shaded}
+\textbf{Reviewer 2 overview:}
+Exposure assessment is essential to study health impacts from disasters, but it
+is also a great source of biases due to a lack of a good and fine measure of
+exposures during the chaos. Often, epidemiologists use existing data at large
+population level such as county level weather data which provide no individual
+level exposures but give average exposure at the population level. So it is very
+challenging to draw a good causal inference to health outcomes that measured at
+the individual level. This manuscript is a well-written report with generously
+shared data and programs on US tropical cyclones. This will contribute
+significantly to disaster epidemiology which is still a new area and suffering
+from good exposure ascertainment.
+
+While I enjoyed reading the manuscript very much, I have one question I could
+not figure out clearly.
+
+One objective is to investigate patterns and agreement between different
+exposure measures. I do not clearly understand the value of studying agreement
+between exposures, while each exposure should be measured separately, so both
+individual and overall effects can be assessed.  I do understand using "distance
+from the storm" as exposure is only proxy measure and highly sensitive to
+misclassification, but because direct storm hazards such as rainfall, flood,
+storm surge, and tornado are publicly accessible as authors indicated, authors
+could just simply guide readers to use the best exposure data rather than
+conducting a quite intense analysis. This may be due to my limited knowledge, so
+it would be appreciated if the authors provide explicit explanations on the
+purpose and benefit of the analysis.
+
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{Reviewer 2 (R2) Comment 1:}
+Line 164: Isn’t it obvious to use better exposure measures than proxies? Wind,
+rainfall, tornado, and flood are direct products of storms while distance is
+only proxy of those exposures. Rather than calculating agreement among the
+exposures, it would be important to note that these are independent hazards that
+can come together or come with different intensity and at different time
+windows.
+
+\textit{Lines 164--166 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"They found important differences, concluding that a study may be prone
+to bias from exposure misclassification if distance to the storm track is used
+as a proxy for exposure (Grabich et al. 2015a)."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 2:}
+Line 354: I am not sure why different exposures should be compared and measured
+the agreement. I would just treat each exposure as single independent exposure
+and give a summary score by summing all the exposure with some weighting for
+multiple exposures.
+
+I may not understand the importance of this approach. If so, adding the
+explanation would help readers not to questioning.
+
+\textit{Line 354 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"Finally, we investigated how well exposure assessment agreed across
+these metrics."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 3:}
+Line 394: It looks like the correlation coefficients can be very low if measured
+from 75mm or somewhere around.  This seems to be a significant issue for
+analyzing storms with heavier rainfall using NLDAS-2 data.
+
+\textit{Line 392--394 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"Within these counties, storm-related rainfall measurements were
+well-correlated between the two data sources, with rank correlations (bottom
+right of each graph in Figure 2) between 0.87 and 0.98. "}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 4:}
+Figure 4: I would add Y-axis label “NOAA classification."
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 5:}
+Table 2: This is another confusing table. Not sure what compared here. The
+second column is a mean \# of exposed counties over years and the third column
+seems like showing single storm with the max \# of exposed counties. Not sure
+what info I should digest from this table.
+\end{shaded}
+
+> **Text from Results of original manuscript:**
+"Across the four storm hazards considered, there was wide variation in the
+average number of county exposures per year (Table 2). For tropical cyclone
+tornadoes, there were on average about 40 county exposures per year within our
+study. County exposures were more frequent for tropical cyclone wind exposures
+(>160/year on average), even more frequent for tropical cyclone flood exposures
+(>190/year on average), and most frequent for tropical cyclone rain exposure
+(>290/year on average). For every hazard except tornadoes, we identified at
+least one tropical cyclone that exposed over 250 counties (Table 2). However,
+the largest-extent tropical cyclone varied across hazards: Frances in 2004
+exposed the most counties based on rain, Michael in 2018 based on wind, and Ivan
+in 2004 based on flooding and tornadoes (Table 2)."
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 6:}
+Subsection of Results on \textit{Agreement across exposure metrics}: 
+As stated below, storms bring different hazards to different locations with
+different time. What would be new learning by comparing these different pairs of
+exposure metrics. Somewhat apple and orange comparison. Maybe providing more
+explanation can help what the important learning from this is. I may not catch
+it. Similar comment was added earlier.
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 7:}
+Lines 494--495: Why this agreement is important? Same questions added above
+already, but still wonder what I missed. It seems like the authors try to
+develop an exposure matrix that is common in occupational epidemiology, but it
+is only valid method when the exposures are similar and lead to the same health
+outcomes.  Rain, wind, flood, and tornado should be treated separately, maybe
+except rain and flood. It is possible to be an extreme storm with only severe
+wind without major impacts from other exposures. Tornado is a good example.
+
+\textit{Line 491--495 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"For another set of tropical cyclones (e.g., Ernesto in 2006, and Bertha
+in 1996, Isabel in 2003), there was moderate to good agreement for pairwise
+combinations of distance, rain, and wind, but poor agreement for other
+combinations of metrics, while for another set of storms (e.g., Matthew in 2004
+and Katrina in 2005), there was moderate to good agreement between distance and
+rain."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 8:}
+Line 515: It would be informative to provide correlation coefficient for only
+above 75 mm measures.
+
+\textit{Line 514--515 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"The rainfall data are generally well-correlated with ground-based
+observations, but may sometimes underestimate very high rainfall values (Figure
+2)."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 9:}
+Line 602: This is not a new finding, but how much misclassified would be a good
+question to answer.
+
+\textit{Line 600--602 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"Based on our results, the use of a distance-based metric to assess
+exposure to any of these hazards, or the use of measurements from one hazard as
+a proxy for exposure to any of the other hazards considered, would often
+introduce exposure misclassification."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 10:}
+Lines 626--627: It would still be beneficial to treat each exposure as a single
+variable first and then consider overall impact. Only if each exposure data are
+available.
+
+\textit{Line 626--628 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"For these storms, it may be possible to assess exposure to multiple
+hazards of the storm using a single metric, perhaps even a proxy like the
+distance between the county and the storm’s track."}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+# Reviewer 3: {-#reviewer-3}
+
+\begin{shaded}
+\textbf{Reviewer 3 overview:}
+This paper describes the development of a dataset and R package that can be used
+to assess exposure to tropical cyclone-related hazards (e.g., wind,
+precipitation, flooding) at the county level in the eastern United States, as
+well as a descriptive analysis of county-level exposure to these hazards. This R
+package is novel and I believe of high interest to researchers interested in the
+health effects of tropical cyclones.  I have a few minor suggestions to further
+improve the clarity of the manuscript.
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{Reviewer 3 (R3) Comment 1:}
+Starting on line 128, the authors write "Extreme winds are more common to the
+track's right, where counterclockwise cyclonic winds move in concert with the
+tropical cyclone's forward motion". I think this statement may be specific to
+tropical cyclones in the Northern hemisphere (i.e., those relevant to exposure
+in the US). Would be good to clarify this.
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R3 Comment 2:}
+Line 186: What is meant by the phrase "synoptic times"?
+
+\textit{Lines 137--139 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"\ldots"}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 3:}
+Several of the exposures are calculated for the population mean center of each
+county. From the reference list, it looks like the authors consistently used
+population centers from 2010 throughout the years included in the dataset/R
+package. If so, I suggest clarifying this in the text. 
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 4:}
+In the methods section starting on line 276, the authors describe the flooding
+and tornado data from the NOAA storm events database. I'd suggest providing some
+information about where the events in this database come from (e.g., that they
+are reported events) here in addition to covering it in the discussion.
+
+\begin{quotation}
+\noindent
+\textit{"\ldots"}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 5:}
+Line 294: What is meant by the phrase "traditional tornado event database"?
+
+\begin{quotation}
+\noindent
+\textit{"\ldots"}
+\end{quotation}
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 6:}
+Table 1: I suggest providing the rationale for picking the thresholds for
+classifying continuous exposures into binary ones within the table. 
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 7:}
+Figure 3: The x-axis refers to one of the two wind data sources as "Extended
+Best Tracks." Is this the same thing as the wind radii dataset described in the
+text? Is so, I suggest clarifying this in the figure label.
+\end{shaded}
+
+**Response:** 
+
+# Requests from EHP: {-#requests-from-ehp}
+
+\begin{shaded}
+\textbf{EHP Request 1:}
+Figure 3: Please truncate x-axis scale as you do for Figure S7. Since smallest
+value is $\sim75\%$, this would make the data in the relevant range much easier to
+appreciate.
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 2:}
+Main text figures (general)
+To ensure that figures are accessible to readers with impaired color vision, do not use color as the sole means of conveying information in a figure unless absolutely necessary. Use different symbols, shading/textures, and line patterns instead of (or in addition to) color to distinguish among different data points. Use contrasting colors that can be easily distinguished from each other when the figure is printed in black and white. For details, see: \url{https://ehp.niehs.nih.gov/authors/figures}.
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 3:}
+Figure 3: Please check the contrast between the colors used to indicate numbers
+of counties. If you can see the gradient when printed in black and white it
+should be ok, but some of the differences are very subtle. Truncating the x-axis
+might help with this (if possible.)
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 4:}
+Figure 4: Even with nominally normal color vision and a large high-resolution
+monitor, it is difficult for me to make out the color differences in the
+symbols-- almost all appear black or very dark blue, a dozen or so look yellow,
+and a handful look dark grey. Is there any way to increase the contrast in these
+colors? Would you consider binning into categories instead of using a
+continuous color gradient?
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 5:}
+Figures 5--6: Please check to see if the colors used can be distinguished if
+printed in black and white, and if not, use a “color-blind friendly” palette if
+possible. If this is not feasible, we can request and exemption from
+accessibility requirements, but we try to do this only when alternatives  would
+degrade the information content of  the figure.
+\end{shaded}
+
+**Response:** 
+
+\begin{shaded}
+\textbf{R2 Comment 6:}
+Supplemental Material: Please provide your supplemental material file in Word
+(.docx) format. For additional information, see:
+\url{https://ehp.niehs.nih.gov/authors/supplemental-material}. \end{shaded}
+
+**Response:** 
+
+# References for the response {-#references-for-the-response}
