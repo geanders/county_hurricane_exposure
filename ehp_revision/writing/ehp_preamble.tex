@@ -1,0 +1,69 @@
+\usepackage{graphicx}
+\usepackage[margin=1in, marginpar=2cm]{geometry}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[comma,authoryear,round]{natbib}
+\usepackage[style=authoryear,backend=biber,uniquename=false,maxnames=50]{biblatex}
+\usepackage{nopageno}
+\usepackage{tocloft}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{authblk}
+\usepackage{microtype}
+\usepackage{charter}
+\usepackage[nolist,nohyperlinks]{acronym}
+\usepackage{siunitx}
+\usepackage{color}
+\usepackage[textsize=scriptsize]{todonotes}
+\usepackage{comment}
+
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{sansmath} 
+\sansmath
+
+%\bibliographystyle{abbrvnat}
+\addbibresource{hurr_exposure.bib}
+
+\graphicspath{{../figures/}}
+
+\cftpagenumbersoff{figure}
+\cftpagenumbersoff{table}
+
+\renewcommand\Affilfont{\itshape\small}
+
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+
+\renewbibmacro{in:}{}
+\DeclareFieldFormat{pages}{#1}
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+%  \setunit*{\adddot}% DELETED
+  \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+%\renewcommand*{\acsfont}[1]{\textsc{\MakeLowercase{#1}}}
+
+\newacro{HURDAT2}{revised Atlantic hurricane database}
+\newacro{US}{United States}
+\newacro{NOAA}{National Oceanic and Atmospheric Administration}
+\newacro{CDC}{Centers for Disease Control}
+\newacro{UTC}{Coordinated Universal Time}
+\newacro{NHC}{National Hurricane Center}
+\newacro{NLDAS-2}{North American Land Data Assimilation System Phase 2}
+\newacro{WONDER}{Wide-ranging Online Data for Epidemiological Research}
+\newacro{FIPS}{Federal Information Processing Standard}
+\newacro{NIH}{National Institutes of Health}
+\newacro{USGS}{US Geographical Survey}
+\newacro{CRAN}{the Comprehensive R Archive Network}
+\newacro{NWS}{National Weather Service}
+
+\frenchspacing

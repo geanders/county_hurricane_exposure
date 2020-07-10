@@ -1,0 +1,98 @@
+These data typically give measurements of
+the tropical cyclone center's location [and central pressure / maximum
+windspeed?] at~6-\si{\hour} intervals at synoptic times (i.e., 6:00~am,
+12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}); some landfalling tropical cyclones
+have an additional observation at the time of landfall~\parencite{landsea2013}.
+
+, using the Great Circle %
+(WGS84 ellipsoid) method
+
+We selected re-analysis data because of
+this completeness. 
+
+We selected re-analysis data over other data
+sources as it included data for every county and every day through a continuous
+period of the study (1988\,--\,2011)~\parencite{alhamdan2014environmental,
+cdcwonder}. By comparison, observations from ground-based monitoring networks
+had missing values spatially (i.e., for some study counties), temporally (for
+some days), or both.  
+
+We estimated daily rainfall for each study county by aggregating
+hourly~1/8\si{\degree} gridded data from the \ac{NLDAS-2} precipitation data
+files~\parencite{rui2013nldas}. These data integrate satellite-based and
+land-based monitoring, applying a land-surface model to create a reanalysis
+dataset that is spatially and temporally complete across the continental
+\ac{US}~\parencite{rui2013nldas, alhamdan2014environmental}. To aggregate to
+county-level, the hourly data at each grid point were summed to create a daily
+rainfall total, and these grid point rainfall totals were then averaged across
+all grid points within a county's~1990 \ac{US} Census
+boundaries~\parencite{alhamdan2014environmental, cdcwonder}. These aggregated
+county-level daily precipitation data are also available through the \ac{US}
+Centers for Disease Control's WONDER database [ref] and are available for all
+study counties for 1988\,--\,2011.
+
+When combined with estimates of vulnerability of a
+population to a natural hazard, such measurements of physical exposure can be
+used to calculate risk of human losses from the
+hazard~\parencite{peduzzi2009assessing}.
+
+These measurements
+captured the distance between the storm's central track and each study county
+throughout the storm tracking period. 
+
+To measure storm-associated rainfall in each county, we used re-analysis data.
+Re-analysis data integrate data from multiple sources, including
+satellite-based and ground-based monitoring, using a land-surface model to
+combine data in a dataset that is spatially and temporally complete over a
+certain period [ref]. By comparison, observations from ground-based monitoring
+networks typically have missing values spatially (i.e., for some study
+counties), temporally (for some days), or both. 
+
+We included more days prior to the storm because
+storm-related rains often precede the passing of the storm's center [ref]. 
+
+Ground-based observations of wind speed are problematic for measuring exposure
+to tropical cyclones, as instruments often fail at high wind speed, while
+reanalysis data---often available at hourly or higher resolution---can lack a
+fine enough temporal resolution to capture wind extremes associated with a
+tropical cyclone. 
+A tropical cyclone's rainfall can can begin a day or more before a
+storm and last a day or more after, so this functionality makes it possible to
+quantify the cumulative precipitation throughout several days surrounding the
+storm's approach. 
+
+\subsection*{Case study}
+
+\textit{The societal impact of a disaster depends both on its geophysical
+forcesi, on the population exposed to the hazard, and on the vulnerability of
+those living in the geographical areas it
+affects~\parencite{chakraborty2005population, anderson2003community,
+cutter1996vulnerability}. An estimate of ``physical exposure''---which
+...---can help to jointly capture these facets of disaster impacts [ref, maybe
+the peduzzi one given below?]. As a case study, we measured physical exposure
+based on each metric of exposure and investigated whether conclusions from
+these assessments varied substantially.}
+
+We collected data on the number of electricity-dependent Medicare beneficiaries
+in each study county from the \ac{US} Department of Health \& Human Service's
+emPower Map~2.0~\parencite{empower}. This subpopulation was selected because it
+may be particularly susceptible to health impacts from tropical cyclone
+exposure, especially through the pathway of storm-associated power outages and
+evacuations. We calculated the physical exposure of the electricity-dependent
+Medicare population in each county, based on tropical cyclone assessments using
+each exposure metric (Table~\ref{tab:exposuremetrics}), following
+\citeauthor*{peduzzi2009assessing}~(\citeyear{peduzzi2009assessing}):
+
+\begin{equation}
+E_c = F_c * P_c
+\end{equation}
+
+\textit{\noindent where~$E_c$ is the average yearly physical exposure among
+electricity-dependent Medicare beneficiaries in county~$c$ to tropical cyclone
+exposures based on a given metric,~$F_c$ is the estimated yearly expected
+frequency of tropical cyclone exposures in county~$c$ based on that metric,
+and~$P_c$ is the electricity-dependent Medicare population in
+county~$c$, as of July~2017.}
+
+
+

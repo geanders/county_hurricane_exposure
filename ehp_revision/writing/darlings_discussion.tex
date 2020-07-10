@@ -1,0 +1,141 @@
+To assist with future tropical cyclone studies, we created and published open
+source software with this dataset and accompanying
+tools~\parencite{hurricaneexposuredata, hurricaneexposure}.  Many previous
+studies have used geographical information system software (e.g., ArcGIS) to
+assess exposure to tropical cyclones in the \ac{US}~\parencite{grabich2016,
+zandbergen2009, czajkowski2011, kruk2010}.  Here, we offer methods to map and
+output historic exposure to tropical cyclones that does not require the use of
+proprietary software but instead uses a package written in the R statistical
+programming language~\parencite{R}, which is free and open-source.  Further, by
+including measurements of different hazard exposures in each county for each
+tropical cyclone, this software allows for the development of more complex
+exposure indices or models (e.g., random forests, multivariable generalized
+linear models) that incorporate multiple tropical cyclone hazard measurements.  
+
+[For discussion?] Based on these results, the two data sources were generally
+in agreement, but the analysis highlights the difficulty of assessing
+storm-related flooding at a multi-county, multi-year scale, as flooding can be
+very localized within a county or can \ldots .   
+
+However, these frequency maps, together with evidence from
+specific tropical cyclones (Figures~\ref{fig:ivanexposure}
+and~\ref{fig:jaccard}),  do illustrate the potential for strong differences in
+spatial patterns in tropical cyclone exposures, depending on which tropical
+cyclone hazards are considered.  A few previous studies have sought to
+determine county-level exposure to tropical cyclones over multi-year periods,
+including~\textcite{zandbergen2009}, which estimated exposure in \ac{US}
+counties to all \ac{US} landfalling Atlantic-basin tropical cyclones
+between~1851 and~2003, using both a distance-based metric and a metric that
+combined distance and windspeed, and~\textcite{kruk2010}, which explored
+exposure to hurricane-related winds in the \ac{US}, including inland areas,
+for~1900\,--\,2008.  Our results suggest that such exposure assessments may
+perform well in capturing some tropical cyclone hazards (e.g., wind), but
+likely miss other potentially dangerous tropical cyclone exposures, especially
+for hazards that repeatedly threaten northern or inland counties (e.g., rain,
+flooding).
+
+For example, distance from a tropical cyclone's track is relatively easy to
+measure and has been used as an operational metric of exposure to tropical
+cyclones in previous large-scale studies (examples include ...). Since distance
+itself does not constitute a hazard, distance is meant in these cases as a
+surrogate to capture exposure to hazards from the tropical cyclone. However,
+here we found that in assessing \ac{US} county-level exposure to tropical
+cyclones, distance is, at best, a moderate, and often a very poor, surrogate
+for exposure to the specific tropical cyclone hazards of high wind, extreme
+rainfall, flooding, and tornadoes (Figure~\ref{fig:jaccard}). Therefore, use of
+distance to assess tropical cyclone exposure for impact studies could result in
+problematic exposure misclassification, which could mask true associations,
+even strong associations, between tropical cyclone exposure and outcomes of
+interest in impact studies~\parencite{savitz2016interpreting,
+armstrong1998effect}.  
+
+The use of a single hazard-based metric (e.g., wind) could cause similar
+problems if the impact is driven, at least in part, by a different hazard or by
+multiple hazards of the tropical cyclone.
+
+In creating this hurricane exposure dataset, we aimed for data that are
+available for all eastern \ac{US} counties.
+
+($<$90\% of counties classified into the same wind categories by the two
+sources of wind estimates)
+
+The wind radii, unlike the modeled wind speeds, are based on a storm-specific
+re-analysis of available data. They therefore have the advantage that they can
+capture unusual patterns in specific storms; their main disadvantage is that
+they provide categorical, rather than continuous, estimates of wind speed, and
+in many cases researchers might prefer more precise estimates of storm wind
+speeds. However, since the wind radii data may be useful in some cases as
+either a primary metric or for sensitivity analysis, we have included
+county-level wind estimates for each storm based on these wind radii, in
+addition to the continuous modeled windspeeds, in the open-source data
+\parencite{hurricaneexposuredata}.
+
+between county-level classifications of tropical cyclone exposure was typically
+low to moderate across the  five exposure metrics we considered 
+
+If measurements of one storm hazard are used as a proxy to capture exposure to
+a different hazard, or a non-hazard proxy like distance to the storm track is
+used to assess exposure to storm hazards, the resulting exposure
+misclassification could be differential (i.e., associated with the outcome of
+interest or with factors associated with risk of the outcome of interest). 
+
+
+Therefore for most tropical cyclones, since exposure assessments often differ
+across storm hazards, as well as between each storm hazard and a distance-based
+proxy measurement, exposure misclassification is a potential risk.
+
+\subsection*{Case study}
+
+In the case study, we found differences in estimates of expected rates of
+physical exposure to tropical cyclones among a population when exposure
+assessment was based on different storm exposure metrics
+(Figure~\ref{fig:topelecdependexposure}).  These results are informative
+because previous assessments of physical exposure to tropical cyclones have
+often concentrated on storm winds and storm proximity. For example, a global
+study of exposure and vulnerability to natural hazards used a combination of
+windspeed above a certain threshold and distance from the storm's track to
+assess exposure~\parencite{peduzzi2009assessing}. \textbf{[Also check other
+Peduzzi study]}  While many storm impacts might be most strongly linked to wind
+hazards, there is a growing recognition of the potential risks of adverse
+health outcomes and property damage from rain- and flood-related tropical
+cyclone hazards in the \ac{US}~\parencite{smith2009}.  Assessments based solely
+on wind and distance from the storm track therefore may underemphasize
+potentially dangerous exposures to certain regions of the \ac{US}, particularly
+inland locations.  In fact, based on our assessment of physical exposures to
+tropical cyclones among electricity-dependent Medicare beneficiaries, the
+highest expected physical exposure under any metric was measured for
+Philadelphia County, PA, under the flood metric
+(Figure~\ref{fig:topelecdependexposure}).  While this county has a
+similar-sized population of electricity-dependent Medicare beneficiaries as
+Miami-Dade County, FL (Figure~\ref{fig:topelecdependexposure}), the inland
+county of Philadelphia has frequent storm-related flood events, which results
+in a very high expected physical exposure among electricity-dependent Medicare
+beneficiaries in the county. This exposure is poorly captured by most of the
+other exposure metrics, under which Philadelphia County is not included in the
+top ten counties for expected rates of physical
+exposure~(Figure~\ref{fig:topelecdependexposure}).
+
+
+\textit{Previous research has highlighted the range of impacts that tropical cyclones
+can have in \ac{US} communities. However, studies of tropical cyclone exposures
+and their impacts have varied widely in how they assess exposure, and there was
+not previously a widely available public dataset that captured county-level
+exposure to multiple storm hazards. Here we provide open-source tropical
+cyclone hazard-related measurements for a large collection of historical
+Atlantic-basin cyclones, aggregated at the county level to align with the
+spatial scale at which much health-related data is collected.}
+
+\textit{Further, we investigated agreement in exposure assessment across these metrics
+when applied individually. We found large differences in which counties are
+exposed to different hazards of tropical cyclones and that distance is, at
+best, a moderate, and often a very poor, surrogate for exposure to the specific
+tropical cyclone hazards of high wind, extreme rainfall, flooding, and
+tornadoes. Use of distance as a surrogate for any of these hazards, or exposure
+assessment based on one hazard when the pathway for health impacts is in part
+or full through another storm hazard, could lead to exposure misclassification.
+In the case of tropical cyclone risk and impact studies, including
+epidemiological studies, this would result in biased estimates.  Our findings
+highlight the importance of clarifying the potential pathway from tropical
+cyclone hazards to health impacts when conducting tropical cyclone
+epidemiological studies, and then basing exposure assessment on these hazards.}
+

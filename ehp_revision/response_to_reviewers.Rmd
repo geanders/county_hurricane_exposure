@@ -2,7 +2,7 @@
 title: "Response to reviewers' comments for *\"Assessing United States county-level exposure for research on tropical cyclones and human health\"*"
 output: bookdown::pdf_document2
 toc: false
-bibliography: hurr_exposure.bib
+bibliography: writing/hurr_exposure.bib
 header-includes:
 - \usepackage{xcolor}
 - \usepackage{framed}
@@ -53,6 +53,25 @@ issues where further explanation would increase the accessibility of the
 manuscript.
 \end{shaded}
 
+Thank you for the opportunity to revise and resubmit this manuscript. We
+appreciate the helpful suggestions from the reviewers for clarifying and
+deepening the discussion in the paper.
+
+Broadly, we have: 
+
+1. Added discussion on the question of county-level versus individual-level
+data. 
+2. Added explanations for how our comparisons among different storm hazards
+can help epidemiologists in designing studies and statistical analysis.
+3. Added a small analysis of the correlation in rainfall metrics specifically
+in cases of high rainfall ($\ge75$ mm of cumulative rainfall in the county
+associated with the storm), to deepen the discussion of potential disagreement
+in continuous measures of rainfall during extreme conditions. 
+4. Changed labeling, axis range, and other presentation details for some
+figures, as well as confirmed that the color scales will be accessible.
+5. Corrected typos and improved wording throughout based on suggestions of the
+reviewers.
+
 # Reviewer 1: {-#reviewer-1:}
 
 ## Overall comments {-#overall-comments}
@@ -78,6 +97,30 @@ discussion in the discussion section.
 
 **Response:** 
 
+- Ecological fallacy vs individual fallacy, especially in the disaster context
+- Spatial misalignment / ecological effects of aggregating data at the county
+(or other geopolitical) level. 
+- Could be particularly problematic in some high-risk areas, because of the 
+"long and narrow" characteristics of island counties. Dare County, Key West. 
+
+We think this is a very interesting question for disaster epidemiology, as
+while there remains potential for ecological bias, the potential pathways for
+health effects may also pass through damage in the individual's community beyond
+their residence. For example, damage to major roads in the community might make
+it harder for many residents to reach medical care in the aftermath of the
+storm, even if their home did not experience extensive destruction. Similarly,
+since power is provided over a network, conditions in an individual's community
+can be important in determining risk of long-term outages (does Seth have
+something on this?). As another example, if hospitals in the community are 
+over capacity or have to evacuate, this could increase health risk for people in 
+a fairly large "catchment" area for that hospital. 
+
+Therefore, while we agree that individual-level data would in many cases be 
+helpful for tropical cyclone epidemiology, the ideal might be to design studies 
+that integrate both community-level and individual-level metrics of exposure. 
+This could help in determining if there are risks introduced to individuals based
+on storm-related hazards in their broader community, after controlling for the 
+hazards experienced directly at their homes.
 
 \begin{shaded}
 \textbf{R1 Comment 2:}
@@ -87,6 +130,17 @@ authors discuss this?
 \end{shaded}
 
 **Response:** 
+
+- Differs by exposure metric. Easier for some (wind, rain) than for others (flood, 
+tornado)
+- For rain, we use a re-analysis product only available for the continental US (right?).
+However, there are similar gridded re-analysis products available for other regions 
+worldwide that could be used in a similar way.
+- For wind, the wind model could be generalizable with some tweaks. These include: 
+  + More landmasks
+  + Direction of storm movement for Northern vs Southern Hemispheres
+  + Different wind averaging periods for the recorded best tracks data in different 
+  storm basins.
 
 
 \begin{shaded}
@@ -102,6 +156,45 @@ matter?
 \end{shaded}
 
 **Response:** 
+
+This is a great question, and we are aware of a number of studies on the
+societal impacts of tropical cyclones that have used FEMA disaster declarations
+to assess county-level exposure to tropical cyclones [refs]. 
+
+However, evidence from prior tropical cyclone epidemiology that doing so is
+problematic and should be avoided [@grabich2015measuring]. FEMA's disaster
+declarations are issued to provide assistance, based on damage assessment, to
+individuals or the entire public in certain locations where catastrophes
+overwhelm the state or local government [@mccarthy2014fema], and any use of them
+for exposure assessment is secondary. Due to the political nature of disaster
+declaration process, these declarations are often subject to many political and
+economic factors [@mccarthy2014fema; @logue1981research]. One epidemiological
+study specifically focused on exposure assessment for tropical cyclone
+epidemiology and compared use of FEMA declarations with other methods of
+exposure assessment, including one based directly on the storm hazard of wind
+[@grabich2015measuring]. They found that exposure assessment based on FEMA
+declarations tended to overassign counties to be "exposed," resulting in false
+positives [@grabich2015measuring]. A further concern is that, given the
+political and economic nature of these declarations, there is likely variation
+across time and geography in the likelihood of a given exposure resulting in a
+disaster declaration. This is particularly worrisome for a study that seeks to
+explore risk across multiple years and affected communities.
+
+We have added some discussion of this point... 
+
+- Future research could expand the work by [@grabich2015measuring] to determine
+the extent of these issues with use of FEMA disaster declarations for
+epidemiological exposure assessment. This would need to go beyond the comparison
+with exposure assessment based on storm hazards, because sometimes the
+characteristics of the affected community modifies the amount of disaster that
+results from hazards of a certain severity. For example, a community that it
+exposed often might be more "hardened" against damage from the storm (any work
+from Seth on this) and so might experience less infrastructure damage from a
+tropical cyclone with certain characteristics compared to a community that is
+rarely exposed to tropical cyclones. One interesting direction would be to
+investigate if there is evidence of differences in probablity of disaster
+declarations at geopolitical boundaries, like when comparing counties on either
+side of a state border.
 
 \begin{shaded}
 \textbf{R1 Comment 4:}
@@ -120,6 +213,15 @@ Son et al. 2012; Liu et al. 2017)."}
 \end{shaded}
 
 **Response:** 
+
+Thank you for this suggestion. We have changed the wording in this sentence: 
+
+> **Text in revised manuscript (relevant change in bold):**
+"In many cases, these studies analyze multi-year, multi-community data, allowing
+them to estimate average associations over many disasters and to explore how a
+disaster’s characteristics, or the characteristics ofthe **affected
+communities**, modify associated health risks (e.g., Anderson and Bell 2010; Son
+et al. 2012; Liu et al. 2017)."
 
 \begin{shaded}
 \textbf{R1 Comment 5:}
@@ -140,6 +242,16 @@ findings."}
 
 **Response:** 
 
+This is a great suggestion. We have split the cited sentence into two sentences:
+
+> **Text in revised manuscript:**
+"While other approaches have been developed to incorporate storm
+hazards, particularly wind, into exposure assessment (e.g., Grabich et al.
+2015a; Zandbergen 2009; Czajkowski et al. 2011), there is not yet a standard
+approach. When different studies use different datasets or storm hazards
+when assessing storm exposure, it becomes difficult to compare and aggregate
+findings."
+
 \begin{shaded}
 \textbf{R1 Comment 6:}
 This is not a comment on the paper, but the authors may also want to consider
@@ -151,6 +263,8 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 \end{shaded}
 
 **Response:** 
+
+Great idea. We are investigating sharing this work in this repository. 
 
 # Reviewer 2: {-#reviewer-2}
 
@@ -183,6 +297,58 @@ it would be appreciated if the authors provide explicit explanations on the
 purpose and benefit of the analysis.
 
 \end{shaded}
+
+Thank you for this suggestion, and we can see that we could have more clearly 
+articulated in the original manuscript how our assessment of patterns in and 
+among exposures to specific hazards can help epidemiologists to design their
+studies and the statistical methods to analyze the resulting data. 
+
+1. If exposure to the different hazards strongly agrees (i.e., when a county is 
+exposed to one hazard, they are typically also exposed to a second), this would
+have several implications for epidemiological research, especially for multi-year
+studies: 
+  + From a statistical modeling point of view, if you tried to include each 
+  hazard as a separate independent variable, you would run into problems with 
+  collinearity if fitting the study data with a generalized linear model or other
+  regression model. One implication of this is that the confidence intervals on 
+  effect estimates for the two variables would be very inflated, because the model
+  would struggle to figure out which of the two variables the weight should be placed
+  on, and so this uncertainty would be reflected in the size of the associated 
+  confidence intervals.
+  + If you see an effect, it would be very hard to try to determine if the causal 
+  pathway goes through the first hazard or the second. To mitigate effects, it is 
+  important to understand the pathway through which they happen, and it might be easier
+  to get clues towards pathways if the hazards are better separated. (Analogy: if you
+  were able to conduct a controlled experiment to look at the effects of each hazard, 
+  jointly and in combination, you would design separation in the assignment of these
+  treatments, so you could distinguish. We can't do that because we are limited to 
+  an observational analysis, but the area of causal inference is doing a lot to 
+  explore how we can design observational studies and analyze data to come closer to 
+  what we might be able to see with a randomized control study, and which of those methods
+  we might be able to use for tropical cyclone epidemiology will depend on the interplay of
+  these patterns of exposures.)
+2. These results will not be surprising to an atmospheric scientist / disaster researcher,
+but there are environmental epidemiologists who have done research on other exposures and
+are now starting to study tropical cyclones (session at ISEE, for example). It is useful 
+for epidemiologists entering into tropical cyclone research to understand these facets of
+tropical cyclone exposure, including the distinction between the very coastal wind exposures
+and other hazards that tend to reach further inland. 
+3. There are epidemiological studies that have used only one hazard for exposure assessment.
+This has most often been the case for wind. If this exposure assessment is meant to 
+capture "tropical cyclone exposure" in general, with all the hazards that are related to 
+tropical cyclones, then there is the chance for exposure misclassification if this single
+hazard is used. 
+4. In the past, it was a very complex issue to try to pull together data on 
+all these hazards. We agree that now that we have provided a dataset with all of them, 
+epidemiologists should be thinking about multi-hazard analyses. However, there still 
+will be some barriers to that. [Recent work on multi-pollutant exposures and the complexities
+associated with that.] If one of the hazards dominates in explaining associated health 
+risk, then in some cases it might be reasonable to focus on that hazard, but in that 
+case it is critical, based on our results, to remember that the exposure assessment is
+not capturing all hazards of the storms.
+
+We have moved other suggestions that you sent in "Track Changes" of the Word 
+document for the original manuscript and address each in detail below.
 
 **Response:** 
 
@@ -228,6 +394,51 @@ these metrics."}
 
 **Response:** 
 
+As we note in our general response to your comments, we agree in general with your
+instinct here. However, there are some subtle points to note. 
+
+First, we understand the potential appeal of creating a single exposure 
+summary score based on a summation of exposures. This simplifies some of the 
+statistical modeling, for example, and also provides a single exposure estimate to 
+provide as the key study conclusion. However, in many areas of tropical cyclone epidemiology, 
+it is unlikely that exposure to each type of hazard should be given equal weight. For 
+example, an analysis of respiratory health in the months after the storm might hypothesize
+a strong connection with flooding, and smaller connections with rainfall and winds (through
+the pathway of property damage). Use of a pre-defined summation of exposure to each hazard
+would mask some of the potential association. 
+
+While a summary statistic could be defined that adds a weight to each exposure, it would
+often be unclear *a priori* what weight each hazard exposure should be given. A better 
+method might be to use a regression framework, where each hazard exposure is included as
+a separate explanatory variable, and the model uses the observed data to determine the 
+appropriate weight for each hazard in terms of modifying risk to the outcome of interest. 
+To explore the influence of multiple concurrent hazards, interaction terms could be added.
+
+However, if our analysis had found that hazard exposures follow very similar patterns, in 
+terms of the counties exposed during a storm, then this strong agreement would result in 
+a number of problems in fitting and interpreting these types of models. First, strong
+agreement in two or more of the explanatory variables in a regression model leads to 
+collinearity, which among other implications often leads to a large inflation of confidence
+intervals for the effect estimates of the correlated explanatory variables. Further, if 
+the hazard exposures were in strong agreement, then it would be difficult or impossible to
+disentagle the effects of the separate hazards, as a strong effect for one would be 
+impossible to interpret with confidence, since the strong agreement in the data (and resulting
+low co-variability in the variables in the data) could cause the model to mistakenly 
+attribute the effect of one hazard to the other. Further, it may become impossible in this
+case to estimate synergistic effects between the two, as an indicator of an interaction
+between the two exposures would be almost collinear with the two main effects.
+
+In our analysis, we find that this is usually not the case for the four tropical cyclone 
+hazards that we consider. Instead, we find that for most storms, the hazards are fairly 
+well-separated in terms of the counties they effect. There is a particularly strong pattern
+where inland counties can be exposed to extreme rain and flooding, but not wind. This 
+separation opens the door for some interesting study designs and statistical modeling. 
+For example, these patterns suggest that a study could investigate whether storm-associated
+rains alone create a health risk, as there are many exposures with only rain in inland 
+counties, and so health associations could be explored here and contrasted with coastal 
+areas that experienced both wind and extreme rain.
+
+
 \begin{shaded}
 \textbf{R2 Comment 3:}
 Line 394: It looks like the correlation coefficients can be very low if measured
@@ -245,6 +456,33 @@ right of each graph in Figure 2) between 0.87 and 0.98. "}
 \end{shaded}
 
 **Response:** 
+
+This is a great idea. In the original manuscript, we describe this lower correlation
+at higher precipitation values through the use of examples from specific storms, and
+discuss the potential reasons for it, but measuring the correlation specifically within
+these higher-precipitation events would add more quantitative evidence to this discussion.
+
+Here is the text where we discuss this point in the original manuscript:
+
+> **Text in original manuscript:**
+"There was some evidence that our primary rainfall metric may tend to
+underestimate rainfall totals in storms with extremely high rainfall, based on
+a few heavy-rainfall storms in Harris County, TX, Mobile County, AL, Charleston
+County, SC, and Wake County, NC (Figure 2)."
+
+> **Text in original manuscript:**
+"The rainfall data are generally well-correlated with ground-based observations,
+but may sometimes underestimate very high rainfall values (Figure 2). When
+rainfall data is used to create binary exposure classifications, this
+disagreement is unlikely to influence results, as both data sources agree in
+identifying these as storms with high rainfall, but would be important to
+consider for cases that include rainfall as a continuous measurement."
+
+[Why we think this is happening... Re-analysis product uses a model to integrate
+data from multiple sources and so might be likely to pull values back toward 
+the "typical", and so oversmooth very extreme values.]
+
+Here is the text and analysis we have added on this point in the revised manuscript:
 
 \begin{shaded}
 \textbf{R2 Comment 4:}
@@ -312,6 +550,28 @@ rain."}
 \end{shaded}
 
 **Response:** 
+
+[Check: *exposure matrix* in occupational epidemiology...]
+
+[New advances in multi-pollutant analysis.]
+
+[Some of the hazards could create similar risks, if they converge on a common
+pathway of risk. For example, if pathway is through stress from property damage,
+individually and in the county, then several hazards could indeed lead to the
+same health outcomes (e.g., PTSD, other psychological markers, risk of acute
+cardiovascular outcomes, etc.). One example is extreme level of destruction both
+from wind (Hurricane Andrew, Hurricane Hugo), from river flooding associated
+with among of precipitation (Hurricane Floyd, Hurricane Florence), and from
+flash flooding associated with the rate of precipitation (Virginia storms).]
+
+[A better future direction might be through regression models with multiple
+explanatory pathways. This allows the model to fit different weights to each. Other
+models can also be explored, like regression trees, which might have an easier time
+capturing non-linearity (if exposure is included as a continuous value, as with 
+wind and rain) and interactions when there are co-exposures to two or more hazards.
+Both of these are able (and will) either exclude or give a very low weight to an 
+explanatory variable that does not help much in explaining variation in the health 
+outcome.]
 
 \begin{shaded}
 \textbf{R2 Comment 8:}
@@ -392,15 +652,28 @@ in the US). Would be good to clarify this.
 
 **Response:** 
 
+You are right, the opposite would be try in the Southern hemisphere. This
+difference is driven by the Coriolis effect on cyclonic rotation, in which the
+rotation of the earth diverts winds as they move toward the low pressure center
+of the cyclone. We have edited the text to specify that this statement is
+specific to the Northern Hemisphere:
+
+> **Text in revised manuscript (relevant addition in bold):**
+"**In the Northern Hemisphere,** extreme winds are more common to the track's
+right, where counterclockwise cyclonic winds move in concert with the tropical
+cyclone's forward motion."
+
 \begin{shaded}
 \textbf{R3 Comment 2:}
 Line 186: What is meant by the phrase "synoptic times"?
 
-\textit{Lines 137--139 from original manuscript:}
+\textit{Lines 185--187 from original manuscript:}
 
 \begin{quotation}
 \noindent
-\textit{"\ldots"}
+\textit{"We used tracking data from HURDAT2, which records the storm center’s
+position at the synoptic times of 6:00 am, 12:00 pm, 6:00 pm, and 12:00 am
+Coordinated Universal Time (UTC)."}
 \end{quotation}
 \end{shaded}
 
@@ -423,9 +696,17 @@ and tornado data from the NOAA storm events database. I'd suggest providing some
 information about where the events in this database come from (e.g., that they
 are reported events) here in addition to covering it in the discussion.
 
+\textit{Lines 276--281 from original manuscript:}
+
 \begin{quotation}
 \noindent
-\textit{"\ldots"}
+\textit{"To identify flood- and tornado-based tropical cyclone exposures in US
+counties, we matched storm tracks with event listings from the National Oceanic
+and Atmospheric Administration (NOAA)’s Storm Event Database (NOAA NCEI 2020).
+While this database has recorded storm data, particularly tornadoes, since 1950,
+its coverage changed substantially in 1996 to cover more types of storm events,
+including flood events (NOAA NCEI 2020). We therefore only considered flood
+metrics of tropical cyclone exposure for storms in 1996 and later."}
 \end{quotation}
 \end{shaded}
 
@@ -435,9 +716,13 @@ are reported events) here in addition to covering it in the discussion.
 \textbf{R2 Comment 5:}
 Line 294: What is meant by the phrase "traditional tornado event database"?
 
+\textit{Lines 294--295 from original manuscript:}
+
 \begin{quotation}
 \noindent
-\textit{"\ldots"}
+\textit{"The tornado observations from this dataset form a traditional tornado
+event database for the US, and so we did not further validate the tornado event
+data."}
 \end{quotation}
 \end{shaded}
 

@@ -1,0 +1,239 @@
+\section*{Discussion}
+
+Epidemiologic studies can help characterize which health risks are elevated
+during disasters, to what degree, and for
+whom~\parencite{ibrahim2005unfortunate, noji2005disasters}.  As a result, these
+studies help improve disaster preparedness and
+response~\parencite{noji2005disasters}.  However, tropical cyclones are
+multi-hazard events, making it complicated to measure exposure and so to
+conduct multi-community, multi-year studies leveraging large administrative
+datasets.  Here, we provide open-source county-level data for several tropical
+cyclone exposures and explore limitations in that data.  
+Further, we explore patterns in storm exposure classifications based on
+different metrics, and we find that county-level tropical cyclone exposure
+assessments vary substantially when using different metrics.
+Our results can inform exposure assessment for future county-level studies of
+the health risk and impacts associated with tropical cyclones exposure as
+well as provide insights to inform epidemiologic study design.  
+
+\subsection*{Exposure assessment data and software}
+
+The open-source data generally correspond well with data from other potential
+sources (Figures~\ref{fig:raincomparison}\,--\,\ref{fig:floodcomparison}), but
+there are caveats. The rainfall data are generally well-correlated with
+ground-based observations, but may sometimes underestimate very high rainfall
+values (Figure~\ref{fig:raincomparison}). When rainfall data is used to create
+binary exposure classifications, this disagreement is unlikely to influence
+results, as both data sources agree in identifying these as storms with high
+rainfall, but would be important to consider for cases that include rainfall as
+a continuous measurement. 
+
+The peak sustained wind estimates are based on modeled, rather than observed,
+values, and while the modeled wind data generally agree well
+(Figure~\ref{fig:windcomparison}) with post-analysis maximum wind radii
+\parencite{landsea2013}, there were a few storms with some discrepancies. These
+storms---for example, Hurricane Sandy in 2012 and Hurricane Ike in 2008---were
+unusually large systems for which high winds persisted well inland from
+landfall (Figures~\ref{fig:windcomparison} and~S2). 
+
+For the flooding data, we found that flood event status, as determined based on
+the NOAA Storm Events listings, typically agreed with measurements from
+\ac{USGS} streamgages, with a flood event more likely to be listed if a storm
+elevated streamflow at streamgages across the county
+(Figure~\ref{fig:floodcomparison}).  However, there are differences between the
+two flooding datasets, and these highlight both the difficulty of measuring
+flood exposure at the county level and inherent challenges in using data from a
+storm event database for epidemiologic exposure assessment.  For example, there
+was one storm in Fulton County, GA, for which there was high streamflow but not
+an associated flood event listing (Hurricane Ida, 2009).  This storm occurred
+in November 2009, following a month with historic rainfall and flooding in
+Georgia~\parencite{shepherd2011overview}.  In this case, the flooding
+associated with Ida was incorporated into an ongoing flood event listing, with
+a start date well before the five-day window we used to temporally match storm
+event listings with tropical cyclone tracks for our data. 
+
+This disagreement highlights the difficulty of large-scale pairing of storm
+tracks with storm event listings---without criteria for temporally matching
+event start dates to storm dates, many false positives would be
+captured, for which the occurrence of a storm in the midst of an ongoing 
+event might be improperly attributed to the storm.  However, distance
+and time restrictions, like those we used in matching NOAA Storm Event listings
+with tropical cyclone locations and dates, do cause 
+occasional false negatives, as for Hurricane Ida in Fulton County, GA, where a
+storm contributes meaningfully to an ongoing event, but the event is not
+captured for the storm in the exposure data because its start date is not
+close in time to the storm's date.  
+
+There are further limitations for the flood and tornado data---these data came
+from the \ac{NOAA} Storm Events database, which, while a widely-used database
+of events maintained by \ac{NOAA}, is based on reports, and so may be prone to
+underreporting~\parencite{Ashley2008flood, Curran2000}, especially in
+sparsely-populated areas~\parencite{Witt1998, Ashley2007}, as well as to other
+reporting errors. 
+
+While these are important caveats for the data, we selected these data sources
+as among the best currently available for measuring each of these hazards
+consistently and comprehensively at a multi-county, multi-year scale. In
+addition to providing tropical cyclone exposure metrics for individual hazards,
+this dataset and its associated software allow users not only to access
+measurements for single hazards, but also to create tropical cyclone exposure
+profiles based on multiple hazards or to craft exposure indices that combine
+hazard metrics~\parencite{chakraborty2005population, peduzzi2009assessing}.
+This functionality can be critical, as different hazards of tropical cyclones can
+act synergistically in causing impacts~\parencite{smith2009}.  
+
+
+\subsection*{Patterns in tropical cyclone exposures}
+
+We found average exposures to different tropical cyclone hazards differed
+geographically (Figure~\ref{fig:averageexposure}). These patterns were not
+unexpected based on what is known about tropical cyclone hazards, but still
+highlight variations that are critical to consider in designing studies and
+statistical analysis for tropical cyclone epidemiology. Further, they
+demonstrate the need for multi-hazard exposure datasets for tropical cyclone
+epidemiology, especially in capturing inland risks. 
+
+Tropical cyclone wind exposures had a strong coastal pattern, which is
+consistent with the dramatic decrease in wind intensity that typically
+characterizes the landfall of tropical cyclones.  Tropical cyclone rain
+exposures tended to extend further inland compared to wind exposures, up to
+the Appalachian mountains. This agrees with previous research indicating that
+the Appalachian mountains' topography both enhances precipitation during
+tropical cyclones and provides hydrological conditions for severe
+flooding~\parencite{rees2001}.  Almost all tropical cyclone tornado exposures
+were in southern coastal states, consistent with previous evidence that
+tropical cyclone-related tornadoes typically occur to the right of tropical
+cyclone tracks in Atlantic-basin \ac{US} storms~\parencite{moore2012}.  It is
+important to note, however, that the exposure averages we calculated may be
+limited as estimates of long-term frequencies, as tropical cyclones follow
+decadal patterns~\parencite{kossin2007more} that may not adequately captured in
+the available data. 
+
+\subsection*{Agreement between exposure metrics}
+
+We found that tropical cyclones tended to bring different hazards to different
+counties, and so agreement was typically low between distance-based
+tropical cyclone exposure assessment and each of the single hazard-specific
+exposures, as well as between pairs of hazard-specific metrics
+(Figures~\ref{fig:ivanexposure}\,--\,\ref{fig:jaccard} and S4).  These
+findings align with previous results from atmospheric science and related
+fields on the characteristics of tropical cyclones. While tropical cyclone
+rainfall and windspeed can be well-correlated when the tropical cyclone is over
+water~\parencite{cerveny2000}, this relationship often weakens once the
+hurricane has made landfall~\parencite{jiang2008}.  Fast-moving tropical
+cyclones heighten risk of dangerous winds inland~\parencite{kruk2010},
+while slow-moving tropical cyclones are likely to bring more
+rain~\parencite{rappaport2000} and may cause more damage because of sustained
+hazardous conditions~\parencite{rezapour2014}. Further, while the likelihood
+and extent of flooding during a tropical cyclone is related to the tropical
+cyclone's rainfall, it is also driven by factors like top soil saturation and
+the structure of the water basin's drainage network~\parencite{chen2015,
+rees2001}. 
+
+Based on our results, the use of a distance-based metric to assess exposure to any of
+these hazards, or the use of measurements from one hazard as a proxy for
+exposure to any of the other hazards considered, would often introduce exposure
+misclassification. This conclusion reinforces similar findings from a study of
+Florida's 2004 storm season~\parencite{grabich2015measuring}.  For some
+studies, such exposure misclassification might plausibly be differential.  For
+example, tropical cyclone wind exposures tend to be concentrated in counties
+near the coast, while tropical cyclone rain exposures sometimes extend well
+inland.  If the etiologically-relevant exposure for a health outcome is extreme
+rainfall but exposure is classified based on measurements of wind, the
+probability of being misclassified as unexposed would be higher in inland
+counties, while the probability of being misclassified as exposed would be
+higher in coastal counties. If coastal counties differ from inland counties in
+either the outcome of interest or in factors associated with risk of that
+outcome, exposure misclassification would be
+differential~\parencite{savitz2016interpreting}.  Such differential exposure
+misclassification could bias estimates of tropical cyclone effects either
+towards the null (estimating a lower or null association compared to the true
+association that exists) or away from the null (estimating a larger association
+than actually exists)~\parencite{savitz2016interpreting, armstrong1998effect}.  
+
+We did find a small set of tropical cyclones for which for which
+agreement was high across several single-hazard exposure assessments (e.g.,
+Floyd in~1999, Irene in 2011, Hannah in~2008, Bertha in~1996; Ernesto in~2006
+(Figure~\ref{fig:jaccard})).  Hurricanes Floyd in~1999 and Irene in~2011 both
+made their first \ac{US} landfall in North Carolina at minor hurricane
+intensity (Category~2 and~1, respectively) and then skimmed the eastern coast
+of the \ac{US} north through New England, bringing substantial rainfall to much
+of the eastern coast from North Carolina north and causing extensive inland
+flooding in North Carolina (Floyd) and New England
+(Irene)~\parencite{avila2013atlantic, lawrence2000atlantic}.  Hurricanes Hannah
+in~2008, Bertha in~1996, and Ernesto in~2006 also followed the eastern
+coastline. For these storms, the tropical cyclones' persistent proximity to
+water may have helped maintain wind speeds in similar patterns to rain and
+distance-based exposures, resulting in more similarities across
+exposure assessments compared to other tropical cyclones.  For these storms, it
+may be possible to assess exposure to multiple hazards of the storm using a
+single metric, perhaps even a proxy like the distance between the county
+and the storm's track.  However, for these storms it may be difficult to
+untangle the contribution of each hazard to the overall effect of the storm,
+given that several hazards have similar geographical patterns. 
+
+\subsection*{Limitations}
+
+The dataset presented here does have several limitations, in addition to the
+caveats previously discussed. First, the dataset is not comprehensive of all
+tropical cyclone hazards. For example, coastal counties can experience
+dangerous storm surge, which is not specifically covered in this dataset
+(although some resulting coastal flooding is captured). We are exploring ways
+to include this in future versions of the dataset, but to date we have focused
+on exposures that could affect any county, whether inland or coastal.  
+
+Second, these data are aggregated to the county level. Many health outcome
+datasets are aggregated at this level, but some may be aggregated at a finer
+spatial resolution (e.g., census tract or ZIP code) or unaggregated (i.e.,
+point locations for each outcome). We have published the wind model used to
+create this dataset as its own open-source R package
+\parencite{stormwindmodel}, and it can be used to model storm-associated winds
+at a finer spatial resolution; however, measurements of other hazards cannot
+similarly be re-scaled through tools we provide. 
+
+Next, we provide these data and associated software tools through R packages,
+and so some experience in the R programming language is required to make full
+use of them. However, R is currently a popular programming language for
+environmental epidemiology, allowing the data to reach a large audience, and we
+are exploring options to create a web application using the Shiny platform to
+allow broader web-based access of the data \parencite{shiny2019}.  
+
+Finally, to assess patterns and agreement for binary exposure classifications,
+we have chosen one set of sensible thresholds for binary classifications based
+on continuous metrics (rainfall, maximum sustained surface wind, and distance
+from the storm's track).  Results and conclusions would differ somewhat with
+other threshold choices. We have published code for this analysis online
+(\url{https://github.com/geanders/county_hurricane_exposure}), allowing other
+researchers to explore other threshold choices for these analyses.
+
+\subsection*{Conclusions}
+
+To conduct tropical cyclone epidemiological studies that span multiple
+communities and storms, it is critical to have consistent and comprehensive
+measurements of exposure to storm hazards. Here we have created and shared a
+dataset that provides these data for counties in the United States over
+multiple years. Despite some limitations in these data, they provide a powerful
+tool for expanding tropical cyclone epidemiology studies to more extensively
+leverage existing administrative health data, allowing researchers to
+investigate how these storms affect county-wide health risk.  Further, this
+dataset provides hazard measurements that are comparable across communities and
+storms, allowing epidemiological researchers to design studies to explore
+how health risks are modified by characteristics of both the storms and the
+communities that are hit. The data are given in an open-source format, along
+with associated software tools, which allows them to be freely used and for
+others to explore all associated code and to contribute additions through
+platforms like GitHub.
+
+Based on our analysis in this paper, these data are typically in agreement with
+measurements from other sources of data available to characterize
+storm-associated hazards (e.g., ground-based monitors, streamgages, post-storm
+wind radii).  However, researchers who are planning to use the data
+should explore the analyses presented in this paper to understand the strengths
+and weaknesses of the data.  Further, our results indicate that county-level storm
+exposure is not well-characterized by the closest distance that a storm's
+central track came to a county, and that exposure to one storm hazard within a
+county (e.g., severe winds) does not imply exposure to other hazards (e.g.,
+excessive rainfall, flooding). As a result, it is critical that researchers
+consider which storm hazards are likely on the causal pathway for the outcomes
+they are studying, and to characterize storm exposure in a way that captures
+those specific hazards, to avoid exposure misclassification. 
