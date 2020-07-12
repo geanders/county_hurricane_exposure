@@ -679,6 +679,132 @@ Coordinated Universal Time (UTC)."}
 
 **Response:** 
 
+"Synoptic meteorology" refers to ...
+A key idea is that observations from a widespread geographical area can be
+integrate to provide a picture of large-scale weather [features?], including
+large areas of high or low pressure [?].
+
+> "In meteorology, the term synoptic denotes simultaneous observations taken
+globally, or at least over a large area." [@willoughby2007hurricane]
+
+> "Nearly 20 years ago [from 1937] [Bjerknes] declared that numerous and 
+important problems might be solved with the aid of observations already 
+assembled in the archives of different bureaus, but that the difficulties
+in making these observations serve a special purpose were unsurmountable
+for the individual scholar. He added that, in particular, the synoptic 
+charts representing the momentary states of the atmosphere over large
+areas of the earth, in all the necessary details and exactitude, were 
+excessively difficult to assemble. His proposal was that there be entered
+at the central bureau of each country, on the appropriate maps, all the available
+observations taken in that country and that there be employed, by the different
+bureaus, maps that may be superimposed or juxtaposed." [@gregg1937international]
+
+However, to integrate data from many sources to provide inputs for broadscale,
+synoptic analysis, it is helpful to use some standards in collecting these data
+at different locations. To facilitate numerical weather forecasting and other
+synoptic meteorology, weather data are regularly collected at standardized
+times, so that the data can be more easily integrated as an input to models.
+This practice extends back over 100 years, when data were collected from many
+[offices?] in the US by telegram [?] at regular times during the day and used to
+create synoptic weather maps that captured major weather systems in the country.
+
+> "In order to allow comparison of surface conditions at the same time throughout 
+the world, the groups regulating the collection of hydrometeorological data have
+established a standard time for taking observations. These observations will have
+times observed within the 10 minutes preceding the UTC standard time. Hence 
+surface observations for meteorological use have timestamps reflecting 0000, 
+0300, 0600, 0900, 1200, 1500, 1800, 2100 UTC." [@usnwstime]
+
+> "Since the end of World War II, observers have launched rawinsonde observation
+worldwide at 00 and 12 UTC (coordinated universal time). High-threat situations, 
+such as impending TC landfall, may dictate observations at 6-h or even 3-h intervals. 
+Interpolating rawinsonde observations to the model's mesh and starting the calculation
+at a synoptic time is the simplest way to prepare a model initial condition."
+[@willoughby2007hurricane]
+
+> "Because simple interpolation in space and time is a less-than-optimum way to 
+use observations, nonsynoptic data require elaborate four-dimensional variational
+data assimilation schemes." [@willoughby2007hurricane]
+
+> "By 1941, charts for the 750, 500, and 250 mbar surfaces were being prepared daily
+for 0400, 1200, and 2000 GMT." [@grahame2000development]
+
+> "During the period considered here, NHC issued advisories 3 h after the standard
+synoptic time (0300, 0900, 1500, and 2100 UTC)." [@torn2012uncertainty]
+
+> "The operation data assimilation and forecast cycle interval is 6 h" [@aberson201010]
+
+> "Dan Petersen asked whether a data deficiency really exists with all the 
+observational sources in the Atlantic region, or are the data not being
+properly used in the numerical models? ... Steve Lord emphasized the difficulty of the 
+task because many of these observations are not obtained at the synoptic times..."
+[@elsberry1992there]
+
+> "In the modern era, forecasters rely on purely dynamical models that integrate the 
+Navier-Stokes equations for atmospheric motions to represent both the storm itself and
+its surroundings. Numerical models are structured on a computational grid with 
+temperature, moisture, and wind tabulated in more-or-less rectangular cells." 
+[@willoughby2007hurricane]
+
+> "Predicting the weather required a widespread but highly coordinated team of 
+observers and forecasters. Organization was key... They transmitted data from the 
+field using forms and protocols adapted from those that Abbe had developed while 
+forecasting the weather from Cincinnati, Ohio. The information arrived by telegraph
+coded to maximize accuracy and minimize the word count and changes. The reports piled
+up in a rush at the appointed hours." [@willis2006cleveland]
+
+> "Three times daily the duty forecaster broadcast a synopsis of prevailing weather
+conditions nationwide..." [@willis2006cleveland]
+
+> "The requirement of synoptic data collection is easily met by the
+'conventional' observing system now serving as the main source of meteorological 
+data throughout the world, since it is based on human observations which could 
+be scheduled at convenient synoptic times." [@morel1971initialization]
+
+Since large-scale weather features are very larger, relevant data for a synoptic
+map often comes from locations with different local times. The need for
+synchronized weather data collection therefore actually played an important role
+in establishing standardized time zones in the United States in [year]. Synoptic
+weather times are typically set based on the Universal Time Constant, with times 
+recorded in Coordinated Universal Time (i.e.,
+Greenwich ...), and time stamps on weather maps and data based on this time zone
+often is given a "Z" (for "Zulu", an earlier name for this timezone) after the
+time.
+
+> "Accuracy in forecasting depended on the accurate timing of observations. At
+first weather observers used local time because no system of standard time
+existed, either in the United States or abroad. Local time often meant railroad
+time, and that could vary as much as 20 minutes from the time proper to the
+local meridian. Abbe called for change, emphasizing the need for simultaneous
+readings by Signal Service observers in order to construct accurate charts and
+weather maps. In 1875, he recommended to the president of the American
+Meteorological Society the establishment of a committee on standard time. ...
+Abbe's report in 1879 recommended the system of meridians that is now in general
+use ... a system of time meridians one hour apart across the country, anchored
+on the Greenwich prime meridian." [@willis2006cleveland]
+
+> "From Abbe's perspective, however, the full potential for dynamic weather
+prediction would not be achieved without standard time worldwide."
+[@willis2006cleveland]
+
+> "The time in all hydrometeorological products is expressed according to 
+a single standard, which is the Universal Coordinated Time (UTC) 
+(formerly known as Greenwich Mean Time [GMT] or Zulu (zero) Time [Z])."
+[@usnwstime]
+
+> "The U.S. National Weather Service base all data and product times on the 
+UTC standard. ... A common practice is to include a time of the observation 
+or event denoting the time with a following capital letter 'Z' to indicate the 
+time as UTC." [@usnwstime]
+
+
+We have added text to clarify the meaning of "synoptic times" in the text:
+
+> **Text in revised manuscript (relevant change in bold):**
+"We used tracking data from HURDAT2, which records the storm center’s position
+at **four standardized times for weather data collection (synoptic times),**
+6:00 am, 12:00 pm, 6:00 pm, and 12:00 am Coordinated Universal Time (UTC)."
+
 \begin{shaded}
 \textbf{R2 Comment 3:}
 Several of the exposures are calculated for the population mean center of each
@@ -727,6 +853,20 @@ data."}
 \end{shaded}
 
 **Response:** 
+
+The NOAA Storm Events database originated as a database for recording tornadoes
+[? anything else] in the US in 195[x], and was originally called ... . The
+database has gone through a number of expansions to cover more events, and it
+now includes reports of other types of [hydrometeorological?] disaster events,
+including floods, extreme heat and cold, wildfires, frost, hail, ... . However,
+it has maintained its status as the database of record [?] for tornadoes in the
+United States.
+
+Examples of research papers that leverage this database as a record of tornado
+events, or the version of it shared by the [Severe Storm ...] through their
+website [ref], include ... .
+
+[Is this database used to validate tornado forecasts / warnings?]
 
 \begin{shaded}
 \textbf{R2 Comment 6:}

@@ -10,17 +10,17 @@ neared the \ac{US}.  \subsection*{Distance-based exposure metric}
 
 We first measured how close each storm's central track came to each county. We
 used tracking data from \ac{HURDAT2}, which records the storm center's position
-at the synoptic times of 6:00~am, 12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}.  We
-interpolated this position to~15-\si{\minute} intervals using natural cubic
-spline interpolation~\parencite{hurricaneexposure}. At each~15-\si{\minute}
-interval, we measured the distance between the storm's center and each county's
-population mean center~\parencite{countycenters}. We took
-the minimum distance for each county as a measure of how close the storm came
-to the county over its lifetime.  We also recorded the time when this occurred
-for each county so we could later link observed data on precipitation,
-flooding, and tornadoes.  To allow matching with data recorded in
-local time (e.g., health data), we converted these times from \ac{UTC} to local
-time~\parencite{countytimezones}.
+at four standardized times for weather data collection (synoptic times),
+6:00~am, 12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}.  We interpolated this
+position to~15-\si{\minute} intervals using natural cubic spline
+interpolation~\parencite{hurricaneexposure}. At each~15-\si{\minute} interval,
+we measured the distance between the storm's center and each county's
+population mean center~\parencite{countycenters}. We took the minimum distance
+for each county as a measure of how close the storm came to the county over its
+lifetime.  We also recorded the time when this occurred for each county so we
+could later link observed data on precipitation, flooding, and tornadoes.  To
+allow matching with data recorded in local time (e.g., health data), we
+converted these times from \ac{UTC} to local time~\parencite{countytimezones}.
 
 \subsection*{Rain-based exposure metric}
 
