@@ -35,8 +35,13 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
+
+```{r}
+library(knitr)
+```
+
 
 # Overall comments {-#overall-comments}
 
@@ -121,6 +126,109 @@ that integrate both community-level and individual-level metrics of exposure.
 This could help in determining if there are risks introduced to individuals based
 on storm-related hazards in their broader community, after controlling for the 
 hazards experienced directly at their homes.
+
+There is already some discussion on this topic in the Discussion [exposure 
+measurement error / misclassification].
+
+There are two interrelated mechanisms at play regarding this question. The
+first is the potential for ecological bias. This bias results from inferring
+individual-level associations from data that is available at an aggregated level. 
+In the case of epidemiological research, these data include health outcomes, 
+exposure, and covariates if the model is adjusting for confounding from them.
+For example, in tropical cyclone epidemiology, an ecological study might 
+compare county-wide rates of COPD hospitalizations to county-wide measures
+of tropical cyclone exposure while controlling for county-level smoking 
+rates and age distribution. The model in this case is fit at the county level, 
+and so the relevant inference is at that level. If this county-level estimate
+is inferred to represent the individual-level association between tropical 
+cyclone exposure and risk of COPD hospitalization, controlled for smoking and
+age, then the possibility of ecological bias arises. Given that this bias
+results from inferring from a model with data at one level of aggregation
+to another, this bias is also called cross-level bias. 
+
+There are some subtleties that arise regarding this question for disaster
+epidemiology. First, it has been argued that, for some ambient exposures
+like weather and air pollution, contextual effects (that is, at the community
+level) are helpful to estimate in their own right, not just as a potential 
+surrogate for individual-level associations. This is because regulations
+(in the case of pollutants), interventions, and planning often happen at
+this level. 
+
+Second, for a disaster, the relevant exposure might be not just at the
+individual level (e.g., winds or flooding at the individual's residence), but
+also throughout a broader area surrounding the individual. If storm damage
+closes roads in a county, for example, or damages the power grid, then these
+could create pathways for health risks for individuals throughout the county,
+whether damage was high at their residence or not. The causal pathways for
+tropical cyclones to affect human health differ from those for a dangerous
+substance, like air pollutants, in which the substance itself must enter the
+body to cause harm. While some health risk comes directly from the storm (e.g.,
+deaths and injuries from trees falling on homes or drowning from flooding),
+there are many more pathways that are indirect. These include pathways that go
+through the way that the storm's damage affects community infrastructure and
+access to medical care. Several papers have discussed the potential for 
+"individualistic fallacy", as a counterpoint to "ecological fallacy", when 
+such contextual-level exposure pathways are ignored. 
+
+There are study designs that can be used to leverage ecological data while 
+minimizing risk from ecological bias. For example, potential confounders
+like age distribution and smoking rates vary much less within a county over
+time than comparing between counties. The mechanism for ecological bias 
+depends on the joint distribution between individual exposure, outcome, and 
+covariates, if any are included in the model. Time series-style study designs, 
+which compare a county to itself over time, allow for very similar covariate
+distributions between exposure and non-exposure. Other studies add to this
+design by stabilizing for temporal confounding through the addition of 
+counties that were never exposed, allowing for a differences-in-differences
+style approach to calibrate for seasonal or longer-term trends that might
+otherwise create confounding. For example, many health outcomes have a strong
+seasonal trend, with peak rates in the winter and lows in the summer. Since
+the hurricane season stretches from summer into fall, a study design that compares
+the rate of a health outcome in an exposed county to the rate two weeks before
+the exposure might be biased away from the null, since baseline rates of the
+health outcome will typically be moving up over most of the hurricane season.
+
+Also, there may be confounders that are relevant at the contextual, rather than
+individual level, as well as modifiers. Example: whether the county is coastal
+could be a contextual-level confounder and effect modifier. This will influence
+whether the county is exposed to that storm or not, since storms usually weaken
+rapidly when the center is over land. In terms of counfounding pathways, coastal
+communities might tend to have lower levels of air pollution, because sea
+breezes clear the pollution regularly. They might also be wealthier on average,
+since property on or near the beach is desirable. Finally, they might be better
+prepared for or more hardened against tropical cyclones at the community-wide
+level (e.g., through hardier power infrastructure, more rigorous building codes,
+higher likelihood of evacuating in advance of a threatening storm) compared to
+nearby inland counties. 
+
+Other approaches have also been suggested to reduce ecological bias while 
+leveraging ecological data, which might be available at a much larger scale---and
+so provide more power---than is practical in collecting individual data. These
+include multi-level approaches in which individual-level data from a sample
+of individuals in each community is incorporated. 
+
+The second issue is exposure measurement error/misclassification. When the 
+exposure (e.g., binary exposure or continuous measure of intensity of exposure)
+is only measured at the county level, all the individuals in that county are 
+assigned that same exposure. However, the hazards included in this study will 
+vary across each county. For some hazards, this variation will be more stark. 
+For example, tornadoes can be very local, causing extreme damage to a row of 
+homes and none to the homes across the street. Some types of floods can also 
+be very localized, rather than creating widespread flooding throughout 
+the county. In both cases, when a county-level exposure assessment is made
+based on an event in the county in association with the storm, there may be
+many individuals in the county who did not experience that hazard at their 
+residence. The other hazards we included---storm-associated winds and rainfall---will
+also have some variation across counties, but this will often not be as stark. 
+The rainfields for tropical cyclones are very large, and while there are rainbands
+within the storm that might have particularly high rates of precipitation, these
+progess over the course of the storm, and it is unlikely that a county will have
+one area that experienced very extreme precipitation while another experienced
+very little. Winds might have more variation, especially in coastal counties and 
+counties near the storm's central track, since winds decay quickly as you move
+from the storm's center, and storms typically weaken rapidly once they make 
+landfall and can no longer draw on warm ocean waters for energy. 
+
 
 \begin{shaded}
 \textbf{R1 Comment 2:}
@@ -222,6 +330,15 @@ them to estimate average associations over many disasters and to explore how a
 disaster’s characteristics, or the characteristics ofthe **affected
 communities**, modify associated health risks (e.g., Anderson and Bell 2010; Son
 et al. 2012; Liu et al. 2017)."
+
+We also used the word "Hits per county per decade" in the legend for Figure 5 in
+the main text and Figure S3 of the Supplemental Material. We have revised the
+wording in these figures to "Exposures per county per decade".
+
+```{r fig5, fig.cap="Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\\textbf{Hits} per county per decade' to '\\textbf{Exposures} per county per decade' (bold used to highlight change). Figure caption in the revised manuscript: \\textit{Figure caption.}", fig.show = "hold", out.width="40%", fig.align = "center"}
+include_graphics("../figures/averageexposureonly.pdf")
+include_graphics("figures/averageexposureonly.pdf")
+```
 
 \begin{shaded}
 \textbf{R1 Comment 5:}
@@ -797,6 +914,72 @@ UTC standard. ... A common practice is to include a time of the observation
 or event denoting the time with a following capital letter 'Z' to indicate the 
 time as UTC." [@usnwstime]
 
+> "The extent and the hour of the observations changed over time. Originally the
+observers took the readings at 0735, 1635, and 2335, Washington time, but the
+last reading was soon changed to 2300 so that the information could be included
+in the morning newspapers. Before the introduction of standard time and time
+zones within the United States, a confusing multiplicity of local times existed.
+In 1870 there were over 100 such regional times. For the purposes of the
+meteorological observations, observers used Washington time until 1885.
+Thereafter the observers took their readings according to eastern time, or that
+at the 75th meridian west of Greenwich, England. Observers also made local-time
+readings from 1876 to 1881.[30]" [@raines1996getting]
+
+> "Once the observers had gathered the weather data, the means of reporting and
+disseminating it became most important. Like the Smithsonian, the chief signal
+officer made arrangements with the leading commercial telegraph companies to
+carry the tri-daily reports. Civilian telegraph experts established special
+circuits routed to the Signal Office. The initial arrangement with Western Union
+regarding transmission was only temporary, and at the end of the trial period
+the company refused to continue service. The House Appropriations Committee held
+hearings over the dispute and ruled that the company had a mandate to transmit
+the weather information as government business. The Signal Corps compensated the
+company, however, at rates determined by the postmaster general.[34]" [@raines1996getting]
+
+> "When making the daily telegraphic reports, the weather observers used special
+codes to reduce their length to twenty words in the morning and ten in each of
+the other two reports, thereby saving the government both time and money.[35]
+Regular transmission of the reports began at 0735 on 1 November 1870 from
+twenty-four stations stretching from Boston, Massachusetts, south to Key West,
+Florida, and west to Cheyenne in the Wyoming Territory. In addition to the
+station atop Mount Washington (opened in December 1870), the Signal Corps soon
+reached new heights in weather reporting with the station on Pikes Peak that
+began reporting in November 1873.[36]" [@raines1996getting]
+
+> "To provide a picture of weather conditions across the country, the observers
+made their reports as nearly simultaneous as possible. The weather service did
+not initially make forecasts, and the enabling legislation did not specifically
+call for it to do so. Eventually general forecasts, referred to as
+probabilities, emanated from the Signal Office in Washington. Locally, the
+observers posted bulletins and maps in the offices of boards of trade and
+chambers of commerce to provide weather information to the public. Post offices
+also displayed daily bulletins, and observers supplied local newspapers with
+data. Some communities appointed meteorological committees to confer with the
+chief signal officer and to serve as a check upon the operations of the local
+weather station. On the national level, the Signal Office in Washington issued
+daily weather maps compiled from the reports received from all the stations. It
+also published the Daily Weather Bulletin, Weekly Weather Chronicle, and the
+Monthly Weather Review. All were available for sale to the public. Myer
+estimated that through these various means at least one third of American
+households received the Signal Corps' weather information in some form. A
+railway bulletin service, initiated in 1879, enabled stations along many major
+railroads to display weather information.[37]" [@raines1996getting]
+
+> "The Signal Corps' telegraph network soon expanded beyond the eastern
+seaboard. In 1874 Congress enacted legislation directing the War Department to
+build lines to connect military posts and protect frontier settlements in Texas
+against Indians and Mexicans. Other acts authorized lines in Arizona and New
+Mexico and, somewhat later, the Northwest. These lines were intended to serve
+sparsely settled areas where commercial lines were not yet available. For the
+most part, soldiers maintained and operated the lines, but the Corps employed
+some civilians. As the telegraph extended its reach, the weather system also
+grew, because the operators doubled as weather observers." [@raines1996getting]
+
+> "Until 1934 the Weather Bureau offices operated 12--15 hours a day with two
+basic observations taken at 8 a.m. and 8 p.m. The observations were transmitted
+via telegraph. There were no satellite images and few upper air observations."
+\url{https://www.weather.gov/dvn/armistice_day_blizzard}
+
 
 We have added text to clarify the meaning of "synoptic times" in the text:
 
@@ -806,7 +989,7 @@ at **four standardized times for weather data collection (synoptic times),**
 6:00 am, 12:00 pm, 6:00 pm, and 12:00 am Coordinated Universal Time (UTC)."
 
 \begin{shaded}
-\textbf{R2 Comment 3:}
+\textbf{R3 Comment 3:}
 Several of the exposures are calculated for the population mean center of each
 county. From the reference list, it looks like the authors consistently used
 population centers from 2010 throughout the years included in the dataset/R
@@ -816,7 +999,7 @@ package. If so, I suggest clarifying this in the text.
 **Response:** 
 
 \begin{shaded}
-\textbf{R2 Comment 4:}
+\textbf{R3 Comment 4:}
 In the methods section starting on line 276, the authors describe the flooding
 and tornado data from the NOAA storm events database. I'd suggest providing some
 information about where the events in this database come from (e.g., that they
@@ -839,7 +1022,7 @@ metrics of tropical cyclone exposure for storms in 1996 and later."}
 **Response:** 
 
 \begin{shaded}
-\textbf{R2 Comment 5:}
+\textbf{R3 Comment 5:}
 Line 294: What is meant by the phrase "traditional tornado event database"?
 
 \textit{Lines 294--295 from original manuscript:}
@@ -868,22 +1051,57 @@ website [ref], include ... .
 
 [Is this database used to validate tornado forecasts / warnings?]
 
+This database has evolved through several stages but has, since its earliest
+iteration in the 1950s, served as the National Weather Service's [?] data of
+record on tornado events. While there is also a database maintained by the 
+[Severe Storm ...], the two databases have different names but almost 
+identical information once data are aggregated to a daily, county-level 
+measure of whether there was a tornado recorded in that county on that date. 
+[Difference between the two and why there are two.]
+
+There is no other tornado base at the same temporal and spatial scale that
+we could use for validation.
+
+This database serves as the basis for much of the large-scale (e.g., assessing
+patterns over the US over long time periods) tornado-based research for the US. 
+It does have some well-documented limitations. One is a notable increase over 
+time in the number of tornadoes reported, particularly for the weakest, F0 [?]
+tornadoes. [This stabilizes some in the age of radar?]
+
 \begin{shaded}
-\textbf{R2 Comment 6:}
+\textbf{R3 Comment 6:}
 Table 1: I suggest providing the rationale for picking the thresholds for
 classifying continuous exposures into binary ones within the table. 
 \end{shaded}
 
 **Response:** 
 
+Wind: gale force?
+
+Precipitation: 
+
+Distance: 
+
 \begin{shaded}
-\textbf{R2 Comment 7:}
+\textbf{R3 Comment 7:}
 Figure 3: The x-axis refers to one of the two wind data sources as "Extended
 Best Tracks." Is this the same thing as the wind radii dataset described in the
 text? Is so, I suggest clarifying this in the figure label.
 \end{shaded}
 
 **Response:** 
+
+We have revised the x-axis on the figure to clarify that the comparison is based
+on the wind radii dataset described in the text, as requested. The original and
+revised versions of this paper are reproduced in this response document as
+Figure \@ref(fig:fig3).
+
+[Also revise figure legend?]
+
+```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Figure caption.}", fig.show = "hold", out.width="50%"}
+include_graphics("../figures/windcomparison.pdf")
+include_graphics("figures/windcomparison.pdf")
+```
 
 # Requests from EHP: {-#requests-from-ehp}
 
@@ -896,6 +1114,12 @@ appreciate.
 
 **Response:** 
 
+[Typo here? I don't think there's a Figure S7.]
+
+We have revised this figure to show an x-axis truncated at the minimum observed 
+value ($\sim75\%$), as requested. The original and revised versions of this paper 
+are reproduced in this response document as Figure \@ref(fig:fig3).
+
 \begin{shaded}
 \textbf{R2 Comment 2:}
 Main text figures (general)
@@ -903,6 +1127,29 @@ To ensure that figures are accessible to readers with impaired color vision, do 
 \end{shaded}
 
 **Response:** 
+
+In all these figures, we have used a color scale that is both accessible to readers
+with the most common forms of impaired color vision and can be easily distinguished 
+when the figure is printed in black and white. 
+
+For these figures, we selected a color palette that was created to meet both these
+criteria. [More on viridis]
+
+In Figure [x] of this response document, we have reproduced the current version of 
+each figure as it would appear to someone with [vision impairment]. 
+
+In Figure [x] of this response document, we have reproduced the current version of 
+each figure as it will appear when printed using grayscale (i.e., with most black and 
+white printers). 
+
+```{r fig5check1, fig.cap="Reproduction of revised version of Figure 5 to check accessibility to readers with two types of colorblindness, deuteranopia (left) and protanopia (right).", out.width="90%", fig.align = "center"}
+include_graphics("figures/averageexposureonly_check1.pdf")
+```
+
+```{r fig5check2, fig.cap="Reproduction of revised version of Figure 5 to check accessibility to readers with a third type of colorblindness, tritanopia (left) and for printing the figure in grayscale (right).", out.width="90%", fig.align = "center"}
+include_graphics("figures/averageexposureonly_check2.pdf")
+```
+
 
 \begin{shaded}
 \textbf{R2 Comment 3:}
@@ -913,6 +1160,24 @@ might help with this (if possible.)
 \end{shaded}
 
 **Response:** 
+
+As we note in our response to the previous comment, we used a color palette
+designed to be perceptible both for those with common types of color blindness
+and when printed in grayscale. We have increased the size of the circles in
+Figure 3 of the revised manuscript (reproduced in Figure \@ref(fig:fig3) of this
+response) so that the colors are clearer, as well as truncated the x-axis as
+requested in EHP Request 1. Also, we show in Figures \@ref(fig:fig3check1) and
+\@ref(fig:fig3check2) of this response how the revised Figure 3 would look with
+three common types of color blindness as well as when printed in black and
+white. The gradient is clear when this figure is printed in black and white.
+
+```{r fig3check1, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with two types of colorblindness, deuteranopia (left) and protanopia (right).", out.width="100%"}
+include_graphics("figures/windcomparison_check1.pdf")
+```
+
+```{r fig3check2, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with a third type of colorblindness, tritanopia (left) and for printing the figure in grayscale (right).", out.width="100%"}
+include_graphics("figures/windcomparison_check2.pdf")
+```
 
 \begin{shaded}
 \textbf{R2 Comment 4:}

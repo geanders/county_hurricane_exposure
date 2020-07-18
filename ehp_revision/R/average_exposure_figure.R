@@ -100,9 +100,9 @@ out <- ggplot2::ggplot() +
                          colour = "black", fill = NA, size = 0.2, alpha = 0.5) +
         ggplot2::theme_void() +
         ggplot2::coord_map() +
-        viridis::scale_fill_viridis(name = "Hits per\ncounty per\ndecade",
+        viridis::scale_fill_viridis(name = "Exposures\nper county\nper decade",
                                     discrete = TRUE, direction = -1, option = "A") +
-        viridis::scale_color_viridis(name = "Hits per\ncounty per\ndecade",
+        viridis::scale_color_viridis(name = "Exposures\nper county\nper decade",
                                      discrete = TRUE, direction = -1, option = "A") +
         facet_wrap(~ metric, ncol = 1) +
         theme(legend.position = "bottom",
@@ -218,13 +218,92 @@ pdf("figures/averageexposure.pdf", width = 9, height = 11)
 grid.arrange(out, out2, ncol = 1)
 dev.off()
 
-pdf("figures/averageexposureonly.pdf", width = 3, height = 9)
+pdf("ehp_revision/figures/averageexposureonly.pdf", width = 3, height = 9)
 print(out)
 dev.off()
 
 pdf("figures/ivanonly.pdf", width = 6, height = 3.3)
 print(out2)
 dev.off()
+
+
+#### Check for accessibility
+
+library(dichromat)
+library(colorspace)
+library(gridExtra)
+
+out <- ggplot2::ggplot() +
+        ggplot2::geom_polygon(data = out_data,
+                              ggplot2::aes_(x = ~ long, y = ~ lat, group = ~ group,
+                                            fill = ~ value, color = ~ value),
+                              size = 0.2) +
+        ggplot2::borders("state", regions = c("virginia", "north carolina", "south carolina",
+                                              "georgia", "florida", "alabama", "kentucky",
+                                              "tennessee", "maryland", "west virginia",
+                                              "district of columbia", "pennsylvania",
+                                              "new jersey", "delaware", "mississippi",
+                                              "louisiana", "texas", "oklahoma", "arkansas",
+                                              "new york", "connecticut", "rhode island",
+                                              "massachusetts", "new hampshire", "vermont",
+                                              "maine", "kansas", "missouri", "iowa", "michigan",
+                                              "illinois", "ohio", "wisconsin", "indiana"),
+                         colour = "black", fill = NA, size = 0.2, alpha = 0.5) +
+        ggplot2::theme_void() +
+        ggplot2::coord_map() +
+        facet_wrap(~ metric, ncol = 1) +
+        theme(legend.position = "bottom",
+              legend.direction = "horizontal",
+              legend.key.size = unit(0.8, "lines"),
+              legend.title = element_text(size = 8),
+              legend.text = element_text(size = 7),
+              strip.background = element_rect(colour = "black", fill = "white")) 
+
+a <- out +
+        scale_fill_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                  dichromat(type = "deutan"), 
+                          name = "Exposures\nper county\nper decade") + 
+        scale_color_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                   dichromat(type = "deutan"), 
+                           name = "Exposures\nper county\nper decade") + 
+        ggtitle("Green-Blind (Deuteranopia)")
+
+b <- out +
+        scale_fill_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                  dichromat(type = "protan"), 
+                          name = "Exposures\nper county\nper decade") + 
+        scale_color_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                   dichromat(type = "protan"), 
+                           name = "Exposures\nper county\nper decade") + 
+        ggtitle("Red-Blind (Protanopia)")
+
+c <- out +
+        scale_fill_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                  dichromat(type = "tritan"), 
+                          name = "Exposures\nper county\nper decade") + 
+        scale_color_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                   dichromat(type = "tritan"), 
+                           name = "Exposures\nper county\nper decade") + 
+        ggtitle("Blue-Blind (Tritanopia)")
+
+d <- out +
+        scale_fill_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                  desaturate(), 
+                          name = "Exposures\nper county\nper decade") + 
+        scale_color_manual(values = viridis(direction = -1, option = "A", n = 9) %>% 
+                                   desaturate(), 
+                           name = "Exposures\nper county\nper decade") + 
+        ggtitle("Desaturated (Grayscale)")
+
+
+ggsave("ehp_revision/figures/averageexposureonly_check1.pdf", 
+       grid.arrange(a, b, ncol = 2), 
+       width = 6, height = 9, units = "in")
+ggsave("ehp_revision/figures/averageexposureonly_check2.pdf", 
+       grid.arrange(c, d, ncol = 2), 
+       width = 6, height = 9, units = "in")
+
+#### Supplemental figure
 
 my_fips <- unique(closest_dist$fips)
 dist <- county_distance(counties = my_fips, start_year = 1996,
@@ -316,10 +395,10 @@ out <- ggplot2::ggplot() +
                          colour = "black", fill = NA, size = 0.2, alpha = 0.5) +
         ggplot2::theme_void() +
         ggplot2::coord_map() +
-        viridis::scale_fill_viridis(name = "Hits per\ncounty per\ndecade",
+        viridis::scale_fill_viridis(name = "Exposures\nper county\nper decade",
                                     discrete = TRUE, direction = -1,
                                     option = "A") +
-        viridis::scale_color_viridis(name = "Hits per\ncounty per\ndecade",
+        viridis::scale_color_viridis(name = "Exposures\nper county\nper decade",
                                      discrete = TRUE, direction = -1,
                                      option = "A") +
         facet_wrap(~ metric, ncol = 1) +
@@ -331,6 +410,6 @@ out <- ggplot2::ggplot() +
               strip.background = element_rect(colour = "black", fill = "white")) +
         ggtitle("")
 
-pdf("figures/averageexposureonlysupp.pdf", width = 3, height = 9)
+pdf("ehp_revision/figures/averageexposureonlysupp.pdf", width = 3, height = 9)
 print(out)
 dev.off()

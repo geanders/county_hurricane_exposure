@@ -28,10 +28,10 @@ fig <- wind_comp %>%
                   non_zero = sum(vmax_sust_ext != 0)) %>%
         filter(non_zero > 0) %>%
         ggplot(aes(x = perc_same, y = reorder(storm_id, perc_same), fill = non_zero)) +
-        geom_point(size = 2, shape = 21, color = "black") +
-        scale_x_continuous(labels = scales::percent, lim = c(0, 1)) +
+        geom_point(size = 3, shape = 21, color = "black") +
+        scale_x_continuous(labels = scales::percent) +
         theme_classic() +
-        labs(x = "% of counties classified in same wind category\nby modeled storm wind and Extended Best Tracks",
+        labs(x = "% of counties classified in same wind category\nby modeled storm wind and based on HURDAT2 wind radii",
              y = "",
              fill = "Number of counties with modeled\n sustained winds of <= 34 knots"
              ) +
@@ -39,7 +39,7 @@ fig <- wind_comp %>%
         theme(legend.position = "bottom") + 
         theme(panel.grid.major.y = element_line(colour = "lightgray"))
 
-ggsave("figures/windcomparison.pdf", fig, width = 5.25, height = 8.5, units = "in")
+ggsave("ehp_revision/figures/windcomparison.pdf", fig, width = 5.25, height = 8.5, units = "in")
 
 wind_comp_ordinal <- wind_comp %>%
         mutate(vmax_sust_ext = factor(vmax_sust_ext, ordered = TRUE,
@@ -60,3 +60,52 @@ wind_comp_ordinal %>%
         theme_classic() +
         labs(x ="Polychoric correlation between wind\ncategorization within counties",
              y = "")
+
+# Check figure for accessibility
+
+library(dichromat)
+library(colorspace)
+library(gridExtra)
+
+fig_check <- wind_comp %>%
+        group_by(storm_id) %>%
+        summarize(perc_same = sum(cats_equal) / n(),
+                  non_zero = sum(vmax_sust_ext != 0)) %>%
+        filter(non_zero > 0) %>%
+        ggplot(aes(x = perc_same, y = reorder(storm_id, perc_same), fill = non_zero)) +
+        geom_point(size = 3, shape = 21, color = "black") +
+        scale_x_continuous(labels = scales::percent) +
+        theme_classic() +
+        labs(x = "% of counties classified in same wind category\nby modeled storm wind and based on HURDAT2 wind radii",
+             y = "",
+             fill = "Number of counties with modeled\n sustained winds of <= 34 knots"
+        ) +
+        theme(legend.position = "bottom") + 
+        theme(panel.grid.major.y = element_line(colour = "lightgray"))
+
+a <- fig_check + 
+        scale_fill_gradientn(colors = viridis(direction = -1, option = "B", n = 10) %>% 
+                                     dichromat(type = "deutan")) + 
+        ggtitle("Green-Blind (Deuteranopia)")
+
+b <- fig_check + 
+        scale_fill_gradientn(colors = viridis(direction = -1, option = "B", n = 10) %>% 
+                                     dichromat(type = "protan")) + 
+        ggtitle("Red-Blind (Protanopia)")
+
+c <- fig_check + 
+        scale_fill_gradientn(colors = viridis(direction = -1, option = "B", n = 10) %>% 
+                                     dichromat(type = "tritan")) + 
+        ggtitle("Blue-Blind (Tritanopia)")
+
+d <- fig_check + 
+        scale_fill_gradientn(colors = viridis(direction = -1, option = "B", n = 10) %>% 
+                                     desaturate()) + 
+        ggtitle("Desaturated (Grayscale)")
+
+ggsave("ehp_revision/figures/windcomparison_check1.pdf", 
+       grid.arrange(a, b, ncol = 2), 
+       width = 10.5, height = 8.5, units = "in")
+ggsave("ehp_revision/figures/windcomparison_check2.pdf", 
+       grid.arrange(c, d, ncol = 2), 
+       width = 10.5, height = 8.5, units = "in")
