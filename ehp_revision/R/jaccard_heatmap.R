@@ -282,3 +282,138 @@ draw(heat_map + ha_row, padding = unit(c(2, 2, 18, 2), "mm"), annotation_legend_
 # decorate_annotation("first_metric", {grid.text("Exposure metric #1", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
 # decorate_annotation("second_metric", {grid.text("Exposure metric #2", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
 dev.off()
+
+
+### Check for accessibility
+
+library(dichromat)
+library(colorspace)
+
+ha_row <- HeatmapAnnotation(counties_exposed = counties_exposed$counties_exposed,
+                            show_annotation_name = FALSE,
+                            annotation_legend_param = list(counties_exposed = list(title = "\n# of\ncounties\nexposed\nby any\nmetric",
+                                                                                   title_gp = gpar(fontsize = 9,
+                                                                                                   lineheight = 0.7,
+                                                                                                   font = 2))),
+                            col = list(counties_exposed = colorRamp2(c(100, 275, 450, 625),
+                                                                     viridis::viridis(4, option = "D", direction = -1) %>% 
+                                                                             dichromat(type = "deutan"))),
+                            which = "row", width = unit(0.25, "cm"))
+heat_map <- Heatmap(for_heatmap, col = viridis(256, option = "A", direction = -1) %>% 
+                            dichromat(type = "deutan"),
+                    cluster_rows = row_dend, split = 4, show_row_dend = FALSE,
+                    row_names_side = "left", row_names_gp = gpar(fontsize = 8),
+                    show_column_names = FALSE, show_column_dend = FALSE, #column_dend_side = "bottom",
+                    column_dend_height = unit(6, "mm"),
+                    name = "Jaccard\nindex\nbetween\nmetrics",
+                    heatmap_legend_param = list(title_gp = gpar(fontsize = 9, lineheight = 0.7, font = 2)),
+                    # bottom_annotation = ha_col,
+                    top_annotation = ha_rot_cn,
+                    rect_gp = gpar(col = "white", lwd = 1),
+                    row_dend_reorder = TRUE, 
+                    row_title = NULL, 
+                    column_title = "Green-Blind (Deuteranopia)")
+
+pdf(file = "ehp_revision/figures/jaccard_heatmap_check1.pdf", height = 8.4, width = 5)
+draw(heat_map + ha_row, padding = unit(c(2, 2, 18, 2), "mm"), annotation_legend_side = "bottom")
+# decorate_annotation("first_metric", {grid.text("Exposure metric #1", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+# decorate_annotation("second_metric", {grid.text("Exposure metric #2", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+dev.off()
+
+ha_row <- HeatmapAnnotation(counties_exposed = counties_exposed$counties_exposed,
+                            show_annotation_name = FALSE,
+                            annotation_legend_param = list(counties_exposed = list(title = "\n# of\ncounties\nexposed\nby any\nmetric",
+                                                                                   title_gp = gpar(fontsize = 9,
+                                                                                                   lineheight = 0.7,
+                                                                                                   font = 2))),
+                            col = list(counties_exposed = colorRamp2(c(100, 275, 450, 625),
+                                                                     viridis::viridis(4, option = "D", direction = -1) %>% 
+                                                                             dichromat(type = "protan"))),
+                            which = "row", width = unit(0.25, "cm"))
+heat_map <- Heatmap(for_heatmap, col = viridis(256, option = "A", direction = -1) %>% 
+                            dichromat(type = "protan"),
+                    cluster_rows = row_dend, split = 4, show_row_dend = FALSE,
+                    row_names_side = "left", row_names_gp = gpar(fontsize = 8),
+                    show_column_names = FALSE, show_column_dend = FALSE, #column_dend_side = "bottom",
+                    column_dend_height = unit(6, "mm"),
+                    name = "Jaccard\nindex\nbetween\nmetrics",
+                    heatmap_legend_param = list(title_gp = gpar(fontsize = 9, lineheight = 0.7, font = 2)),
+                    # bottom_annotation = ha_col,
+                    top_annotation = ha_rot_cn,
+                    rect_gp = gpar(col = "white", lwd = 1),
+                    row_dend_reorder = TRUE, 
+                    row_title = NULL, 
+                    column_title = "Red-Blind (Protanopia)")
+
+pdf(file = "ehp_revision/figures/jaccard_heatmap_check2.pdf", height = 8.4, width = 5)
+draw(heat_map + ha_row, padding = unit(c(2, 2, 18, 2), "mm"), annotation_legend_side = "bottom")
+# decorate_annotation("first_metric", {grid.text("Exposure metric #1", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+# decorate_annotation("second_metric", {grid.text("Exposure metric #2", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+dev.off()
+
+ha_row <- HeatmapAnnotation(counties_exposed = counties_exposed$counties_exposed,
+                            show_annotation_name = FALSE,
+                            annotation_legend_param = list(counties_exposed = list(title = "\n# of\ncounties\nexposed\nby any\nmetric",
+                                                                                   title_gp = gpar(fontsize = 9,
+                                                                                                   lineheight = 0.7,
+                                                                                                   font = 2))),
+                            col = list(counties_exposed = colorRamp2(c(100, 275, 450, 625),
+                                                                     viridis::viridis(4, option = "D", direction = -1) %>% 
+                                                                             dichromat(type = "tritan"))),
+                            which = "row", width = unit(0.25, "cm"))
+heat_map <- Heatmap(for_heatmap, col = viridis(256, option = "A", direction = -1) %>% 
+                            dichromat(type = "tritan"),
+                    cluster_rows = row_dend, split = 4, show_row_dend = FALSE,
+                    row_names_side = "left", row_names_gp = gpar(fontsize = 8),
+                    show_column_names = FALSE, show_column_dend = FALSE, #column_dend_side = "bottom",
+                    column_dend_height = unit(6, "mm"),
+                    name = "Jaccard\nindex\nbetween\nmetrics",
+                    heatmap_legend_param = list(title_gp = gpar(fontsize = 9, lineheight = 0.7, font = 2)),
+                    # bottom_annotation = ha_col,
+                    top_annotation = ha_rot_cn,
+                    rect_gp = gpar(col = "white", lwd = 1),
+                    row_dend_reorder = TRUE, 
+                    row_title = NULL, 
+                    column_title = "Blue-Blind (Tritanopia)")
+
+pdf(file = "ehp_revision/figures/jaccard_heatmap_check3.pdf", height = 8.4, width = 5)
+draw(heat_map + ha_row, padding = unit(c(2, 2, 18, 2), "mm"), annotation_legend_side = "bottom")
+# decorate_annotation("first_metric", {grid.text("Exposure metric #1", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+# decorate_annotation("second_metric", {grid.text("Exposure metric #2", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+dev.off()
+
+ha_row <- HeatmapAnnotation(counties_exposed = counties_exposed$counties_exposed,
+                            show_annotation_name = FALSE,
+                            annotation_legend_param = list(counties_exposed = list(title = "\n# of\ncounties\nexposed\nby any\nmetric",
+                                                                                   title_gp = gpar(fontsize = 9,
+                                                                                                   lineheight = 0.7,
+                                                                                                   font = 2))),
+                            col = list(counties_exposed = colorRamp2(c(100, 275, 450, 625),
+                                                                     viridis::viridis(4, option = "D", direction = -1) %>% 
+                                                                             desaturate())),
+                            which = "row", width = unit(0.25, "cm"))
+heat_map <- Heatmap(for_heatmap, col = viridis(256, option = "A", direction = -1) %>% 
+                            desaturate(),
+                    cluster_rows = row_dend, split = 4, show_row_dend = FALSE,
+                    row_names_side = "left", row_names_gp = gpar(fontsize = 8),
+                    show_column_names = FALSE, show_column_dend = FALSE, #column_dend_side = "bottom",
+                    column_dend_height = unit(6, "mm"),
+                    name = "Jaccard\nindex\nbetween\nmetrics",
+                    heatmap_legend_param = list(title_gp = gpar(fontsize = 9, lineheight = 0.7, font = 2)),
+                    # bottom_annotation = ha_col,
+                    top_annotation = ha_rot_cn,
+                    rect_gp = gpar(col = "white", lwd = 1),
+                    row_dend_reorder = TRUE, 
+                    row_title = NULL, 
+                    column_title = "Desaturated (Grayscale)")
+
+pdf(file = "ehp_revision/figures/jaccard_heatmap_check4.pdf", height = 8.4, width = 5)
+draw(heat_map + ha_row, padding = unit(c(2, 2, 18, 2), "mm"), annotation_legend_side = "bottom")
+# decorate_annotation("first_metric", {grid.text("Exposure metric #1", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+# decorate_annotation("second_metric", {grid.text("Exposure metric #2", unit(-1, "mm"), just = "right", gp = gpar(fontsize = 8, font = 2))})
+dev.off()
+
+
+
+
+
