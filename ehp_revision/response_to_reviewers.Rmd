@@ -244,12 +244,22 @@ tornado)
 - For rain, we use a re-analysis product only available for the continental US (right?).
 However, there are similar gridded re-analysis products available for other regions 
 worldwide that could be used in a similar way.
+- For tornadoes, there may be national databases in other spots similar to the tornado
+database that we use, but as far as we're aware, no international one. 
+- Same for floods. 
 - For wind, the wind model could be generalizable with some tweaks. These include: 
   + More landmasks
   + Direction of storm movement for Northern vs Southern Hemispheres
   + Different wind averaging periods for the recorded best tracks data in different 
   storm basins.
+  + Our wind model was derived with US data and so may need bias-correction or a shift
+  to a West Pacific--based model
 
+> "Tornadoes long have been recognized as a global phenomenon (e.g., Wegener 1917; 
+Feuerstein et al. 2005), having been recorded in every continent except Antarctica. 
+As such, numerous nationas share an interest in improving assessment of their 
+damage. International research and involvement in tornado survey work and damage
+and intensity scales is well underway." [@edwards2013tornado]
 
 \begin{shaded}
 \textbf{R1 Comment 3:}
@@ -303,6 +313,19 @@ rarely exposed to tropical cyclones. One interesting direction would be to
 investigate if there is evidence of differences in probablity of disaster
 declarations at geopolitical boundaries, like when comparing counties on either
 side of a state border.
+
+There are some cases where damage reports are directly used to infer the intensity 
+of the weather event. For example, damage surveying is used following a tornado 
+to assign the tornado's class on the [enhanced] Fujita scale. However, this is not the
+intent of FEMA damage reports, which instead are used to determine post-disaster
+aid [?] and are influenced by a number of political factors. 
+
+> "Because of the historic lack of direct measurements and remotely sensed tornado 
+wind speeds at or near group level, damage surveying has remained the most common 
+form for indicating tornado strength. ... The occurrence of a direct tornado strict 
+upon a fixed, sufficiently sturdy, and well-calibrated wind measuring station is quite
+rare. Only 31 direct in situ tornado observations are evident between 1894 and 2011."
+[@edwards2013tornado]
 
 \begin{shaded}
 \textbf{R1 Comment 4:}
@@ -769,16 +792,16 @@ in the US). Would be good to clarify this.
 
 **Response:** 
 
-You are right, the opposite would be try in the Southern hemisphere. This
+You are right, the opposite would be true in the Southern hemisphere. This
 difference is driven by the Coriolis effect on cyclonic rotation, in which the
 rotation of the earth diverts winds as they move toward the low pressure center
 of the cyclone. We have edited the text to specify that this statement is
 specific to the Northern Hemisphere:
 
 > **Text in revised manuscript (relevant addition in bold):**
-"**In the Northern Hemisphere,** extreme winds are more common to the track's
-right, where counterclockwise cyclonic winds move in concert with the tropical
-cyclone's forward motion."
+"**In the Northern Hemisphere, cyclonic winds are counterclockwise,** so
+extreme winds are more common to the track's right where cyclonic winds move in
+concert with the tropical cyclone's forward motion."
 
 \begin{shaded}
 \textbf{R3 Comment 2:}
@@ -998,6 +1021,14 @@ package. If so, I suggest clarifying this in the text.
 
 **Response:** 
 
+This is correct---the population centers from the US 2010 Decennial Census were 
+used throughout. We have added text to the manuscript to clarify this: 
+
+> **Text in revised manuscript (relevant addition in bold):**
+"At each 15- interval, we measured the distance between the storm's
+center and each county's population mean center, **as of the 2010 US Decennial
+Census** (US Census Bureau 2020)."
+
 \begin{shaded}
 \textbf{R3 Comment 4:}
 In the methods section starting on line 276, the authors describe the flooding
@@ -1068,6 +1099,83 @@ It does have some well-documented limitations. One is a notable increase over
 time in the number of tornadoes reported, particularly for the weakest, F0 [?]
 tornadoes. [This stabilizes some in the age of radar?]
 
+> "Weather events listed in the publication Storm Data are considered to be
+the official database for tornadoes by the National Weather Service." 
+[written by someone at the NWS Storm Prediction Center] [@mccarthy2003nws]
+
+The US National Weather Service's Storm Prediction Center has a tornado database
+called the "National Tornado Database" [@center2020storm]. This uses the NOAA
+Storm Events database as its primary source [@center2020storm]. They note on their
+website: 
+
+> "The tables below provide the links to comma separated values (.csv) files for
+tornadoes, hail, and damaging winds, as compiled from *NWS Storm Data*. Tornado 
+reports exist back to 1950 while hail and damaging wind events date from 1955.
+
+The NOAA Storm Events database, or the Storm Prediction Center's version of the
+tornado database have been used in a number of studies, including in a number of
+studies of tornado climatology [@tippett2016more; @brooks2003climatological;
+@strader2015climatology].
+
+> "The dataset we will use is the so-called smooth log of severe-weather reports
+collected by the SPC and archived in the National Oceanic and Atmospheric 
+Administration publication *Storm Data*." [@brooks2003climatological]
+
+> "Data such as tornado magnitude, path length, path width, and so on are recorded
+by the National Climatic Data Center (NCDC) as a public service and for use
+in meteorological, climatological, and engineering studies (Edwards et al. 2013)."
+[@strader2015climatology]
+
+Sometimes used in conjunction with other NWS data products: 
+
+> "Initially, tornado cases available in the NWS's Damage Assessment Toolkit
+(NOAA, 2014) were employed, which is a GIS-based framework for collecting, storing, 
+and retrieving damage survey data (Camp et al., 2014). This toolkit provides a 
+variety of tornado event filtering (tornado survey point, track, footprint, and/or
+swath) and download options [key mark-up language (.kml) or shapefile (.shp)], supplying
+an initial sample of georeferenced damage assessments. In this study, a tornado 
+footprint is defined as the maximum areal extent of tornado intensity inferred by 
+the damage, wind speed measured directly by mobile Doppler radar, or assessed
+theoretically as the recorded length multiplied with the maximum width as reported in 
+Storm Data." [@strader2015climatology]
+
+> "To serve the public interest and the National Climatic Data Center (NCDC) storm 
+data record, the National Weather Service (NWS) documents the path length, width, 
+and maximum damage rating for every tornado county segment (NOAA 2007).[Footnote
+in manuscript: County segments of tornado paths are then combined at the NWS Storm
+Prediction Center to yield a unified one-tornado (ONETOR) dataset of whole-tornado 
+records (Schaefer and Edwards 1999).] Such data are used in meteorological and 
+climatological research, as well as in determining construction standard for 
+critical infrastructure such as high-tension electric lines and nuclear power plants
+(e.g., Ramsdell et al. 2007)." [@edwards2013tornado]
+
+Sometimes used in conjunction with other datasets: 
+
+> "The contiguous U.S. tornado fatality dataset utilized in this study was 
+transcribed and compiled from two primary sources: (1) a long-term study of 
+U.S. tornados by Grazulis (1993, 1997, hereafter Grazulis dataset) and 
+(2) the National Climatic Data Center's Storm Data (NCDC 1959--2005) and 
+'Storm Events' datavase. The Grazulis dataset included 'significant' tornado
+events, including all events that are known to have produced a fatality, 
+from 1680 to 1995. Storm Data reports from 1959 to 2005 were utilized to 
+supplement the existing record of killer tornado events documented by 
+Frazulis." [in a study of tornado fatalities] [@Ashley2007]
+
+History: 
+
+> "During the early 1950s, the US Weather Bureau began a concerted effort to 
+count all US tornadoes. In 1950, a list of tornadoes was provided in the 
+*Climatological Data National Summary*, but it was not until 1953, the first 
+full year of the issuance of Weather Bureau tornado watches, that the agency 
+began to formally count all tornadoes. The *Climaticalogical Data National Summary*
+document evolved into *Storm Data* by 1959, which, in addition to tornado 
+data, included information on other storm perils, such as severe hail, high 
+winds, and floods (Grazulis 1993). Over the years, the tornado dataset 
+has been formatted and adjusted by the National Severe Storms Forecast 
+Center and Storm Prediction Center (SPC), and currently the National Tornado 
+Database is administered by the NWS Headquarters, SPC, and NCDC 
+(McCarthy 2003)." [@Ashley2007]
+
 \begin{shaded}
 \textbf{R3 Comment 6:}
 Table 1: I suggest providing the rationale for picking the thresholds for
@@ -1128,24 +1236,40 @@ To ensure that figures are accessible to readers with impaired color vision, do 
 
 **Response:** 
 
-In all these figures, we have used a color scale that is both accessible to readers
-with the most common forms of impaired color vision and can be easily distinguished 
-when the figure is printed in black and white. 
+In all these figures, we have used colormaps that are both accessible to readers
+with several forms of color vision deficiency, including the most common type
+(deuteranomaly, a type of red-green color vision deficiency), and can be easily
+distinguished when the figure is printed in black and white [@viridis;
+@van2015mpl].
 
-For these figures, we selected a color palette that was created to meet both these
-criteria. [More on viridis]
+For these figures, we selected colormaps that were created to meet both these
+criteria. These colormaps are all multi-hue sequential maps that avoid red-green
+contrasts, while maximizing dynamic range in comparison to something
+single-hued, like grayscale [@nunez2018optimizing; @viridis]. They are all
+perceptually uniform across the scale for those with normal color vision
+[@liu2018somewhere] and are close to perceptually uniform for those with common
+forms of color deficiency [@nunez2018optimizing]. They reproduce their original
+sequential gradient when printed in grayscale and so are perceptable when
+printed on a black-and-white printer [@van2015mpl; @nunez2018optimizing].
+Previous research has found that colormaps in this family allow viewers to more
+quickly and accurately judge relative distances in scientific figures
+[@liu2018somewhere]. The family of colormaps we used in the figures is currently
+considered the gold standard for scientific figures [@nunez2018optimizing].
 
-We have shown an example with one of the figures in the manuscript that uses
-this scale. In Figures \@ref(fig:fig5check1) and \@ref(fig:fig5check2) of this
+For example, in Figures \@ref(fig:fig5check1) and \@ref(fig:fig5check2) (left) of this
 response document, we have reproduced the current version of Figure 5 as it
-would appear to someone with three common types of color blindness as well as
-when printed using grayscale (i.e., with most black and white printers).
+would appear to someone with three common types of color vision deficiencies:
+deuteranomaly (defective green cone cells, the most common type), as well as
+protanopia (defective red cone cells) and tritanopia (defective blue cone
+cells). We have also shown how the Figure would appear in grayscale in
+\@ref(fig:fig5check2) (right). We have included similar versions of other 
+figures from the manuscript in response to later requests from EHP in this response.
 
-```{r fig5check1, fig.cap="Reproduction of revised version of Figure 5 to check accessibility to readers with two types of colorblindness, deuteranopia (left) and protanopia (right).", out.width="90%", fig.align = "center"}
+```{r fig5check1, fig.cap="Reproduction of revised version of Figure 5 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).", out.width="90%", fig.align = "center"}
 include_graphics("figures/averageexposureonly_check1.pdf")
 ```
 
-```{r fig5check2, fig.cap="Reproduction of revised version of Figure 5 to check accessibility to readers with a third type of colorblindness, tritanopia (left) and for printing the figure in grayscale (right).", out.width="90%", fig.align = "center"}
+```{r fig5check2, fig.cap="Reproduction of revised version of Figure 5 to check accessibility to readers with a third type of color vision deficiency, tritanopia (left) and for printing the figure in grayscale (right).", out.width="90%", fig.align = "center"}
 include_graphics("figures/averageexposureonly_check2.pdf")
 ```
 
@@ -1160,21 +1284,22 @@ might help with this (if possible.)
 
 **Response:** 
 
-As we note in our response to the previous comment, we used a color palette
-designed to be perceptible both for those with common types of color blindness
-and when printed in grayscale. We have increased the size of the circles in
-Figure 3 of the revised manuscript (reproduced in Figure \@ref(fig:fig3) of this
-response) so that the colors are clearer, as well as truncated the x-axis as
-requested in EHP Request 1. Also, we show in Figures \@ref(fig:fig3check1) and
-\@ref(fig:fig3check2) of this response how the revised Figure 3 would look with
-three common types of color blindness as well as when printed in black and
-white. The gradient is clear when this figure is printed in black and white.
+As we note in our response to EHP Request 2, we used colormaps for all
+figures that are designed to be perceptible both for those with common types of
+color vision deficiency and when printed in grayscale. We have increased the
+size of the circles in Figure 3 of the revised manuscript (reproduced in Figure
+\@ref(fig:fig3) of this response) so that the colors are clearer, as well as
+truncated the x-axis as requested in EHP Request 1. Also, we show in Figures
+\@ref(fig:fig3check1) and \@ref(fig:fig3check2) of this response how the revised
+Figure 3 would look with three common types of color vision deficiency as well
+as when printed in black and white. The gradient is clear when this figure is
+printed in black and white.
 
-```{r fig3check1, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with two types of colorblindness, deuteranopia (left) and protanopia (right).", out.width="100%"}
+```{r fig3check1, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).", out.width="100%"}
 include_graphics("figures/windcomparison_check1.pdf")
 ```
 
-```{r fig3check2, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with a third type of colorblindness, tritanopia (left) and for printing the figure in grayscale (right).", out.width="100%"}
+```{r fig3check2, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with a third type of color vision deficiency, tritanopia (left) and for printing the figure in grayscale (right).", out.width="100%"}
 include_graphics("figures/windcomparison_check2.pdf")
 ```
 
@@ -1201,21 +1326,22 @@ degrade the information content of  the figure.
 
 **Response:** 
 
-As we explain in our response to EHP Request 2, these figures' color palette is
-color-blind friendly and also remains perceptible when printed in grayscale.
-Figures \@ref(fig:fig5check1) and \@ref(fig:fig5check1) show what Figure 5 would
-look like under three common types of color blindness and when printed in black
-and white. Figures \@ref(fig:fig6check1) and \@ref(fig:fig6check2) show the same
-thing for Figure 6. Therefore, these figures should not require any exemption
-from accessibility requirements, as they should satisfy these requirements.
+As we note in our response to EHP Request 2, we used colormaps for all figures
+that are designed to be perceptible both for those with common types of color
+vision deficiency and when printed in grayscale Figures \@ref(fig:fig5check1)
+and \@ref(fig:fig5check1) show what Figure 5 would look like under three common
+types of color vision deficiency and when printed in black and white. Figures
+\@ref(fig:fig6check1) and \@ref(fig:fig6check2) show the same thing for Figure
+6. Therefore, these figures should not require any exemption from accessibility
+requirements, as they should satisfy these requirements.
 
-```{r fig6check1, fig.cap="Reproduction of revised version of Figure 6 to check accessibility to readers with two types of colorblindness, deuteranopia (left) and protanopia (right).", fig.show = "hold", out.width="50%"}
+```{r fig6check1, fig.cap="Reproduction of revised version of Figure 6 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).", fig.show = "hold", out.width="50%"}
 include_graphics("figures/jaccard_heatmap_check1.pdf")
 
 include_graphics("figures/jaccard_heatmap_check2.pdf")
 ```
 
-```{r fig6check2, fig.cap="Reproduction of revised version of Figure 6 to check accessibility to readers with a third type of colorblindness, tritanopia (left) and for printing the figure in grayscale (right).", fig.show = "hold", out.width="50%"}
+```{r fig6check2, fig.cap="Reproduction of revised version of Figure 6 to check accessibility to readers with a third type of color vision deficiency, tritanopia (left) and for printing the figure in grayscale (right).", fig.show = "hold", out.width="50%"}
 include_graphics("figures/jaccard_heatmap_check3.pdf")
 include_graphics("figures/jaccard_heatmap_check4.pdf")
 ```

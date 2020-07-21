@@ -283,3 +283,63 @@ county_rain_compare_data(ex_fips = "37183", ex_dir = "../DraftExposurePaper/wake
         arrange(desc(prcp)) %>%
         select(storm_id, tot_precip, prcp) %>%
         slice(1:3)
+
+# Correlations at high rain values
+
+
+check_high_corr <- function(ex_fips, ex_dir,
+                                     get_data = FALSE){
+        if(get_data){
+                write_daily_timeseries(ex_fips, coverage = 0,
+                                       date_min = "1988-01-01",
+                                       date_max = "2011-12-31",
+                                       var = "PRCP",
+                                       out_directory = ex_dir,
+                                       keep_map = FALSE)
+        }
+
+        check_dates <- closest_dist %>%
+                dplyr::filter(fips == ex_fips) %>%
+                dplyr::select(-storm_dist) %>%
+                dplyr::mutate(closest_date = ymd(closest_date)) %>%
+                dplyr::rename(day_0 = closest_date) %>%
+                dplyr::mutate(fips = as.integer(fips),
+                              day_0 = day_0 + days(0),
+                              day_b1 = day_0 - days(1),
+                              day_b2 = day_0 - days(2),
+                              day_a1 = day_0 + days(1)) %>%
+                dplyr::select(storm_id, day_b2, day_b1, day_0, day_a1) %>%
+                tidyr::gather(key = lag, value = day, -storm_id) %>%
+                dplyr::rename(date = day)
+        all_dates <- unique(check_dates$date)
+
+        ex_weather <- readRDS(paste0(ex_dir, ex_fips, ".rds"))
+
+        ex_weather <- ex_weather %>%
+                dplyr::filter(date %in% all_dates) %>%
+                dplyr::right_join(check_dates, by = "date") %>%
+                dplyr::group_by(storm_id) %>%
+                dplyr::summarize(prcp = sum(prcp),
+                                 ave_n = mean(prcp_reporting))
+
+        ex_rain <- county_rain(counties = ex_fips,
+                               start_year = 1988, end_year = 2011,
+                               rain_limit = 0, dist_limit = 500) %>%
+                full_join(ex_weather, by = "storm_id") %>%
+                filter(!is.na(prcp) & !is.na(tot_precip)) %>%
+                mutate(prcp = prcp / 10) ## Units for countyweather are now 10ths
+        ## of millimeters for precipitation
+
+        rain_rho <- cor(ex_rain$tot_precip, ex_rain$prcp, method = "spearman")
+        rho <- sprintf("\"Spearman's\" ~ rho == %0.2f", rain_rho)
+        
+        # Correlation when rainfall is very high based on at least one dataset
+        rain_df <- cbind(monitor = ex_rain$tot_precip, 
+                         nldas = ex_rain$prcp) %>% 
+                as_tibble() %>% 
+                dplyr::filter(monitor >= 75 | nldas >= 75)
+        cor(rain_df$monitor, rain_df$nldas, method = "spearman")
+}
+
+
+check_high_corr(ex_fips = "22071", ex_dir = "../DraftExposurePaper/orleans_data/data/") 

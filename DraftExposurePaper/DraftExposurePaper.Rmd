@@ -1,0 +1,2389 @@
+---
+title: Assessing exposure to Atlantic Basin tropical storms in United States counties
+author:
+  - name: Joshua M. Ferreri
+    email: joshua.m.ferreri@gmail.com
+    affiliation: Colorado State University
+  - name: Meilin Yan
+    email: meilin.yan@colostate.edu
+    affiliation: Colorado State University
+  - name: Mohammad Z. Al-Hamdan
+    email: mohammad.alhamdan@nasa.gov
+    affiliation: NASA Marshall Space Flight Center
+  - name: William L. Crosson
+    email: bcrosson@usra.edu
+    affiliation: NASA Marshall Space Flight Center
+  - name: Seth Guikema
+    email: sguikema@umich.edu
+    affiliation: University of Michigan
+  - name: Roger D. Peng
+    email: rdpeng@jhu.edu
+    affiliation: Johns Hopkins Bloomberg School of Public Health
+  - name: G. Brooke Anderson
+    email: brooke.anderson@colostate.edu
+    affiliation: Colorado State University
+    footnote: Corresponding Author
+address:
+  - code: Colorado State University
+    address: Department of Environmental and Radiological Health Sciences, Lake Street, Fort Collins, CO, Zip
+  - code: NASA Marshall Space Flight Center
+    address: Universities Space Research Association, 320 Sparkman Dr., Huntsville, AL, 35805
+  - code: University of Michigan
+    address: Department of Industrial and Operations Engineering, 1205 Beal Ave., Ann Arbor, MI, 48109
+  - code: Johns Hopkins Bloomberg School of Public Health
+    address: Department of Biostatistics, 615 North Wolfe Street, Baltimore, MD, 21205
+abstract: |
+  There are many important applications for having county-level estimates of exposure to tropical storms over many years. For example, ... . Current approaches include ... but have the following limitations ... .
+
+  Here, we present open source software we have developed to explore county-level exposure to tropical storms in United States counties between 1988 and 2011. Further, we explore the differences in exposure classification when using different metrics (e.g., wind speed, rainfall, distance).
+  
+bibliography: mybibfile.bib
+output: rticles::elsevier_article
+---
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+library(hurricaneexposuredata)
+library(hurricaneexposure)
+library(knitr)
+library(ggplot2)
+library(ggthemes)
+library(grid)
+library(gridExtra)
+library(plyr)
+library(dplyr)
+library(tidyr)
+library(choroplethr)
+library(RColorBrewer)
+library(weathermetrics)
+library(lubridate)
+library(xtable)
+library(rnoaa)
+
+options("noaakey" = Sys.getenv("noaakey"))
+library(countyweather)
+
+data(closest_dist)
+data(rain)
+
+# Generate a list of unique study fips (all in the eastern US)
+my_fips <- unique(closest_dist$fips)
+
+# Vector of all storms in study.
+storms <- unique(closest_dist$storm_id)
+storms <- storms[gsub("*.+-", "", storms) <= 2011 & 
+                        gsub("*.+-", "", storms) >= 1988]
+
+# All eastern states (for mapping)
+eastern_states <- c("alabama", "arkansas", "connecticut", "delaware",
+                    "district of columbia", "florida", "georgia", "illinois",
+                    "indiana", "iowa", "kansas", "kentucky", "louisiana",
+                    "maine", "maryland", "massachusetts", "michigan",
+                    "mississippi", "missouri", "new hampshire", "new jersey",
+                    "new york", "north carolina", "ohio", "oklahoma",
+                    "pennsylvania", "rhode island", "south carolina",
+                    "tennessee", "texas", "vermont", "virginia",
+                    "west virginia", "wisconsin")
+```
+
+Introduction
+==========================
+
+#### What it means to assess county-level tropical storm exposure
+
+Tropical storms bring a number of threats, including high winds, heavy rain and flooding, storm surge, tornadoes, ... [@Rezapour2014: wind, storm surge, rain]. To determine whether a county is exposed to a particular tropical storm, a researcher could use criteria based on measurements of any of these values during the storm, use a metric based on the distance from the county to the storm's track, or use a metric that combines several of these measurements.
+
+While the risks to life from some tropical storm threats (e.g., storm surge) have been greatly reduced over the past century, other risks (e.g., inland flooding) have remained more steady [@Rappaport2000], and costs related to property damage have increased [citation; Fronstin1994 suggested that there was more property damage for newer homes than older homes during hurricane Andrew due to changes in building codes]. Determining the metrics of storm exposure that are most associated with loss of life and property damage may help identify and emphasize the important threats that remain from tropical storms in the United States, which could allow similar future success in reducing these threats through community planning, warning systems, etc.
+
+It is critical to characterize the risks of cyclonic storms in order to help individuals and communities prepare for and respond to storms. By characterizing the health risks of other climate-related disasters, communities have improved their responses in ways tailored to protect human health. For example, in response to the health threats of heat, several US cities—including Philadelphia, PA; Washington, DC; Phoenix, AZ; Dallas-Fort Worth, TX; Chicago, IL; and New Orleans, LA—have implemented heat watch-warning systems specifically designed to limit all-cause heat-related health outcomes [@Sheridan2004]. An alert of these heat-health warning systems can instigate a number of health-protecting responses including: halting suspensions of electric and water utilities; increasing the number of Fire Department Emergency Medical Service staff on duty; and issuing media announcements [@Sheridan2004].
+
+According to the Intergovernmental Panel on Climate Change, climate change may alter patterns of climate-related natural disasters [@Seneviratne2012 -- double-check formatting for this reference], while future population movement may continue to increase the number of people at risk from natural disasters (e.g., movement of retirees to Florida [@Smith1992]). Research assessing the risks of tropical storms will aid city- and national-level planning for storms, both in the short-term, to prepare for specific current storms, and in the long-term, to prepare for the health risks of climate change. 
+
+#### Why it's important to measure TS exposure for counties
+
+Many outcomes of interest are available at county-level aggregations (e.g., counts of health outcomes: @Grabich2016: premature births and low birth weights; @Grabich2015: birth rates; @Kinney2008: autism prevalence; @Kilpatrick2007: risk of PTSD and Major Depression in predisposed individuals (This is more of a cross-sectional study, I think); @Rappaport2000 and @Czajkowski2011: direct hurricane-related deaths; also, other impacts can be available aggregated by county, including fish kills [@Mallin2006]). Further, decisions and policies to prepare for and respond to storms are often undertaken at the county level [@Zandbergen2009; @Rappaport2000]. Some studies suggest methods to determine exposure, including inland exposure, to tropical storms at the county-level over many years [@Zandbergen2009]. 
+
+Here, we offer tools, through the open-source `hurricaneexposure` package, to determine county-level exposure to tropical storms using several different metrics (distance, rainfall, wind). In this paper, we describe how this software package assesses exposure to tropical storms at the county level, provide an analysis of the advantages and disadvantages of different strategies for assessing county-level exposure, and explore variation in exposure assessments based on using different exposure metrics. 
+
+[GBA-- Somewhere (maybe just for helping us draft the paper), let's come up with a list of the "ideal" characteristics of an exposure metric for hurricanes. I think that will be helpful for us to have a framework of a "gold standard" to compare advantages and disadvantages of different metrics used. To start, we could create a list of "good characteristics" and another of "bad characteristics", and read through the text we have and pull out characteristics we describe as good or bad aspects of different metrics.]
+
+Good Characteristics:
+
+- Measureable at the county/sub-county level
+- Internally consistant (either within a study or for a particular storm)
++ Takes into account the unique characteristics of a particular storm and county's location in assessing exposure
+- Flooding-- Most associated with death; property damage
+- Precipitation
++ Gauge data if available
+- Wind (potentially weighted based on relation to the storm track), though wind alone has proven not to be sufficient in identifying the most affected region in some cases (e.g., Hurricane Andrew in 1992)[@Fronstin1994]. Therefore wind alone is not sufficient in all cases (as is commonly done using the Staffir-Simpson scale).
+- Have a metric with finer resolution than the community level (i.d., zip codes or neighborehoods)
++ @Fronstin1994 stated that neighborehoods just 8 blocks away from some of the most impacted areas during Hurricane Andrew (1992) recieved far less damage 
++ Not necessarily possible when guage data may not be available at such a resolution
+
+Bad Characteristics:
+
+- Distance alone
+- Wind alone
+- Not consistent across storms. (For example, if a metric classified a county as "exposed" to a storm late in the dataset, if the same storm had happened earlier in the dataset, it also would have been assessed as "exposed". This might be the case for, for example, NOAA Storm Events. It might be more common to report an event well enough that it makes it into the database in later years compared to earlier years of the study.)
+- Not consistent across locations for a single storm. (For example, some of the metrics depend on subjective judgement of different people in different locations-- I think FEMA disaster declarations and NOAA Storm Events might both be examples in this. In this case, you couldn't rely on the assumption that, if two counties have the same level of exposure to a storm, they would have the same status on that criterion.)
+- Metrics that cannot be widely measured at the county or sub-county level (i.e., stress)
+
+Hurricane exposure criteria at the county-level include FEMA disaster declarations [GBA-- are these that commonly used? We should certainly put them in as one way to measure exposure, but I don't know if we want to include them, with distance, as "most often used" unless we can find quite a few examples of them being used to determine exposure], whether a county's perimeter intercepts a swath based on a buffer a certain distance from the storm's central track, or exposure metrics based primarily on sustained wind speeds (i.e., the Staffir-Simpson scale). These ways of assessing exposure can be nonspecific and potentially lead to misclassification of exposure at the county-level [@Grabich2016; @Fronstin1994]. FEMA declaration is largely subjective, requiring state governors and/or tribal chiefs to submit a proposal for government aid on the basis that local resources are overwhelmed [@FEMA]. As a result, using FEMA disaster declarations as exposure classification to hurricanes restricts exposure to 1) those states whose resources are overwhelmed and 2) those states who apply for FEMA aid. (FEMA is likely less objective given societal effects (politics) [@Kunkel1999]) As a result, other severely impacted counties and states that may not fit FEMA criteria are excluded and may therefore be incorrectly identified as unexposed, preventing researchers from assessing the full impact of a given hurricane [JMF-- the Grabich 2016 study actually found that FEMA assigned the highest exposure, and may overestimate the health effects of a hurricane; GBA-- let's think about why that might have had "false positives". I think that would be an interesting point to include here.]. Researchers have found heterogeneity in exposure assignments of counties, both within and between storms, when different metrics of exposure are used [@Grabich2016; @Grabich2015]. Such missclassification can have important consequences in assessments of the public health and economic impacts of tropical storms.
+
+Many of the studies that have assessed exposure to tropical storms in the US have used geographical information system software (e.g., ArcGIS) [example studies: @Grabich2016; @Zandbergen2009; @Czajkowski2011; @Kruk2010]. Here, we offer methods to map and output historic exposure to tropical storms that does not require the use of proprietary software but instead uses a package written in the R statistical programming language, which is free and open-source.
+
+We acknowledge that in some cases it will be important to estimate hurricane exposure at a different level of aggregation. For example, one study investigated the association between hurricanes and adverse health outcomes by comparing women within the same county who were "exposed" and "unexposed" to storms during pregnancy [@Currie2013]; this type of study design would require a finer resolution of hurricane exposure estimates, as it requires different exposure levels within a county.
+
+#### Examples of estimating TS for multiple storms
+
+When assessing exposure to a single tropical storm, a detailed *ad hoc* analysis can be performed for the single storm. However, this level of detailed analysis is unreasonable when assessing exposure to all storms over an extended time period; further, such a long-term exposure assessment requires consistency in the data being used to determine levels of exposure to factors like wind and rain. 
+
+A few studies have sought to determine exposure to tropical storms over a study period that includes multiple storms. For example, @Grabich2016 assessed the exposure of counties in Florida to land-falling hurricanes during the 2004 season. The largest-scale county-level exposure study is likely that of @Zandbergen2009, which estimated exposure in US counties to all US landfalling Atlantic basin tropical storms between 1851 and 2003, using both distance and an exposure metric that incorporated distance and windspeed. They used this exposure evaluation to create maps of total exposure to tropical storms within US counties, as well as to explore associations between a county's long-term exposure to tropical storms and its location, distance from the coast, size, and shape [@Zandbergen2009].
+
+Another study explored trends in direct hurricane fatalities for all landfalling US hurricanes between 1970 and 2007 in counties that were "exposed" to storms, based on a distance-based metric (whether the county was along the path of the storm [primary exposure], neighboring a county along the storm's path [secondary counties], or neighboring a secondary county [tertiary county]), determining wind- and rain-related hazards for all "exposed" counties and exploring associations with fatality counts [@Czajkowski2011].
+
+@Kruk2010 explored exposure to hurricane-related winds in the United States, including inland areas, for 1900-2008.
+
+@Currie2013, while studying exposures at a sub-county rather than county resolution, investigated risks of adverse birth outcomes associated with hurricanes in Texas between 1996 and 2008. 
+
+Other studies have used county-level exposure criteria to determine exposure to specific storms. For example, @Grabich2015 determined county-level exposure to two severe storms in 2004 in Florida counties for an epidemiological study.
+
+One of the challenges of trying to assess exposure to multiple storms is that sometimes storms can closely follow each other, which can make it difficult to tease apart separate exposures to different storms in a systematic way. For example, when assessing streamflow responses to tropical storms, it can be difficult to separate delayed responses to assign impacts to separate storms [@Chen2015].
+
+#### Examples of other datasets at the county level
+
+If exposure to tropical storms over multiple storms and years can be assessed, these exposure datasets can be joined with other time series to explore the impacts of tropical storms. For example, daily counts of human health outcomes in environmental epidemiology studies are often available aggregated at the county level, and such data has often been paired with time series of environmental exposures (e.g., air pollution, temperature) to determine associated risks. Databases of storm impacts, including direct deaths [@Rappaport2000], ..., and ..., are often aggregated at the county level. [Let's see if we can find other examples of county-level outcomes that researchers might want to pair with hurricane exposure. For example, property damage, crop damage, injuries, ... These are all given in NOAA's Storm Events database, but let's also see if we can find studies that have analyzed these outcomes in relation to tropical storms, if we can.] Review has shown the hurricanes are associated with major societal impacts.
+
+Though the loss of life due to hurricanes may have decreased since the mid-1900s, trends show a large increase in property damage [@Kunkel1999] in spite of a statistically significant decrease in both the frequency and intensity of tropical storms since then [@Landsea1996]. Such a trend is likely attributable to increased population growth in coastal communities [@Pielke1997]. 
+
+Data and Methods
+==================
+
+#### Distance-based exposure
+
+We collected "best tracks" data on hurricane tracks for Atlantic basin storms between 1988 and 2014 from the extended best tracks database [@Demuth2006]. This dataset is based on a post-storm assessment of each storm conducted by the United States National Hurricane Center (NHC) and incorporates data from a variety of sources, including satellite data and, when available, aircraft reconnaisance data [@Landsea2013; @Jarvinen1988]. This data gives time stamps for each observation in Coordinated Universal Time (UTC; also known as Zulu Time, sometimes indicated by "Z") [@Jarvinen1988; this source (1978) says GMT]. This dataset has been used extensively to study Atlantic basin tropical storms (e.g., @Rezapour2014, ...). The extended best tracks data extension of HURDAT [@Demuth2006], which we use in this study, has been used in studies of hurricane-related inland wind exposure [@Kruk2010], ... [citations].
+
+These data typically give measurements of storm center location at 6-hour intervals, at synoptic times (i.e., 6:00 am, 12:00 pm, 6:00 pm, and 12:00 am UTC); some landfalling storms have an additional observation at the time of landfall [@Landsea2013]. These positions are given to within 0.1 degrees latitude / longitude at these synoptic times [@Landsea2013]. 
+
+We interpolated these location values to every 15 minutes during the period when the storm was active, using spline interpolation. We fit linear models to predict latitude, longitude, and wind intensity based on a linear spline of date-time using the best tracks data, and then predicted to 15 minute-intervals using these models to generate interpolated tracks. We determined the smoothness of these interpolation splines by using degrees of freedom equal to half the number of observations in the original best tracks. 
+
+We calculated the distance between each county's center and each of the 15-minute-interval estimates of a storm's location. To do this, we used the Great Circle method to calculate the distance between pairs of latitude and longitude coordinates [citation-- R package `sp`]. For each county, we used the population mean center, based on the U.S. Census's 2010 Decennial Census, as the center location of the county. From these distance calculations, we identified the date-time and distance between the storm track and the county center at the 15-minute interval when the storm was closest to the county center. 
+
+We identified the date when the storm was closest to each county and converted this date-time  to the county's local time zone [citation-- `countytimezones` R package]. This "closest date" was used to pair the distance estimates with rainfall estimates for a specific storm and county. Futher, this "closest date" provides a county-specific estimate of the date of storm exposure and so can also be used to merge exposure datasets with daily aggregated outcomes like daily county-level mortality and morbidity counts.
+
+#### Rain-based exposure
+
+In this study, we use precipitation data from the North American Land Data Assimilation System, phase 2 (NLDAS-2) [@Rui2014] to characterize rain-based exposure to tropical storms. The NLDAS-2 data integrates satellite-based and land-based monitoring and applies a land-surface model to create a reanalysis dataset that is spatially and temporally complete across the continental United States [@Rui2014; @AlHamdan2014]. This data has been used in previous research to investigate tropical storms, including in a study of the relationship between rainfall and streamflow responses for tropical storms in a North Carolina watershed [@Chen2015].
+
+The NLDAS-2 precipitation data is originally provided hourly for a 1/8 degree grid [@Rui2014; @AlHamdan2014]. To generate county-level daily rainfall estimates, we first aggregated data at each grid point, after converting the timestamp of each observation to local time, to create a daily estimate at the grid point. We then averaged all grid points within a county's boundaries to generate a county-level average of daily precipitation [@AlHamdan2014]. This county-level precipitation data is publicly available through the US Centers for Disease Control's Wide-ranging Online Data for Epidemiological Research (WONDER) database [@WONDER; @AlHamdan2014].
+
+Given its better consistancy with streamflow gage measurements compared to NLDAS precipitation data [GBA-- you had something in here about resolution, as well. Does it have a better resolution than the NLDAS data? I think we probably want to focus on comparing this source with NLDAS, and we don't need to put much about advantages that it has that are very similar to NLDAS; JMF-- Page 5 in Villarini 2011 disucsses how the spacial resolution is much finer for Stage IV than NLDAS and TMPA, which they argue causes a smoothing of maximum rainfall data for the Appalachians], @Villarini2011 recommends Stage IV precipitation data for the analysis of rainfall distribution in landfalling tropical cyclones. However, the Stage IV dataset has only been archived since 2002 [@Lin2005] and cannot be used to analyze exposure to tropical storms for studies that include storms before 2002.
+
+NLDAS does not provide information on precipitation over the ocean, preventing its use in assessing the development of the storm prior to landfall [@Villarini2011]. This point is moot for this analysis.
+
+#### Wind-based exposure
+
+These wind models use estimates of maximum wind speed from the best tracks dataset. These maximum wind speed estimates in the best tracks dataset are rounded to 5-knot intervals and is the maximum 1-minute-average windspeed at 10 meters above the ground [@Landsea2013; @Jarvinen1988]. This windspeed is typically determined using the Dvorak technique to estimate windspeed from satellite measurements, although data from aircraft reconnaisance in also sometimes incorporated in the estimate [@Levinson2010]. Sometimes, the maximum windspeed in this dataset is estimated from the central pressure of the storm [@Jarvinen1988]. 
+
+### Analysis of hurricane exposure classification methods
+
+[We'll want to describe the methods for the analyses we perform here, as well as which set of storms we use in our analyses.]
+
+Results
+============
+
+Our analysis included `r length(storms)` Atlantic basin tropical storms over the years 1988 to 2011 (Figure \ref{fig:all_storms}). This dataset covers several noteworthy storms, including Hugo (1989), Bob (1991), Andrew (1992), Opal (1995), Fran (1996), Georges (1998), Floyd (1999), Allison (2001), Isabel (2003), Charley (2004), Frances (2004), Ivan (2004), Jeanne (2004), Dennis (2005), Katrina (2005), Rita (2005), Gustav (2008), Ike (2008), and Irene (2011), all of which were severe enough their names were retired.
+
+```{r all_storms, echo = FALSE, fig.align = 'center', fig.cap = "Tracks of tropical cyclones included in this study. Darker tracks indicate storms whose names were retired.", message = FALSE}
+# Map of tracks of all storms in study.
+a <- map_tracks(storms, plot_points = FALSE, alpha = 0.3, color = "darkcyan")
+# Add storms whose names were retired
+# Source: http://www.nhc.noaa.gov/aboutnames_history.shtml
+map_tracks(c("Hugo-1989", "Bob-1991", "Andrew-1992", 
+             "Opal-1995", "Fran-1996", "Georges-1998", "Mitch-1998",
+             "Floyd-1999", "Allison-2001", "Michelle-2001",
+             "Isidore-2002", "Lili-2002", "Isabel-2003",
+             "Charley-2004", "Frances-2004",
+             "Ivan-2004", "Jeanne-2004", 
+             "Dennis-2005", "Katrina-2005", "Rita-2005",
+             "Wilma-2005", "Noel-2007",
+             "Gustav-2008", "Ike-2008", "Paloma-2008",
+             "Irene-2011"),
+           plot_object = a, plot_points = FALSE, color = "darkcyan") + 
+        theme(panel.grid.major = element_blank(),
+           panel.grid.minor = element_blank(),
+           panel.background = element_rect(colour = "black", size = 1)) + 
+        coord_map()
+```
+
+#### Are our methods of assessing distance reasonable
+
+[Is 15 minutes adequate? We could test if we get different results using a finer time resolution.]
+
+#### Are our methods of assessing rainfall reasonable
+
+For rainfall, we calculate total precipitation within a county during a storm by calculating the cumulative rainfall from two days before to one day after the storm's closest approach to the county. If we go larger, there is a danger of picking up rainfall that isn't related to the storm. However, some storms move slowly or are large, so if we limit to just the day the storm is closest to the county, we are likely to miss some of storm-associated precipitation.
+
+We explored whether this window was adequate for capturing storm-related precipitation for most storms in most counties. We looked at all storm-county observations for which a county received 150 millimeters or more of precipitation within the window of five days before to three days after the storm's closest approach to a county. 
+
+```{r cumulative_rain, echo = FALSE, fig.align = "center", fig.cap = "Cumulative rainfall within a county for a storm for which the county had 150 mm or more of rain over the period from five days before to three days after the storm's closest approach to the county. The line for any day for which a county received 50 mm or more of precipitation are shown in blue, while the line for any day for which a county received less than 50 mm of precipitation are shown in gray. The red box highlights the days used throughout the rest of the paper to measure total storm precipitation for each county. Numbers at the top of the graph give the total number of county-storm observations on that lag for which total precipitation was 50 mm or more (i.e., number of blue lines for that lag)."}
+# Determine all storm-county pairs with 150 mm or more of rainfall over 
+# lag -5 to 3
+storm_lag <- county_rain(counties = my_fips,
+                             start_year = 1988, end_year = 2011,
+                             rain_limit = 150, dist_limit = 500,
+                             days_include = -5:3) %>%
+        mutate(storm_county = paste0(storm_id, "_", fips))
+
+lag_6 <- storm_lag %>%
+        select(fips, storm_id) %>%
+        mutate(lag = -6, precip = 0, precip_max = 0)
+
+# Pull in rain data and limit to storm-county pairs with 150 mm or more 
+# of rainfall over lag -5 to 3. Figure out the cumulative values at each 
+# day within a county-storm for each lag day.
+rain_lag_1 <- rbind(rain, lag_6) %>%
+        arrange(storm_id, fips, lag) %>%
+        mutate(storm_county = paste0(storm_id, "_", fips)) %>%
+        filter(storm_county %in% storm_lag$storm_county) %>%
+        group_by(storm_county) %>%
+        mutate(cumulative_rain = cumsum(precip),
+               next_lag = lead(lag),
+               next_cumulative_rain = lead(cumulative_rain),
+               over_50 = lead(precip) >= 50)
+rain_lag <- rain_lag_1 %>% filter(lag != 3)
+high_rain <- rain_lag %>%
+        ungroup() %>%
+        group_by(lag) %>%
+        summarize(n_high = sum(over_50)) %>%
+        ungroup() %>%
+        mutate(lag = lag + 1)
+to_highlight <- data.frame(x = c(-3.1, -3.1, 1.1, 1.1) + 0.5, 
+                           y = c(-15, 500, 500, -15))
+
+# Adding + 0.5 so labels show up centered for the day for which we're showing
+# cumulative rainfall.
+ggplot(rain_lag, aes(x = lag + 0.5, y = cumulative_rain)) +
+        theme_few() + 
+        geom_segment(aes(xend = next_lag + 0.5,
+                         yend = next_cumulative_rain,
+                         color = over_50),
+                     alpha = 0.1, size = 0.3) +
+        geom_polygon(data = to_highlight, aes(x = x, y = y),
+                     alpha = 0.2, color = "red", fill = NA) +
+        geom_text(data = high_rain, 
+                  aes(x = lag, y = 475,
+                      label = prettyNum(n_high, big.mark = ","))) + 
+        xlab("Lag period from storm's closest approach to county") + 
+        ylab("Cumulative rainfall in \ncounty from storm (mm)") + 
+        scale_color_manual(values = c("darkgray", "blue"),
+                           guide = FALSE) 
+```
+
+By far, the majority of days in which precipitation in a county exceeded 50 millimeters were within two days before and one day after the storm's closest approach to the county (Figure \ref{fig:cumulative_rain}); in fact, `r round(100 * high_rain$n_high[high_rain$lag == 0] / sum(high_rain$n_high))`% of these days were the day of the storm's closest approach to the county. By using a period from two days before to one day after the storm's closest approach, we are capturing `r round(100 * sum(high_rain$n_high[high_rain$lag %in% -2:1]) / sum(high_rain$n_high))`% of days with precipitation of 50 millimeters or more within county-storm observations where the county received 150 millimeters or more rain between five days before and three days after the storm's closest approach.
+
+Similarly, a histogram of the amount of rain within a county per day during a storm for the county-storm pairs with 150 mm or more storm-associated rain shows that, although there are outliers with high rainfalls on all days, for most county-storm pairs, the only days with notable rain are one and two days before the storm, the day of the storm, and one day after the storm (Figure \ref{fig:daily_rain}).
+
+```{r daily_rain, echo = FALSE, fig.width = 6, fig.height = 4, fig.align = "center", fig.cap = "Boxplots of daily rainfall for days at a lag of five days before (-5) to three days after (3) compared to the date of the storm's closest approach to a county. These values are only for county-storm observations for which a total of at least 150 millimeters of rain fell over the full period (lags -5 to 3)."}
+rain_lag_1 %>%
+        filter(lag != -6) %>%
+        ggplot(aes(x = lag, y = precip, group = lag)) + 
+        geom_boxplot(outlier.size = 0.5) + theme_few() + 
+        xlab("Lag period from storm's closest approach to county") + 
+        ylab("Daily rainfall in county (mm)") 
+```
+
+We did a more detailed investigation of some of the storms that were notable for being slow-moving or having a looped pattern, which could result in our window underestimating storm-associated precipitation. For example, [storm example] moved very slowly and was very large, and so if there is significant rainfall outside of our window because of storm size and speed, it should show up for this storm. As another example, Tropical Storm Allison (2001) followed a looped pattern, and so passed near some counties twice, with around [x] days between these two approaches in some cases. Our method of estimating rainfall may not include all rain from both passes of the storm. 
+
+[To explore if this window (two days before to one day after the storm's closest approach) was adequately large, we also investigated patterns in rainfall by day (from four days before to two days after the storm's closest approach) for a few storms that had the potential to not fit this pattern, Floyd (1999), Irene (2011), Lee (2011), Ike (2008), and Allison (2001) (results shown in "validate_precip.pdf").]
+
+```{r eval = FALSE, echo = FALSE}
+my_hurricanes <- c("Floyd-1999", 
+                   "Irene-2011", 
+                   "Lee-2011", 
+                   "Ike-2008",
+                   "Allison-2001")
+pdf("validate_precip.pdf", height = 8, width = 12)
+for(hurricane in my_hurricanes){
+        storm_precip_totals <- hurricaneexposuredata::rain %>%
+                dplyr::filter(storm_id == hurricane & 
+                                      lag %in% -4:3) %>%
+                dplyr::group_by(lag) %>%
+                dplyr::summarize(sum_rain = prettyNum(round(sum(precip)),
+                                                      big.mark = ",")) %>%
+                dplyr::mutate(sum_rain = paste(sum_rain, "mm"))
+        h <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = -4) + 
+                theme(legend.position="none") +
+                ggtitle(paste0("Four days before \n(", 
+                               storm_precip_totals[1, 2], ")"))
+        h <- map_tracks(storm = hurricane, 
+                        plot_object = h, plot_points = FALSE)
+        a <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = -3) + 
+                theme(legend.position="none") +
+                ggtitle(paste0("Three days before \n(", 
+                               storm_precip_totals[2, 2], ")"))
+        a <- map_tracks(storm = hurricane, 
+                        plot_object = a, plot_points = FALSE)
+        b <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = -2) + 
+                theme(legend.position = "none") +
+                ggtitle(paste0("Two days before \n(", 
+                               storm_precip_totals[3, 2], ")"))
+        b <- map_tracks(storm = hurricane, 
+                        plot_object = b, plot_points = FALSE)
+        c <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = -1) + 
+                theme(legend.position = "none")  +
+                ggtitle(paste0("One day before \n(", 
+                               storm_precip_totals[4, 2], ")"))
+        c <- map_tracks(storm = hurricane, 
+                        plot_object = c, plot_points = FALSE)
+        d <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = 0) + 
+                theme(legend.position = "none")  +
+                ggtitle(paste0("Day of \n(", 
+                               storm_precip_totals[5, 2], ")"))
+        d <- map_tracks(storm = hurricane, 
+                        plot_object = d, plot_points = FALSE)
+        e <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = 1) + 
+                theme(legend.position = "none") +
+                ggtitle(paste0("One day after \n(", 
+                               storm_precip_totals[6, 2], ")"))
+        e <- map_tracks(storm = hurricane, 
+                        plot_object = e, plot_points = FALSE)
+        f <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = 2) + 
+                theme(legend.position = "none") +
+                ggtitle(paste0("Two days after \n(", 
+                               storm_precip_totals[7, 2], ")"))
+        f <- map_tracks(storm = hurricane, 
+                        plot_object = f, plot_points = FALSE)
+        g <- map_counties(storm = hurricane, metric = "rainfall",
+                          days_included = 3) + 
+                theme(legend.position = "none") +
+                ggtitle(paste0("Three days after \n(", 
+                               storm_precip_totals[8, 2], ")"))
+        g <- map_tracks(storm = hurricane, 
+                        plot_object = g, plot_points = FALSE)
+        precip_plot <- grid.arrange(h, a, b, c, d, e, f, g, nrow = 2,
+                top = textGrob(paste("7-Day Precipitation For", hurricane)))
+        print(precip_plot)
+}
+dev.off()
+```
+
+For the most part, using our window (two days before to one day after a storm's closest approach) captured most of the storm-associated precipitation that would have been counted using a wider window from five days before to two days after a storm's closest approach, even for a large, slow storm. However, for a storm that loops and so passes some counties twice, such as Allison (2001), this four-day window may not be adequate, and lead to an underestimation of total rainfall associated with the storm relative to estimates for faster-moving storms. Other storms that looped over or near land and so passed close to US counties twice include Allison (1989), Alberto (1994), Gordon (1994), Dennis (1999), Edouard (2002), Fay (2002), Alex (2004), Ivan (2004), Dennis (2005), and Ophelia (2005).
+
+The method we use to assess storm-related rain exposure is spatially and temporally complete, so it allows us to assess storm exposure for every eastern US county for every storm from 1988 to 2011. However, we wanted to compare this method of assessing storm-related rain with other ways of measuring storm-related rain. We compared our method with two other assessments. First, we compared our results to rain totals from ground-based monitors, using county-level values averaged across all available ground-based precipitation monitors in the county. For this assessment, we picked several counties and compared storm-related rain estimates using our data and ground-based monitor estimates for all storms over our study period. We also picked several storms and compared our method to values from ground-based monitors for several counties for that storm.
+
+Second, researchers from the [NWS? Hurricane Center?] publish yearly tropical cyclone season summaries in the journal *Monthly Weather Review*. For some storms, this report includes multiple ground-based measurements of total precipitation and wind speeds (both sustained and gusts). We picked a few storms with multiple ground-based measurements included in the *Monthly Weather Review* report, and compared assessments using our method to these reported storm-related measurements.
+
+Here are results for comparing our method to using ground-based monitors. First, we looked at several counties, comparing estimates of storm-associated rain using NLDAS-2 versus ground-based monitors (Figure \ref{fig:compare_rain_ex_counties}).
+
+```{r compare_rain_ex_counties, echo = FALSE, fig.width = 10, fig.height = 10, efig.align = "center", fig.cap = "Comparison of rain estimates for example counties."}
+plot_county_rain_compare <- function(ex_fips, ex_dir, ex_title, 
+                                     get_data = FALSE){
+        if(get_data){
+                write_daily_timeseries(ex_fips, coverage = 0,
+                                       date_min = "1988-01-01",
+                                       date_max = "2011-12-31",
+                                       var = "PRCP",
+                                       out_directory = ex_dir,
+                                       keep_map = FALSE)
+        }
+        
+        check_dates <- closest_dist %>%
+                dplyr::filter(fips == ex_fips) %>%
+                dplyr::select(-storm_dist) %>%
+                dplyr::mutate(closest_date = ymd(closest_date)) %>%
+                dplyr::rename(day_0 = closest_date) %>%
+                dplyr::mutate(fips = as.integer(fips),
+                              day_0 = day_0 + days(0),
+                              day_b1 = day_0 - days(1),
+                              day_b2 = day_0 - days(2),
+                              day_a1 = day_0 + days(1)) %>%
+                dplyr::select(storm_id, day_b2, day_b1, day_0, day_a1) %>%
+                tidyr::gather(key = lag, value = day, -storm_id) %>%
+                dplyr::rename(date = day)
+        all_dates <- unique(check_dates$date)
+        
+        ex_weather <- readRDS(paste0(ex_dir, "data/", ex_fips, ".rds"))
+
+        ex_weather <- ex_weather %>%
+                dplyr::filter(date %in% all_dates) %>%
+                dplyr::right_join(check_dates, by = "date") %>%
+                dplyr::group_by(storm_id) %>%
+                dplyr::summarize(prcp = sum(prcp),
+                                ave_n = mean(prcp_reporting))
+        
+        ex_rain <- county_rain(counties = ex_fips,
+                               start_year = 1988, end_year = 2011,
+                               rain_limit = 0, dist_limit = 500) %>%
+                full_join(ex_weather, by = "storm_id") %>%
+                filter(!is.na(prcp) & !is.na(tot_precip)) %>%
+                mutate(prcp = prcp / 10) ## Units for countyweather are now 10ths
+                                         ## of millimeters for precipitation
+        
+        ave_n <- round(mean(ex_rain$ave_n, na.rm = TRUE))
+        n_storms <- nrow(ex_rain)
+        ex_title <- paste0(ex_title, "\n(storms: ", n_storms,
+                           "; monitors: ", ave_n, ")")
+        
+        plot_range <- range(ex_rain[ , c("prcp", "tot_precip")],
+                            na.rm = TRUE)
+        
+        ex_plot <- ggplot(ex_rain, aes(x = tot_precip, y = prcp)) +
+                geom_hline(aes(yintercept = 75), color = "lightgray") +
+                geom_vline(aes(xintercept = 75), color = "lightgray") +
+                geom_abline(aes(intercept = 0, slope = 1), color = "gray",
+                    alpha = 0.5) +
+                geom_point(alpha = 0.5) +
+                theme_few() +
+                scale_size_continuous(guide = "none") +
+                xlab("Rainfall (mm)  from\nNLDAS-2 data") +
+                ylab("Rainfall (mm)\nfrom monitors") +
+                xlim(plot_range) + ylim(plot_range) + 
+                ggtitle(ex_title)
+        return(ex_plot)
+}
+
+a <- plot_county_rain_compare(ex_fips = "12086", ex_dir = "dade_data/",
+                         ex_title = "Miami-Dade, FL",
+                         get_data = FALSE)
+
+b <- plot_county_rain_compare(ex_fips = "22071", ex_dir = "orleans_data/",
+                         ex_title = "Orleans Parish, LA",
+                         get_data = FALSE)
+
+c <- plot_county_rain_compare(ex_fips = "45019", ex_dir = "charleston_data/",
+                         ex_title = "Charleston County, SC",
+                         get_data = FALSE)
+
+d <- plot_county_rain_compare(ex_fips = "37183", ex_dir = "wake_data/",
+                         ex_title = "Wake County, NC",
+                         get_data = FALSE)
+
+e <- plot_county_rain_compare(ex_fips = "13121", ex_dir = "fulton_data/",
+                         ex_title = "Fulton County, GA",
+                         get_data = FALSE)
+
+f <- plot_county_rain_compare(ex_fips = "24005", ex_dir = "baltimore_data/",
+                         ex_title = "Baltimore County, MD",
+                         get_data = FALSE)
+
+g <- plot_county_rain_compare(ex_fips = "42101",
+                              ex_dir = "philadelphia_data/",
+                         ex_title = "Philadelphia County, PA",
+                         get_data = FALSE)
+
+h <- plot_county_rain_compare(ex_fips = "48201", ex_dir = "harris_data/",
+                         ex_title = "Harris County, TX",
+                         get_data = FALSE)
+
+i <- plot_county_rain_compare(ex_fips = "01097", ex_dir = "mobile_data/",
+                         ex_title = "Mobile County, AL",
+                         get_data = FALSE)
+
+grid.arrange(a, b, c, d, e, f, g, h, i, ncol = 3)
+```
+
+Next, we looked at several different counties within a few notable storms, to compare county-averaged ground-based monitor values with our estimates (Figure \ref{fig:county_ave_comparison}). These storms were picked based on storms that had a large number of ground-based precipitation observations in either the main text or supplemental material of the *Monthly Weather Review* report.
+
+```{r echo = FALSE, eval = FALSE}
+allison_gauge <- read.csv("MWR_gauge_rain_data/allison_mwr.csv") 
+allison_fips <- sprintf("%05s", as.character(unique(allison_gauge$fips)))
+# allison_fips <- sample(allison_fips, 10)
+date_range <- closest_dist %>% 
+        filter(storm_id == "Allison-2001") %>%
+        summarize(earliest_date = min(ymd(closest_date)) - ddays(2),
+                  latest_date = max(ymd(closest_date)) + ddays(2))
+write_daily_timeseries(allison_fips, coverage = 0,
+                       date_min = format(date_range[1, 1], "%Y-%m-%d"),
+                       date_max = format(date_range[1, 2], "%Y-%m-%d"),
+                       var = "PRCP", out_directory = "county_ave/allison/",
+                       keep_map = FALSE)
+
+load("MWR_gauge_rain_data/frances_gauge.RData")
+frances_fips <- sprintf("%05s", as.character(unique(frances_gauge$fips)))
+# frances_fips <- sample(frances_fips, 10)
+date_range <- closest_dist %>% 
+        filter(storm_id == "Frances-2004") %>%
+        summarize(earliest_date = min(ymd(closest_date)) - ddays(2),
+                  latest_date = max(ymd(closest_date)) + ddays(2))
+write_daily_timeseries(frances_fips, coverage = 0,
+                       date_min = format(date_range[1, 1], "%Y-%m-%d"),
+                       date_max = format(date_range[1, 2], "%Y-%m-%d"),
+                       var = "PRCP", out_directory = "county_ave/frances/",
+                       keep_map = FALSE)
+
+load("MWR_gauge_rain_data/ike_gauge.RData")
+ike_fips <- sprintf("%05s", as.character(unique(ike_gauge$fips)))
+# ike_fips <- sample(ike_fips, 10)
+date_range <- closest_dist %>% 
+        filter(storm_id == "Ike-2008") %>%
+        summarize(earliest_date = min(ymd(closest_date)) - ddays(2),
+                  latest_date = max(ymd(closest_date)) + ddays(2))
+write_daily_timeseries(ike_fips, coverage = 0,
+                       date_min = format(date_range[1, 1], "%Y-%m-%d"),
+                       date_max = format(date_range[1, 2], "%Y-%m-%d"),
+                       var = "PRCP", out_directory = "county_ave/ike/",
+                       keep_map = FALSE)
+
+load("MWR_gauge_rain_data/alex_gauge.RData")
+alex_fips <- sprintf("%05s", as.character(unique(alex_gauge$fips)))
+# alex_fips <- sample(alex_fips, 10)
+date_range <- closest_dist %>% 
+        filter(storm_id == "Alex-2010") %>%
+        summarize(earliest_date = min(ymd(closest_date)) - ddays(2),
+                  latest_date = max(ymd(closest_date)) + ddays(2))
+write_daily_timeseries(alex_fips, coverage = 0,
+                       date_min = format(date_range[1, 1], "%Y-%m-%d"),
+                       date_max = format(date_range[1, 2], "%Y-%m-%d"),
+                       var = "PRCP", out_directory = "county_ave/alex/",
+                       keep_map = FALSE)
+```
+
+```{r county_ave_comparison, echo = FALSE, fig.width = 10, fig.height = 10, fig.align = "center", fig.cap = "Comparison of county-level average cumulative rainfall for the period from two days before to one day after the storm's closest approach to a county, using NLDAS-2 versus ground-based monitors, for counties with both estimates available for four example storms. The size of each point indicates the average number of monitors reporting from that county during the window (larger size indicates more monitors). The text over each point gives the FIPS county identifier."}
+plot_county_ave_compare <- function(county_dir, storm_id){
+        storm_title <- paste0(paste(unlist(strsplit(
+                as.character(storm_id), "-")),
+                             collapse = " ("), ")")
+        storm_year <- gsub(".+-", "", storm_id)
+        counties <- gsub(".rds", "",
+                         list.files(paste0("county_ave/", county_dir, "/data")))
+        if(county_dir == "frances"){
+                counties <- counties[counties != "51019"] # Missing all data
+        }
+        
+        storm_ave <- vector("list", length = length(counties))
+        names(storm_ave) <- counties
+        
+        for(x in counties){
+                county_weather <- readRDS(paste0("county_ave/", county_dir, "/data/",
+                                                 x, ".rds")) %>%
+                        dplyr::mutate(date = ymd(date),
+                                      prcp = prcp / 10) %>%
+                        dplyr::mutate(fips = x)
+                storm_ave[[x]] <- county_weather
+                }
+        storm_ave <- do.call("rbind", storm_ave)
+        
+        storm_rain <- county_rain(counties = counties, 
+                                  start_year = storm_year,
+                                  end_year = storm_year,
+                                  rain_limit = 0, dist_limit = 2000) %>%
+                dplyr::filter(storm_id == storm_id)
+        
+        county_ave <- storm_ave %>%
+                dplyr::left_join(storm_rain, by = "fips") %>%
+                dplyr::group_by(fips) %>%
+                dplyr::filter(ymd(closest_date) - ddays(2) <= date &
+                       date <= ymd(closest_date) + ddays(1)) %>%
+                dplyr::summarize(monitor_rain = sum(prcp),
+                  tot_precip = first(tot_precip),
+                  prcp_reporting = mean(prcp_reporting))
+        plot_range <- range(county_ave[ , c("monitor_rain", "tot_precip")], 
+                            na.rm = TRUE) + 
+                c(-15, 15)
+        
+        county_ave_plot <- ggplot(county_ave, 
+                                  aes(x = tot_precip, 
+                                      y = monitor_rain)) +
+                geom_abline(aes(intercept = 0, slope = 1), color = "gray",
+                    alpha = 0.5) +
+                geom_point(aes(size = prcp_reporting), alpha = 0.3) +
+                # geom_text(aes(label = fips)) +
+                theme_few() +
+                scale_size_continuous(guide = "none") +
+                ylab("Rainfall (mm) based on \naveraged county monitors") +
+                xlab("Rainfall (mm) based on NLDAS-2 county data") +
+                xlim(plot_range) +
+                ylim(plot_range) + 
+                ggtitle(storm_title)
+        return(county_ave_plot)
+}
+
+allison_county_ave <- plot_county_ave_compare("allison", 
+                                           storm_id = "Allison-2001")
+
+frances_county_ave <- plot_county_ave_compare("frances", 
+                                           storm_id = "Frances-2004")
+
+ike_county_ave <- plot_county_ave_compare("ike", 
+                                           storm_id = "Ike-2008")
+
+alex_county_ave <- plot_county_ave_compare("alex", 
+                                           storm_id = "Alex-2010")
+
+
+grid.arrange(allison_county_ave,
+             frances_county_ave,
+             ike_county_ave, alex_county_ave, ncol = 2)
+```
+
+Finally, we compared exposure results based on the NLDAS-2 precipitation data with values from monitors reported for certain storms in the *Monthly Weather Reviews* yearly summary of the Atlantic basin tropical storm season (Figure \ref{fig:mwr_rain_comparison}). 
+
+```{r mwr_rain_comparison, fig.width = 10, fig.height = 10, echo = FALSE, fig.align = "center", fig.cap = "Comparison of estimated storm-associated rainfall from our method (using NLDAS-2 data for a window from two days before to one day after the storm's closest approach to the county) with ground-based observations reported in the Monthly Weather Review report. Observations within the same county are linked by a line segment. Blue points / lines indicate a county for which the storm came within 500 kilometers, while gray points / lines indicate that the storm did not come within 500 kilometers of the county (and so would be excluded as an 'exposed' county based on distance). The diagonal gray line shows where points would fall if assessments were identical. Horizontal and vertical gray lines show the 75 millimeter threshold for storm-associated rainfall we use for rain-related storm exposure classification."}
+# Function to plot comparison between two datasets
+plot_mwr_compare <- function(data){
+        storm_year <- as.numeric(gsub(".+-", "", data$storm_id[1]))
+        data$fips <- sprintf("%05s", data$fips)
+        storm_title <- paste(unlist(strsplit(as.character(data$storm_id[1]), 
+                                       split = "-")), collapse = ", ")
+        
+        compare_rain <- county_rain(counties = unique(data$fips),
+                             start_year = storm_year, 
+                             end_year = storm_year,
+                             rain_limit = 0, dist_limit = 2000) %>%
+                dplyr::filter(storm_id == data$storm_id[1]) %>%
+                dplyr::right_join(data, by = "fips") %>%
+                dplyr::mutate(within_500_km = storm_dist <= 500)
+        
+        county_range <- compare_rain %>% 
+                group_by(fips) %>%
+                summarize(lowest_rain = min(rain_mm),
+                  highest_rain = max(rain_mm),
+                  nldas_rain = mean(tot_precip),
+                  within_500_km = first(storm_dist) <= 500)
+        
+        plot_mwr <- ggplot(compare_rain, 
+                   aes(x = tot_precip, y = rain_mm,
+                       color = within_500_km)) + 
+        geom_hline(yintercept = 75, color = "lightgray") + 
+        geom_vline(xintercept = 75, color = "lightgray") + 
+                geom_abline(aes(intercept = 0, slope = 1), color = "gray") + 
+        geom_segment(data = county_range, 
+                     aes(x = nldas_rain, xend = nldas_rain,
+                         y = lowest_rain, yend = highest_rain,
+                         group = fips, color = within_500_km)) + 
+        geom_point(aes(group = NA), alpha = 0.5) + 
+        ggthemes::theme_few() + 
+        xlim(range(compare_rain$tot_precip, compare_rain$rain_mm)) +
+        ylim(range(compare_rain$tot_precip, compare_rain$rain_mm)) + 
+        ggtitle(storm_title) + 
+        xlab("NLDAS-2 rainfall (mm)") + 
+        ylab("Monthly Weather Report\n rainfall reports (mm)") + 
+        scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "black"), 
+                           guide = "none") 
+        return(plot_mwr)
+}
+
+
+allison_gauge <- read.csv("MWR_gauge_rain_data/allison_mwr.csv") 
+allison_mwr <- plot_mwr_compare(allison_gauge)
+
+load("MWR_gauge_rain_data/frances_gauge.RData")
+frances_gauge$rain_mm <- convert_precip(frances_gauge$precip_in,
+                                        "inches", "mm")
+frances_mwr <- plot_mwr_compare(frances_gauge)
+
+load("MWR_gauge_rain_data/ike_gauge.RData")
+ike_gauge$rain_mm <- convert_precip(ike_gauge$rain_in, 
+                                    "inches", "mm")
+ike_mwr <- plot_mwr_compare(ike_gauge)
+
+load("MWR_gauge_rain_data/alex_gauge.Rdata")
+alex_mwr <- plot_mwr_compare(alex_gauge)
+
+grid.arrange(allison_mwr, frances_mwr, ike_mwr, alex_mwr, ncol = 2)
+```
+
+Our exposure metrics restricts "exposed" counties to be within 500 km of the storm track. In a few cases, hurricane best tracks stop when the storm transitions from a tropical to extratropical system [let's check that I got the wording right on this]. In these cases, extreme rain from the storm system might have affected counties further along the storm's path, but that are not counted as being near the storm's track. For example, Lee in 2011 was only tracked through the best tracks until it was near the Georgia-Tennessee border. However, remnants of the system brought extreme rain further north, into the Mid-Atlantic and New England (Figure \ref{fig:lee_rain_example}). [I believe that the Monthly Weather Review for the 2011 season includes a description of these rain impacts. We likely want to look over that and incorporate it here]. Other possible examples of this during our study period include Nicole (2010) [check storm history in MWR to confirm that Mid-Atlantic and New England rain during this time was related to storm], Ida (2009), Humberto (2007), Katrina (2005), Grace (2003) [confirm rain was from storm remnants], Frances (1998), and Marco (1990).
+
+```{r lee_rain_example, echo = FALSE, fig.width = 6, fig.height = 8, fig.align = "center", fig.cap = "Example of a tropical storm for which the 'best tracks' track ends early enough to miss significant later effects. These two maps show rainfall during the days surrounding Lee (2011) (top) as well as the counties classified as 'exposed' (bottom) based on criterion of (1) storm approaches within 500 kilometers of the county's population mean center and (2) county gets 75 millimeters or more of precipitation over the period between two days before and one day after the storm's closest approach to the county. The 'best track' is shown in red in both plots and illustrates that tracking ceased too early to capture more northern storm-associated rainfall."}
+storm <- "Lee-2011"
+a <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_counties(storm = storm, 
+                                           metric = "rainfall")) + 
+        ggtitle("Rainfall during Lee, 2011")
+b <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_rain_exposure(storm = storm, 
+                                           dist_limit = 500,
+                                           rain_limit = 75)) + 
+        ggtitle("Rain-based exposure during Lee, 2011")
+grid.arrange(a, b, ncol = 1)
+```
+
+For rain-based exposure, we use a distance constraint of 500 km. With storms where the best track extends throughout the storm, this should typically be a large enough swath to include all extreme rain exposures from the storm. There are only a few very large storms where this might not be the case. One example is Ike (2008), in which case the 500 km constraint excludes some of the counties in northern Texas that got heavy rain from the system (Figure \ref{fig:ike_rain_example}). Other large systems where this might be a concern include Wilma (2005), Hermine (2004) [confirm rain in SC, NC, and VA during this time was from this storm], Arlene (1993) [confirm rain through to LA is from this storm].
+
+```{r ike_rain_example, echo = FALSE, fig.width = 6, fig.height = 8, fig.align = "center", fig.cap = "Example of a storm large enough that some storm-associated rainfall was likely missed when using a 500 kilometer distance criterion with the rain-based exposure metric. These two maps show rainfall during the days surrounding Ike (2008) (top) as well as the counties classified as 'exposed' (bottom) based on criterion of (1) storm approaches within 500 kilometers of the county's population mean center and (2) county gets 75 millimeters or more of precipitation over the period between two days before and one day after the storm's closest approach to the county. The storm's 'best track' is plotted on each map in red. This example storm shows that some counties in northern Texas were incorrectly classified as 'unexposed' based on storm-associated rain because they fell outside the distance of 500 kilometers."}
+storm <- "Ike-2008"
+a <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_counties(storm = storm, 
+                                           metric = "rainfall")) + 
+        ggtitle("Rainfall during Ike, 2008")
+b <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_rain_exposure(storm = storm, 
+                                           dist_limit = 500,
+                                           rain_limit = 75)) + 
+        ggtitle("Rain-based exposure during Ike, 2008")
+grid.arrange(a, b, ncol = 1)
+```
+
+#### Are our methods of assessing wind speed reasonable
+
+[Validate windspeedmodel functions using Extended Best Tracks Data]
+
+For four example storms, we also assessed how estimated wind speeds from our model compared to observed wind speeds reported in the *Monthy Weather Review* tropical cyclone reports (Figure \ref{fig:mwr_wind_comparison}). 
+
+```{r mwr_wind_comparison, fig.width = 10, fig.height = 10, echo = FALSE, fig.align = "center", fig.cap = "Comparison of estimated storm sustained winds from our method (using a model based on Willoughby's model) with ground-based observations reported in the Monthly Weather Review report. Observations within the same county are linked by a line segment. The diagonal gray line shows where points would fall if assessments were identical. Horizontal and vertical gray lines show the 15 m / s threshold we use for wind-related storm exposure classification."}
+# Function to plot comparison between two datasets
+plot_mwr_compare_wind <- function(data){
+        storm_year <- as.numeric(gsub(".+-", "", data$storm_id[1]))
+        data$fips <- sprintf("%05s", data$fips)
+        storm_title <- paste(unlist(strsplit(as.character(data$storm_id[1]), 
+                                       split = "-")), collapse = ", ")
+        
+        compare_wind <- county_wind(counties = unique(data$fips),
+                             start_year = storm_year, 
+                             end_year = storm_year,
+                             wind_limit = 0,
+                             wind_var = "vmax_sust") %>%
+                dplyr::filter(storm_id == data$storm_id[1]) %>%
+                dplyr::right_join(data, by = "fips") 
+        
+        county_range <- compare_wind %>% 
+                group_by(fips) %>%
+                summarize(lowest_wind = min(wind_sust),
+                  highest_wind = max(wind_sust),
+                  model_wind = mean(vmax_sust))
+        
+        plot_mwr <- ggplot(compare_wind, 
+                   aes(x = vmax_sust, y = wind_sust)) + 
+        geom_hline(yintercept = 15, color = "lightgray") + 
+        geom_vline(xintercept = 15, color = "lightgray") + 
+                geom_abline(aes(intercept = 0, slope = 1), color = "gray") + 
+        geom_segment(data = county_range, 
+                     aes(x = model_wind, xend = model_wind,
+                         y = lowest_wind, yend = highest_wind,
+                         group = fips)) + 
+        geom_point(aes(group = NA), alpha = 0.5) + 
+        ggthemes::theme_few() + 
+        xlim(range(compare_wind$max_sust, compare_wind$wind_sust)) +
+        ylim(range(compare_wind$max_sust, compare_wind$wind_sust)) + 
+        ggtitle(storm_title) + 
+        xlab("Modeled sustained wind (m / s)") + 
+        ylab("Monthly Weather Report\n sustained wind reports (m / s)") + 
+        scale_color_manual(values = c("TRUE" = "blue", "FALSE" = "black"), 
+                           guide = "none") 
+        return(plot_mwr)
+}
+
+#allison_gauge <- read.csv("MWR_gauge_rain_data/allison_mwr.csv") 
+#allison_mwr <- plot_mwr_compare(allison_gauge)
+
+load("MWR_gauge_wind_data/frances_wind.RData")
+frances_wind <- frances_wind %>%
+        filter(!is.na(wind_sust)) %>%
+        mutate(wind_sust = convert_wind_speed(wind_sust, "knots", "mps"))
+frances_wind_mwr <- plot_mwr_compare_wind(frances_wind)
+
+load("MWR_gauge_wind_data/ike_wind.RData")
+ike_wind <- ike_wind %>%
+        filter(!is.na(max_sust_kt)) %>%
+        mutate(wind_sust = convert_wind_speed(max_sust_kt, "knots", "mps"))
+ike_wind_mwr <- plot_mwr_compare_wind(ike_wind)
+
+load("MWR_gauge_wind_data/alex_wind.Rdata")
+alex_wind <- alex_wind %>%
+        filter(!is.na(max_sust)) %>%
+        mutate(wind_sust = convert_wind_speed(max_sust, "knots", "mps")) %>%
+        select(storm_id, fips, wind_sust)
+alex_wind_mwr <- plot_mwr_compare_wind(alex_wind)
+
+grid.arrange(frances_wind_mwr, ike_wind_mwr,
+             frances_wind_mwr, alex_wind_mwr, ncol = 2)
+```
+
+
+#### Are exposure patterns different when using different exposure metrics? In particular, (1) do some exposure metrics result in more "exposed" classifications than others and (2) are geographic patterns of exposure different among the different metrics?
+
+We determined the average number of hits per year for each eastern US county for the exposure criteria based on distance (Figure \ref{fig:distance_hits}), rain (Figure \ref{fig:rain_hits}), and wind (Figure \ref{fig:wind_hits}), as well as the total number of hits based on storm-associated events listed in the NOAA Storm Events database for flood events (Figure \ref{fig:flood_hits}) and tornado events (Figure \ref{fig:tornado_hits}) (all of these maps based on NOAA Storm Events are restricted to storms between 1996 and 2011).
+
+```{r echo = FALSE}
+# Map number of hits per county based on exposure data
+map_total_hits <- function(exposure_data, my_fips = my_fips, 
+                           eastern_states = eastern_states,
+                           title, start_year = 1988, end_year = 2011){
+        missing_fips <- my_fips[!(my_fips %in% exposure_data$fips)]
+        missing_counties <- data.frame(region = as.numeric(missing_fips),
+                                       count = 0)
+        
+        exposure_count <- exposure_data %>%
+                dplyr::group_by(fips) %>%
+                dplyr::summarize(count = 10 * n() /(end_year - start_year + 1)) %>%
+                dplyr::rename(region = fips) %>%
+                dplyr::mutate(region = as.numeric(region),
+                              count = as.numeric(count)) %>%
+                rbind(missing_counties)
+        
+        exposure_count$value <- cut(exposure_count$count, c(0, 
+                                                            1,
+                                                            2,
+                                                            3,
+                                                            4,
+                                                            5,
+                                                            6,
+                                                            7,
+                                                            8,
+                                                            20),
+                           labels = c("0-1", "1-2",
+                                      "2-3", "3-4",
+                                      "4-5", "5-6",
+                                      "6-7", "7-8", "8+"),
+                           include.lowest = TRUE)
+        exposure_palette <- c("#FFFFFF", brewer.pal(8, name = "YlGnBu"))
+        
+        map_dist_count <- CountyChoropleth$new(exposure_count)
+        map_dist_count$set_zoom(eastern_states)
+        map_dist_count$ggplot_scale <- scale_fill_manual(
+                name = "Hits per\ncounty per\nyear",
+                values = exposure_palette,
+                na.value = "white")
+        map_dist_count$title <- title
+        a <- map_dist_count$render() 
+        
+        storms_to_plot <- exposure_data %>%
+                dplyr::group_by(storm_id) %>%
+                dplyr::summarize(n = n()) %>%
+                dplyr::arrange(desc(n)) %>%
+                slice(1:5)
+        # print(storms_to_plot)
+        out <- map_tracks(storms_to_plot$storm_id, plot_object = a,
+                          alpha = 0.75, plot_points = FALSE)
+        return(out)
+}
+```
+ 
+```{r distance_hits, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Average number of hits per year for eastern US counties based on a criterion of the county being within 100 kilometers of the storm track, for storms from 1988 to 2011. Red lines show the storm tracks for the top 5 storms in terms of number of counties classified as 'exposed' to the storm based on this criterion over the same period (Beryl, 1994: 346 counties; Frances, 2004: 321 counties; Cindy, 2005: 317 counties; Jeanne, 2004: 296 counties; and Dennis, 2005: 290 counties)."}
+distance_exposure <- county_distance(counties = my_fips, start_year = 1988,
+                                     end_year = 2011, dist_limit = 100)
+map_total_hits(distance_exposure, my_fips = my_fips, 
+               eastern_states = eastern_states,
+               title = "Hits per county based on distance criterion")
+```
+
+```{r rain_hits, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Average number of hits per year for eastern US counties based on a criteria of the county getting 75 millimeters or more of storm-associated rain in the window from two days before to one day after the storm's closest approach to the county and the county being within 500 kilometers of the storm track, for storms from 1988 to 2011. Red lines show the storm tracks for the top 5 storms in terms of number of counties classified as 'exposed' to the storm based on this criteria over the same period (Frances, 2004: 464 counties; Ivan, 2004, 411 counties; Opal, 1995: 407 counties; Ike, 2008: 338 counties, Lee, 2011: 355 counties)."}
+rain_exposure <- county_rain(counties = my_fips,
+                             start_year = 1988, end_year = 2011,
+                             rain_limit = 75, dist_limit = 500)
+map_total_hits(rain_exposure, my_fips = my_fips, 
+               eastern_states = eastern_states,
+               title = "Hits per county based on rain criterion")
+```
+
+```{r wind_hits, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Average number of hits per year for eastern US counties based on a criteria of the county experiencing storm-related sustained gusts of 15 m / s or more, for storms from 1988 to 2011. Red lines show the storm tracks for the top 5 storms in terms of number of counties classified as 'exposed' to the storm based on this criterion over the same period (Bertha, 1996: 199 counties; Irene, 2011: 139 counties; Floyd, 1999: 135 counties; Isabel, 2003: 128 counties; Bob, 1991: 118 counties)."}
+wind_exposure <- county_wind(counties = my_fips, start_year = 1988,
+                             end_year = 2011, wind_limit = 15)
+map_total_hits(wind_exposure, my_fips = my_fips, 
+               eastern_states = eastern_states,
+               title = "Hits per county based on wind criterion")
+```
+
+```{r flood_hits, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Average number of hits per year for eastern US counties based on the county having a storm-associated flood event listed in the NOAA Storm Events database, for storms from 1996 to 2011. Red lines show the storm tracks for the top 5 storms in terms of number of counties classified as 'exposed' to the storm based on this criterion over the same period (Floyd, 1999: 218 counties; Allison, 2001: 187 counties; Irene, 2011: 187 counties; Ike, 2008: 167 counties; Ivan, 2004: 153 counties)."}
+flood_exposure <- county_events(counties = my_fips,
+                              start_year = 1996, end_year = 2011,
+                              event_type = "flood")
+map_total_hits(flood_exposure, my_fips = my_fips, 
+               eastern_states = eastern_states,
+               title = "Hits per county based on flood events",
+               start_year = 1996, end_year = 2011)
+```
+
+```{r tornado_hits, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Average number of hits per year for eastern US counties based on the county having a storm-associated tornado event listed in the NOAA Storm Events database, for storms from 1996 to 2011. Light red lines show the storm tracks over the same period. Red lines show the storm tracks for the top 5 storms in terms of number of counties classified as 'exposed' to the storm based on this criterion over the same period (Ivan, 2004: 95 counties; Frances, 2004: 72 counties; Rita, 2005: 52 counties; Katrina, 2005: 45 counties; Fay, 2008: 43 counties)."}
+tornado_exposure <- county_events(counties = my_fips,
+                              start_year = 1996, end_year = 2011,
+                              event_type = "tornado")
+map_total_hits(tornado_exposure, my_fips = my_fips, 
+               eastern_states = eastern_states,
+               title = "Hits per county based on tornado events",
+               start_year = 1996, end_year = 2011)
+```
+
+Here are time trends for some different metrics: 
+
+```{r echo = FALSE}
+tornado_events <- county_events(counties = my_fips, event_type = "tornado",
+                                start_year = 1988, end_year = 2011) %>%
+        dplyr::group_by(storm_id) %>%
+        dplyr::summarize(n_counties = n()) %>%
+        dplyr::mutate(year = as.numeric(gsub(".+-", "", storm_id)))
+
+tornado_year_mean <- tornado_events %>%
+        dplyr::group_by(year) %>%
+        dplyr::summarize(year_mean = mean(n_counties),
+                         year_tot = sum(n_counties))
+
+a <- ggplot(tornado_events, aes(x = year, y = n_counties)) + 
+        geom_point(alpha = 0.5) + 
+        geom_line(data = tornado_year_mean, aes(y = year_tot), 
+                   color = "blue", alpha = 0.2, size = 1) + 
+        geom_point(data = tornado_year_mean, aes(y = year_tot), 
+                   color = "blue", alpha = 0.2, size = 3) + 
+        theme_few() + 
+        xlab("Year") + ylab("Number of exposed counties")+ 
+        ggtitle("Patterns in county exposure to tornado events")
+
+
+flood_events <- county_events(counties = my_fips, event_type = "flood",
+                                start_year = 1988, end_year = 2011) %>%
+        dplyr::group_by(storm_id) %>%
+        dplyr::summarize(n_counties = n()) %>%
+        dplyr::mutate(year = as.numeric(gsub(".+-", "", storm_id)))
+
+flood_year_mean <- flood_events %>%
+        dplyr::group_by(year) %>%
+        dplyr::summarize(year_mean = mean(n_counties),
+                         year_tot = sum(n_counties))
+
+b <- ggplot(flood_events, aes(x = year, y = n_counties)) + 
+        geom_point(alpha = 0.5) + 
+        geom_line(data = flood_year_mean, aes(y = year_tot), 
+                  color = "blue", alpha = 0.2, size = 1) + 
+        geom_point(data = flood_year_mean, aes(y = year_tot), 
+                   color = "blue", alpha = 0.2, size = 3) + 
+        theme_few() + 
+        xlab("Year") + ylab("Number of exposed counties") + 
+        ggtitle("Patterns in county exposure to flood events")
+
+rain_events <- county_rain(counties = my_fips, rain_limit = 75, dist_limit = 500,
+                              start_year = 1988, end_year = 2011) %>%
+        dplyr::group_by(storm_id) %>%
+        dplyr::summarize(n_counties = n()) %>%
+        dplyr::mutate(year = as.numeric(gsub(".+-", "", storm_id)))
+
+rain_year_mean <- rain_events %>%
+        dplyr::group_by(year) %>%
+        dplyr::summarize(year_mean = mean(n_counties),
+                         year_tot = sum(n_counties))
+
+c <- ggplot(rain_events, aes(x = year, y = n_counties)) + 
+        geom_point(alpha = 0.5) + 
+        geom_line(data = rain_year_mean, aes(y = year_tot), 
+                  color = "blue", alpha = 0.2, size = 1) + 
+        geom_point(data = rain_year_mean, aes(y = year_tot), 
+                   color = "blue", alpha = 0.2, size = 3) + 
+        theme_few() + 
+        xlab("Year") + ylab("Number of exposed counties") + 
+        ggtitle("Patterns in county exposure to rain")
+
+
+wind_events <- county_wind(counties = my_fips, wind_limit = 15, 
+                           start_year = 1988, end_year = 2011) %>%
+        dplyr::group_by(storm_id) %>%
+        dplyr::summarize(n_counties = n()) %>%
+        dplyr::mutate(year = as.numeric(gsub(".+-", "", storm_id)))
+
+wind_year_mean <- wind_events %>%
+        dplyr::group_by(year) %>%
+        dplyr::summarize(year_mean = mean(n_counties),
+                         year_tot = sum(n_counties))
+
+d <- ggplot(wind_events, aes(x = year, y = n_counties)) + 
+        geom_point(alpha = 0.5) + 
+        geom_line(data = wind_year_mean, aes(y = year_tot), 
+                  color = "blue", alpha = 0.2, size = 1) + 
+        geom_point(data = wind_year_mean, aes(y = year_tot), 
+                   color = "blue", alpha = 0.2, size = 3) + 
+        theme_few() + 
+        xlab("Year") + ylab("Number of exposed counties") + 
+        ggtitle("Patterns in county exposure to wind")
+
+
+
+distance_events <- county_distance(counties = my_fips, dist_limit = 100, 
+                           start_year = 1988, end_year = 2011) %>%
+        dplyr::group_by(storm_id) %>%
+        dplyr::summarize(n_counties = n()) %>%
+        dplyr::mutate(year = as.numeric(gsub(".+-", "", storm_id)))
+
+distance_year_mean <- distance_events %>%
+        dplyr::group_by(year) %>%
+        dplyr::summarize(year_mean = mean(n_counties),
+                         year_tot = sum(n_counties))
+
+e <- ggplot(distance_events, aes(x = year, y = n_counties)) + 
+        geom_point(alpha = 0.5) + 
+        geom_line(data = distance_year_mean, aes(y = year_tot), 
+                  color = "blue", alpha = 0.2, size = 1) + 
+        geom_point(data = distance_year_mean, aes(y = year_tot), 
+                   color = "blue", alpha = 0.2, size = 3) + 
+        theme_few() + 
+        xlab("Year") + ylab("Number of exposed counties") + 
+        ggtitle("Patterns in county exposure to distance")
+
+grid.arrange(a, c, d, e, ncol = 1)
+```
+
+We assessed some statistics on the number of counties exposed to storms under different exposure metrics (Table \ref{tab:num_counties_exposed}).
+
+```{r echo = FALSE, results = "asis"}
+distance_exposure_50 <- county_distance(counties = my_fips, start_year = 1988,
+                                     end_year = 2011, dist_limit = 50)
+distance_exposure_75 <- county_distance(counties = my_fips, start_year = 1988,
+                                     end_year = 2011, dist_limit = 75)
+rain_exposure_125 <- county_rain(counties = my_fips,
+                             start_year = 1988, end_year = 2011,
+                             rain_limit = 125, dist_limit = 500)
+rain_exposure_175 <- county_rain(counties = my_fips,
+                             start_year = 1988, end_year = 2011,
+                             rain_limit = 175, dist_limit = 500)
+wind_exposure_20 <- county_wind(counties = my_fips, start_year = 1988,
+                             end_year = 2011, wind_limit = 20)
+wind_exposure_25 <- county_wind(counties = my_fips, start_year = 1988,
+                             end_year = 2011, wind_limit = 25)
+
+dist_exp <- distance_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(dist_exposed = 1)
+dist_exp_50 <- distance_exposure_50 %>%
+        select(storm_id, fips) %>%
+        mutate(dist_exposed_50 = 1)
+dist_exp_75 <- distance_exposure_75 %>%
+        select(storm_id, fips) %>%
+        mutate(dist_exposed_75 = 1)
+rain_exp <- rain_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(rain_exposed = 1)
+rain_exp <- rain_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(rain_exposed = 1)
+rain_exp_125 <- rain_exposure_125 %>%
+        select(storm_id, fips) %>%
+        mutate(rain_exposed_125 = 1)
+rain_exp_175 <- rain_exposure_175 %>%
+        select(storm_id, fips) %>%
+        mutate(rain_exposed_175 = 1)
+wind_exp <- wind_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(wind_exposed = 1)
+wind_exp_20 <- wind_exposure_20 %>%
+        select(storm_id, fips) %>%
+        mutate(wind_exposed_20 = 1)
+wind_exp_25 <- wind_exposure_25 %>%
+        select(storm_id, fips) %>%
+        mutate(wind_exposed_25 = 1)
+
+all_exp <- dist_exp %>%
+        full_join(dist_exp_75, by = c("storm_id", "fips")) %>%
+        full_join(dist_exp_50, by = c("storm_id", "fips")) %>%
+        full_join(rain_exp, by = c("storm_id", "fips")) %>%
+        full_join(rain_exp_125, by = c("storm_id", "fips")) %>%
+        full_join(rain_exp_175, by = c("storm_id", "fips")) %>%
+        full_join(wind_exp, by = c("storm_id", "fips")) %>%
+        full_join(wind_exp_20, by = c("storm_id", "fips")) %>%
+        full_join(wind_exp_25, by = c("storm_id", "fips")) %>%
+        gather(metric, exposure, -storm_id, -fips) %>%
+        mutate(exposure = !is.na(exposure)) 
+      
+flood_exposure <- county_events(counties = my_fips,
+                              start_year = 1996, end_year = 2011,
+                              event_type = "flood")
+tornado_exposure <- county_events(counties = my_fips,
+                              start_year = 1996, end_year = 2011,
+                              event_type = "tornado")
+
+flood_exp <- flood_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(flood_exposed = 1)
+tornado_exp <- tornado_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(tornado_exposed = 1)
+
+all_exp_2 <- flood_exp %>%
+        full_join(tornado_exp, by = c("storm_id", "fips")) %>%
+        gather(metric, exposure, -storm_id, -fips) %>%
+        mutate(exposure = !is.na(exposure),
+               storm_id = as.character(storm_id))  %>%
+        dplyr::group_by(storm_id, metric) %>%
+        dplyr::summarize(n_exposed = sum(exposure)) %>%
+        dplyr::ungroup() %>%
+        dplyr::group_by(metric) %>%
+        dplyr::summarize(median_exposure = median(n_exposed),
+                         iqr_exposure = paste(quantile(n_exposed, c(0.25, 0.75)),
+                                              collapse = ", "), 
+                         median_exposure = paste0(median_exposure, " (",
+                                                  iqr_exposure, ")"),
+                         max_exposure = max(n_exposed),
+                         which_max_exposure = storm_id[which.max(n_exposed)],
+                         which_max_exposure = gsub("-", ", ", which_max_exposure),
+                         max_exposure = paste0(max_exposure, " (",
+                                               which_max_exposure, ")"), 
+                         n_100_plus = sum(n_exposed >= 100) / 10) %>%
+        dplyr::select(-iqr_exposure, -which_max_exposure)
+  
+all_exp %>%
+        dplyr::group_by(storm_id, metric) %>%
+        dplyr::summarize(n_exposed = sum(exposure)) %>%
+        dplyr::ungroup() %>%
+        dplyr::group_by(metric) %>%
+        dplyr::summarize(median_exposure = median(n_exposed),
+                         iqr_exposure = paste(quantile(n_exposed, c(0.25, 0.75)),
+                                              collapse = ", "), 
+                         median_exposure = paste0(median_exposure, " (",
+                                                  iqr_exposure, ")"),
+                         max_exposure = max(n_exposed),
+                         which_max_exposure = storm_id[which.max(n_exposed)],
+                         which_max_exposure = gsub("-", ", ", which_max_exposure),
+                         max_exposure = paste0(max_exposure, " (",
+                                               which_max_exposure, ")"), 
+                         n_100_plus = sum(n_exposed >= 100) / 10) %>%
+        dplyr::select(-iqr_exposure, -which_max_exposure) %>%
+        rbind(all_exp_2) %>%
+        dplyr::mutate(metric = c("Distance (100 km or less)",
+                                 "Distance (75 km or less)",
+                                 "Distance (50 km or less)",
+                                 "Rainfall (75 mm or more)",
+                                 "Rainfall (125 mm or more)",
+                                 "Rainfall (175 mm or more)",
+                                 "Wind (15 m/s or more)",
+                                 "Wind (20 m/s or more)",
+                                 "Wind (25 m/s or more)",
+                                 "Flood event",
+                                 "Tornado event")) %>%
+        xtable(caption = "County-level exposure statistics for different exposure metrics",
+               label = "tab:num_counties_exposed",
+               digits = c(0, 0, 0, 0, 1)) %>%
+        print(include.rownames = FALSE, floating = TRUE,
+              table.placement = "p", caption.placement = "top", 
+              booktabs = TRUE, comment = FALSE, timestamp = NULL)
+```
+
+Here is some analysis of agreement and disagreement among different metrics:
+
+```{r echo = FALSE, results = "asis"}
+all_exp <- dist_exp %>%
+        full_join(rain_exp, by = c("storm_id", "fips")) %>%
+        full_join(wind_exp, by = c("storm_id", "fips")) %>%
+        gather(metric, exposure, -storm_id, -fips) %>%
+        mutate(exposure = !is.na(exposure)) %>%
+        spread(metric, exposure)
+
+check_agreement <- function(data, x1, x2, n_counties = 2396){
+        data$x1 <- data[ , x1]
+        data$x2 <- data[ , x2]
+        agreement <- data %>%
+                dplyr::select(storm_id, x1, x2) %>%
+                dplyr::mutate(agree_exp = x1 & x2,
+                              x1_exp_x2_unexp = x1 & !x2,
+                              x1_unexp_x2_exp = !x1 & x2,
+                              any_exp = x1 | x2) %>%
+                dplyr::group_by(storm_id) %>%
+                dplyr::summarize(disagree = sum(!agree_exp),
+                                 agree = (n_counties - disagree),
+                                 agree_exp = sum(agree_exp),
+                                 agree_unexp = (n_counties - disagree - agree_exp),
+                                 disagree_x1_exp = sum(x1_exp_x2_unexp),
+                                 disagree_x2_exp = sum(x1_unexp_x2_exp),
+                                 agree_any = round(100 * agree_exp / sum(any_exp), 1),
+                                 disagree_any_x1_exp = round(100 * disagree_x1_exp /
+                                                                     sum(any_exp), 1),
+                                 disagree_any_x2_exp = round(100 * disagree_x2_exp /
+                                                                     sum(any_exp), 1))
+        agreement[ , 2:7] <- round(100 * agreement[ , 2:7] / n_counties, 1)
+        return(agreement)
+}
+
+summarize_agreement <- function(agreement){
+        med_val <- apply(agreement[ , -1], MARGIN = 2, FUN = median, na.rm = TRUE)
+        min_val <- apply(agreement[ , -1], MARGIN = 2, FUN = min, na.rm = TRUE)
+        max_val <- apply(agreement[ , -1], MARGIN = 2, FUN = max, na.rm = TRUE)
+        min_storm <- apply(agreement[ , -1], MARGIN = 2,
+                           FUN = function(x){
+                                   i <- which.min(x)
+                                   out <- agreement$storm_id[i]
+                                   return(out)
+                                   })
+        max_storm <- apply(agreement[ , -1], MARGIN = 2,
+                           FUN = function(x){
+                                   i <- which.max(x)
+                                   out <- agreement$storm_id[i]
+                                   return(out)
+                           })
+        out <- rbind(t(as.data.frame(med_val)), t(as.data.frame(min_val)),
+                     t(as.data.frame(max_val)), t(as.data.frame(min_storm)),
+                     t(as.data.frame(max_storm)))
+        out <- as.data.frame(out)
+        out$metric <- row.names(out)
+        return(out)
+}
+
+exp_metrics <- c("dist_exposed", "rain_exposed", "wind_exposed")
+
+agg_exp_matrix <- matrix(NA, ncol = length(exp_metrics), nrow = length(exp_metrics))
+colnames(agg_exp_matrix) <- rownames(agg_exp_matrix) <- exp_metrics
+agg_unexp_matrix <- x1_exp_matrix <- x2_exp_matrix <- agg_exp_matrix
+for(i in 1:length(exp_metrics)){
+        for(j in 1:length(exp_metrics)){
+                x1 <- exp_metrics[i]
+                x2 <- exp_metrics[j]
+                # if(x1 == x2) next
+                
+                agreement <- check_agreement(all_exp, x1 = x1, x2 = x2)
+                agg_exp_matrix[i, j] <- median(agreement$agree_exp, na.rm = TRUE)
+                agg_unexp_matrix[i, j] <- median(agreement$agree_unexp, na.rm = TRUE)
+                x1_exp_matrix[i, j] <- median(agreement$disagree_x1_exp, na.rm = TRUE)
+                x2_exp_matrix[i, j] <- median(agreement$disagree_x2_exp, na.rm = TRUE)
+        }
+}
+
+out <- rbind(cbind(agg_exp_matrix, x1_exp_matrix),
+             cbind(x2_exp_matrix, agg_unexp_matrix)) 
+row.names(out) <- NULL
+colnames(out) <- NULL
+out <- xtable(as.data.frame(out), caption = "Agreement between metrics.",
+              align = rep("c", 7), digits = 1)
+print(out, include.rownames = FALSE, floating = TRUE,
+      table.placement = "p", caption.placement = "top", 
+      booktabs = TRUE, comment = FALSE, timestamp = NULL)
+```
+
+
+We first investigated whether different exposure metrics resulted in similar numbers of counties classified as "exposed" to a storm (Figure \ref{fig:county_number_cor}, Table \ref{tab:county_number}).
+
+```{r county_number_cor, echo = FALSE, fig.width = 8, fig.height = 8, fig.align = "center", fig.cap = "Association between the number of counties classified as `exposed` for a storm using different exposure metrics. Each small plot shows this association, with each point representing a storm, with positions on the x- and y-axes showing the number of counties classified as `exposed` for that storm based on one of the exposure metrics considered in this study. Study storms from 1996 to 2011 are included in each plot."}
+dist_exp <- distance_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(dist_exposed = 1)
+rain_exp <- rain_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(rain_exposed = 1)
+wind_exp <- wind_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(wind_exposed = 1)
+flood_exp <- flood_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(flood_exposed = 1,
+               storm_id = as.character(storm_id))
+tornado_exp <- tornado_exposure %>%
+        select(storm_id, fips) %>%
+        mutate(tornado_exposed = 1,
+               storm_id = as.character(storm_id))
+
+all_exp <- dist_exp %>%
+        full_join(rain_exp, by = c("storm_id", "fips")) %>%
+        full_join(wind_exp, by = c("storm_id", "fips")) %>%
+        filter(as.numeric(gsub(".+-", "", storm_id)) >= 1996) %>%
+        full_join(flood_exp, by = c("storm_id", "fips")) %>%
+        full_join(tornado_exp, by = c("storm_id", "fips")) %>%
+        mutate(dist_exposed = !is.na(dist_exposed),
+               rain_exposed = !is.na(rain_exposed),
+               wind_exposed = !is.na(wind_exposed),
+               flood_exposed = !is.na(flood_exposed),
+               tornado_exposed = !is.na(tornado_exposed)) %>%
+        group_by(storm_id) %>%
+        summarize(any_exposed = n(),
+                  Distance = sum(dist_exposed),
+                  Rain = sum(rain_exposed),
+                  Wind = sum(wind_exposed),
+                  Flood = sum(flood_exposed),
+                  Tornado = sum(tornado_exposed)) %>%
+        arrange(desc(any_exposed))
+
+GGally::ggpairs(select(all_exp, -storm_id, -any_exposed),
+                aes(alpha = 0.5)) + theme_few()
+```
+
+```{r county_number, echo = FALSE, results = "asis"}
+a <- all_exp %>% 
+        mutate(storm_id = paste0(gsub("-", " (", storm_id), ")")) %>%
+        slice(1:20) %>%
+        rename(Storm = storm_id, 
+               "At least one metric" = any_exposed) %>%
+        xtable(caption = "Top 10 storms in terms of numbers of counties assessed as `exposed` based on at least one of the exposure metrics, for storms between 1996 and 2011.",
+                       label = "tab:county_number")
+print(a, include.rownames = FALSE, floating = TRUE,
+      table.placement = "p", caption.placement = "top", 
+      booktabs = TRUE, comment = FALSE, timestamp = NULL)
+```
+
+Some storms can very substantially in their exposure patterns when different metrics are used. For example, Tropical Storm Allison (2001) was notable for its rainfall rather than wind intensity; as a result, many more counties are classified as "exposed" to that storm when the exposure classification is based on rainfall rather than wind (Figure \ref{fig:allison_wind_rain_exp}). Conversely, Hurricane Hugo (1989) was more notable for wind than rainfall, which is reflected in more counties assessed as "exposed" based on wind than rain (Figure \ref{fig:hugo_wind_rain_exp}). 
+
+[One interesting contrast is between storms that were noteworthy for direct wind-related deaths (Anderew in 1992, Hugo in 1989) versus storms noteworthy for direct freshwater flooding-related deaths (Floyd in 1999, Alberto in 1994, Charley in 1998) for the 1970--1999 period [@Rappaport2000]. (Another study notes the following storms were notable for inland impacts-- Hugo, 1989 (wind and rain); Floyd, 1999 (flooding); Allison, 2001 (flooding); Fran, 1996 (wind) [@Kruk2010].) Here are two examples, one of each of these two types:]
+
+```{r allison_wind_rain_exp, fig.width = 6, fig.height = 8, echo = FALSE, fig.align = "center", fig.cap = "Counties that were classified as 'exposed' to Tropical Storm Allison (2001) based on rain (top) and wind (bottom) exposure criteria. Rain-based exposure was assessed based on storm-associated rainfall of 75 millimeters or more in the county and a distance of 500 kilometers or less between the county's population mean center and the storm's closest approach. Wind-based exposure was based on maximum sustained winds of 15 meters per second or more in the county during the storm."}
+storm <- "Allison-2001"
+a <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_rain_exposure(storm = storm, 
+                                          rain_limit = 75,
+                                          dist_limit = 500)) + 
+        ggtitle(paste0(storm, ", Rain-based exposure"))
+b <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_wind_exposure(storm = storm, 
+                                           wind_limit = 15)) + 
+        ggtitle(paste0(storm, ", Wind-based exposure")) 
+
+grid.arrange(a, b, ncol = 1)
+```
+
+```{r hugo_wind_rain_exp, fig.width = 6, fig.height = 8, echo = FALSE, fig.align = "center", fig.cap = "Counties that were classified as 'exposed' to Hurricane Hugo (1989) based on rain (top) and wind (bottom) exposure criteria. Rain-based exposure was assessed based on storm-associated rainfall of 75 millimeters or more in the county and a distance of 500 kilometers or less between the county's population mean center and the storm's closest approach. Wind-based exposure was based on maximum sustained winds of 15 meters per second or more in the county during the storm."}
+storm <- "Hugo-1989"
+a <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_rain_exposure(storm = storm, 
+                                          rain_limit = 75,
+                                          dist_limit = 500)) + 
+        ggtitle(paste0(storm, ", Rain-based exposure"))
+b <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_wind_exposure(storm = storm, 
+                                           wind_limit = 15)) + 
+        ggtitle(paste0(storm, ", Wind-based exposure")) 
+
+grid.arrange(a, b, ncol = 1)
+```
+
+As another example, exposure classifications based on flood events in some cases align well with rain-based classifications (e.g., for Hurricane Floyd in 1999; Figure \ref{fig:floyd_rain_flood_exp}) but for other storms only a small percent of the counties assessed as "exposed" based on rain criteria are also assessed as "exposed" based on flood exposure (e.g., Hurricane Frances, 2004; Figure \ref{fig:frances_rain_flood_exp}).
+
+[For storms in 1996 or later, when flooding reports are included in NOAA's Storm Events data, exposure patterns based on floods reports generally pick up similar regions as rain-based exposure, and in some cases (e.g., Floyd, 1999), counties classified as exposed using rain-based exposure are very similar to the counties in which flood events were recorded. For example, here are comparisons for some of the worst storms in terms of rain-based exposures:]
+
+```{r frances_rain_flood_exp, echo = FALSE, fig.width = 6, fig.height = 8, fig.align = "center", fig.cap = "Counties that were classified as 'exposed' to Hurricane Frances (2004) based on rain (top) and flood event (bottom) exposure criteria. Rain-based exposure was assessed based on storm-associated rainfall of 75 millimeters or more in the county and a distance of 500 kilometers or less between the county's population mean center and the storm's closest approach. Flood event-based exposure was based on the county have a flood event listing in the NOAA Storm Events database and being within 500 kilometers of the storm's track."}
+storm <- "Frances-2004"
+a <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_rain_exposure(storm = storm, 
+                                           dist_limit = 500,
+                                           rain_limit = 75)) + 
+        ggtitle("Rain-based exposure during Frances, 2004")
+b <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_event_exposure(storm = storm, 
+                                           event_type = "flood")) + 
+        ggtitle("Flood events during Frances, 2004")
+grid.arrange(a, b, ncol = 1)
+```
+
+```{r floyd_rain_flood_exp, echo = FALSE, fig.width = 6, fig.height = 8, fig.align = "center", fig.cap = "Counties that were classified as 'exposed' to Hurricane Floyd (1999) based on rain (top) and flood event (bottom) exposure criteria. Rain-based exposure was assessed based on storm-associated rainfall of 75 millimeters or more in the county and a distance of 500 kilometers or less between the county's population mean center and the storm's closest approach. Flood event-based exposure was based on the county have a flood event listing in the NOAA Storm Events database and being within 500 kilometers of the storm's track."}
+storm <- "Floyd-1999"
+a <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_rain_exposure(storm = storm, 
+                                           dist_limit = 500,
+                                           rain_limit = 75)) + 
+        ggtitle("Rain-based exposure during Floyd, 1999")
+b <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_event_exposure(storm = storm, 
+                                           event_type = "flood")) + 
+        ggtitle("Flood events during Floyd, 1999")
+grid.arrange(a, b, ncol = 1)
+```
+
+We mapped geographic patterns in the number of hits per county for distance, rain, and wind exposure when we incorporated the intensity of exposure for each county-storm pair (Figures \ref{fig:top_dist_map}, \ref{fig:top_rain_map}, \ref{fig:top_wind_map}); Tables \ref{tab:top_distance}, \ref{tab:top_rain}, \ref{tab:top_wind}). For these maps, we only plotted "hits" for the top 2,000 county-storm pairs (i.e., the 2,000 storm-county pairs with smallest distance to storm's closest approach, in the case of distance-based exposure, or the 2,000 storm-county pairs with highest precipitation, in the case of rain-based exposure).
+
+```{r top_distance, echo = FALSE, results = "asis"}
+a <- distance_exposure %>%
+        arrange(storm_dist) %>% 
+        slice(1:20) %>%
+        left_join(county_centers, by = "fips") %>%
+        select(storm_id, name, storm_dist) %>%
+        mutate(storm_id = paste0(gsub("-", " (", storm_id), ")")) %>%
+        rename(Storm = storm_id,
+               County = name,
+               "Distance (km)" = storm_dist) %>%
+        xtable(caption = "Top storm-county pairs in terms of closest distance between county's population mean center and storm's closest approach.", 
+               label = "tab:top_distance")
+print(a, include.rownames = FALSE, floating = TRUE,
+      table.placement = "p", caption.placement = "top", 
+      booktabs = TRUE, comment = FALSE, timestamp = NULL)
+```
+
+```{r top_rain, echo = FALSE, results = "asis"}
+a <- rain_exposure %>%
+        arrange(desc(tot_precip)) %>% 
+        slice(1:20) %>%
+        left_join(county_centers, by = "fips") %>%
+        select(storm_id, name, tot_precip) %>%
+        mutate(storm_id = paste0(gsub("-", " (", storm_id), ")")) %>%
+        rename(Storm = storm_id,
+               County = name,
+               "Rainfall (mm)" = tot_precip) %>%
+        xtable(caption = "Top storm-county pairs in terms of most cumulative precipitation in the window from two days before to one day after a storm's closest approach to the county.", 
+               label = "tab:top_rain")
+print(a, include.rownames = FALSE, floating = TRUE,
+      table.placement = "p", caption.placement = "top", 
+      booktabs = TRUE, comment = FALSE, timestamp = NULL)
+```
+
+```{r top_wind, echo = FALSE, results = "asis"}
+a <- wind_exposure %>%
+        arrange(desc(vmax_sust)) %>% 
+        slice(1:20) %>%
+        left_join(county_centers, by = "fips") %>%
+        select(storm_id, name, vmax_sust) %>%
+        mutate(storm_id = paste0(gsub("-", " (", storm_id), ")"),
+               max_sust = round(vmax_sust)) %>%
+        rename(Storm = storm_id,
+               County = name,
+               "Maximum sustained wind (m / s)" = vmax_sust) %>%
+        xtable(caption = "Top storm-county pairs in terms of most intense sustained winds.", 
+               label = "tab:top_wind")
+print(a, include.rownames = FALSE, floating = TRUE,
+      table.placement = "p", caption.placement = "top", 
+      booktabs = TRUE, comment = FALSE, timestamp = NULL)
+```
+
+```{r echo = FALSE, warning=FALSE, message=FALSE}
+plot_top_x <- function(exposure_data, x = 2000, desc = TRUE,
+                       exposure_var, eastern_states = eastern_states,
+                       my_fips = my_fips, title){
+        
+        exposure_data <- as.data.frame(exposure_data)
+        exposure_data$exp_var <- exposure_data[ , exposure_var]
+        if(!desc){ exposure_data$exp_var <- -1 * exposure_data$exp_var}
+        
+        exposure_x <- exposure_data %>%
+                arrange(desc(exp_var)) %>%
+                slice(1:x) %>% 
+                group_by(fips) %>%
+                summarise(count = n()) 
+        
+        zero_fips <- my_fips[!(my_fips %in% exposure_x$fips)]
+        zero_counties <- data.frame(fips = as.numeric(zero_fips),
+                                       count = 0)
+        
+        exposure_x <- exposure_x %>%
+                rbind(zero_counties) %>%
+                rename(region = fips) %>%
+                mutate(region = as.numeric(region),
+                       count = as.numeric(count))
+        
+        exposure_x$value <- cut(exposure_x$count,
+                                c(0, 1, 3, 5, 7, 9, 11, 13, 100), 
+                   labels = c("0", "1-2", "3-4", "5-6", "7-8",
+                              "9-10", "11-12", "13+"), 
+                   include.lowest = TRUE)
+        exposure_palette <- c("#FFFFFF", brewer.pal(8, name = "YlGnBu"))
+        
+        map_top_x <- CountyChoropleth$new(exposure_x)
+        map_top_x$set_zoom(eastern_states)
+        map_top_x$ggplot_scale <- scale_fill_manual(name = "Hits per\nCounty",
+                                                values = exposure_palette,
+                                                na.value = "white")
+        map_top_x$title <- title
+        out <- map_top_x$render()
+        return(out)
+}
+```
+
+```{r top_dist_map, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Number of storms for which each county experienced one of the top 2,000 intensities for distance."}
+plot_top_x(distance_exposure, desc = FALSE, exposure_var = "storm_dist",
+           eastern_states = eastern_states, my_fips = my_fips,
+           title = "Hits for top 2,000 Storm-County Pairs\nfor Distance Metric")
+```
+
+```{r top_rain_map, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Number of storms for which each county experienced one of the top 2,000 intensities for rain."}
+plot_top_x(rain_exposure, exposure_var = "tot_precip",
+           eastern_states = eastern_states, my_fips = my_fips,
+           title = "Hits for top 2,000 Storm-County Pairs\nfor Rain Metric")
+```
+
+```{r top_wind_map, echo = FALSE, fig.width = 8, fig.height = 6, fig.align = "center", fig.cap = "Number of storms for which each county experienced one of the top 2,000 intensities for distance"}
+plot_top_x(wind_exposure, exposure_var = "vmax_sust",
+           eastern_states = eastern_states, my_fips = my_fips,
+           title = "Hits for top 2,000 Storm-County Pairs\nfor Wind Metric")
+```
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+distance_count <- distance_exposure %>%
+                dplyr::group_by(fips) %>%
+                dplyr::summarize(count = n()) %>%
+                dplyr::rename(region = fips) %>%
+                dplyr::mutate(region = as.numeric(region),
+                              count = as.numeric(count))
+rain_count <- rain_exposure %>%
+                dplyr::group_by(fips) %>%
+                dplyr::summarize(count = n()) %>%
+                dplyr::rename(region = fips) %>%
+                dplyr::mutate(region = as.numeric(region),
+                              count = as.numeric(count))
+
+wind_count <- wind_exposure %>%
+                dplyr::group_by(fips) %>%
+                dplyr::summarize(count = n()) %>%
+                dplyr::rename(region = fips) %>%
+                dplyr::mutate(region = as.numeric(region),
+                              count = as.numeric(count))
+
+exposure_name <- c("Distance_Exposure", "Rain_Exposure", "Wind_Exposure")
+count <- c(sum(distance_count$count), sum(rain_count$count),
+           sum(wind_count$count))
+exposure_table <- cbind(exposure_name, count)
+exposure_table <- data.frame(exposure_table)
+exposure_table %>%
+        mutate(exposure_name = gsub("_", " ", exposure_name)) %>%
+        kable(col.names = c("Exposure Criteria", "Total # exposed counties"), 
+              caption = "Total number of county hits based on rain, distance, and wind exposures")
+```
+
+```{r echo = FALSE}
+rain_exposure$county_storm <- transmute(rain_exposure,
+                                        county_storm = paste0(fips, " ",
+                                                              storm_id))
+distance_exposure$county_storm <- transmute(distance_exposure,
+                                            county_storm = paste0(fips, " ",
+                                                                  storm_id))
+all_exposure <- rain_exposure %>% 
+        dplyr::select(county_storm, tot_precip) %>%
+        dplyr::full_join(distance_exposure, by = "county_storm")  %>%
+        dplyr::mutate(rain_exposure =  !is.na(tot_precip) & 
+                              tot_precip >= 75,
+                      dist_exposure = !is.na(storm_dist) & 
+                              storm_dist < 100,
+                      both_exposures = rain_exposure & dist_exposure,
+                      rain_only = rain_exposure & !dist_exposure,
+                      dist_only = !rain_exposure & dist_exposure,
+                      neither_exposure = !rain_exposure & !dist_exposure) %>%
+        dplyr::summarize(both_exposure = sum(both_exposures),
+                         rain_only = sum(rain_only),
+                         dist_only = sum(dist_only),
+                         neither_exposure = sum(neither_exposure))
+all_exposure
+
+# both_exposure <- subset(all_exposure, tot_precip >= 75 & 
+#                                 storm_dist <= 100) #4040 observations
+# rain_only <- subset(all_exposure, tot_precip >= 75 & 
+#                             storm_dist.x > 100) #4200 obs
+# distance_only <- subset(all_exposure, tot_precip < 75 & 
+#                                 storm_dist.x <= 100) #0 obs
+# sum(all_exposure$tot_precip >= 75 & all_exposure$storm_dist.x <= 100,
+#     na.rm = TRUE)
+# sum(all_exposure$tot_precip >= 75 & all_exposure$storm_dist.x > 100,
+#     na.rm = TRUE)
+# sum(all_exposure$tot_precip < 75 & all_exposure$storm_dist.x <= 100,
+#     na.rm = TRUE) # It appears that in all county-
+#                                                                                    # storm pairs, there is ample
+#                                                                                    # rain to meet criteria        
+# sum(all_exposure$tot_precip < 75, na.rm = TRUE) # This also returns 0
+```
+
+JMF-- I was surprised to see that there were no observations in the data frame that had total precipitation less than 75 mm. I am wondering if I am missing something in the `full_join` code. [GBA-- I've re-done this code and it now looks like it's getting the same values as your code below.]
+
+Below, I tried recreating the above data set using different parameters to see if I could get the exposure counts to match up okay:
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+#Test
+rain_exposure_2 <- county_rain(counties = my_fips,
+                             start_year = 1988, end_year = 2011,
+                             rain_limit = 75, dist_limit = 100,
+                             days_include = c(-1, 0, 1)) # Creates a data frame with 4040 obs (expected)
+distance_rain_exposure <- county_rain(counties = my_fips,
+                             start_year = 1988, end_year = 2011,
+                             rain_limit = 0, dist_limit = 100,
+                             days_include = c(-1, 0, 1)) 
+sum(distance_rain_exposure$tot_precip >= 75) # 4040 obs (meet both criteria)
+sum(distance_rain_exposure$tot_precip < 75 & distance_rain_exposure$storm_dist <= 100) #7103 obs meet distance but 
+                                                                                       #not rain criteria
+``` 
+
+JMF-- In the above, using the `distance_rain_exposure` data frame, I found that there were 7103 storm-county pairs that did not meet the precipitation criteria ($\leq 75 mm$) but did meet the distance createria ($\leq 100 km$), contrary to the 0 I found in the code before this with the `all_exposure` data frame.
+
+#### Which storms exposed the most counties when using distance-, rain-, and wind-based metrics? What were the top county-storm exposures for rain- and wind-based metrics?
+
+We created plots of the top four storms, in terms of the number of counties classified as exposed, for exposure metrics of distance (Figure \ref{fig:top_four_distance}), rain (Figure \ref{fig:top_four_rain}), wind (Figure \ref{fig:top_four_wind}), flood events (Figure \ref{fig:top_four_flood}), and tornado events (Figure \ref{fig:top_four_tornado}).
+
+```{r top_four_distance, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Counties exposed for the top four storms over the study period, in terms of distance-based exposure."}
+top_distance_exposed <- function(storm_id){
+        my_map <- map_distance_exposure(storm_id, dist_limit = 100)
+        my_map <- map_tracks(storm = storm_id, plot_object = my_map, 
+                             plot_points = FALSE) + 
+                ggtitle(paste0(gsub("-", " (", storm_id), ")"))
+}
+
+all_distance <- county_distance(counties = my_fips, start_year = 1988, 
+                        end_year = 2011, dist_limit =100)
+
+distance_exposed <- all_distance %>%
+        group_by(storm_id) %>%
+        summarize(number_of_counties_exposed = n()) %>%
+        arrange(desc(number_of_counties_exposed)) %>%
+        top_n(10) 
+
+n <- 4
+distance_plots <- lapply(distance_exposed$storm_id[1:n], top_distance_exposed)
+names(distance_plots) <- letters[1:n]
+grid.arrange(distance_plots$a, distance_plots$b, distance_plots$c,
+             distance_plots$d, ncol = 2)
+```
+
+```{r top_four_rain, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Counties exposed for the top four storms over the study period, in terms of distance-based exposure."}
+top_rain_exposed <- function(storm_id){
+        my_map <- map_rain_exposure(storm_id, rain_limit = 75, 
+                                    dist_limit = 500)
+        my_map <- map_tracks(storm = storm_id, plot_object = my_map, 
+                             plot_points = FALSE) + 
+                ggtitle(paste0(gsub("-", " (", storm_id), ")"))
+}
+
+all_rain <- county_rain(counties = my_fips, start_year = 1988, 
+                        end_year = 2011, rain_limit = 75, dist_limit = 500,
+                        days_included = -1:1)
+
+rain_exposed <- all_rain %>%
+        group_by(storm_id) %>%
+        summarize(number_of_counties_exposed = n()) %>%
+        arrange(desc(number_of_counties_exposed)) %>%
+        top_n(10) 
+
+n <- 4
+rain_plots <- lapply(rain_exposed$storm_id[1:n], top_rain_exposed)
+names(rain_plots) <- letters[1:n]
+grid.arrange(rain_plots$a, rain_plots$b, rain_plots$c, rain_plots$d, ncol = 2)
+```
+
+```{r top_four_wind, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Counties exposed for the top four storms over the study period, in terms of distance-based exposure."}
+top_wind_exposed <- function(storm_id){
+        my_map <- map_wind_exposure(storm_id, wind_limit = 15)
+        my_map <- map_tracks(storm = storm_id, plot_object = my_map, 
+                             plot_points = FALSE) + 
+                ggtitle(paste0(gsub("-", " (", storm_id), ")"))
+}
+
+all_wind <- county_wind(counties = my_fips, start_year = 1988, 
+                        end_year = 2011, wind_limit = 15)
+
+wind_exposed <- all_wind %>%
+        group_by(storm_id) %>%
+        summarize(number_of_counties_exposed = n()) %>%
+        arrange(desc(number_of_counties_exposed)) %>%
+        top_n(10) 
+
+
+n <- 4
+wind_plots <- lapply(wind_exposed$storm_id[1:n], top_wind_exposed)
+names(wind_plots) <- letters[1:n]
+grid.arrange(wind_plots$a, wind_plots$b, wind_plots$c,
+             wind_plots$d, ncol = 2)
+```
+
+```{r top_four_flood, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Counties exposed for the top four storms over the study period, in terms of flood event-based exposure."}
+top_flood_exposed <- function(storm_id){
+        my_map <- map_event_exposure(storm_id, event_type = "flood")
+        my_map <- map_tracks(storm = storm_id, plot_object = my_map, 
+                             plot_points = FALSE) + 
+                ggtitle(paste0(gsub("-", " (", storm_id), ")"))
+}
+
+all_flood <- county_events(counties = my_fips, start_year = 1996, 
+                        end_year = 2011, event_type = "flood")
+
+flood_exposed <- all_flood %>%
+        group_by(storm_id) %>%
+        summarize(number_of_counties_exposed = n()) %>%
+        arrange(desc(number_of_counties_exposed)) %>%
+        top_n(10) %>%
+        ungroup() %>%
+        mutate(storm_id = as.character(storm_id))
+
+n <- 4
+flood_plots <- lapply(flood_exposed$storm_id[1:n], top_flood_exposed)
+names(flood_plots) <- letters[1:n]
+grid.arrange(flood_plots$a, flood_plots$b, flood_plots$c,
+             flood_plots$d, ncol = 2)
+```
+
+```{r top_four_tornado, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Counties exposed for the top four storms over the study period, in terms of tornado event-based exposure."}
+top_tornado_exposed <- function(storm_id){
+        my_map <- map_event_exposure(storm_id, event_type = "tornado")
+        my_map <- map_tracks(storm = storm_id, plot_object = my_map, 
+                             plot_points = FALSE) + 
+                ggtitle(paste0(gsub("-", " (", storm_id), ")"))
+}
+
+all_tornado <- county_events(counties = my_fips, start_year = 1996, 
+                        end_year = 2011, event_type = "tornado")
+
+tornado_exposed <- all_tornado %>%
+        group_by(storm_id) %>%
+        summarize(number_of_counties_exposed = n()) %>%
+        arrange(desc(number_of_counties_exposed)) %>%
+        top_n(10) %>%
+        ungroup() %>%
+        mutate(storm_id = as.character(storm_id))
+
+n <- 4
+tornado_plots <- lapply(tornado_exposed$storm_id[1:n], top_tornado_exposed)
+names(tornado_plots) <- letters[1:n]
+grid.arrange(tornado_plots$a, tornado_plots$b, tornado_plots$c,
+             tornado_plots$d, ncol = 2)
+```
+
+Here is a table of the top 10 storms by number of counties exposed, based on a distance metric of within 100 kilometers or less of the storm track:
+
+```{r echo = FALSE}
+distance_exposed %>%
+        mutate(storm_id = gsub("-", " (", storm_id),
+               storm_id = paste0(storm_id, ")")) %>%
+        kable(col.names = c("Storm", "# of exposed counties"),
+              caption = "Top 10 storms based on the number of counties exposed, using a metric of distance.")
+```
+
+Here is a table of the top 10 storms by number of counties exposed, based on a rain metric of 75 millimeters or more and within 500 kilometers or less of the storm track:
+
+```{r echo = FALSE}
+rain_exposed %>%
+        mutate(storm_id = gsub("-", " (", storm_id),
+               storm_id = paste0(storm_id, ")")) %>%
+        kable(col.names = c("Storm", "# of exposed counties"),
+              caption = "Top 10 storms based on the number of counties exposed, using a metric of rainfall.")
+```
+
+Here are the top storms when measured by summing all rainfall for all eastern US counties exposed within 500 km of the storm track (rainfall totals are for the three-day window when the storm was closest to each county).
+
+```{r echo = FALSE}
+rain_exposure <- county_rain(counties = my_fips,
+                             start_year = 1988, end_year = 2011,
+                             rain_limit = 0, dist_limit = 500,
+                             days_include = c(-1, 0, 1))
+
+rain_exposure %>%
+        group_by(storm_id) %>%
+        summarise(sum_rain = round(sum(tot_precip), -2)) %>%
+        arrange(desc(sum_rain)) %>%
+        slice(1:10) %>%
+        kable(col.names = c("Storm", "Summed county-level rainfall"),
+              caption = "Top 10 storms based on summed rainfall across all eastern US counties within 500 km of the storm track.")
+```
+
+Here is a table of the top 10 storms by number of counties exposed, based on maximum sustained winds of 15 m / s or greater (e.g., tropical storm strength or greater): 
+
+```{r echo = FALSE}
+wind_exposed %>%
+        mutate(storm_id = gsub("-", " (", storm_id),
+               storm_id = paste0(storm_id, ")")) %>%
+        kable(col.names = c("Storm", "# of exposed counties"),
+              caption = "Top 10 storms based on the number of counties exposed, using a metric of wind.")
+```
+
+#### Comparing across all exposure metrics
+
+For all storms, we divided counties into four categories: 
+
+1. "Exposed" based on both rainfall and reported flood event;
+2. "Exposed" based on rainfall, "unexposed" based on flood event; 
+3. "Unexposed" based on rainfall, "exposed" based on flood event; and
+4. "Unexposed" based on both rainfall and reported flood event.
+
+All counties in the first and fourth categories are consistently classified based on using rainfall and flood events as exposure metrics, while those in categories 2 and 3 are inconsistent, in that one metric marks the county as exposed to the storm while the other metric classifies it as unexposed.
+
+```{r echo = FALSE}
+all_storm_counties <- closest_dist %>%
+        dplyr::select(storm_id, fips) %>%
+        dplyr::mutate(storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::filter(as.numeric(gsub(".*-", "", storm_id)) >= 1996 & 
+                              as.numeric(gsub(".*-", "", storm_id)) <= 2011) 
+
+rain_exposure <- county_rain(counties = my_fips, start_year = 1996,
+                             end_year = 2011, rain_limit = 75, 
+                             dist_limit = 500) %>%
+        dplyr::select(storm_id, fips) %>%
+        dplyr::mutate(rain_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, rain_exposed)
+flood_exposure <- county_events(counties = my_fips, start_year = 1996,
+                             end_year = 2011, event_type = "flood") %>%
+        dplyr::mutate(flood_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, flood_exposed)
+
+all_exposed <- rain_exposure %>%
+        dplyr::full_join(flood_exposure, by = "storm_county") %>%
+        dplyr::full_join(all_storm_counties, by = "storm_county") %>%
+        dplyr::mutate(rain_exposed = !is.na(rain_exposed),
+                      flood_exposed = !is.na(flood_exposed))
+
+storm_exposed <- all_exposed %>%
+        dplyr::group_by(storm_id) %>%
+        dplyr::summarize(both_exposed = sum(rain_exposed & flood_exposed),
+                         rain_only = sum(rain_exposed & !flood_exposed),
+                         flood_only = sum(!rain_exposed & flood_exposed),
+                         neither_exposed = sum(!rain_exposed & 
+                                                       !flood_exposed)) 
+storm_exposed %>% 
+        dplyr::mutate(percent_agreement = round(100 * (both_exposed + 
+                                                         neither_exposed) / 
+                              (both_exposed + rain_only + flood_only +
+                              neither_exposed))) %>%
+        dplyr::filter(both_exposed + rain_only + flood_only > 0) %>%
+        dplyr::arrange(neither_exposed, desc(both_exposed), 
+                       desc(rain_only)) %>%
+        kable()
+```
+
+Among the storms with a large number of counties exposed under one or both metrics, Irene (2011), Floyd (1999), and Fran (1996) are notable for very high agreement between the two metrics (98%, 96%, and 95%, respectively). Agreement is comparatively lower (although in no cases is the agreement below [x]%, because so many counties are labeled as unexposed under both metrics for most counties) for Frances (2004; 82% agreement), Ivan (2004, 86% agreement), Lee (2011, 88% agreement), Katrina (2005, 89% agreement), and Isidore (2002; 89% agreement). In all these cases, most of the discordant classifications were for counties that were classified as exposed based on rain but did not have a reported flood event.
+
+Here are histograms showing the number of counties classified as exposed for both rain and flood metrics, for flood but not rain, and for rain but not flood. This is limited to storms between 1996 and 2011 and only includes storm-county pairs where the county was classified as exposed to the storm under at least one of these two metrics (rain and flood). It was more common for a county to be classified as exposed based on rain but unexposed by flood then to be assessed as exposed by both metrics or by flood but not rain. In a handful of storms, more than 150 counties were assessed as exposed to the storm based on both rain and flood exposure metrics. In some storms, quite a number of counties (in some cases, well over 200) were classified as exposed based on the rain metric but unexposed based on the flood metric. In almost every storm, however, fewer than 100 counties (out of 2,396 considered for each storm) were classified as exposed based on the flood metric without also being classified as exposed based on the rain metric. This suggests that the rain metric might be less stringent than the flood metric and, in some cases, the two metrics identify different risks (i.e., flood risk is not completely determined by rainfall, as pre-existing local conditions can make a flood more or less likely).
+
+```{r echo = FALSE, fig.height = 6, fig.width = 5}
+storm_exposed %>%
+        dplyr::select(-neither_exposed) %>%
+        dplyr::filter(both_exposed > 0 & rain_only > 0 & flood_only > 0) %>%
+        tidyr::gather(classification, n_counties, -storm_id) %>%
+        ggplot(aes(x = n_counties)) + 
+        geom_histogram(bins = 30) + 
+        facet_wrap(~ classification, ncol = 1) + 
+        theme_tufte() + 
+        xlab("Number of counties classified as exposed") + 
+        ylab("Number of storms")
+```
+
+Here is a table showing, for all storms where 200 or more counties were classified as exposed based on at least one of the two metrics, what percent were classified in a way that agreed (i.e., classified as exposed by both metrics):
+
+```{r echo = FALSE}
+storm_exposed %>%
+        dplyr::mutate(any_exposed = both_exposed + rain_only + flood_only,
+                      both_of_any = round(100 * both_exposed /
+                                                  any_exposed)) %>%
+        dplyr::filter(any_exposed >= 200) %>%
+        dplyr::select(-neither_exposed, -any_exposed) %>%
+        dplyr::arrange(desc(both_of_any)) %>%
+        kable()
+```
+
+Only two storms (Irene in 2011 and Floyd and 1999) have over 50% agreement among counties classified as exposed by at least one of the two metrics. Throughout, in almost every storm, among the discordant counties (classified as exposed by one but not both metrics), there were many more counties classified as exposed based on the rain metric but where no flood events were reported in the NOAA Storm Events database. The only exceptions, where more discordant counties were classified as exposed based on flood than rain, were Allison (2001) and Cindy (2005).
+
+Here is a comparison of pair-wise metric agreement for all combinations of metrics. This analysis is restricted to 1996 to 2011, since that's the period when we have data required for all exposure metrics. For most storms and most pairs of exposure metrics, less than half of the storms that are classified as exposed to the storm using one of the metrics are also classified as exposed by the other metric. For example, if hurricane exposure classification is based on the "flood" metric, in all storms less than half of the counties with wind events reported in NOAA's Storm Data would be included as exposed counties (see the "wind_event / flood" graph). The few exceptions are: 
+
+- In many storms, over half of the counties classified as exposed based on the flood metric are also classified as exposed based on the rain metric.
+- In about half of storms, 50% or more of the counties classified as exposed based on rain are also classified as exposed based on distance (i.e., are within 100 km of the storm's track).
+
+```{r echo = FALSE, eval = FALSE}
+all_storm_counties <- closest_dist %>%
+        dplyr::select(storm_id, fips) %>%
+        dplyr::mutate(storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::filter(as.numeric(gsub(".*-", "", storm_id)) >= 1996 & 
+                              as.numeric(gsub(".*-", "", storm_id)) <= 2011) 
+
+distance_exposure <- county_distance(counties = my_fips, start_year = 1996,
+                             end_year = 2011, dist_limit = 100) %>%
+        dplyr::select(storm_id, fips) %>%
+        dplyr::mutate(distance_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, distance_exposed)
+rain_exposure <- county_rain(counties = my_fips, start_year = 1996,
+                             end_year = 2011, rain_limit = 75, 
+                             dist_limit = 500) %>%
+        dplyr::select(storm_id, fips) %>%
+        dplyr::mutate(rain_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, rain_exposed)
+wind_exposure <- county_wind(counties = my_fips, start_year = 1996,
+                             end_year = 2011, wind_limit = 15) %>%
+        dplyr::select(storm_id, fips) %>%
+        dplyr::mutate(wind_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, wind_exposed)
+flood_exposure <- county_events(counties = my_fips, start_year = 1996,
+                             end_year = 2011, event_type = "flood") %>%
+        dplyr::mutate(flood_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, flood_exposed)
+tornado_exposure <- county_events(counties = my_fips, start_year = 1996,
+                             end_year = 2011, event_type = "tornado") %>%
+        dplyr::mutate(tornado_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, tornado_exposed)
+wind_event_exposure <- county_events(counties = my_fips, start_year = 1996,
+                             end_year = 2011, event_type = "wind") %>%
+        dplyr::mutate(wind_event_exposed = 1,
+                      storm_county = paste(storm_id, fips, sep = "-")) %>%
+        dplyr::select(storm_county, wind_event_exposed)
+
+all_exposed <- distance_exposure %>%
+        dplyr::full_join(rain_exposure, by = "storm_county") %>%
+        dplyr::full_join(wind_exposure, by = "storm_county") %>%
+        dplyr::full_join(flood_exposure, by = "storm_county") %>%
+        dplyr::full_join(tornado_exposure, by = "storm_county") %>%
+        dplyr::full_join(wind_event_exposure, by = "storm_county") %>%
+        dplyr::full_join(all_storm_counties, by = "storm_county") %>%
+        dplyr::mutate(distance_exposed = !is.na(distance_exposed),
+                      rain_exposed = !is.na(rain_exposed),
+                      wind_exposed = !is.na(wind_exposed),
+                      flood_exposed = !is.na(flood_exposed),
+                      tornado_exposed = !is.na(tornado_exposed),
+                      wind_event_exposed = !is.na(wind_event_exposed)) %>%
+        tidyr::gather(exposure, exposed, -storm_county, -storm_id, -fips) %>%
+        dplyr::mutate(exposure = gsub("_exposed", "", exposure))
+
+calc_agreement <- function(all_exposed, exposure_1, exposure_2){
+        df <- all_exposed %>%
+                dplyr::filter(exposure %in% c(exposure_1, exposure_2)) %>%
+                tidyr::spread(exposure, exposed)
+        df$exposure_1 <- df[ , exposure_1]
+        df$exposure_2 <- df[ , exposure_2]
+        df <- df %>%
+                dplyr::filter(exposure_1) %>%
+                dplyr::group_by(storm_id) %>%
+                dplyr::summarize(exposure_1 = sum(exposure_1),
+                                 exposure_2 = sum(exposure_2),
+                                 agree = 100 * exposure_2 / exposure_1)
+      return(df)
+}
+
+agreement_hist <- function(all_exposed, exposure_1, exposure_2){
+        df <- calc_agreement(all_exposed, exposure_1, exposure_2)
+        a <- ggplot(df, aes(x = agree)) + geom_histogram(bins = 20) + 
+                xlim(c(0, 100)) + theme_tufte() + 
+                ylim(c(0, 20)) + 
+                ylab("# of storms") + 
+                xlab("% of counties") + 
+                ggtitle(paste(exposure_1, "/", exposure_2))
+        return(a)
+}
+```
+
+```{r echo = FALSE, fig.width = 12, fig.height = 12, eval = FALSE}
+a <- agreement_hist(all_exposed, "distance", "rain")
+b <- agreement_hist(all_exposed, "distance", "wind")
+c <- agreement_hist(all_exposed, "distance", "flood")
+d <- agreement_hist(all_exposed, "distance", "tornado")
+e <- agreement_hist(all_exposed, "distance", "wind_event")
+
+f <- agreement_hist(all_exposed, "rain", "distance")
+g <- agreement_hist(all_exposed, "rain", "wind")
+h <- agreement_hist(all_exposed, "rain", "flood")
+i <- agreement_hist(all_exposed, "rain", "tornado")
+j <- agreement_hist(all_exposed, "rain", "wind_event")
+
+k <- agreement_hist(all_exposed, "flood", "distance")
+l <- agreement_hist(all_exposed, "flood", "rain")
+m <- agreement_hist(all_exposed, "flood", "wind")
+n <- agreement_hist(all_exposed, "flood", "tornado")
+o <- agreement_hist(all_exposed, "flood", "wind_event")
+
+p <- agreement_hist(all_exposed, "tornado", "distance")
+q <- agreement_hist(all_exposed, "tornado", "rain")
+r <- agreement_hist(all_exposed, "tornado", "wind")
+s <- agreement_hist(all_exposed, "tornado", "flood")
+t <- agreement_hist(all_exposed, "tornado", "wind_event")
+
+u <- agreement_hist(all_exposed, "wind_event", "distance")
+v <- agreement_hist(all_exposed, "wind_event", "rain")
+w <- agreement_hist(all_exposed, "wind_event", "wind")
+x <- agreement_hist(all_exposed, "wind_event", "flood")
+y <- agreement_hist(all_exposed, "wind_event", "tornado")
+
+grid.arrange(a, b, c, d, e,
+             f, g, h, i, j,
+             k, l, m, n, o,
+             p, q, r, s, t, 
+             u, v, w, x, y,
+             ncol = 5)
+```
+
+
+```{r pareto_1, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Number of total county exposures summed across percentile bins of storms"}
+my_pareto_1 <- function(data, title = "Rain exposure"){
+        data <- data %>%
+                select(storm_id, fips) %>%
+                group_by(storm_id) %>%
+                summarize(n = n()) %>%
+                mutate(cat = ntile(n, 10)) %>%
+                group_by(cat) %>%
+                summarize(n = sum(n)) %>%
+                ungroup() %>%
+                arrange(desc(n)) %>%
+                mutate(cumulative = cumsum(n),
+                       group = 1:n(),
+                       cat_labs = c("90-100th", "80-90th", "70-80th",
+                               "60-70th", "50-60th", "40-50th",
+                               "30-40th", "20-30th", "10-20th",
+                               "0-10th")) %>%
+                mutate(percent = paste0(round(100 * cumulative / sum(n)), "%"))
+        my_pareto_plot <- ggplot(data, aes(x = group, y = n)) + 
+                geom_bar(stat = "identity") + 
+                geom_point(aes(x = group, y = cumulative), alpha = 0.25) + 
+                geom_line(aes(x = group, y = cumulative), alpha = 0.25) + 
+                geom_text(aes(y = cumulative, label = percent), 
+                        hjust = "inward", vjust = "inward") + 
+                theme_few() + 
+                ylab("Number of\nexposed counties") + 
+                ggtitle(title) + 
+                scale_x_continuous(name = "", breaks = 1:10,
+                                labels = data$cat_labs, 
+                                trans = "reverse") +
+                coord_flip()
+        return(my_pareto_plot)
+}
+
+data <- county_distance(my_fips, start_year = 1988, end_year = 2011,
+                               dist_limit = 100) 
+a <- my_pareto_1(data, title = "Distance")
+
+data <- county_rain(my_fips, start_year = 1988, end_year = 2011,
+                               rain_limit = 75, dist_limit = 500) 
+b <- my_pareto_1(data, title = "Rain")
+
+data <- county_wind(my_fips, start_year = 1988, end_year = 2011,
+                               wind_limit = 15) 
+c <- my_pareto_1(data, title = "Wind")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "flood") 
+d <- my_pareto_1(data, title = "Floods")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "tornado") 
+e <- my_pareto_1(data, title = "Tornadoes")
+
+grid.arrange(a, b, c, d, e, nrow = 2)
+```
+
+
+
+```{r pareto_2, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Number of total storm hits summed across percentile bins of counties"}
+my_pareto_2 <- function(data, title = "Rain exposure"){
+        data <- data %>%
+                select(storm_id, fips) %>%
+                group_by(fips) %>%
+                summarize(n = n()) %>%
+                mutate(cat = ntile(n, 10)) %>%
+                group_by(cat) %>%
+                summarize(n = sum(n)) %>%
+                ungroup() %>%
+                arrange(desc(n)) %>%
+                mutate(cumulative = cumsum(n),
+                       group = 1:n(),
+                       cat_labs = c("90-100th", "80-90th", "70-80th",
+                               "60-70th", "50-60th", "40-50th",
+                               "30-40th", "20-30th", "10-20th",
+                               "0-10th")) %>%
+                mutate(percent = paste0(round(100 * cumulative / sum(n)), "%"))
+        my_pareto_plot <- ggplot(data, aes(x = group, y = n)) + 
+                geom_bar(stat = "identity") + 
+                geom_point(aes(x = group, y = cumulative), alpha = 0.25) + 
+                geom_line(aes(x = group, y = cumulative), alpha = 0.25) + 
+                geom_text(aes(y = cumulative, label = percent), 
+                        hjust = "inward", vjust = "inward") + 
+                theme_few() + 
+                ylab("Number of storm hits") + 
+                ggtitle(title) + 
+                scale_x_continuous(name = "", breaks = 1:10,
+                                labels = data$cat_labs, 
+                                trans = "reverse") +
+                coord_flip()
+        return(my_pareto_plot)
+}
+
+data <- county_distance(my_fips, start_year = 1988, end_year = 2011,
+                               dist_limit = 100) 
+a <- my_pareto_2(data, title = "Distance")
+
+data <- county_rain(my_fips, start_year = 1988, end_year = 2011,
+                               rain_limit = 75, dist_limit = 500) 
+b <- my_pareto_2(data, title = "Rain")
+
+data <- county_wind(my_fips, start_year = 1988, end_year = 2011,
+                               wind_limit = 15) 
+c <- my_pareto_2(data, title = "Wind")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "flood") 
+d <- my_pareto_2(data, title = "Floods")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "tornado") 
+e <- my_pareto_2(data, title = "Tornadoes")
+
+grid.arrange(a, b, c, d, e, nrow = 2)
+```
+
+```{r power_1, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Distribution of number of exposed counties by rank of storm"}
+my_power_1 <- function(data, title){
+        data <- data %>%
+                select(storm_id, fips) %>%
+                group_by(storm_id) %>%
+                summarize(n = n()) %>%
+                ungroup() %>%
+                arrange(desc(n)) %>%
+                mutate(rank = 1:n())
+        power_plot <- ggplot(data, aes(x = rank, y = n)) + 
+                geom_point(alpha = 0.5) + 
+                scale_y_continuous(trans = "log", breaks = c(1, 10, 100)) + 
+                theme_few() + 
+                ggtitle(title) + 
+                xlab("Rank of storm") + ylab("# of counties exposed")
+        return(power_plot)
+}
+        
+data <- county_distance(my_fips, start_year = 1988, end_year = 2011,
+                               dist_limit = 100) 
+a <- my_power_1(data, title = "Distance")
+
+data <- county_rain(my_fips, start_year = 1988, end_year = 2011,
+                               rain_limit = 75, dist_limit = 500) 
+b <- my_power_1(data, title = "Rain")
+
+data <- county_wind(my_fips, start_year = 1988, end_year = 2011,
+                               wind_limit = 15) 
+c <- my_power_1(data, title = "Wind")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "flood") 
+d <- my_power_1(data, title = "Floods")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "tornado") 
+e <- my_power_1(data, title = "Tornadoes")
+
+grid.arrange(a, b, c, d, e, nrow = 2)
+```
+
+
+
+```{r power_2, echo = FALSE, fig.width = 10, fig.height = 8, fig.align = "center", fig.cap = "Distribution of number of storm hits by rank of county"}
+my_power_2 <- function(data, title){
+        data <- data %>%
+                select(storm_id, fips) %>%
+                group_by(fips) %>%
+                summarize(n = n()) %>%
+                ungroup() %>%
+                arrange(desc(n)) %>%
+                mutate(rank = 1:n())
+        power_plot <- ggplot(data, aes(x = rank, y = n)) + 
+                geom_point(alpha = 0.5) + 
+                scale_y_continuous(trans = "log", breaks = c(1, 10, 100)) + 
+                theme_few() + 
+                ggtitle(title) + 
+                xlab("Rank of county") + ylab("# of storm hits")
+        return(power_plot)
+}
+        
+data <- county_distance(my_fips, start_year = 1988, end_year = 2011,
+                               dist_limit = 100) 
+a <- my_power_2(data, title = "Distance")
+
+data <- county_rain(my_fips, start_year = 1988, end_year = 2011,
+                               rain_limit = 75, dist_limit = 500) 
+b <- my_power_2(data, title = "Rain")
+
+data <- county_wind(my_fips, start_year = 1988, end_year = 2011,
+                               wind_limit = 15) 
+c <- my_power_2(data, title = "Wind")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "flood") 
+d <- my_power_2(data, title = "Floods")
+
+data <- county_events(my_fips, start_year = 1996, end_year = 2011,
+                      event_type = "tornado") 
+e <- my_power_2(data, title = "Tornadoes")
+
+grid.arrange(a, b, c, d, e, nrow = 2)
+```
+
+```{r message = FALSE}
+all_storm_counties <- closest_dist %>%
+        dplyr::select(storm_id, fips)
+metric_a <- county_rain(my_fips, start_year = 1988, end_year = 2011,
+                               rain_limit = 75, dist_limit = 500) %>%
+        select(storm_id, fips) %>%
+        mutate(exposed_a = 1)
+metric_b <- county_wind(my_fips, start_year = 1988, end_year = 2011,
+                               wind_limit = 15) %>%
+        select(storm_id, fips) %>%
+        mutate(exposed_b = 1)
+two_metrics <- metric_a %>%
+        full_join(metric_b, by = c("storm_id", "fips")) %>%
+        full_join(all_storm_counties, by = c("storm_id", "fips")) %>%
+        mutate(exposed_a = ifelse(is.na(exposed_a), 0, 1),
+               exposed_b = ifelse(is.na(exposed_b), 0, 1)) %>%
+        group_by(storm_id) %>%
+        summarize(a = sum(exposed_a & exposed_b),
+                  b = sum(exposed_a & !exposed_b),
+                  c = sum(!exposed_a & exposed_b),
+                  d = sum(!exposed_a & !exposed_b),
+                  f1 = sum(exposed_b),
+                  f2 = sum(!exposed_b),
+                  g1 = sum(exposed_a),
+                  g2 = sum(!exposed_a),
+                  n = n(),
+                  no_exposure = a + b + c == 0,
+                  prev = abs(a - d) / n,
+                  bias = abs(b - c) / n,
+                  prop_agree = (a + d) / n,
+                  exp_agree = (f1 * g1 + f2 * g2) / n^2,
+                  kappa = (prop_agree - exp_agree) / 
+                                         (1 - exp_agree),
+                  kappa = ifelse(is.nan(kappa) | is.infinite(kappa),
+                                 0, kappa))
+
+ggplot(two_metrics, aes(x = kappa, fill = no_exposure)) + 
+        geom_histogram(color = "black")
+```
+
+
+#### Are storms with heavy rain exposure likely to occur early in the hurricane season?
+
+Discussion
+===================
+
+#### Differences between exposure classification for different exposure metrics
+
+Some storm hazards might be inversely associated. For example, while a slow-moving storm can bring more rain [citation] and cause more damage because of sustained hazardous conditions [@Rezapour2014], fast-moving storms bring higher risks of dangerous winds inland [@Kruk2010]. Storms with weak winds can bring dangerous rains and flooding [@Atallah2007].
+
+Some studies have done sensitivity analyses to consider how results changed using different exposure metrics. For example, @Czajkowski2011 performed a sensitivity analysis using different assumptions about wind decay away from the center of a storm, while @Currie2013, who used a distance-based exposure metric, considered different buffer distances as a sensitivity analysis. 
+
+#### Restricting to certain types of storms
+
+Some studies of extended time periods have restricted their analysis to certain types of tropical storms. For example, some studies have only included landfalling hurricanes [studies] [citations]. One study of risks from hurricane exposures in Texas limited their analysis to storms causing $10 million or more in damage [@Currie2013], based on data in the Weather Underground Hurricane Archive. A study of the association between autism prevalence and hurricane exposure in Louisiana between 1980 and 1995 used only storms they identified as "severe", based on an assessment [?] of National Weather Service data [@Kinney2008].
+
+#### Distance-based exposure
+
+There are some sources of uncertainty for storm locations from the best track hurricane data. These include ...
+
+However, these best tracks should be fairly reliable for more recent years of storms, as we use here. Many of the uncertainties related to storm positions in best track data are more of a concern for the years before ... (e.g., pre-1944, before aircraft reconnaisance of Atlantic basin tropical storms) [@Jarvinen1988].
+
+While there are often several different "best tracks" datasets, from different sources [?-- weather services?] for other ocean basins [@Knapp2010], the "best tracks" data from NOAA's National Hurricane Center [@Jarvinen1988], which are the basis of the extended hurricane tracks data we use here, are the undisputed primary source of tropical storm track data for the Atlantic basin [@Knapp2010]. One study [@Currie2013] did, however, use hurricane track data from the Weather Underground Hurricane Archive [GBA-- is Weather Underground just using the NOAA best tracks? That's my guess. In that case, this source would be the same. JMF-- they have an archive from 1851-2016; I think it is the same source. I'll keep digging though].
+
+There are a number of limitations to using distance to assess exposure to tropical storms. Tropical storms vary in size and intensity, and a measure of distance from the storm track will not incorporate these differences and so could misclassify exposure both in terms of generating false positives (counties close to the storm track of very mild or small-radius storms) and false negatives (e.g., during very large or intense storms). This point is especially important given the dramatic range possible in the size of storms; US storms have been observed with radii to maximum winds as small as 20 kilometers to over 200 kilometers [@Mallin2006].
+
+While a number of storm characteristics are strongly associated with distance from the storm's center (e.g., wind and, at the coast, storm surge and waves; @Rappaport2000, @Kruk2010), other characteristics like rain can occur at dangerous levels well away from the storm's central track [@Rappaport2000; @Atallah2007], and while winds typically weaken inland, dangerous wind exposures from tropical storms are still observed in the eastern United States well inland from the coast [@Kruk2010]. Although storm surge was a major cause of hurricane-related deaths in the past, more recently freshwater flooding has become a much more common cause of deaths directly resulting from tropical storms in the US [@Rappaport2000]. Further, fatal tropical storm tornadoes most often occur between 200 kilometers and 500 kilometers from the storm's center, and are more common as a storm decays inland than at landfall, and were linked to over 300 deaths in the US between 1995 and 2009 [@Moore2012]. However, one study found that damage to buildings was strongly associated with distance from the storm's center [check Deryugina reference in @Czajkowski2011].
+
+Further, the forces of a storm tend to be distributed around the center in a non-symmetrical way [citation], while distance-based exposure metrics that use buffers tend to use an equal buffer distance on each side of the storm track (e.g., @Czajkowski2011, ...).
+
+Other distance-based exposure metrics have defined "exposure" to occur only when a storm's center track passes through a county's boundary (e.g., @Zandbergen2009, who describe this metric of exposure as a "hit" on the county; @Kinney2008 is another example that considered highest exposures for counties directly on the storm's path). This way of measuring exposure can exclude nearby counties that suffered extreme conditions from the storm but were not directly on the hurricane's track [@Kruk2010], especially since hurricanes can have a width ([typical storm width; citation])[JMF-- Weatherford and Gray paper referenced in Grabich 2016 may be a good place to start. Suggest 30-60km width of the eye of the storm itself] that is much larger than a typical county's width and since a hurricane's maximum winds can extend well away from the storm's center. Further, exposure assessed using this method is associated with the size [@Zandbergen2009; @Kruk2010] and shape [@Zandbergen2009] of a county. (While some studies have avoided this problem by determining exposure for equal-area grid cells (e.g., [@Kruk2010]), in studies where exposure needs to be matched with a county-level outcome, some process of aggregation from grid cells to counties would still need to be performed.) By contrast, assessing distance-based exposure based on measuring distance between the storm track and each county's center would be less susceptible to differences in county size and shape and so might be a more reliable metric of exposure than determining if a storm track ever crossed a county boundary. Further, assessing the minimum distance between county center and the storm track, as we do here, allows for a continuous, rather than binary, metric of distance-based exposure to a storm. 
+
+Other studies have compared a storm's track to specific points to determine closest exposure, as we do here. For example, one study of adverse birth outcomes and hurricanes in Texas determined distance-based exposure by measuring the closest distance between any point on a storm track and a woman's residence [@Currie2013].
+
+Some studies (e.g., @Zandbergen2009, @Czajkowski2011) assumed symmetrical activity of storm-related factors, which is not a realistic assumption for storm wind and rain patterns, particularly at and following landfall [@Kruk2010, @Halverson2015, @Rezapour2014].
+
+There is some uncertainty in the position estimates from the best tracks hurricane dataset, since the estimation of storm position for best tracks data involes a poststorm subjective smoothing and integration of many different types of data [@Landsea2013]. In a survey of researchers who perform the poststorm data aggregation to create the best tracks datasets, uncertainty in the center position of a US landfalling storm in the "best tracks" dataset was estimated at approximately 8 nautical miles for major hurricanes, 11 nautical miles for Category 1 and 2 hurricanes, and 15 nautical miles for tropical storms [@Landsea2013]. Uncertainty in estimates of a storm's position also varies by time of day, with more certain estimates during daylight than during the night [@Landsea2013].
+
+To date, distance parameters involved with assessing risk of a particular storm have been rather arbitrary, contributing to the necessity in understanding how such parameters influence a county's exposure status. In assessing the risk of a given storm based on distance, recent studies have defined the distance from the storm track affected by a given storm differently. @Czajkowski2011 assessed county-level risk and exposure based on a three-tierd definition, with primary counties being those closest to the storm track on either side, secondary counties being adjacent to primary coutnies, and tertiary counties adjacent to secondary counties. Such a definition resulted in an exposure defenition based on an average distance radius of 120 km [75 miles] on either side of the storm track [@Czajkowski2011]. Such a distance is slightly larger than that commonly used by public health departments (i.e., 100 km) [@Czajkowski2011]. 
+
+Other studies used distance buffers of 30 kilometers [@Currie2013] or of 30, 60, and 100 kilometers as thresholds for identifying distance-based exposure [@Grabich2016] [check the Grabich paper-- was this distance to any part of a county, or to the center of the county?; JMF-- I think any part of the county]. Another study used a distance criterion of 60 kilometers from the storm track, classifying all counties for which the 60 km buffer fully or partially passed through the county's boundaries as exposed [@Grabich2015] [again, check to see if this was to any point in the county or to some center point of the county][JMF-- it is not abundantly clear in the Grabich 2016 article; based on their graphs it seems like they considered a county exposed if the definition they used crossed any county boundary. The Grabich 2015 paper specifies both full and partial counties being included].
+
+In a study assessing the association between hurricanes and undesireable birth outcomes, researchers found that results were not sensitive to the omission of residences 100 km from the storm path, and that results varied insignificantly from 30-75 km [@Currie2013].
+
+One study used distance to determine exposure to landfalling US hurricanes by assigning counties along the storm's tracks as "primary" exposures, counties neighboring primary counties as "secondary" counties, and counties neighboring secondary counties as "tertiary" counties; this method correspond to a distance buffer of approximately 75 miles (120 kilometers) from the storm track for a county to qualify as "exposed" to a storm [@Czajkowski2011]. The study found that about 30 direct hurricane fatalities over their study period (1970--2007) occurred outside of this distance range from the storm center [@Czajkowski2011], suggesting that this distance choice can cause some counties with dangerous exposures to a storm to be mis-identified as "unexposed".
+
+Most distance exposure definitions in the past have been based on maximum wind radii using maximum sustained winds, [@Kruk2010] [GBA-- this is what our wind model uses as an input, too. Also I had a hard time finding this specific point in this reference. JMF-- I am not sure where I thought I found this.], although wind radii are available through the extended best tracks data [@Demuth2006][JMF-- Delete this section?].
+
+Most distance-based exposure assessments have used equal distance criteria on either side of the storm's track to classify exposure. However, the hazards associated with a storm can display marked asymmetry. For example, fatal tornadoes associated with US tropical storms between 1995 and 2009 occurred almost exclusively to the right of the storm's track, mostly in the right-front quandrant (northeast) of the storm [@Moore2012].
+
+When using a distance-based metric, often the majority of counties classified as "exposed" to a storm are inland [@Czajkowski2011]. This is because the distance-based metric is linked to distance from the storm track, which can extend well inland. However, many of a storm's hazards decrease rapidly after landfall (e.g., maximum winds) or are almost exclusively experienced at the coast (e.g., storm surge, waves).
+
+Distance-based measures that are based on a storm track passing through a county can also miss exposures from storms when they are offshore but near enough to the coast to cause important hazards to health and property (e.g., Agnes in 1972, Floyd in 1999, Chantal in 1989) [@Czajkowski2011]. By basing the distance criteria on distance from the storm's track to county centers, more of these offshore storm exposures could be captured.
+
+#### Rain-based exposure
+
+Rain from tropical storms can bring important risks to human health and property, even in counties well inland from the coast. For example, most of the direct hurricane-related deaths in the US from 1970 to 1999 were caused by freshwater flooding and were in inland, rather than coastal, counties [@Rappaport2000]. Direct fatalities from hurricanes tend to increase with increasing rainfall from the storm [@Czajkowski2011]. Rains from tropical storms can flood roads [@Rappaport2000]. Examples of historical tropical storms that caused many direct deaths from flooding in inland counties include Hurricane Diane in 1955 and Hurricane Camille in 1969 [@Rappaport2000]; more recent examples include Hurricane Floyd in 1999, Hurricane Alberto in 1994, Hurricane Charley in 1998, and Hurricane Fran in 1996 [@Rappaport2000]. Storms notable for heavy rains include Allison in 2001, Alberto in 1994, and Claudette in 1979.
+
+It can be very difficult to reliably measure rain during extreme rain events, including tropical storms. For example, a heavy rain can wash away [?] rain gauges [?]. It can also be very hard to measure rain during heavy wind, as the rain does not fall straight into the gauge [@Medlin2007]. Bias in tipping-bucket rain gauges during tropical storms are caused both by high winds, with higher bias as windspeed increases, and by the bucket not being able to tip collected rain and right itself quickly enough during extreme rain to capture all rainfall ("tipping bucket error") [@Medlin2007]. Rain can also be measured by radar, but only within a certain distance of the radar (around 100 kilometers [double-check that this is still approximately correct, or if things have improved since Danny in 1997]) [@Medlin2007], and radar measurements can underestimate rain for a hurricane [@Medlin2007]. Satellites can also provide some tropical storm rain data [@Medlin2007]. On occassion, data related to rainfall for tropical storms also comes from aircraft reconnaissance [@Medlin2007]. Generating county-level rain estimates from surface monitors requires some method of spatial interpolation, to create a spatially continuous estimate of rainfall values, and aggregating across counties (e.g., [@Czajkowski2011]).
+
+One difficulty in measuring rain exposure consistently across many different storms is how many days to include in the rain total. Some storms, especially ones associated with dangerous rainfalls, can move very slowly, meaning a window of several days needs to be used to fully capture storm-related rainfall. For example, one study used a period of over four days to provide storm rainfall totals from the slow-moving Hurricane Danny in 1997 [@Medlin2007]. Single-storm studies often measure rainfall as the total rainfall over the full "event" (e.g., Medlin2007); however, the timing of the event is determine in a customized way for each storm, making it difficult to extend to multi-storm analyses. The figure below shows rain exposure for Danny based on including the day before, day of, and day after the storm (top) versus including from the day before through three days after the storm (bottom).
+
+```{r fig.width = 6, fig.height = 8, echo = FALSE}
+storm <- "Danny-1997"
+a <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_counties(storm = storm, 
+                                           metric = "rainfall")) + 
+        ggtitle(paste(storm, "rainfall, -1 to 1 days")) 
+b <- map_tracks(storms = storm, plot_points = FALSE, 
+                plot_object = map_counties(storm = storm, 
+                                           metric = "rainfall",
+                                           days_included = -1:3)) + 
+        ggtitle(paste(storm, "rainfall, -1 to 3 days")) 
+
+grid.arrange(a, b, ncol = 1)
+```
+
+The NLDAS-2 data can give rainfall estimates well below those published for specific monitors. For example, our analysis of Hurricane Danny (1997) found a maximum county-level aggregated rainfall of under 175 millimeters, even when including study days out to the third day after the storm came closest to the county, while monitor-based measurements indicated rainfalls of over 500 millimeters at a number of monitors in Mobile County (FIPS: 01097) and Baldwin County (FIPS: 01003) [@Medlin2007]:
+
+```{r echo = FALSE}
+rain %>% 
+        filter(storm_id %in% "Danny-1997" &
+                       fips %in% c("01097", "01003")) %>%
+        kable()
+```
+
+
+Some of the other possible sources for estimating rain during tropical storms include ...[Stage IV, TMPA, NEXRAD]. Rain data for tropical storms can potentially come from satellite based observations (e.g., Tropical Rainfall Measuring Mission [TRMM], Global Precipitation Measurement [GPM], Precipitation Estimation from Remotely Sensed Imagery Using Artificial Neural Network [PERSIANN]) and weather forecast models (e.g., European Centre for Medium-Range Weather Forecasts [ECMWF], National Centers for Environmental Prediction [NCEP]) [@Rezapour2014] [GBA-- are the "weather forecast models" analogous with re-analysis data like NLDAS?]. Precipitation data can be measured by ground-based monitor, satellite, or radar [@Hou2014]. Monitor-based measurements can be difficult to calibrate and compare across large regions [@Hou2014], and certain types of terrain (e.g., mountainous) can make precipitation measurements difficult by radar [@Hou2014]. There is no "gold standard" of precipitation measurement; all three of these ways of measuring precipitation are prone to their own uncertainties [@Hou2014].
+
+The estimated rainfall amounts from our data are likely underestimates. @Villarini2011, for example, found that NLDAS-2 precipitation underestimated total precipitation for Hurricanes Frances, Ivan, and Jeanne in 2004 compared to streamgage results. NLDAS-2 precipitation data, however, should be internally consistent (i.e., correctly identify areas and storms with greatest rainfall, although underestimating exact rainfall totals) and so useful for comparing across different storms when all exposure estimates are based on this rain data. 
+
+Rainfall estimates are likely underestimates for a few reasons. First, they are based on averaging hourly measurements to a daily mean estimate. This averaging would smooth over shorter periods of very extreme rainfall. Further, this data is averaged over multiple grid points within each county and so would not fully reflect very extreme local precipitation (although this might be less of a concern for classifying exposure to a large-scale storm system, like a tropical storm, compared to more fine-scale storms). Finally, this NLDAS data provides a re-analysis that incorporates measured rainfall, using models, etc., to incorporate that observed data into a spatially and temporally continuous dataset of rainfall. However, during extreme storms, the problems with measuring rainfall using [rain monitors] would propogate into the NLDAS data, so although NLDAS would prevent missing values during the storm if monitors are not able to provide data, if monitors are out, rainfall estimates from NLDAS will be based more on models than on observations. [More on NLDAS bias to underestimate in @Villarini2011]. Such bias, though unimportant in our analysis, may play a larger role in the extrapolation to other studies or exposure analysese where the precipitation cutoffs used here may provide a threshold that results in the missclassification of less affected counties as exposed. 
+
+Gridded, re-analysis precipitation data (e.g., NCEP UPD) have been found to underestimate totl rainfall from tropical storms, but correctly identify the qualitative distribution of low to high rainfall for storms (i.e., it can identify the areas with the highest rainfall, but underestimates the exact amount of rainfall) [@Atallah2007].
+
+Exposure classification based on rainfall has some advantages. For example, it allows the identification of exposed counties that are inland, rather than coastal, but that were affected by heavy rainfall during the storm. Often, storm-related deaths are associated with inland flooding. In the United States, over half of hurricane-related direct deaths from 1970 to 1999 from Atlantic basin storms were a result of freshwater flooding; as a result, most of these deaths were in inland, rather than coastal, counties [@Rappaport2000]. In another analysis, researchers found that 79\% of freshwater-drowning fatalities occured in inland counties,[@Czajkowski2011] further stressing the importance of rainfall in hurricane risk analysis. Storms can produce a lot of rain especially in certain topographies, like near mountains, so counties that are well inland can sometimes experience more extreme rain that other counties at similar distances from the storm's track. 
+
+In comparison to the storm track, the areas of extreme rain and extreme wind can vary. For example, storms undergoing an extratropical transition can bring heavy rains to the left of the storm's center track [@Halverson2015; @Atallah2007; @Elsberry2002], while extreme winds are more common to the right of the track [@Halverson2015, @Grabich2016 GBA-- I think it would be better to just use meteorological papers as references for this point. The Halverson paper is great, but the Grabich paper I think might just be a secondary, rather than primary, reference for this point, so I think we could probably find a more direct reference]. Wind speeds are typically more severe to the right of the storm's track because here the counter-clockwise cyclonic [right word?--I think so, Medlin 2007 uses cyclonically so this seems correct to me] winds are moving in the same direction as the forward motion of the storm, creating an additive effect for total windspeeds [citation]. In contrast, rains can be heaviest to the left of the storm's track, especially in cases when the storm interacts with a downstream ridge [@Atallah2003; @Atallah2007] or becomes extratropical [@Elsberry2002].
+
+Some storms can be of lower intensity (i.e., on the Saffir-Simpson scale) yet bring dangerous rainfall, including well inland of the storm's landfall. For example, storms including Floyd in 1999, Gaston in 2004, Irene in 2011, and Lee in 2011, have had severe inland impacts, often through extreme rainfall, as post-tropical storms [@Halverson2015]. This rainfall can be particularly severe in the Appalachians [@Halverson2015]. Further, heavier rainfall is more common for storms moving at slower forward speeds [@Medlin2007]. Storms with a slower forward speed and larger rainfall area contribute to a longer duration of hazardous conditions, and therefore an increased chance of storm-related damage [@Rezapour2014]. 
+
+Tropical storm Claudette (1979) and Hurricane Danny (1997), a minimal hurricane, are thought to be associated with the highest accumulation of rainfall in history thus far [@Medlin2007], suggesting storm intensity alone is likely not appropriate in assessing or predicting the impact of precipitation.
+
+Several storm characteristics are associated with the likelihood of heavy rain and flooding from the storm, including the storm's forward speed and size [@Rappaport2000]. There is some evidence that the worst tropical storms, in terms of heavy rainfall and freshwater flood-related deaths in the US, tend to occur early in the hurricane season (e.g., June--August), when it is more common to get the meteorological conditions (weak steering currents) that lead to slow-moving storms [@Rappaport2000] (although, conversely, some have suggested that a storm with the same amount of rain is likely to cause less flooding earlier in the season, since more water can evaporate in the hotter conditions more common early in the hurricane season [@Mallin2006]). @Smith2011 conducted an analysis of 572 USGS sream gauging stations with more than 75 years of data in the Eastern United States in an effort to better understand the etiology of severe flooding in the region, a major component of which are those induced by tropical cyclones. A large portion of these include extratropical storms in the winter--spring season (e.g. March--April), with extratropical systems occurring earlier in the season being less of a risk for flooding events due to mechanistic differences [@Smith2011]. Among tropical cyclone-induced floods is significant spacial heterogeneity, largely due to orographic mechanisms and other parameters associated with the encouragement of flooding, as well as substantial variability in frequency each year with no obvious long-term trend [@Smith2011]. Maximum values were located along the Appalacian Mountains [@Smith2011]. Further, @Smith2011 suggests that the clustering of Atlantic basin storms may play an important role in the induction of floods in this region. Maximum rainfall values were found to be most prevalent east of the Appalachians [@Smith2011].
+
+When assessing rainfall while a hurricane is over the ocean, @Cerveny2000 found that tropical cyclones occurring later in the hurricane season (e.g., October--January) were associated with significantly greater rates of precipitation (rain per day) than earlier in the season when evaluating storms in the North Pacific and Atlantic basins from 1979--1995. This obeservation is likely due to the high frequency of intense storms in the later months for the Pacific basin, seeing as the most intense storms often occur in September for the Atlantic basin [@Cerveny2000]. The rate of rainfall was found to be positively correlated to the wind speed (i.e., maximum surface wind speed) of a particular tropical cyclone, and therefore storm intensity [@Cerveny2000]. This is somewhat contradictory for the Atlantic basin, which often experiences its most intense storms early in the hurricane season (e.g., September) [@Cerveny2000].[JMF--All of the above results are based solely off observations over the ocean and therefore may not reflect storm characteristics once landfall has been made]. The relationship between precipitation and wind speed does not remain as strong once the hurricane has made landfall [@Jiang2008]. In fact, though the intensity of a storm can be considerably reduced once landfall has been made, peak rainfalls overland tend to be greater than those over the ocean [@Jiang2008].[JMF--for hurricanes specifically]. The area of peak rainfall overland seem to be close to the storm's center, within about 50 km [@Jiang2008]. @Jiang2008 also found statistically significant relationships between decreasing rain rates from the center of the storm out to 400 km, with no further significant relationship beyond this distance.
+
+Researchers have attempted to predict the expected severity of rainfall for a given storm once it has made landfall using a rainfall potential parameter [@Griffith1978]. The rainfall potetnial parameter is developed by analyzing characteristics of the storm's evolution over the ocean, including: storm size, translational speed, and average rain rates derived from infrared satellite observations [@Griffith1978]. @Jiang2008 found that the rainfall potential parameters evaluated before landfall were highly correlated with the actual total maximum rainfall of a storm overland, which they used to develop a prediction index based on the rain potential for one day before landfall. The proposed index includes five index categories, ranging from less than 149 mm to greater than 505 mm of maximum storm total rain [@Jiang2008]. Researchers were able to predict land rainfall values accurately for three of six storms in 2005 including Arlene, Katrina, and Rita. The predictive model overestimated rainfall for both Cindy and Wilma due to the inability of the model to adjust for changes in the magnitude of rain rate as well as rapid shifts in translational speed before and after landfall [@Jiang2008]. 
+
+Rain is a hazard of tropical storms mostly because it causes flooding. The likelihood and extent of flooding during a tropical storm is related to the amount of rain from the storm, but it is also related to other factors [@Chen2015; @Rees2001], and storms with similar amounts of rainfall can cause different flooding risks [@Chen2015]. For example, one study of a North Carolina watershed found that streamflow following tropical storms was related not only to rainfall from the storm, but also to top soil saturation [JMF--more on this in the Wood 1990 reference in the Rees paper] and timing of the storm during the hurricane season [@Chen2015]. The structure of a water basin's drainage network can also play a key role in regional flood response [@Rees2001]. Therefore, an exposure metric based on rainfall may not perfectly characterize flooding-related risks, and future research could explore either streamflow-based exposure metrics or metrics that combine rain with remote measurements of factors like soil moisture, vegetation states, and meteorological conditions that might modify the amount of flooding caused by a tropical storm's rains [@Chen2015]. 
+
+Currently, precipitation measurements have not become resolute enough to quantitatively predict flooding or estimate flooding risks for a storm [@Elsberry2002; @Emanuel2006].[JMF--I need to keep digging to see if this is still true]
+
+Storm-motion, as well as the direction from which a storm approaches, can play significant roles in determining the extent of precipitation produced by a storm [@Rees2001; @Chang2012]. (Examples include the south-to-north storm circulation for Hurricane Fran (1996) with an east-to-west movement, causing an amplification of rainband convection, which played a key role in runoff distribution [@Rees2001] and increased precipitation intensity for storms approaching Taiwan from the east [@Chang2012]).
+
+The topography of a location (e.g., elevation change in a county) could also affect how extreme rainfall is from a particular storm, as well as whether rains from a tropical storm cause a flood, particularly a flash flood [@Rees2001 on orographic enhancement; @Czajkowski2011 mentions this, but is not a primary source for this point]. For example, topographical characteristics in Taiwan play a key role in regulating rainfall intensity and its location [@Chang2012]. @Chang2012 found that the most intense rainfall was found in areas with the greatest wind-terrain interaction. Storms embodying such characteristics are increasing in both frequency and duration in Taiwan [@Chang2012].[JMF--I am not sure how much of this detail is needed beyond discussing topographical impact, or if mentioning Taiwan distracts from our main focus]. More specifically, the Appalachian mountains provide topography that both enhance precipitation during tropical storms as well as provide ample hydrological conditions for severe flooding [@Rees2001]. Maximum rainfall for Hurricane Fran (1996) occurred in the Appalachians, with flood-peaks reaching recurrance intervals greater than 100 years in many river basins [@Rees2001]. [JMF--This seems to be true for Floyd, too, even though the following study argues severe flooding would have occurred without the mountain regions] However, @Colle2003 performed an extensive evaluation of Hurricane Floyd (1999) in an effort to understand the mechanisms that led to the development of heavy precipitation and flooding. Though differences in the terrain, namely the Appalachian Mountains, contributed to the development of heavy precipitation in this event, @Colle2003 concluded that flooding would have occured in this region regardless of the presence of the Appalachians and other coastal hills. Instead, the heavy precipitation is thought to have been primarily caused by strong frontogenesis in combination with slant-wise neutrality [@Colle2003]. [Look at Bosart and Dean reference in Colle 2003 reference for more on conditions leading to severe flooding]
+
+Flash floods cause most of the flood-related deaths in the eastern US [@Ashley2008], and one study found that most flash flooding in the eastern half of the US results from extreme rainfall over a period of six hours or less [@Ashley2008], which suggests that are exposure window of the three days around a storm may be wide enough to capture the most dangerous exposures.
+
+Other studies, like ours, do not attempt to identify and remove any precipitation over the aggregating period associated with weather systems other than the tropical storm (e.g., @Czajkowski2011).
+
+#### Wind-based exposure
+
+A tropical storm's high winds can bring a number of dangers, including health risks and property damage caused by structural damage of houses and other buildings, falling trees, and wind-borne debris [@Rappaport2000]. One study of US hurricanes between 1925 and 1995 found that property damage associated with a storm was strongly associated with the intensity of the storm, with most damage occuring during category 3, 4, or 5 storms, even though storms of these categories made up under a quarter of all hurricanes in the study [@Pielke1998]. Wind-based hazards are also closely associated with power outages (both specific to hurricane related hazards; do not specify wind-based or otherwise) [@Liu2005; @Han2009], which can introduce a number of threats to human and ecological health and property, including water quality risks if the outage affects wastewater treatment plants [@Mallin2006]. Direct fatalities from hurricanes tend to increase with increasing wind exposure from the storm [@Czajkowski2011].
+
+However, these types of wind-related damage can occur when winds are below hurricane strength (i.e., < 64 knots) [@Rappaport2000]. While severe winds pose an important threat, risks of a tropical storm can exist without severe wind; for example, one study found that most of the direct hurricane-related deaths in the US between 1970 and 1999 occurred in cases when wind was below hurricane strength, including for Tropical Storms Charley in 1998 and Alberto in 1994 [@Rappaport2000]. Further, wind-based exposure metrics are directly linked to a storm's strength, and some research suggests that hurricane strength and landfall is not strongly associated with the number of direct deaths ultimately caused by the storm [@Rappaport2000]. A number of hurricane hazards, including dangerous rainfall, are not captured by exposure metrics that depend solely on storm winds [@Rezapour2014].
+
+Wind suffers from similar challenges for measuring during tropical storms. In particular, the strong winds of tropical storms can break or blow away the anemometers used to measure wind speed. 
+
+Here, we used wind speed models, rather than observed wind speed, to estimate exposure to tropical storms based on winds. 
+
+A variety of other wind speed models exist besides the one used here. In particular, there are options for wind speed models as far as ... One study used a simple, symmetrical model that assumed constant winds (equal to the maximum wind speed from best tracks data, [converted to wind gusts?]) up to 30 km from the storm track and symmetrical wind decay beyond that distance [@Zandbergen2009], based on a model developed by @Klotzbach. Another study used a wind model that assumed that all counties along a storm's path had the maximum wind speed observed as the track passed the county, while counties neighboring this "primary" county had a windspeed of 75% of this maximum sustained wind value, and counties neighboring these "secondary" counties had a windspeed of 50% of the maximum sustained wind [@Czajkowski2011]. Another study used wind data from a NOAA public database based on real-time hurricane wind analysis, rather than modeling windspeeds themselves [@Grabich2016] [see the Powell reference in this paper for more on that data].
+
+The H*Wind database [@Powell1998] also has been used in studies (e.g., @Rezapour2014, @Grabich2016), but was discontinued as a NOAA product after 2013 (see \url{http://www.hwind.co/legacy_data/} for more on this dataset and its current status). These data are publicly available for storms between 1993 and 2013 (\url{http://www.aoml.noaa.gov/hrd/data_sub/wind.html}). It appears that gridded data and shapefiles are available for certain times during the storms for this database.
+
+There is some uncertainty in the maximum wind speed values estimated at each synoptic time for each storm. For US landfalling storms, the estimate of storm intensity in the best tracks dataset is estimated to have an uncertainty of around 8 knots for tropical storms, 10 knots for Category 1 and 2 hurricanes, and 13 knots for major hurricanes [@Landsea2013]. Since the wind model used here uses these best tracks maximum wind speeds as an input, this uncertaintly would propogate into our estimates of windspeed within each county for each storm. 
+
+A recent study found a history of at least some exposure to high winds related to tropical or post-tropical storms in most eastern US states, including in many inland locations [@Kruk2010].
+
+Exposure metrics based on wind speed may not provide an accurate representation of the communities exposed to a given storm, since, while wind speeds rapidly decay after landfall [citation], extreme rain can persist,for some  storms affecting a large number of inland counties, which would be underrepresented using an exposure metric the depends on windspeed.  
+
+Examples of studies that used windspeed as a sole criteria when determining tropical storm exposure include ... [citation]. In other studies, wind criteria have been combined with distance criteria, and with windspeed modeled based on maximum sustained windspeed estimates at each "best tracks" observation, combined with a simple model of decay in wind speed at distances further from the storm's center (wind speed equals the storm's maximum sustained windspeed up to 30 kilometers from the storm's center then follows a simple decay function beyond that distance) [@Zandbergen2009] [GBA-- this paper references another paper with more details on this decay model for windspeed-- the Gray and Klotzbach reference they have]. In this study, wind speed cutoffs of 40 mph, 75 mph, and 115 mph were used to determine if a county was exposed to a storm (tropical, hurricane-force, and intense hurricane-force, respectively) [@Zandbergen2009].
+
+One study found that using a distance-based exposure metric that required the storm track to cross a county boundary assessed a number of counties as "unexposed" that suffered tropical storm- or hurricane-force winds from the storm and were assessed as "exposed" using a metric that combined distance and windspeed [@Zandbergen2009]; in fact, almost twice as many counties were assessed as having been exposed to at least one tropical storm between 1851 and 2003 when exposure was determined based on a combined wind-distance metric compared to a "hit" distance-based metric [@Zandbergen2009]. This suggests that some distance-based metrics might result in a number of false negatives for county-level storm exposure.
+
+Studies that have used wind-based exposure metrics have used a variety of windspeed cutoff values to determine exposure. One study, for example, assigned a binary exposure value based on windspeed thresholds of 63 and 119 kilometers per hour, as well as a continuous exposure metric based on the exact value of the windspeed in the county during the storm and a categorical exposure metric based on the Saffir-Simpson storm severity categories [@Grabich2016]. Another study used a criterion of wind speed at or above 74 miles per hour [@Grabich2015].
+
+Some of the most severe regions of property damage during Hurricane Andrew in 1992 were located in regions other than those that experienced maximum sustained winds [@Fronstin1994]. 
+
+#### Other ways of assessing tropical storm exposure
+
+One study used FEMA disaster declarations as a binary indicator of tropical storm exposure [@Grabich2016]. They found that this metric tended to assess a lot more counties as "exposed" to a storm than distance- or wind-based metrics [@Grabich2016], although they only compared the two exposure metrics as applied to four storms (Hurricanes Charley, Frances, Ivan, and Jeanne in Florida in 2004). 
+
+Since rainfall is not perfectly correlated with flooding risks from tropical storms [@Chen2015], it may also be useful in future research to explore exposure metrics based on more direct measurements of flooding. An associated risk from hurricanes is degraded water quality [@Mallin2006]; other metrics, including dissolved oxygen, biochemical oxygen demand, and fecal coliform bacteria, might help classify exposure to these hurricane risks [@Mallin2006], which can occur when flooding or power outages affect wastewater treatment plants, landfills, or concentrated animal feedlot operations [@Mallin2006]. These water quality issues can threaten both human and ecological health; for example, some hurricanes (e.g., Andrew, Hugo, Fran, Bonnie, and Floyd) have been linked to large fish kills [@Mallin2006]. The severity of these impacts can be associated with factors we do not incorporate into our exposure measurements here, including whether a storm track follows a tributary, which can increase impacts to water quality [@Mallin2006].
+
+Storm impacts can also be associated with the forward speed of a storm, since a slow-moving storm can linger and cause a large accumulation of rain [@Medlin2007] as well as persist over multiple high tides, increasing coastal impacts [@Mallin2006].
+
+Data on storm impacts, including property damage or insurance claims data, are sometimes available through storm databases or publications (e.g., NOAA's Storm Events data, *Monthly Weather Review*). While such data could potentially be used to create an exposure metric, tropical storm damage data requires some normalization, to incorporate both changes in dollar value over time and also changes in development in at-risk areas, to be comparable over extended time periods [@Pielke1998].
+
+#### Example uses of exposure datasets
+
+#### Table including various exposure papers and the parameters used
+
+```{r echo = FALSE}
+studies <- c("Davidson 2001", "Atallah 2007", "Kinney 2008", "Zandbergen 2009", "Czajkowski 2010", 
+             "Zaharan 2010", "Kruk 2010", "Villarini 2011", "Rezempour 2014", "Currie 2013", "Grabich 2015", 
+             "Grabich 2016")
+distance_km <- c("Hurricane Disaster Risk Index (HDRI)", "", "County Center", "30 Buffer and Decay", "120", 
+                 "2 counties", "Radial Max Wind", "100-500", "", "25, 30, 60, 75", "60", "30, 60, 100")
+rain_mm <- c("HDRI", "200-500 (Floyd)", "", "", "", "", "", "", "2/hr, 48/d", "", "", "")
+wind_kt <- c("HDRI", "", "", "SSWS", "", "", "34, 50, 64", "", "", "", "64", "SSWS")
+exposure_parameters <- data.frame(studies, distance_km, rain_mm, wind_kt)
+kable(exposure_parameters, "markdown")
+```
+
+SSWS = Staffir-Simpson Hurricane Wind Scale (TS, 1, 2, 3, 4, and 5). Wind Cutoffs at 34, 64, 83, 96, 113, and 137 kt.  
+
+References {#references .unnumbered}
+==========

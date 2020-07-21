@@ -15,7 +15,7 @@ at four standardized times for weather data collection (synoptic times),
 position to~15-\si{\minute} intervals using natural cubic spline
 interpolation~\parencite{hurricaneexposure}. At each~15-\si{\minute} interval,
 we measured the distance between the storm's center and each county's
-population mean center~\parencite{countycenters}. We took the minimum distance
+population mean center, **as of the 2010 US Decennial Census**~\parencite{countycenters}. We took the minimum distance
 for each county as a measure of how close the storm came to the county over its
 lifetime.  We also recorded the time when this occurred for each county so we
 could later link observed data on precipitation, flooding, and tornadoes.  To
@@ -85,7 +85,7 @@ throughout the course of the storm. We used a double exponential wind model
 based on results from Willoughby~\parencite{willoughby2006parametric} to model
 1-minute surface wind (10 meters above ground) at each county center, based on
 inputs of the storm's forward speed, direction, and maximum wind
-speed~\parencite{stormwindmodel}. Our model incorporated the asymmetry in wind
+speed~\parencite{stormwindmodel}.  Our model incorporated the asymmetry in wind
 speeds around the tropical cyclone center that results from the storm's forward
 movement~\parencite{phadke2003modeling}.  From these 15-\si{\minute} interval
 estimates, we identified the peak sustained surface wind in each county over
