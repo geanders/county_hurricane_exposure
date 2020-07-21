@@ -338,8 +338,67 @@ check_high_corr <- function(ex_fips, ex_dir,
                          nldas = ex_rain$prcp) %>% 
                 as_tibble() %>% 
                 dplyr::filter(monitor >= 75 | nldas >= 75)
-        cor(rain_df$monitor, rain_df$nldas, method = "spearman")
+        print(paste(ex_fips, ex_dir))
+        print(paste("Spearman cor, high events:", 
+                    round(cor(rain_df$monitor, rain_df$nldas, method = "spearman"), 2)))
+        print(paste("N events:", nrow(rain_df)))
+        print(paste("Spearman cor, all events:", round(rain_rho, 2)))
+        print(paste("N all events:", nrow(ex_rain)))
 }
 
 
+
+check_high_corr(ex_fips = "12086", ex_dir = "../DraftExposurePaper/dade_data/data/") 
+check_high_corr(ex_fips = "48201", ex_dir = "../DraftExposurePaper/harris_data/data/") 
+check_high_corr(ex_fips = "01097", ex_dir = "../DraftExposurePaper/mobile_data/data/")
 check_high_corr(ex_fips = "22071", ex_dir = "../DraftExposurePaper/orleans_data/data/") 
+check_high_corr(ex_fips = "13121", ex_dir = "../DraftExposurePaper/fulton_data/data/") 
+check_high_corr(ex_fips = "45019", ex_dir = "../DraftExposurePaper/charleston_data/data/")
+check_high_corr(ex_fips = "37183", ex_dir = "../DraftExposurePaper/wake_data/data/") 
+check_high_corr(ex_fips = "24005", ex_dir = "../DraftExposurePaper/baltimore_data/data/") 
+check_high_corr(ex_fips = "42101", ex_dir = "../DraftExposurePaper/philadelphia_data/data/") 
+
+# Based on running previous functions
+high_corr_table <- tribble(
+        ~ county, ~ n_events, ~ corr_events, ~ n_high_events, ~ cor_high_events,
+        "Miami-Dade, FL", "65", "0.94", "18", "0.49", 
+        "Harris, FL", "38", "0.93", "10", "0.84", 
+        "Mobile, AL", "50", "0.95", "20", "0.57", 
+        "Orleans, LA", "55", "0.89", "13", "0.95", 
+        "Fulton, GA", "48", "0.95", "12", "0.69", 
+        "Charleston, SC", "73", "0.94", "17", "0.65", 
+        "Wake, NC", "61", "0.98", "12", "0.84", 
+        "Baltimore, MD", "33", "0.92", "5", "0.70", 
+        "Philadelphia, PA", "52", "0.96", "6", "0.77"
+)  
+
+# High-precip event: 75 mm or higher based on *either* of the measurements
+# (nldas or monitor)
+library(kableExtra)
+supp_tab <- high_corr_table %>% 
+        knitr::kable(format = "latex", 
+                     col.names = linebreak(c("County", "Number\nof events", 
+                                   "Spearman\ncorrelation", 
+                                   "Number\nof events", 
+                                   "Spearman\ncorrelation"), 
+                                   align = "c"), 
+                     booktabs = TRUE, 
+                     escape = FALSE, 
+                     caption = "Precipitation correlation during all versus high-precipitation events.
+                     The same sample of counties is shown as in Figure ... of the main text.
+                     Events are cases where a tropical cyclone came within ... km of each of the 
+                     listed counties. The number of total events gives the sum of all points
+                     shown on the main plot for the county in Figure ... of the main text. 
+                     The Spearman correlation for all events is the same as that shown in Figure ...
+                     of the main text. High-precipitation events are those for which storm-associated
+                     precipitation was 75 mm or higher based on at least one of the two measures
+                     considered in this comparison (NLDAS and monitors). The Spearman correlation
+                     for these high-precipitation events is given in the last column of the 
+                     table.", 
+                     align = "lcccc", 
+                     label = "highprecipcorr") %>% 
+        add_header_above(c(" ", "All events" = 2, "High-precipitation events" = 2)) 
+
+fileConn <- file("tables/precip_high_corr.tex")
+writeLines(supp_tab, fileConn)
+close(fileConn)
