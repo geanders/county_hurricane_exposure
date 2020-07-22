@@ -631,6 +631,17 @@ Figure 4: I would add Y-axis label “NOAA classification."
 
 **Response:** 
 
+This is a great suggestion. We have made this change, as well as several changes
+in response to EHP's Request 4 later in this response.
+
+The original and revised versions of Figure 4 of the paper are reproduced in
+Figure \@ref(fig:fig4) of this response.
+
+```{r fig4, fig.cap="Reproduction of Figure 4 from the original manuscript (top) and revised version in the resubmitted manuscript (bottom). In the revised version, we have added a title to the y-axis ('Classification based on NOAA Storm Events Data'), binned the values shown by each point's fill, so these colors are easier to distinguish, increased the size of the points, and changed the algorithm for jittering, so none of the points overlap.", fig.show = "hold", fig.align = "center", out.width="100%"}
+include_graphics("../figures/floodcomparison.pdf")
+include_graphics("figures/floodcomparison.pdf")
+```
+
 \begin{shaded}
 \textbf{R2 Comment 5:}
 Table 2: This is another confusing table. Not sure what compared here. The
@@ -1307,13 +1318,33 @@ include_graphics("figures/windcomparison_check2.pdf")
 \textbf{EHP Request 4:}
 Figure 4: Even with nominally normal color vision and a large high-resolution
 monitor, it is difficult for me to make out the color differences in the
-symbols-- almost all appear black or very dark blue, a dozen or so look yellow,
+symbols---almost all appear black or very dark blue, a dozen or so look yellow,
 and a handful look dark grey. Is there any way to increase the contrast in these
 colors? Would you consider binning into categories instead of using a
 continuous color gradient?
 \end{shaded}
 
 **Response:** 
+
+Thank you for these suggestions. 
+
+For the original figure, most of the events resulted in 0% of flood gages
+exceeding the flood threshold, especially for events that were not recorded as
+floods based on NOAA Storm Events. Therefore, most of the points in the original
+were indeed dark blue, representing 0%, but we can see that readers might have
+questioned if this was the case or if the scale made it harder to see subtler
+differences.
+
+We have reproduced both the original and revised versions of Figure 4 as Figure
+\@ref(fig:fig4) of this response. We have made several changes to make this
+figure easier for readers to see and interpret. These changes include:
+
+- Binning the values shown by the points fill, so that readers only need to 
+be able to distinguish among four colors, rather than across a larger scale.
+- Increasing the size of the points, so the fill in each point is easier to 
+see. 
+- Using a different algorithm to "jitter" the points, so there are no points that
+overlap each other. 
 
 \begin{shaded}
 \textbf{EHP Request 5:}

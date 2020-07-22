@@ -63,6 +63,7 @@ county_gage_data <- county_gages %>%
         inner_join(county_flow_data, by = "site_no") %>%
         mutate(flood_usgs = discharge > flood_val)
 
+library(ggbeeswarm)
 out <- county_gage_data %>%
         mutate(discharge = ifelse(discharge == -999999, NA, discharge)) %>%
         group_by(site_no) %>%
@@ -101,22 +102,35 @@ out <- county_gage_data %>%
                               labels = c("No flood event", "Flood event")),
                county_cd = paste0(as.character(county_cd), " (", n_gages, ")"),
                county_cd = factor(county_cd)) %>%
+        mutate(perc_flood_cat = case_when(
+                perc_flooded == 0 ~ "0%",
+                perc_flooded < 0.5 ~ "1 to 49%",
+                perc_flooded < 1 ~ "50 to 99%", 
+                perc_flooded == 1 ~ "100%", 
+                TRUE ~ NA_character_
+        )) %>% 
+        mutate(perc_flood_cat = fct_relevel(perc_flood_cat, 
+                                            "0%", "1 to 49%", "50 to 99%", "100%")) %>% 
         ggplot(aes(x = flood, y = max_total)) +
-        geom_boxplot(color = "darkgray", fill = NA, outlier.alpha = 0, width = 0.3) +
-        geom_point(aes(fill = perc_flooded), color = "black", shape = 21, size = 1.7,
-                   position = position_jitter(width = 0.1)) +
+        #geom_point(aes(fill = perc_flood_cat), color = "black", shape = 21, size = 1.9,
+        #           position = position_jitter(width = 0.15)) +
+        geom_boxplot(color = "black", fill = NA, outlier.alpha = 0, width = 0.4) +
+        geom_quasirandom(aes(fill = perc_flood_cat), 
+                         color = "black", shape = 21, size = 1.9, alpha = 0.7) +
         facet_wrap(~ county_cd, ncol = 3, scales = "free_x") +
         theme_classic() +
-        labs(x = "", 
+        labs(x = "Classification based on NOAA Storm Events Data", 
              y = bquote('Total discharge across county streamflow gages '~(ft^3/s))) +
         coord_flip() +
         scale_y_log10(label = scales::comma) +
         theme(legend.position = "bottom") +
-        scale_fill_viridis(name = "% streamflow gages over threshold for flooding",
-                            breaks = c(0, .5, 1), labels = c("0%", "50%", "100%")) +
+        scale_fill_viridis(name = "% streamflow gages over\nthreshold for flooding",
+                           discrete = TRUE, option = "A", begin = 0.3) + 
+        #scale_fill_viridis(name = "% streamflow gages over threshold for flooding",
+        #                    breaks = c(0, .5, 1), labels = c("0%", "50%", "100%")) +
         theme(plot.margin = unit(c(5.5, 16, 5.5, 11), "points"))
 
 
-pdf(file = "figures/floodcomparison.pdf", height = 6, width = 9)
+pdf(file = "ehp_revision/figures/floodcomparison.pdf", height = 6, width = 9)
 print(out)
 dev.off()
