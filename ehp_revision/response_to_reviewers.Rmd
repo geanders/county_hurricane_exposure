@@ -261,6 +261,76 @@ As such, numerous nationas share an interest in improving assessment of their
 damage. International research and involvement in tornado survey work and damage
 and intensity scales is well underway." [@edwards2013tornado]
 
+For flood and tornado events, we used a database of severe weather events that
+is specific to the United States (the US NOAA's Storm Events database). To 
+expand our exposure data for these hazards internationally, we would need to find
+similar databases for other affected countries. 
+[international flood and tornado databases? EM-DAT? Others?]
+
+The wind exposure data is based on modeling wind fields based on records of
+the storm's track and central intensity throughout the tracking period. These
+values are tracked for tropical cyclones around the world, and so it would be
+possible to expand the dataset to encompass other countries for wind exposure
+measurements. However, there are some practical issues that would need to 
+be addressed to do so with the approach we've taken. 
+
+The software we are using to model wind [@stormwindmodel] has several features that
+make it specific to Atlantic basin storms. First, some steps in the model depend
+on whether the storm's center or the location being modeled is over land or water. 
+These steps use a landmask---a grid with a binary indicator of land or sea by 
+latitude and longitude. Currently, the software only provides a landmask that 
+covers the United States, the Gulf of Mexico, and areas of the Atlantic Ocean 
+near the US. Second, the model assumes that cyclonic winds are counterclockwise, 
+and so is valid only for the Northern Hemisphere. Third, the model assumes that
+the central intensity of the storm is based on [wind averaging period], which is 
+the standard used in the tracking data for Atlantic-basin storms, but is not
+a common standard around the world. Instead, some basins record central intensity
+measurements using averaging periods of ....
+
+Therefore, it would be relatively straightforward to expand the wind exposure data
+to cover other countries affected by Atlantic-basin storms, although this would 
+require some expansion of the area covered by our current landmask. More modifications
+would need to be made to the wind model software before it could be extended
+to storms in other basins, particularly basins that use different wind averaging 
+periods for their main tracking data and basins in the Southern Hemisphere. 
+Alternatively, other wind modeling software could be used for this exposure 
+assessment, as other groups have developed software that is more extensible to 
+multiple storm basins [Australian group's software].
+
+The rain exposure data would also be fairly easy to extend to cover other countries, 
+although again there would be a few practical limitations to extend the approach
+we've taken in developing the dataset covered in this manuscript. For this exposure, 
+we've used a re-analysis dataset. We've taken some steps to translate this gridded data
+to the county scale, so it can be integrated with the scale for many human impacts
+measurements. However, these steps have been well documents [ref] and would be easy to
+reproduce. The re-analysis dataset that we use is specific to the contiguous US [ref
+on NLDAS], but other similar re-analysis datasets exist for other locations [example
+of one with global coverage?]. 
+
+For all of these, we have provided exposure assessments at the county scale. Any of the 
+steps we have taken could be done for other countries at a similar geopolitical scale, 
+although the name of that areal unit will vary by country (e.g., municipalities in Mexico, 
+districts in India). For wind and rain exposures, the approach we take here could be
+used with any areal unit, as long as there are geographical shape files available for
+the area boundaries (although the modeling for wind may be to the area's geographic
+mean center rather than population mean center).
+
+> "We initially developed software to model exclusively Atlantic-basin storms
+[@tormwindmodel]. There are two characteristics of Northwestern Pacific Ocean
+basin storm data that prevent direct use of the current version of the software.
+First, the software currently requires Western Hemisphere longitude inputs.
+Second, the ``Best Tracks'' data from the China Meteorological Administration
+include central tropical cyclone intensity using a 2-minute averaging period,
+while the software currently assumes that central intensities are given for a
+1-minute averaging period, as is the case for storm track data from the US
+National Hurricane Center. With the assistance of Ms. Schumacher, we will update
+our tropical cyclone wind model software to appropriately handle 'Best Tracks' data from
+the China Meteorological Administration, incorporating conversion factors
+[@harper2010guidelines] to convert central storm maximum sustained wind
+measurements to a common averaging period prior to applying further steps of the
+wind model."
+
+
 \begin{shaded}
 \textbf{R1 Comment 3:}
 In non-health fields, a county's inclusion in a FEMA major disaster declaration
@@ -512,6 +582,290 @@ as a proxy for exposure (Grabich et al. 2015a)."}
 \end{shaded}
 
 **Response:** 
+
+It is obvious that it is typically better, but in cases where the proxy is much more
+practical to measure, it may need to be more than just a bit better, but 
+instead substantially better. Also, there could be some cases where the proxy 
+might actually be better---for example, if the proxy can be measured with 
+very low level, while the direct exposure measure might only be measurable 
+with high error. In that case, the proxy could be the better metric and might
+provide a more precise estimate of the association with health risk.
+
+[Env. Epi. book---advantages and disadvantages of different types of measures]
+
+We agree that it is helpful to clarify for readers that these independent hazards
+can come together in a storm event at different intensities and at different time
+windows. We have added some text on this: 
+
+[Added text]
+
+However, we disagree that this should be down as an alternative to calculating
+agreement. Epidemiologists need to understand how these exposure measurements
+agree to help in planning studies and statistical approaches to interpreting the
+resulting data. In this sense, "agreement" is providing a measure similar to
+correlation for continuous variables; our choice of agreement with the binary
+exposure classifications reflects the more common use of binary classifications
+for most tropical cyclone epidemiology to date.
+
+Epidemiological studies might focus on tropical cyclone exposures at two levels.
+First, they might wish to focus on a specific hazard. For example, a study might
+hypothesize that mold growth following flooding from a tropical storm might
+increase risk of respiratory health outcomes in the months after a storm. In
+this case, the clear causal pathway recommends a focus on one of the storm
+hazards, rather than all storm hazards. However, other storm hazards could
+confound the association between flood exposure and respiratory health risk if
+the other hazards are ignored *and* if they are associated with both the
+exposure of interest (storm-associated flooding) and the health outcome. For
+example, if wind exposure assessments are in high agreement with flood exposure
+assessments for storms, and if wind affects risk of respiratory outcomes by
+causing extensive property damage and creating extreme psychological stress,
+which can have repercussions on respiratory health, then the wind hazard could
+confound the estimated association between storm-related flood exposure and the
+health outcome.
+
+This bias would be higher when the confounder and exposure of interest are more
+strongly correlated (for continuous variables) or in higher agreement (for
+categorical variables). Conversely, if the exposure and the potential confounder
+are, in practice, only weakly associated, then the potential for confounding is
+low. The Jaccard index is one measure of similarities between categorical
+(including binary) coefficients.
+
+Another consideration is collinearity. If one hazard is the exposure of interest
+and another hazard is a potential confounder, then the model should adjust the
+confounder or it will be misspecified and be prone to bias. However, if the 
+exposure of interest and the potential confounder are very strongly correlated/in
+agreement, then including both as independent variables in a regression model
+often causes numerical problems in fitting the regression model, including 
+instability in the estimated coefficients and inflated variance. In very extreme
+cases, the statistical software may not be able to invert the matrix [? only for
+linear regression?].
+
+Therefore, it is helpful for epidemiologists to understand if these independent
+storm-associated hazards tend to be strongly associated (in high agreement), 
+both within specific storms (for single-storm studies) and on average across
+most large storms (for multi-storm studies). This knowledge will help them in 
+identifying potential confounders if they are interested in studying the 
+effects of a single hazard of the storm and also in determining if control for
+these potential confounders among other storm hazards might cause numerical 
+problems or other collinearity-associated problems when fitting a regression 
+model.
+
+If a researcher wishes to study the storm as a whole, then the researcher 
+could either seek a single measure to capture exposure to the storm as a whole
+or investigate more complex models that model the influence of the storm through
+pathways of several different hazards. 
+
+If a researcher wants a single measure for the storm as a whole, then it is helpful
+to know how well exposure assessments based on the hazard components of the storm
+agree with each other. If there is strong agreement, then any of those hazards could
+be used as a primary marker of exposure assessment. This is conceptually similar to 
+checking for observer / rater agreement. 
+
+> "When the row and column variable srepresent different observers' rating the same
+subjects or objects, interest is focused on *observer agreement* rather than mere 
+association. In this case, measures and tests of agreement provide a method of
+assessing the reliability of a subjective classification or assessment procedure."
+[@friendly2015discrete]
+
+> "In assessing the strength of *agreement* we usually have a more stringent 
+criterion than in measuring the strength of *association*, because observers 
+ratings can be strongly associated without strong agreement. For example, one
+rater could use a more stringent criterion and thus consistently rate subjects
+one category lower (on an ordinal scale) than another rater. More generally, 
+measures of agreement must take account of the marginal frequencies with which two 
+raters use the categories. If observers tend to use the categories with different
+frequency, this will affect measures of agreement." [@friendly2015discrete]
+
+When you have an array of two or more exposures that are strongly correlated, 
+including them together in a regression model can cause problems from collinearity
+[@schisterman2017collinearity]. 
+
+> "Environmental exposures ... often consist of an array of related individual 
+factors that may be highly correlated with each other, causing concern about the
+impact of collinearity when attempting to identify individual effects." [@schisterman2017collinearity]
+
+**Commonly have multiple factors of interest, correlated**
+
+In some areas of epidemiology, researchers have moved toward the idea of a 
+"web of causality": 
+
+> "'Multiple causation' is the canon of contemporary epidemiology, and its
+metaphor and model is the 'web of causation'. Expressed through the notion
+of 'multifactorial etiology' and embedded in the statistical techniques
+of 'multivariate analysis', the belief that population patterns of health 
+and disease can be explained by a complex web of numerous interconnected 
+risk and protective factors has become one of this discipline's central 
+concepts. Equally entrenched is the corrolary that epidemiology's power
+to improve the public's health rests upon its ability to identify---and predict
+the results of breaking---selected strands of this causal web." [@krieger1994epidemiology]
+
+This is in contrast to focusing on single factors: 
+
+> "Expressly challenging the still-pervasive tendency of epidemiologists to think
+in terms of single 'agents' causing discrete diseases, the provocative metaphor
+and model of the 'web' invited epidemiologists to embrace a more sophisticated
+view of causality." [@krieger1994epidemiology]
+
+In this framework, epidemiology helps by identifying where it would help to
+break strands of the web: 
+
+> "Using this model, MacMahon et al. drew several important inferences about
+prevention and research that remain part of epidemiologic thinking to this 
+day. Arguing that 'to effect preventative measures, it is not necessary to 
+understand causal mechanisms in their entirity', they stated that 'even knowledge
+of one small component may allow some degree of prevention' since 'wherever the
+chain is broken the disease will be prevented'." [@krieger1994epidemiology]
+
+In other words, if you can identify *necessary* causes, you can craft 
+*practical* interventions. 
+
+In some fields of epidemiology (e.g., nutritional epidemiology), it is common 
+to study cases where there are multiple potential risk factors, and these 
+factors are often strongly correlated [@schisterman2017collinearity].
+
+> "The dynamics of many important ecological and evolutionary processes are 
+often influenced by multiple interacting factors, and attempting to understand 
+the dynamics of such systems presents difficult technical and philosophical 
+problems." [@petraitis1996inferring]
+
+> "Often in practice, investigators are faced with decisions of how to handle
+highly correlated variables." [@schisterman2017collinearity]
+
+**Methods to tackle multiple causality**
+
+When the aim is to explore the influences of multiple associated factors, there
+are some different strategies that can be used. These include multiple regression
+and path analysis: 
+
+> "Evolutionary ecologists have recently turned to path analysis, multiple regression,
+and related techniques to analyse systems of multiple causality. While these
+techniques are often seen as competitors, they are, in fact, related, and as a 
+result the problems of these techniques are similar." [@petraitis1996inferring]
+
+**Implications of collinearity**
+
+> "Two variables are defined as collinear if one can be expressed as an exact
+or near linear combination of the other. ... In general, collinearity between
+variables is described by the magnitude of their correlation." 
+[@schisterman2017collinearity]
+
+It can complicate inference of model coefficients. This is always a concern for 
+inferential models. For predictive models, it can be a problem if you later use
+the model to predict in a case where the correlation structure is different than
+in the training data. 
+
+> "The dependence of regression and path coefficients on the correlation structure
+is often glossed over. Yet this dependence means that inferences about the strengths
+of path coefficients are conditional upon the correlational structure among the 
+predictor variables. If the correlation structure of the sample does not
+match the correlational structure of the population then regression and path 
+coefficients will not estimate relative strengths accurately. This can occur if
+sampling is not random or if analysis is based on data from experiments with 
+factorial designs, which break the correlational structure amnog the predictor
+variables." [@petraitis1996inferring]
+
+These implications can depend on whether the modeling goal is predictive or 
+inferential. 
+
+> "When the goal is to choose covariates based on their predictive value, 
+concerns about collinearity stem from the desire to improve parameter estimates'
+precision, which can be inflated when highly correlated covariates are included
+in the model." [@schisterman2017collinearity]
+
+> "In a causal framework, on the other hand, interest is often centered on a
+specific effect from a correctly specified causal model, even in the presence of
+highly correlated data, despite a potential loss of statistical efficiency.
+Under such a viewpoint, bias due to misspecification of the causal associations
+is a more devastating result than reduced precision of parameter estimates
+correctly estimated. Furthermore, a precisely but incorrectly estimated
+parameter may lead to invalid inferences. ... Relying on conventional
+variable-selection algorithms and standard analyses can ignore important
+confounders and even produce extremely imprecise confidence intervals."
+[@schisterman2017collinearity]
+
+The amount of bias in the unadjusted model (in terms of bias from an unadjusted
+confounder) depends on the strength of association between the exposure of
+interest and the potential confounder [@schisterman2017collinearity].
+
+> "This is especially important for the confounding variable scenario, where 
+correctly specifying the model may result in adjusting for a nearly 
+collinear variable." [@schisterman2017collinearity]
+
+The degree of agreement will influence the degree of confounding in an 
+unadjusted model, for either one or two confounders: 
+
+> "In this confounding scenario, increasing correlation exacerbates the bias
+due to misspecification, similar to results for a single confounder."
+[@schisterman2017collinearity]
+
+Extreme collinearity can create numerical problems [@schisterman2017collinearity]. 
+
+> "Under the extremely unlikely scenario of extreme collinearity [(abs. rho of 0.999 
+or higher)], the numerical matrix inversion required for estimation fails, resulting
+in unstable and biased predictors." [@schisterman2017collinearity]
+
+> "Only for extreme values of rho cloes to 1 or -1 is beta-squareed nonidentifiable
+due to numerical instability; otherwise, the correctly specified model produces
+the most desirable (e.g., unbiased) estimates of the total effect of the exposure
+on the outcome." [@schisterman2017collinearity]
+
+Collinearity can cause imprecision in coefficient estimates, even if those
+estimates are unbiased [@schisterman2017collinearity].
+
+**Techniques to address collinearity**
+
+There are study designs that might help to separate different effects. For example, 
+some matching designs might help in creating a subset of data in which the association 
+that exists in the full dataset is broken (e.g., @leal2012multicollinearity).
+
+> "Matching is typically employed to reduce model dependence and estimate 
+associations in a more empirical way than would be necessary without 
+matching. In line with this practice, matching was employed as a diagnostic
+tool to verify whether the effects of environmental variables that are highly 
+correlated with each other could be disentangled." [@leal2012multicollinearity]
+
+You could also explore techniques of dimension reduction, to create a smaller
+subset of independent variables for which the correlation is broken. For example, 
+you could use PCA [@leal2012multicollinearity]. 
+
+There are other techniques that allow some bias in estimates in an attempt to reduce
+problems from collinearity, like ridge regression [@petraitis1996inferring]. 
+
+> "Several biased estimation techniquest ahve been proposed as a way to combat
+collinearity (Myers 1990). These are controversial methods. Ridge regression, for
+example, biases the regression coefficients in order to improve the model's 
+ability to predict the criterion variable. The estimates of the individual regression
+coefficients may be very biased even though when taken together they provide a 
+very good prediction of the criterion variable." [@petraitis1996inferring]
+
+> "When correct specification of the models still leads to 
+problems for conventional regression methods, one can apply modern techniques
+such as Bayesian hierarchical models with shrinkage estimators."
+[@schisterman2017collinearity]
+
+**Are effects of different factors 'separable'?**
+
+Epidemiology often aims to inform policy decisions. In this case, it can be important
+to characterize the separate effects of different associated factors that contribute
+to the health risk [@leal2012multicollinearity]. 
+
+> "To develop efficient public health interventions addressing the obesity 
+epidemic, it is important to identify exactly which aspects of the
+environment influence obesity risk. For example, demonstrating that the density 
+of fast-food restaurants was associated with obesity risk and demnstrating that
+the density of sports facilities was associated with obesity risk would lead to 
+different interventions." [@leal2012multicollinearity]
+
+However, it can be very difficult to separate the effects of different factors
+if those factors are strongly correlated [@leal2012multicollinearity]: 
+
+> "However, many neighborhood characteristics, especially those related to the 
+densities of physical features and services, are strongly correlated with 
+each other. Therefore, it is not clear whether it is even possible to disentangle
+the effects of these different environmental dimensions, even if they are hypothesized
+to influence obesity risk through distinct causal pathways." [@leal2012multicollinearity]
+
+
 
 \begin{shaded}
 \textbf{R2 Comment 2:}
