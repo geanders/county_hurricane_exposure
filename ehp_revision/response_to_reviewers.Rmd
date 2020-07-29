@@ -227,8 +227,330 @@ one area that experienced very extreme precipitation while another experienced
 very little. Winds might have more variation, especially in coastal counties and 
 counties near the storm's central track, since winds decay quickly as you move
 from the storm's center, and storms typically weaken rapidly once they make 
-landfall and can no longer draw on warm ocean waters for energy. 
+landfall and can no longer draw on warm ocean waters for energy.
 
+Data that is aggregated across a population---for example, the total number of 
+deaths in a geographic area in a certain time period---is known as *ecological
+data*, and studies that base inference on this type of data are known as *ecological
+studies*. Terms include *ecological*, *aggregate*, *contextual level*.
+
+> "In an ecological study the unit of analysis is a group of people rather than 
+the individual." [@sedgwick2014ecological]
+
+> "In his seminal paper, Robinson (1950) distinguished between two types of 
+correlation---ecological and individual. The former is obtained for a group
+of people, while the latter is estimated for indivisible units, such as individuals."
+[@portnov2007ecological]
+
+Here is one challenge when working with aggregated data. If you use aggregated
+data to infer individual-level associations, this can lead to *ecological fallacy*. 
+This results from cross-level inference---the data used to model the association
+is at the contextual level (e.g., county-level), while the inference is for the
+individual association between exposure and outcome. 
+
+One definition of the ecological fallacy: 
+
+> "This spurious result provides an example of the ecological fallacy, in 
+which conclusions ... based on ecologic data are opposite of those drawn 
+on the basis of individual-level data." [@wakefield2008overcoming]
+
+> "It is a bias produced when analyses realised in an ecological (group level)
+analysis are used to make inferences at the individual level."
+[@delgado2004bias]
+
+> "Results from ecological studies are prone to the ecological fallacy. The 
+ecological fallacy is a term used when collected data are analysed at a 
+group level and the results are assumed to apply to associations at the 
+individual level." [@sedgwick2014ecological]
+
+Importantly, aggregated data can be used both to infer a contextual effect
+(e.g., the association between county-wide rates of a health outcome and 
+exposure) as well as an individual-level effect (e.g., how a person's
+risk of the outcome is associated with that person's exposure to the hazard). 
+The first inference will *not* be prone to ecological bias, as the inference
+is at the same level as the data. The second inference (individual-level) 
+will be susceptible to bias when aggregated data is used to fit the model. 
+In this case, the association estimated based on aggregated data can be 
+different, and even reversed, compared to the true individual-level effect. 
+
+> "I propose three criteria for the identification of ecological fallacy; 
+all three of these should be present to confirm its existence: (1) Results
+must be obtrained with ecological (population) data; (2) Data must be inferred
+to individuals. One use of ecological studies is to explore individual-level 
+association when individual data are not available. When the focus of the 
+study was contextual or based on population effects and there is no inference
+to individuals, ecological fallacy is not possible. When only the first two 
+criteria are present---which is insufficient to affirm ecological fallacy---it
+is appropriate to acknowledge that there is a possible relationship and that further 
+study is required; (3) Results obtained with individual data are contradictory."
+[@idrovo2011three]
+
+> "One important breakdown in the analogy between ecologic-bias and individual-level
+confounding occurs because in etiologic research, the target of inference for
+both ecologic and individual-level studies is the same: Both study effects at the 
+individual level. For an individual-level study, these target effects are at the 
+same level as the units of analysis. But, for an ecologic study, these target 
+effects are at a finer level than the units of analysis. As a result, an ecologic 
+study can be unbiased for ecologic effects (in particular, ecologic confounding
+may be absent) and yet still be biased for individual-level effects. Many of the 
+classic social science examples of ecologic bias are of this form." [@greenland1994invited]
+
+> "We refer to an incorrect extrapolation from unbiased estimates of ecologic effects
+to unobserved individual-level effects as 'cross-level bias' (although the latter
+term is sometimes used to refer to any ecologic bias). As the examples suggest, 
+it is possible to detect cross-level bias if one can identify and observe 
+homogeneously exposed regions." [@greenland1994invited] 
+
+> "assuming that associations observed at the level of the area hold for the 
+individuals within the areas can lead to the so-called ecological fallacy 
+(Selvin, 1958)." [@wakefield2006health]
+
+> "A broad definition of ecological fallacy is that certain data (e.g., illiteracy 
+rates by foreign-born) are unavailable, leading to the use of proxies and 
+erroneous estimates. However, we advocate a more narrow definition of this 
+phenomenon, according to which 'ecological fallacy' refers solely to differences
+in conclusions which may be drawn from group-level data (e.g., average illiteracy 
+rates by foreign-born), as opposed to data obtained for individuals."
+[@portnov2007ecological]
+
+> "If different conclusions are drawn from the analysis of data upon their aggregations
+into units of different sizes (e.g., from individuals to townships and regions), these
+differences are commonly referred to as 'ecological fallacy'. In epidemiology, these
+differences are also known as ecological or cross-level bias [refs]. The ecological 
+bias is difficult to control and may lead, under certain circumstances, to spurious 
+effects [refs]. If epidemiological study does not consider the possibility of 
+ecological bias, misguided policy decisions may follow [refs]." [@portnov2007ecological]
+
+Ecological bias can *only* happen if there is, indeed, an individual-level effect:
+
+> "If exposure has no effect on any individual, there will be
+no individual-level or ecologic effects, and so cross-level bias cannot occur. 
+Thus, cross-level bias will not affect the validity of an ecologic test of the 
+null hypothesis, although it still must be considered in interpreting a 
+significant effect." [@greenland1994invited]
+
+In some cases, the ecologic-level effect (contextual effect) will be directly 
+of interest, and so we may be interested in inferring at that level (in which 
+case use of ecologic-level data is appropriate and will not be prone to 
+ecological bias):
+
+> "The bias phenomenon in example 7 may be ascribed to the fact that an 
+ecologic (regional) variable (percent Protestant) had effects on individual 
+risk, in addition to effects of the corresponding individual-level variable
+(religion) that the ecological variable summarized. In both social and 
+infectious disease epidemiology, as well as in community intervention studies, 
+ecologic effects may be of direct interest; a classic example is the 
+phenomenon of 'herd immunity', in which the overall prevalence of 
+immunity in a region, as well as individual immune status, determines the 
+risk of individuals within the region (16). For noncontagious diseases, 
+however, ecologic effects may not be of direct interest, and may in fact
+obscure the individual-level effect of interest." [@greenland1994invited]
+
+In some cases, the estimated association based on ecological data will be very 
+different from the association that exists at the individual level: 
+
+> "We see that the ecological relative risk associated with low birth 
+weight is completely incomparable with the individual-level coefficient."
+[@wakefield2008overcoming]
+
+Ecological bias can also complicate estimation of effect modification, which 
+otherwise could help in identifying vulnerabilities and susceptibilities among
+certain subpopulations: 
+
+> "Furthermore, non-White race now appears protective, rather than detrimental
+as the individual-level analysis suggests." [@wakefield2008overcoming]
+
+Ecologic bias crops up because the aggregated data fails to capture variation
+within each aggregation level (county, for example) for both the exposure 
+and potential confounders. For example, during a tropical cyclone, different
+parts of a county will experience different peak wind speeds. If the county 
+is coastal, the most severe winds will likely be near the coast, as the 
+storm will weaken once it makes landfall and moves inland, as the storm 
+generates its power from the water. When we assign the entire county a
+single estimate of intensity, it smooths over the fact that locations in 
+some parts of the county were subject to higher peak winds while locations
+in other parts of the county had lower winds. At the least, this smoothing
+of variation in exposure levels across the county could lower the power of 
+the study to detect a clear association between exposure and health risk, as
+this smoothing drops information inherent in the variation within the county
+in exposure levels. 
+
+This, however, would not result in ecological fallacy unless another factor
+comes into play---variation within each aggregation level in confounders. 
+Just as aggregation smooths over within-area variation in exposure levels, it
+also smooths over within-area variation in levels of potential confounders. 
+Depending on the patterns of this within-area variation, a result could be
+that ecological-level control of the confounders does not, in fact, control
+for their role at the individual level, and so the association inferred at
+the ecologic level continues to be confounded by them when inferred to the
+individual level. 
+
+Essentially, this comes down to a question of the joint distribution, at the
+individual level, of exposure, outcome, and covariates [?].
+
+> "As various discussants have pointed out (3--6, 8, 9), ecologic relative-risk
+estimates can be subject to biases not present in estimates from individual-level
+observational studies of the same populations (case-control and cohort studies).
+Unlike an individual-level study, an ecologic study does not link individual
+outcome events to individual exposure or covariate histories, nor does it
+link individual exposure and covariate histories to one another. It is these
+linkage failures that are the source of the special biases of ecologic studies
+(1, 2, 6)." [@greenland1994invited]
+
+> "In the extreme, ecologic bias in comparisons limited to homogeneously exposed
+regions (as in examples 3--6) can be viewed as purely an issue of confounding,
+albeit with special complexities of measurement and control of confounders."
+[@greenland1994invited]
+
+> "More generally, one may show that cross-level bias will not occur if the 
+individual-level effects of all variables (including unmeasured background
+factors) follow a multiple linear-regression model with no regional effects and
+no interactions (17). Nevertheless, given the usual inappropriateness of the 
+multiple-linear model and the absence of homogeneously exposed regions, the 
+possibility of cross-level bias adds a dimension to ecologic bias beyond
+that of simple confounding." [@greenland1994invited]
+
+> "Covariate control in ecologic studies requires attention to details not 
+ordinarily of concern in individual-level studies. When, as is usually the
+case, important nonlinearity or nonadditivity can be expected among 
+exposure and covariate effects, it may be necessary to obtain and 
+control for multiple summaries of joint covariate distributions in order
+to insure that control is adequate." [@greenland1994invited]
+
+> "Ecological fallacy can be produced by within group (individual level)
+biases, such as confounding, selection bias, or misclassification, and
+by confounding by group or effect modification by group." [@delgado2004bias]
+
+> "**Confounding by group**: it is produced in an ecological study, when 
+the exposure prevalence of each community (group) is correlated with 
+the disease risk in non-exposed of the same community. It can be 
+a mechanism for producing ecological fallacy." [@delgado2004bias]
+
+If individual-level inference is the aim, and population-level data is
+available, there are some methods for using it while still aiming to avoid
+ecological bias. Indeed, it can be helpful to use population-level data, as it
+is often available for a large population, improving the power and precision of
+the study. Further, the level of exposure might vary a lot more over the
+population captured with population-level data compared to the variation that
+captured in a smaller sample of individual-level data. This can contribute both 
+to statistical power and improve external validity (as the study data will cover
+more of the range of exposure that might ever be expected). However, if
+individual-level inference is the goal, then there are ways to supplement
+population-level data with samples of individual-level data through two-level, 
+semi-ecologic study designs.
+
+> "It is generally well recognized that in order for ecologic data to provide
+reliable inferences, they need to be supplemented with individual-level data."
+[@wakefield2008overcoming]
+
+> "For this example, we have access to complete individual-level data, permitting
+a 'gold standard' individual-level analysis." [@wakefield2008overcoming]
+
+> "The only reliable way to characterize within-area variation in exposures
+and confounders, and hence control ecologic bias, is to collect and incorporate
+individual-level data. To help epidemiologists achieve this goal, in this paper
+we describe the use of the two-phase design in an ecologic setting."
+[@wakefield2008overcoming]
+
+> "The only reliable way to characterize within-area variation in exposures
+and confounders, and hence control ecologic bias, is to collect and incorporate
+individual-level data. To help epidemiologists achieve this goal, in this 
+paper we describe the use of the two-phase design in an ecologic setting."
+[@wakefield2008overcoming]
+
+> "In a semi-ecologic study, an ecologic exposure is combined with individual-level
+outcomes and confounders. A two-phase approach is particularly useful for
+such a study, with the phase 2 data corresponding to stratified sampling of 
+individual exposures." [@wakefield2008overcoming]
+
+> "To implement a two-phase design, an initial phase 1 cross-classification by 
+the binary disease outcome and stratification variables is required; in phase
+2, samples of individuals are drawn from each of the cross-classification cells, 
+with data on additional variables being drawn from the subsamples of individuals. 
+Intuitively, the stratified sampling is focused on informative cells, and 
+estimation methods use both phases of data for efficiency and to acknowledge
+the outcome-dependent sampling. In the simplest ecologic setting, the cross-classification
+is by outcome and area only, and if area is a surrogate for important risk factors
+this design will be efficient. We are particularly interested in situations where
+an initial classification is available by outcome, area, and confounders such as
+age and gender---this is the case in a semi-ecologic study. Phase 2 may then provide
+detailed exposure information on a subset of the phase 1 individuals." 
+[@wakefield2008overcoming]
+
+> "Two-phase study designs are a generalization of matched case-control designs
+in which, initially, the entire sample population is cross-classified according
+to case/control status and some stratification variable, S. The latter depends
+on covariates observed in all individuals and may include exposures of interest, 
+proxy exposure measures, or potential confounders. In settings like those we
+are considering, such as environmental epidemiology, S may also depend on geographic
+area, which can act as a surrogate for the totality of confounders associated
+with each area, as well as provide a well-defined sampling frame for the controls."
+[@wakefield2008overcoming]
+
+> "The results of our simulation study point to the benefits associated with combining
+the two sources of data, in terms of both bias and efficiency. Rather than supplement
+an ecologic study with individual-level data, it may be of interest to combine 
+existing individual-level data with external group-level data. Strategies that
+combine both types of data have been shown to alleviate participation bias and
+improve efficiency in case-control studies with missing data (31)." 
+[@wakefield2008overcoming]
+
+> "As with other observational studies, ecologic studies can give useful results if 
+biases such as those discussed here can be ruled out or quantified. Nevertheless, 
+bias evaluation can be especially difficult in ecologic studies of geographic
+regions because of the many potentially interacting covariates that may differ
+across regions. When biases cannot be ruled out with available data, further
+exploration will require individual-level studies." [@greenland1994invited]
+
+Why we might sometimes use (and want to use) population-level data: 
+
+> "Because of the unavailability of individual-level data, ecological data
+may be resorted to and may come in a variety of forms." [@wakefield2008overcoming]
+
+> "Epidemiologists continue to use ecologic and aggregate data. Despite their 
+known drawbacks, these data, often aggregated across geographic areas, offer the
+advantages of widespread availability and gains in statistical power from large
+populations and increased exposure ranges." [@wakefield2008overcoming] 
+
+> "Population and health data are often routinely available in ecological, 
+that is group, form while the exposure data typically consist of a set of
+values recorded at monitor sites, or via one-off sampling." [@wakefield2006health]
+
+It can be important to think about the scale that the process happens at. For
+something very local, you might lose a lot more with aggregated data. 
+
+> "Data availability and exposure variability often determine the scale of
+examination and the suitability of a study. Exposures arising from a point or
+line source offer exposure contrasts on small scales, requiring small-area data;
+in constrast, dietary variables show little variation across small scales, and
+consequently international studies are used." [@wakefield2008overcoming]
+
+There can also be an *individualistic fallacy*, if emphasis is limited to the
+association between individual-level factors, without considering the potential
+role of contextual factors in an individual's risk of a health outcome. In other
+words, cross-level bias can go in both directions [@idrovo2011three]. While the
+fallacy of inferring individual-level associations from ecologic-level data is
+called *ecological fallacy*, the fallacy of inferring ecologic-level
+(contextual) effects from individual-level data is known as the *atomistic
+fallacy* [@idrovo2011three]. There are also fallacies that can come in, it
+seems, from inferring at the same level as the data but failing to consider
+influences from factors at the other level. When inferring individual-level
+associations from individual-level data, without considering an additional role
+of ecological-level factors, this is known as the *psychologistic* or
+*individualistic fallacy* [@idrovo2011three]. When inferring contextual effects
+from ecologic data without considering individual-level factors, this is known
+as the *sociologistic fallacy* [@idrovo2011three].
+
+> "Although ecological studies are important to epidemiology (especially in 
+environmental and social epidemiology), public health practitioners seem 
+afraid of ecological studies. It is a common practice to assume the presence of 
+ecological fallacy (Robinson 1950) and low-level validity when analyzing an 
+ecological study. Most epidemiologists prefer an exclusive individualistic
+approach, although the importance of a multilevel causal approach is widely 
+recognized (Diez-Roux 2002). In this sense, some authors suggest that it is
+as important to recognize the presence of ecological fallacy as to 
+recognize psychologistic or individualistic fallacy (Subramanian et al. 2009)."
+[@idrovo2011three]
 
 \begin{shaded}
 \textbf{R1 Comment 2:}
