@@ -796,7 +796,101 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 
 **Response:** 
 
-Great idea. We are investigating sharing this work in this repository. 
+Great idea!
+
+We have investigated this. DesignSafe is ...
+
+As part of its platform, DesignSafe allows users to work in a number of 
+programming languages, including R (through Jupyter Notebooks). Therefore, 
+DesignSafe users already have access to any data shared through an R package, 
+including the data we present in this manuscript, without the data needing 
+to be separately loaded and published through DesignSafe's Data Depot. 
+
+We have added a note in the manuscript to let readers know that, because the
+data is shared through an R package, and because DesignSafe's [Workspace]
+allows users to work in R, the data can be fully accessed and used for those working
+on the DesignSafe platform by using the same code in a DesignSafe Jupyter notebook
+that would otherwise be used on a local computer.
+
+This is good, because otherwise there would be a good deal of overlap between
+the data on DesignSafe and that in the R package. R packages already created 
+a citable source, comparable to the DOI assigned to data by DesignSafe when
+it is published. Further, R packages include licensing information, as does
+DesignSafe for published data. Finally, if the data were shared through both 
+platforms, it would be critical to make sure that it was clear that the two 
+datasets are analogous and also to keep them up to date with each other, which
+would add an extra layer of work with each update to the R package (we have 
+been updating several hazards as new data becomes available). It is wonderful 
+that DesignSafe's interface with R avoids this problem by allowing its users
+direct access to our package and its data through that path, as it allows for 
+a single, citable, licensed version of the data stored and shared from a single
+location, with no question of syncing separate versions of the data or clarifying
+licensing and citation practices across two storage locations.
+
+*What is DesignSafe:*
+
+> "DesignSafe is the cyberinfrastructure platform that has been developed as
+part of NHERI to support natural hazards engineering research, and
+it succeeds the NEEShub cyberinfrastructure that was developed for the
+earthquake engineering community through the Network for Earthquake
+Engineering Simulation (NEES) program." [@rathje2017designsafe]
+
+> "DesignSafe plays an important role in integrating the various NHERI components
+and the research taking place at NHERI facilities, but also has the broader
+goal of enabling transformative research in natural hazards and engineering
+across the numerous technical disciplines engaged in this field." 
+[@rathje2017designsafe]
+
+> "DesignSafe has been developed as a flexible, extensible, community-driven
+cyberinfrastructure, and it embraces a cloud strategy for the big data generated
+in natural hazards engineering. DesignSafe provides a comprehensive CI that
+supports the full research lifecycle from planning to execution to analysis
+to publication and curation." [@rathje2017designsafe]
+
+> "The future of natural hazards engineering research requires the integration
+of diverse data sets from a variety of sources including experiments, computational
+simulation, and field reconnaissance, as well as a variety of research disciplines
+including earth science, social science, building science, and architecture. 
+The DesignSafe cyberinfrastructure has been designed to provide the functionalities
+that will enable transformative research in natural hazards engineering. By adopting
+a cloud strategy, DesignSafe allows for a fundamental change in the way that
+research is performed. It provides a comprehensive cyberinfrastructure that
+supports research workflows, data analysis, and visualization, as well as the 
+full lifecycle of experimental, field, and computational research required by 
+engineers and scientists to effectively address the threats posed to civil 
+infrastructure by natural hazards. The integration of data and computation 
+in the cloud will enable new research discoveries in natural hazards engineering, 
+which in turn can lead to more hazard-resilient civil infrastructure." [@rathje2017designsafe]
+
+*Access to R:*
+
+> "The real revolution takes place downstream of data generation. Here, data 
+analytics and visualization are performed in the cloud within the *Discovery
+Workspace* while accessing any data within the *Data Depot*. Researchers can 
+invoke common analysis programs, such as MATLAB, as well as other analysis/
+visualization tools, such as Jupyter notebooks. A Jupyter notebook is an 
+electronic notebook that allows users to embed rich text elements as well
+as computer code, graphs, and visualizations within a single notebook that
+can be shared through the web. Over 40 different programming languages are 
+supported in Jupyter, including Python and R, and MATLAB code can be easily 
+converted, making Jupyter a versatile tool for research. Performing analysis in 
+the cloud allows researchers to integrate and explore various data without
+tedious downloads. Additionally, using a seamless cyberinfrastructure to 
+complete all research tasks enables tracking and relating of the processes 
+applied to data." [@rathje2017designsafe]
+
+*Data Depot:*
+
+> "the Data Depot, a flexible data repository with streamlined data management
+tools." [@rathje2017designsafe]
+
+> "As data progresses towards publication the requirements for metadata 
+increase as metadata provides users with search and discovery functions. At
+the end of the research project the user may edit the information for 
+publication and complete the process of assigning digital object identifiers
+(DOIs) and applying the appropriate license. On-demand assistance from a 
+curator is available to provide training and guide users through their data
+curation and publication needs." [@rathje2017designsafe]
 
 # Reviewer 2: {-#reviewer-2}
 
