@@ -120,12 +120,12 @@ something on this?). As another example, if hospitals in the community are
 over capacity or have to evacuate, this could increase health risk for people in 
 a fairly large "catchment" area for that hospital. 
 
-Therefore, while we agree that individual-level data would in many cases be 
-helpful for tropical cyclone epidemiology, the ideal might be to design studies 
-that integrate both community-level and individual-level metrics of exposure. 
-This could help in determining if there are risks introduced to individuals based
-on storm-related hazards in their broader community, after controlling for the 
-hazards experienced directly at their homes.
+Therefore, while we agree that individual-level data would in many cases be
+helpful for tropical cyclone epidemiology, the ideal might be to design studies
+that integrate both community-level and individual-level metrics of exposure.
+This could help in determining if there are risks introduced to individuals
+based on storm-related hazards in their broader community, after controlling for
+the hazards experienced directly at their homes.
 
 There is already some discussion on this topic in the Discussion [exposure 
 measurement error / misclassification].
@@ -170,23 +170,23 @@ access to medical care. Several papers have discussed the potential for
 "individualistic fallacy", as a counterpoint to "ecological fallacy", when 
 such contextual-level exposure pathways are ignored. 
 
-There are study designs that can be used to leverage ecological data while 
-minimizing risk from ecological bias. For example, potential confounders
-like age distribution and smoking rates vary much less within a county over
-time than comparing between counties. The mechanism for ecological bias 
-depends on the joint distribution between individual exposure, outcome, and 
-covariates, if any are included in the model. Time series-style study designs, 
-which compare a county to itself over time, allow for very similar covariate
-distributions between exposure and non-exposure. Other studies add to this
-design by stabilizing for temporal confounding through the addition of 
-counties that were never exposed, allowing for a differences-in-differences
-style approach to calibrate for seasonal or longer-term trends that might
-otherwise create confounding. For example, many health outcomes have a strong
-seasonal trend, with peak rates in the winter and lows in the summer. Since
-the hurricane season stretches from summer into fall, a study design that compares
-the rate of a health outcome in an exposed county to the rate two weeks before
-the exposure might be biased away from the null, since baseline rates of the
-health outcome will typically be moving up over most of the hurricane season.
+There are study designs that can be used to leverage ecological data while
+minimizing risk from ecological bias. For example, potential confounders like
+age distribution and smoking rates vary much less within a county over time than
+comparing between counties. The mechanism for ecological bias depends on the
+joint distribution between individual exposure, outcome, and covariates, if any
+are included in the model. Time series-style study designs, which compare a
+county to itself over time, allow for very similar covariate distributions
+between exposure and non-exposure. Other studies add to this design by
+stabilizing for temporal confounding through the addition of counties that were
+never exposed, allowing for a differences-in-differences style approach to
+calibrate for seasonal or longer-term trends that might otherwise create
+confounding. For example, many health outcomes have a strong seasonal trend,
+with peak rates in the winter and lows in the summer. Since the hurricane season
+stretches from summer into fall, a study design that compares the rate of a
+health outcome in an exposed county to the rate two weeks before the exposure
+might be biased away from the null, since baseline rates of the health outcome
+will typically be moving up over most of the hurricane season.
 
 Also, there may be confounders that are relevant at the contextual, rather than
 individual level, as well as modifiers. Example: whether the county is coastal
@@ -201,86 +201,85 @@ level (e.g., through hardier power infrastructure, more rigorous building codes,
 higher likelihood of evacuating in advance of a threatening storm) compared to
 nearby inland counties. 
 
-Other approaches have also been suggested to reduce ecological bias while 
-leveraging ecological data, which might be available at a much larger scale---and
-so provide more power---than is practical in collecting individual data. These
-include multi-level approaches in which individual-level data from a sample
-of individuals in each community is incorporated. 
+Other approaches have also been suggested to reduce ecological bias while
+leveraging ecological data, which might be available at a much larger
+scale---and so provide more power---than is practical in collecting individual
+data. These include multi-level approaches in which individual-level data from a
+sample of individuals in each community is incorporated.
 
-The second issue is exposure measurement error/misclassification. When the 
+The second issue is exposure measurement error/misclassification. When the
 exposure (e.g., binary exposure or continuous measure of intensity of exposure)
-is only measured at the county level, all the individuals in that county are 
-assigned that same exposure. However, the hazards included in this study will 
-vary across each county. For some hazards, this variation will be more stark. 
-For example, tornadoes can be very local, causing extreme damage to a row of 
-homes and none to the homes across the street. Some types of floods can also 
-be very localized, rather than creating widespread flooding throughout 
-the county. In both cases, when a county-level exposure assessment is made
-based on an event in the county in association with the storm, there may be
-many individuals in the county who did not experience that hazard at their 
-residence. The other hazards we included---storm-associated winds and rainfall---will
-also have some variation across counties, but this will often not be as stark. 
-The rainfields for tropical cyclones are very large, and while there are rainbands
-within the storm that might have particularly high rates of precipitation, these
-progess over the course of the storm, and it is unlikely that a county will have
-one area that experienced very extreme precipitation while another experienced
-very little. Winds might have more variation, especially in coastal counties and 
+is only measured at the county level, all the individuals in that county are
+assigned that same exposure. However, the hazards included in this study will
+vary across each county. For some hazards, this variation will be more stark.
+For example, tornadoes can be very local, causing extreme damage to a row of
+homes and none to the homes across the street. Some types of floods can also be
+very localized, rather than creating widespread flooding throughout the county.
+In both cases, when a county-level exposure assessment is made based on an event
+in the county in association with the storm, there may be many individuals in
+the county who did not experience that hazard at their residence. The other
+hazards we included---storm-associated winds and rainfall---will also have some
+variation across counties, but this will often not be as stark. The rainfields
+for tropical cyclones are very large, and while there are rainbands within the
+storm that might have particularly high rates of precipitation, these progess
+over the course of the storm, and it is unlikely that a county will have one
+area that experienced very extreme precipitation while another experienced very
+little. Winds might have more variation, especially in coastal counties and
 counties near the storm's central track, since winds decay quickly as you move
-from the storm's center, and storms typically weaken rapidly once they make 
+from the storm's center, and storms typically weaken rapidly once they make
 landfall and can no longer draw on warm ocean waters for energy.
 
-This exposure data is provided at the county level, and this can lead to 
-exposure measurement error / exposure misclassification in studies that 
-infer to the individual level. In this case, there will be several processes
-at play. First, the hazards of the storm will not be uniform across the
-county. The degree of this within-county spatial heterogeneity will usually 
-vary by hazard. The within-county heterogeneity is likely lowest for rain and for
-wind at lower levels. For rain, there can be particularly severe rain bands, 
-but often a storm's rainfield will bring high precipitation to a large 
-area. Wind can have a high heterogeneity close to the storm's center 
-(storm winds decay most quickly with distance near the storm's center)
-and near landfall (winds decay rapidly after landfall). Other hazards can 
-be very local within the county, only affecting a small proportion of the total
-county area. A tornado is a clear example---while it causes severe destruction
-in its track, areas just off the track can be unharmed, creating a dramatic
-spatial gradient in damage within a county. Floods can follow both. Some hurricanes
-have caused widespread flooding (e.g., Floyd, Katrina) while some have caused
-flooding that is more spatially focused (inland, with flashfloods? coast flooding
-just near the coast?). For tidewater/coastal areas, there is often a dense 
-network of waterway. When rains occur further up the watershed, these all
-become flooded. 
+This exposure data is provided at the county level, and this can lead to
+exposure measurement error / exposure misclassification in studies that infer to
+the individual level. In this case, there will be several processes at play.
+First, the hazards of the storm will not be uniform across the county. The
+degree of this within-county spatial heterogeneity will usually vary by hazard.
+The within-county heterogeneity is likely lowest for rain and for wind at lower
+levels. For rain, there can be particularly severe rain bands, but often a
+storm's rainfield will bring high precipitation to a large area. Wind can have a
+high heterogeneity close to the storm's center (storm winds decay most quickly
+with distance near the storm's center) and near landfall (winds decay rapidly
+after landfall). Other hazards can be very local within the county, only
+affecting a small proportion of the total county area. A tornado is a clear
+example---while it causes severe destruction in its track, areas just off the
+track can be unharmed, creating a dramatic spatial gradient in damage within a
+county. Floods can follow both. Some hurricanes have caused widespread flooding
+(e.g., Floyd, Katrina) while some have caused flooding that is more spatially
+focused (inland, with flashfloods? coast flooding just near the coast?). For
+tidewater/coastal areas, there is often a dense network of waterway. When rains
+occur further up the watershed, these all become flooded.
 
 Second is the question of whether exposure measured at the resident's location
-would be ideal. This is the case typically when studying an exposure that is 
-a chemical substance. In this case, the pathway depends on the substance entering 
+would be ideal. This is the case typically when studying an exposure that is a
+chemical substance. In this case, the pathway depends on the substance entering
 the body. For tropical cyclones, health risk could result from stress, problems
-accessing medical care, or repercussions of power outages (higher exposure to 
-outdoor hazards like heat and air pollution, problems storing food and using 
+accessing medical care, or repercussions of power outages (higher exposure to
+outdoor hazards like heat and air pollution, problems storing food and using
 some medical equipment). For these, high levels of wind and other hazards in the
-person's community may be as or more important than at their precise location. 
+person's community may be as or more important than at their precise location.
 
-Measurement error can be either random or systematic. Systematic error can often 
-be corrected with adjustment if the direction and typical size of the error is 
-understood. Random error cannot in the same way. Either type of measurement error
-can be either differential (associated with the probability of the outcome) or 
-non-differential (independent of the distribution / probability of the outcome).
-In simpler models, this characteristic might help in predicting whether the resulting
-bias is likely toward the null; however, more complex models (e.g., statistical 
-models with adjustment for potential confounders) are trickier to diagnose in terms
-of the likely implications of differential versus non-differential measurement 
-error [?]. 
+Measurement error can be either random or systematic. Systematic error can often
+be corrected with adjustment if the direction and typical size of the error is
+understood. Random error cannot in the same way. Either type of measurement
+error can be either differential (associated with the probability of the
+outcome) or non-differential (independent of the distribution / probability of
+the outcome). In simpler models, this characteristic might help in predicting
+whether the resulting bias is likely toward the null; however, more complex
+models (e.g., statistical models with adjustment for potential confounders) are
+trickier to diagnose in terms of the likely implications of differential versus
+non-differential measurement error [?].
 
-Not only can the exposure be measured with error, but so too can potential confounders
-and potential effect modifiers.
+Not only can the exposure be measured with error, but so too can potential
+confounders and potential effect modifiers.
 
 When a proxy exposure estimates is used for many people covered by a study, this
-can result in a type of exposure measurement error called *Berkson error*. In this 
-case, the true exposure of each individual is randomly distributed around this 
-proxy/aggregate-level exposure estimate, with a mean exposure level among the 
-subjects that is equal to the proxy/aggregate-level measure. In other words, the 
-group as a whole is assigned a common exposure level, when in fact this is the 
-average exposure level across members of that group, but the individuals' 
-true exposure levels are randomly distributed around this mean group level to 
+can result in a type of exposure measurement error called *Berkson error*. In
+this case, the true exposure of each individual is randomly distributed around
+this proxy/aggregate-level exposure estimate, with a mean exposure level among
+the subjects that is equal to the proxy/aggregate-level measure. In other words,
+the group as a whole is assigned a common exposure level, when in fact this is
+the average exposure level across members of that group, but the individuals'
+true exposure levels are randomly distributed around this mean group level to
 which they are all assigned for modeling.
 
 Berkson: 
@@ -296,8 +295,8 @@ where:
 
 The dataset provides exposure by group/area (county), not by individual. These
 ecological exposure estimates require us to assume that the exposure level is
-the same for all individuals in that county. It ignores/smooths over within-county
-variability in exposure.
+the same for all individuals in that county. It ignores/smooths over
+within-county variability in exposure.
 
 For wind and rain, we're essentially basing exposure assessment on modeling of
 exposure. For rain, this is a based on a re-analysis model that
@@ -313,18 +312,19 @@ Even exposure at each person's residence would not suffice, since people move
 around during the day (although perhaps less for most people during a severe
 storm).
 
-Data that is aggregated across a population---for example, the total number of 
+Data that is aggregated across a population---for example, the total number of
 deaths in a geographic area in a certain time period---is known as *ecological
-data*, and studies that base inference on this type of data are known as *ecological
-studies*. Terms include *ecological*, *aggregate*, *contextual level*.
+data*, and studies that base inference on this type of data are known as
+*ecological studies*. Terms include *ecological*, *aggregate*, *contextual
+level*.
 
 > "In an ecological study the unit of analysis is a group of people rather than 
 the individual." [@sedgwick2014ecological]
 
-> "In his seminal paper, Robinson (1950) distinguished between two types of 
-correlation---ecological and individual. The former is obtained for a group
-of people, while the latter is estimated for indivisible units, such as individuals."
-[@portnov2007ecological]
+> "In his seminal paper, Robinson (1950) distinguished between two types of
+correlation---ecological and individual. The former is obtained for a group of
+people, while the latter is estimated for indivisible units, such as
+individuals." [@portnov2007ecological]
 
 Here is one challenge when working with aggregated data. If you use aggregated
 data to infer individual-level associations, this can lead to *ecological fallacy*. 
@@ -357,55 +357,58 @@ will be susceptible to bias when aggregated data is used to fit the model.
 In this case, the association estimated based on aggregated data can be 
 different, and even reversed, compared to the true individual-level effect. 
 
-> "I propose three criteria for the identification of ecological fallacy; 
-all three of these should be present to confirm its existence: (1) Results
-must be obtrained with ecological (population) data; (2) Data must be inferred
-to individuals. One use of ecological studies is to explore individual-level 
-association when individual data are not available. When the focus of the 
-study was contextual or based on population effects and there is no inference
-to individuals, ecological fallacy is not possible. When only the first two 
+> "I propose three criteria for the identification of ecological fallacy; all
+three of these should be present to confirm its existence: (1) Results must be
+obtrained with ecological (population) data; (2) Data must be inferred to
+individuals. One use of ecological studies is to explore individual-level
+association when individual data are not available. When the focus of the study
+was contextual or based on population effects and there is no inference to
+individuals, ecological fallacy is not possible. When only the first two
 criteria are present---which is insufficient to affirm ecological fallacy---it
-is appropriate to acknowledge that there is a possible relationship and that further 
-study is required; (3) Results obtained with individual data are contradictory."
-[@idrovo2011three]
+is appropriate to acknowledge that there is a possible relationship and that
+further study is required; (3) Results obtained with individual data are
+contradictory." [@idrovo2011three]
 
-> "One important breakdown in the analogy between ecologic-bias and individual-level
-confounding occurs because in etiologic research, the target of inference for
-both ecologic and individual-level studies is the same: Both study effects at the 
-individual level. For an individual-level study, these target effects are at the 
-same level as the units of analysis. But, for an ecologic study, these target 
-effects are at a finer level than the units of analysis. As a result, an ecologic 
-study can be unbiased for ecologic effects (in particular, ecologic confounding
-may be absent) and yet still be biased for individual-level effects. Many of the 
-classic social science examples of ecologic bias are of this form." [@greenland1994invited]
+> "One important breakdown in the analogy between ecologic-bias and
+individual-level confounding occurs because in etiologic research, the target of
+inference for both ecologic and individual-level studies is the same: Both study
+effects at the individual level. For an individual-level study, these target
+effects are at the same level as the units of analysis. But, for an ecologic
+study, these target effects are at a finer level than the units of analysis. As
+a result, an ecologic study can be unbiased for ecologic effects (in particular,
+ecologic confounding may be absent) and yet still be biased for individual-level
+effects. Many of the classic social science examples of ecologic bias are of
+this form." [@greenland1994invited]
 
-> "We refer to an incorrect extrapolation from unbiased estimates of ecologic effects
-to unobserved individual-level effects as 'cross-level bias' (although the latter
-term is sometimes used to refer to any ecologic bias). As the examples suggest, 
-it is possible to detect cross-level bias if one can identify and observe 
-homogeneously exposed regions." [@greenland1994invited] 
+> "We refer to an incorrect extrapolation from unbiased estimates of ecologic
+effects to unobserved individual-level effects as 'cross-level bias' (although
+the latter term is sometimes used to refer to any ecologic bias). As the
+examples suggest, it is possible to detect cross-level bias if one can identify
+and observe homogeneously exposed regions." [@greenland1994invited]
 
 > "assuming that associations observed at the level of the area hold for the 
 individuals within the areas can lead to the so-called ecological fallacy 
 (Selvin, 1958)." [@wakefield2006health]
 
-> "A broad definition of ecological fallacy is that certain data (e.g., illiteracy 
-rates by foreign-born) are unavailable, leading to the use of proxies and 
-erroneous estimates. However, we advocate a more narrow definition of this 
+> "A broad definition of ecological fallacy is that certain data (e.g.,
+illiteracy rates by foreign-born) are unavailable, leading to the use of proxies
+and erroneous estimates. However, we advocate a more narrow definition of this
 phenomenon, according to which 'ecological fallacy' refers solely to differences
-in conclusions which may be drawn from group-level data (e.g., average illiteracy 
-rates by foreign-born), as opposed to data obtained for individuals."
+in conclusions which may be drawn from group-level data (e.g., average
+illiteracy rates by foreign-born), as opposed to data obtained for individuals."
 [@portnov2007ecological]
 
-> "If different conclusions are drawn from the analysis of data upon their aggregations
-into units of different sizes (e.g., from individuals to townships and regions), these
-differences are commonly referred to as 'ecological fallacy'. In epidemiology, these
-differences are also known as ecological or cross-level bias [refs]. The ecological 
-bias is difficult to control and may lead, under certain circumstances, to spurious 
-effects [refs]. If epidemiological study does not consider the possibility of 
-ecological bias, misguided policy decisions may follow [refs]." [@portnov2007ecological]
+> "If different conclusions are drawn from the analysis of data upon their
+aggregations into units of different sizes (e.g., from individuals to townships
+and regions), these differences are commonly referred to as 'ecological
+fallacy'. In epidemiology, these differences are also known as ecological or
+cross-level bias [refs]. The ecological bias is difficult to control and may
+lead, under certain circumstances, to spurious effects [refs]. If
+epidemiological study does not consider the possibility of ecological bias,
+misguided policy decisions may follow [refs]." [@portnov2007ecological]
 
-Ecological bias can *only* happen if there is, indeed, an individual-level effect:
+Ecological bias can *only* happen if there is, indeed, an individual-level
+effect:
 
 > "If exposure has no effect on any individual, there will be
 no individual-level or ecologic effects, and so cross-level bias cannot occur. 
@@ -527,8 +530,9 @@ semi-ecologic study designs.
 reliable inferences, they need to be supplemented with individual-level data."
 [@wakefield2008overcoming]
 
-> "For this example, we have access to complete individual-level data, permitting
-a 'gold standard' individual-level analysis." [@wakefield2008overcoming]
+> "For this example, we have access to complete individual-level data,
+permitting a 'gold standard' individual-level analysis."
+[@wakefield2008overcoming]
 
 > "The only reliable way to characterize within-area variation in exposures
 and confounders, and hence control ecologic bias, is to collect and incorporate
@@ -542,24 +546,24 @@ individual-level data. To help epidemiologists achieve this goal, in this
 paper we describe the use of the two-phase design in an ecologic setting."
 [@wakefield2008overcoming]
 
-> "In a semi-ecologic study, an ecologic exposure is combined with individual-level
-outcomes and confounders. A two-phase approach is particularly useful for
-such a study, with the phase 2 data corresponding to stratified sampling of 
-individual exposures." [@wakefield2008overcoming]
+> "In a semi-ecologic study, an ecologic exposure is combined with
+individual-level outcomes and confounders. A two-phase approach is particularly
+useful for such a study, with the phase 2 data corresponding to stratified
+sampling of individual exposures." [@wakefield2008overcoming]
 
-> "To implement a two-phase design, an initial phase 1 cross-classification by 
-the binary disease outcome and stratification variables is required; in phase
-2, samples of individuals are drawn from each of the cross-classification cells, 
-with data on additional variables being drawn from the subsamples of individuals. 
-Intuitively, the stratified sampling is focused on informative cells, and 
-estimation methods use both phases of data for efficiency and to acknowledge
-the outcome-dependent sampling. In the simplest ecologic setting, the cross-classification
-is by outcome and area only, and if area is a surrogate for important risk factors
-this design will be efficient. We are particularly interested in situations where
-an initial classification is available by outcome, area, and confounders such as
-age and gender---this is the case in a semi-ecologic study. Phase 2 may then provide
-detailed exposure information on a subset of the phase 1 individuals." 
-[@wakefield2008overcoming]
+> "To implement a two-phase design, an initial phase 1 cross-classification by
+the binary disease outcome and stratification variables is required; in phase 2,
+samples of individuals are drawn from each of the cross-classification cells,
+with data on additional variables being drawn from the subsamples of
+individuals. Intuitively, the stratified sampling is focused on informative
+cells, and estimation methods use both phases of data for efficiency and to
+acknowledge the outcome-dependent sampling. In the simplest ecologic setting,
+the cross-classification is by outcome and area only, and if area is a surrogate
+for important risk factors this design will be efficient. We are particularly
+interested in situations where an initial classification is available by
+outcome, area, and confounders such as age and gender---this is the case in a
+semi-ecologic study. Phase 2 may then provide detailed exposure information on a
+subset of the phase 1 individuals." [@wakefield2008overcoming]
 
 > "Two-phase study designs are a generalization of matched case-control designs
 in which, initially, the entire sample population is cross-classified according
@@ -571,34 +575,35 @@ area, which can act as a surrogate for the totality of confounders associated
 with each area, as well as provide a well-defined sampling frame for the controls."
 [@wakefield2008overcoming]
 
-> "The results of our simulation study point to the benefits associated with combining
-the two sources of data, in terms of both bias and efficiency. Rather than supplement
-an ecologic study with individual-level data, it may be of interest to combine 
-existing individual-level data with external group-level data. Strategies that
-combine both types of data have been shown to alleviate participation bias and
-improve efficiency in case-control studies with missing data (31)." 
-[@wakefield2008overcoming]
+> "The results of our simulation study point to the benefits associated with
+combining the two sources of data, in terms of both bias and efficiency. Rather
+than supplement an ecologic study with individual-level data, it may be of
+interest to combine existing individual-level data with external group-level
+data. Strategies that combine both types of data have been shown to alleviate
+participation bias and improve efficiency in case-control studies with missing
+data (31)." [@wakefield2008overcoming]
 
-> "As with other observational studies, ecologic studies can give useful results if 
-biases such as those discussed here can be ruled out or quantified. Nevertheless, 
-bias evaluation can be especially difficult in ecologic studies of geographic
-regions because of the many potentially interacting covariates that may differ
-across regions. When biases cannot be ruled out with available data, further
-exploration will require individual-level studies." [@greenland1994invited]
+> "As with other observational studies, ecologic studies can give useful results
+if biases such as those discussed here can be ruled out or quantified.
+Nevertheless, bias evaluation can be especially difficult in ecologic studies of
+geographic regions because of the many potentially interacting covariates that
+may differ across regions. When biases cannot be ruled out with available data,
+further exploration will require individual-level studies."
+[@greenland1994invited]
 
 Why we might sometimes use (and want to use) population-level data: 
 
-> "Because of the unavailability of individual-level data, ecological data
-may be resorted to and may come in a variety of forms." [@wakefield2008overcoming]
+> "Because of the unavailability of individual-level data, ecological data may
+be resorted to and may come in a variety of forms." [@wakefield2008overcoming]
 
 > "Epidemiologists continue to use ecologic and aggregate data. Despite their 
 known drawbacks, these data, often aggregated across geographic areas, offer the
 advantages of widespread availability and gains in statistical power from large
 populations and increased exposure ranges." [@wakefield2008overcoming] 
 
-> "Population and health data are often routinely available in ecological, 
-that is group, form while the exposure data typically consist of a set of
-values recorded at monitor sites, or via one-off sampling." [@wakefield2006health]
+> "Population and health data are often routinely available in ecological, that
+is group, form while the exposure data typically consist of a set of values
+recorded at monitor sites, or via one-off sampling." [@wakefield2006health]
 
 It can be important to think about the scale that the process happens at. For
 something very local, you might lose a lot more with aggregated data. 
@@ -625,50 +630,51 @@ of ecological-level factors, this is known as the *psychologistic* or
 from ecologic data without considering individual-level factors, this is known
 as the *sociologistic fallacy* [@idrovo2011three].
 
-> "Although ecological studies are important to epidemiology (especially in 
-environmental and social epidemiology), public health practitioners seem 
-afraid of ecological studies. It is a common practice to assume the presence of 
-ecological fallacy (Robinson 1950) and low-level validity when analyzing an 
+> "Although ecological studies are important to epidemiology (especially in
+environmental and social epidemiology), public health practitioners seem afraid
+of ecological studies. It is a common practice to assume the presence of
+ecological fallacy (Robinson 1950) and low-level validity when analyzing an
 ecological study. Most epidemiologists prefer an exclusive individualistic
-approach, although the importance of a multilevel causal approach is widely 
-recognized (Diez-Roux 2002). In this sense, some authors suggest that it is
-as important to recognize the presence of ecological fallacy as to 
-recognize psychologistic or individualistic fallacy (Subramanian et al. 2009)."
+approach, although the importance of a multilevel causal approach is widely
+recognized (Diez-Roux 2002). In this sense, some authors suggest that it is as
+important to recognize the presence of ecological fallacy as to recognize
+psychologistic or individualistic fallacy (Subramanian et al. 2009)."
 [@idrovo2011three]
 
 Confounding in general: 
 
-> "A confounder ... is associated with an exposure or risk factor for the outcome
-and with the outcome independent of the exposure, but is not on the causal pathway
-between the exposure and the outcome. Confounding occurs when the relationship
-between an exposure variable and the outcome variable is contaminated, so that the
-measure of association between these two variables is actually also capturing the
-effects of a third variable, the confounding variable. For example, many factors 
-are associated with income (exposure) and health (outcome), such as education, 
-employment or wealth? It may be that these factors explain part of the observed
-assocation." [@gunasekara2008glossary]
+> "A confounder ... is associated with an exposure or risk factor for the
+outcome and with the outcome independent of the exposure, but is not on the
+causal pathway between the exposure and the outcome. Confounding occurs when the
+relationship between an exposure variable and the outcome variable is
+contaminated, so that the measure of association between these two variables is
+actually also capturing the effects of a third variable, the confounding
+variable. For example, many factors are associated with income (exposure) and
+health (outcome), such as education, employment or wealth? It may be that these
+factors explain part of the observed assocation." [@gunasekara2008glossary]
 
 Measurement error in general:
 
-> "Measurement error: The different between an observed variable and the variable 
-that belongs in a multiple regression equation. Measurement error is the random 
-or systematic error arising during data collection of variables. The measured
-variable x is measured with error eta, which is the distance from x to the 
-'true' value of x. Measurement error can produce bias such as attenuating the
-estimators of exposure variables, but may also have more complex effects. Longitudinal
-data analyses such as fixed effects models can actually augment the problem of 
-measurement error in mis-measured explanatory variables that change little over
-time." [@gunasekara2008glossary]
+> "Measurement error: The different between an observed variable and the
+variable that belongs in a multiple regression equation. Measurement error is
+the random or systematic error arising during data collection of variables. The
+measured variable x is measured with error eta, which is the distance from x to
+the 'true' value of x. Measurement error can produce bias such as attenuating
+the estimators of exposure variables, but may also have more complex effects.
+Longitudinal data analyses such as fixed effects models can actually augment the
+problem of measurement error in mis-measured explanatory variables that change
+little over time." [@gunasekara2008glossary]
 
 Study validity: 
 
-> "Study validity refers to the degree to which the inferences drawn from a study are
-warranted when account is taken of the study methods; the representativeness of
-the study sample; and the nature of the population from which it is drawn.[5]
-There are two types of study validity. *Internal validity* is the degree to which the
-results of a study are correct for the sample of people being studied. *External 
-validity* (generalisability) is the degree to which the study results hold true
-for a population beyond the subjects in the study or other settings.[20]"
+> "Study validity refers to the degree to which the inferences drawn from a
+study are warranted when account is taken of the study methods; the
+representativeness of the study sample; and the nature of the population from
+which it is drawn.[5] There are two types of study validity. *Internal validity*
+is the degree to which the results of a study are correct for the sample of
+people being studied. *External validity* (generalisability) is the degree to
+which the study results hold true for a population beyond the subjects in the
+study or other settings.[20]"
 
 \begin{shaded}
 \textbf{R1 Comment 2:}
@@ -679,81 +685,85 @@ authors discuss this?
 
 **Response:** 
 
-- Differs by exposure metric. Easier for some (wind, rain) than for others (flood, 
-tornado)
-- For rain, we use a re-analysis product only available for the continental US (right?).
-However, there are similar gridded re-analysis products available for other regions 
-worldwide that could be used in a similar way.
-- For tornadoes, there may be national databases in other spots similar to the tornado
-database that we use, but as far as we're aware, no international one. 
+- Differs by exposure metric. Easier for some (wind, rain) than for others
+(flood, tornado)
+- For rain, we use a re-analysis product only available for the continental US
+(right?). However, there are similar gridded re-analysis products available for
+other regions worldwide that could be used in a similar way.
+- For tornadoes, there may be national databases in other spots similar to the
+tornado database that we use, but as far as we're aware, no international one.
 - Same for floods. 
-- For wind, the wind model could be generalizable with some tweaks. These include: 
+- For wind, the wind model could be generalizable with some tweaks. These
+include:
   + More landmasks
   + Direction of storm movement for Northern vs Southern Hemispheres
-  + Different wind averaging periods for the recorded best tracks data in different 
-  storm basins.
-  + Our wind model was derived with US data and so may need bias-correction or a shift
-  to a West Pacific--based model
+  + Different wind averaging periods for the recorded best tracks data in
+  different storm basins.
+  + Our wind model was derived with US data and so may need bias-correction or a
+  shift to a West Pacific--based model
 
-> "Tornadoes long have been recognized as a global phenomenon (e.g., Wegener 1917; 
-Feuerstein et al. 2005), having been recorded in every continent except Antarctica. 
-As such, numerous nationas share an interest in improving assessment of their 
-damage. International research and involvement in tornado survey work and damage
-and intensity scales is well underway." [@edwards2013tornado]
+> "Tornadoes long have been recognized as a global phenomenon (e.g., Wegener
+1917; Feuerstein et al. 2005), having been recorded in every continent except
+Antarctica. As such, numerous nationas share an interest in improving assessment
+of their damage. International research and involvement in tornado survey work
+and damage and intensity scales is well underway." [@edwards2013tornado]
 
 For flood and tornado events, we used a database of severe weather events that
-is specific to the United States (the US NOAA's Storm Events database). To 
-expand our exposure data for these hazards internationally, we would need to find
-similar databases for other affected countries. 
-[international flood and tornado databases? EM-DAT? Others?]
+is specific to the United States (the US NOAA's Storm Events database). To
+expand our exposure data for these hazards internationally, we would need to
+find similar databases for other affected countries. [international flood and
+tornado databases? EM-DAT? Others?]
 
-The wind exposure data is based on modeling wind fields based on records of
-the storm's track and central intensity throughout the tracking period. These
-values are tracked for tropical cyclones around the world, and so it would be
-possible to expand the dataset to encompass other countries for wind exposure
-measurements. However, there are some practical issues that would need to 
-be addressed to do so with the approach we've taken. 
+The wind exposure data is based on modeling wind fields based on records of the
+storm's track and central intensity throughout the tracking period. These values
+are tracked for tropical cyclones around the world, and so it would be possible
+to expand the dataset to encompass other countries for wind exposure
+measurements. However, there are some practical issues that would need to be
+addressed to do so with the approach we've taken.
 
-The software we are using to model wind [@stormwindmodel] has several features that
-make it specific to Atlantic basin storms. First, some steps in the model depend
-on whether the storm's center or the location being modeled is over land or water. 
-These steps use a landmask---a grid with a binary indicator of land or sea by 
-latitude and longitude. Currently, the software only provides a landmask that 
-covers the United States, the Gulf of Mexico, and areas of the Atlantic Ocean 
-near the US. Second, the model assumes that cyclonic winds are counterclockwise, 
-and so is valid only for the Northern Hemisphere. Third, the model assumes that
-the central intensity of the storm is based on [wind averaging period], which is 
-the standard used in the tracking data for Atlantic-basin storms, but is not
-a common standard around the world. Instead, some basins record central intensity
-measurements using averaging periods of ....
+The software we are using to model wind [@stormwindmodel] has several features
+that make it specific to Atlantic basin storms. First, some steps in the model
+depend on whether the storm's center or the location being modeled is over land
+or water. These steps use a landmask---a grid with a binary indicator of land or
+sea by latitude and longitude. Currently, the software only provides a landmask
+that covers the United States, the Gulf of Mexico, and areas of the Atlantic
+Ocean near the US. Second, the model assumes that cyclonic winds are
+counterclockwise, and so is valid only for the Northern Hemisphere. Third, the
+model assumes that the central intensity of the storm is based on [wind
+averaging period], which is the standard used in the tracking data for
+Atlantic-basin storms, but is not a common standard around the world. Instead,
+some basins record central intensity measurements using averaging periods of
+....
 
-Therefore, it would be relatively straightforward to expand the wind exposure data
-to cover other countries affected by Atlantic-basin storms, although this would 
-require some expansion of the area covered by our current landmask. More modifications
-would need to be made to the wind model software before it could be extended
-to storms in other basins, particularly basins that use different wind averaging 
-periods for their main tracking data and basins in the Southern Hemisphere. 
-Alternatively, other wind modeling software could be used for this exposure 
-assessment, as other groups have developed software that is more extensible to 
-multiple storm basins [Australian group's software].
+Therefore, it would be relatively straightforward to expand the wind exposure
+data to cover other countries affected by Atlantic-basin storms, although this
+would require some expansion of the area covered by our current landmask. More
+modifications would need to be made to the wind model software before it could
+be extended to storms in other basins, particularly basins that use different
+wind averaging periods for their main tracking data and basins in the Southern
+Hemisphere. Alternatively, other wind modeling software could be used for this
+exposure assessment, as other groups have developed software that is more
+extensible to multiple storm basins [Australian group's software].
 
-The rain exposure data would also be fairly easy to extend to cover other countries, 
-although again there would be a few practical limitations to extend the approach
-we've taken in developing the dataset covered in this manuscript. For this exposure, 
-we've used a re-analysis dataset. We've taken some steps to translate this gridded data
-to the county scale, so it can be integrated with the scale for many human impacts
-measurements. However, these steps have been well documents [ref] and would be easy to
-reproduce. The re-analysis dataset that we use is specific to the contiguous US [ref
-on NLDAS], but other similar re-analysis datasets exist for other locations [example
-of one with global coverage?]. 
+The rain exposure data would also be fairly easy to extend to cover other
+countries, although again there would be a few practical limitations to extend
+the approach we've taken in developing the dataset covered in this manuscript.
+For this exposure, we've used a re-analysis dataset. We've taken some steps to
+translate this gridded data to the county scale, so it can be integrated with
+the scale for many human impacts measurements. However, these steps have been
+well documents [ref] and would be easy to reproduce. The re-analysis dataset
+that we use is specific to the contiguous US [ref on NLDAS], but other similar
+re-analysis datasets exist for other locations [example of one with global
+coverage?].
 
-For all of these, we have provided exposure assessments at the county scale. Any of the 
-steps we have taken could be done for other countries at a similar geopolitical scale, 
-although the name of that areal unit will vary by country (e.g., municipalities in Mexico, 
-districts in India). For wind and rain exposures, the approach we take here could be
-used with any areal unit, as long as there are geographical shape files available for
-the area boundaries (although the modeling for wind may be to the area's geographic
-mean center rather than population mean center).
+For all of these, we have provided exposure assessments at the county scale. Any
+of the steps we have taken could be done for other countries at a similar
+geopolitical scale, although the name of that areal unit will vary by country
+(e.g., municipalities in Mexico, districts in India). For wind and rain
+exposures, the approach we take here could be used with any areal unit, as long
+as there are geographical shape files available for the area boundaries
+(although the modeling for wind may be to the area's geographic mean center
+rather than population mean center).
 
 > "We initially developed software to model exclusively Atlantic-basin storms
 [@stormwindmodel]. There are two characteristics of Northwestern Pacific Ocean
@@ -764,9 +774,9 @@ include central tropical cyclone intensity using a 2-minute averaging period,
 while the software currently assumes that central intensities are given for a
 1-minute averaging period, as is the case for storm track data from the US
 National Hurricane Center. With the assistance of Ms. Schumacher, we will update
-our tropical cyclone wind model software to appropriately handle 'Best Tracks' data from
-the China Meteorological Administration, incorporating conversion factors
-[@harper2010guidelines] to convert central storm maximum sustained wind
+our tropical cyclone wind model software to appropriately handle 'Best Tracks'
+data from the China Meteorological Administration, incorporating conversion
+factors [@harper2010guidelines] to convert central storm maximum sustained wind
 measurements to a common averaging period prior to applying further steps of the
 wind model."
 
@@ -824,18 +834,19 @@ investigate if there is evidence of differences in probablity of disaster
 declarations at geopolitical boundaries, like when comparing counties on either
 side of a state border.
 
-There are some cases where damage reports are directly used to infer the intensity 
-of the weather event. For example, damage surveying is used following a tornado 
-to assign the tornado's class on the [enhanced] Fujita scale. However, this is not the
-intent of FEMA damage reports, which instead are used to determine post-disaster
-aid [?] and are influenced by a number of political factors. 
+There are some cases where damage reports are directly used to infer the
+intensity of the weather event. For example, damage surveying is used following
+a tornado to assign the tornado's class on the [enhanced] Fujita scale. However,
+this is not the intent of FEMA damage reports, which instead are used to
+determine post-disaster aid [?] and are influenced by a number of political
+factors.
 
-> "Because of the historic lack of direct measurements and remotely sensed tornado 
-wind speeds at or near group level, damage surveying has remained the most common 
-form for indicating tornado strength. ... The occurrence of a direct tornado strict 
-upon a fixed, sufficiently sturdy, and well-calibrated wind measuring station is quite
-rare. Only 31 direct in situ tornado observations are evident between 1894 and 2011."
-[@edwards2013tornado]
+> "Because of the historic lack of direct measurements and remotely sensed
+tornado wind speeds at or near group level, damage surveying has remained the
+most common form for indicating tornado strength. ... The occurrence of a direct
+tornado strict upon a fixed, sufficiently sturdy, and well-calibrated wind
+measuring station is quite rare. Only 31 direct in situ tornado observations are
+evident between 1894 and 2011." [@edwards2013tornado]
 
 \begin{shaded}
 \textbf{R1 Comment 4:}
@@ -925,24 +936,24 @@ including the data we present in this manuscript, without the data needing
 to be separately loaded and published through DesignSafe's Data Depot. 
 
 We have added a note in the manuscript to let readers know that, because the
-data is shared through an R package, and because DesignSafe's [Workspace]
-allows users to work in R, the data can be fully accessed and used for those working
-on the DesignSafe platform by using the same code in a DesignSafe Jupyter notebook
+data is shared through an R package, and because DesignSafe's [Workspace] allows
+users to work in R, the data can be fully accessed and used for those working on
+the DesignSafe platform by using the same code in a DesignSafe Jupyter notebook
 that would otherwise be used on a local computer.
 
 This is good, because otherwise there would be a good deal of overlap between
-the data on DesignSafe and that in the R package. R packages already created 
-a citable source, comparable to the DOI assigned to data by DesignSafe when
-it is published. Further, R packages include licensing information, as does
-DesignSafe for published data. Finally, if the data were shared through both 
-platforms, it would be critical to make sure that it was clear that the two 
-datasets are analogous and also to keep them up to date with each other, which
-would add an extra layer of work with each update to the R package (we have 
-been updating several hazards as new data becomes available). It is wonderful 
-that DesignSafe's interface with R avoids this problem by allowing its users
-direct access to our package and its data through that path, as it allows for 
-a single, citable, licensed version of the data stored and shared from a single
-location, with no question of syncing separate versions of the data or clarifying
+the data on DesignSafe and that in the R package. R packages already created a
+citable source, comparable to the DOI assigned to data by DesignSafe when it is
+published. Further, R packages include licensing information, as does DesignSafe
+for published data. Finally, if the data were shared through both platforms, it
+would be critical to make sure that it was clear that the two datasets are
+analogous and also to keep them up to date with each other, which would add an
+extra layer of work with each update to the R package (we have been updating
+several hazards as new data becomes available). It is wonderful that
+DesignSafe's interface with R avoids this problem by allowing its users direct
+access to our package and its data through that path, as it allows for a single,
+citable, licensed version of the data stored and shared from a single location,
+with no question of syncing separate versions of the data or clarifying
 licensing and citation practices across two storage locations.
 
 *What is DesignSafe:*
@@ -953,33 +964,33 @@ it succeeds the NEEShub cyberinfrastructure that was developed for the
 earthquake engineering community through the Network for Earthquake
 Engineering Simulation (NEES) program." [@rathje2017designsafe]
 
-> "DesignSafe plays an important role in integrating the various NHERI components
-and the research taking place at NHERI facilities, but also has the broader
-goal of enabling transformative research in natural hazards and engineering
-across the numerous technical disciplines engaged in this field." 
+> "DesignSafe plays an important role in integrating the various NHERI
+components and the research taking place at NHERI facilities, but also has the
+broader goal of enabling transformative research in natural hazards and
+engineering across the numerous technical disciplines engaged in this field."
 [@rathje2017designsafe]
 
 > "DesignSafe has been developed as a flexible, extensible, community-driven
 cyberinfrastructure, and it embraces a cloud strategy for the big data generated
 in natural hazards engineering. DesignSafe provides a comprehensive CI that
-supports the full research lifecycle from planning to execution to analysis
-to publication and curation." [@rathje2017designsafe]
+supports the full research lifecycle from planning to execution to analysis to
+publication and curation." [@rathje2017designsafe]
 
 > "The future of natural hazards engineering research requires the integration
-of diverse data sets from a variety of sources including experiments, computational
-simulation, and field reconnaissance, as well as a variety of research disciplines
-including earth science, social science, building science, and architecture. 
-The DesignSafe cyberinfrastructure has been designed to provide the functionalities
-that will enable transformative research in natural hazards engineering. By adopting
-a cloud strategy, DesignSafe allows for a fundamental change in the way that
-research is performed. It provides a comprehensive cyberinfrastructure that
-supports research workflows, data analysis, and visualization, as well as the 
-full lifecycle of experimental, field, and computational research required by 
-engineers and scientists to effectively address the threats posed to civil 
-infrastructure by natural hazards. The integration of data and computation 
-in the cloud will enable new research discoveries in natural hazards engineering, 
-which in turn can lead to more hazard-resilient civil infrastructure." 
-[@rathje2017designsafe]
+of diverse data sets from a variety of sources including experiments,
+computational simulation, and field reconnaissance, as well as a variety of
+research disciplines including earth science, social science, building science,
+and architecture. The DesignSafe cyberinfrastructure has been designed to
+provide the functionalities that will enable transformative research in natural
+hazards engineering. By adopting a cloud strategy, DesignSafe allows for a
+fundamental change in the way that research is performed. It provides a
+comprehensive cyberinfrastructure that supports research workflows, data
+analysis, and visualization, as well as the full lifecycle of experimental,
+field, and computational research required by engineers and scientists to
+effectively address the threats posed to civil infrastructure by natural
+hazards. The integration of data and computation in the cloud will enable new
+research discoveries in natural hazards engineering, which in turn can lead to
+more hazard-resilient civil infrastructure." [@rathje2017designsafe]
 
 *Access to R:*
 
@@ -1048,49 +1059,52 @@ articulated in the original manuscript how our assessment of patterns in and
 among exposures to specific hazards can help epidemiologists to design their
 studies and the statistical methods to analyze the resulting data. 
 
-1. If exposure to the different hazards strongly agrees (i.e., when a county is 
+1. If exposure to the different hazards strongly agrees (i.e., when a county is
 exposed to one hazard, they are typically also exposed to a second), this would
-have several implications for epidemiological research, especially for multi-year
-studies: 
-  + From a statistical modeling point of view, if you tried to include each 
-  hazard as a separate independent variable, you would run into problems with 
-  collinearity if fitting the study data with a generalized linear model or other
-  regression model. One implication of this is that the confidence intervals on 
-  effect estimates for the two variables would be very inflated, because the model
-  would struggle to figure out which of the two variables the weight should be placed
-  on, and so this uncertainty would be reflected in the size of the associated 
-  confidence intervals.
-  + If you see an effect, it would be very hard to try to determine if the causal 
-  pathway goes through the first hazard or the second. To mitigate effects, it is 
-  important to understand the pathway through which they happen, and it might be easier
-  to get clues towards pathways if the hazards are better separated. (Analogy: if you
-  were able to conduct a controlled experiment to look at the effects of each hazard, 
-  jointly and in combination, you would design separation in the assignment of these
-  treatments, so you could distinguish. We can't do that because we are limited to 
-  an observational analysis, but the area of causal inference is doing a lot to 
-  explore how we can design observational studies and analyze data to come closer to 
-  what we might be able to see with a randomized control study, and which of those methods
-  we might be able to use for tropical cyclone epidemiology will depend on the interplay of
-  these patterns of exposures.)
-2. These results will not be surprising to an atmospheric scientist / disaster researcher,
-but there are environmental epidemiologists who have done research on other exposures and
-are now starting to study tropical cyclones (session at ISEE, for example). It is useful 
-for epidemiologists entering into tropical cyclone research to understand these facets of
-tropical cyclone exposure, including the distinction between the very coastal wind exposures
-and other hazards that tend to reach further inland. 
-3. There are epidemiological studies that have used only one hazard for exposure assessment.
-This has most often been the case for wind. If this exposure assessment is meant to 
-capture "tropical cyclone exposure" in general, with all the hazards that are related to 
-tropical cyclones, then there is the chance for exposure misclassification if this single
-hazard is used. 
-4. In the past, it was a very complex issue to try to pull together data on 
-all these hazards. We agree that now that we have provided a dataset with all of them, 
-epidemiologists should be thinking about multi-hazard analyses. However, there still 
-will be some barriers to that. [Recent work on multi-pollutant exposures and the complexities
-associated with that.] If one of the hazards dominates in explaining associated health 
-risk, then in some cases it might be reasonable to focus on that hazard, but in that 
-case it is critical, based on our results, to remember that the exposure assessment is
-not capturing all hazards of the storms.
+have several implications for epidemiological research, especially for
+multi-year studies:
+  + From a statistical modeling point of view, if you tried to include each
+  hazard as a separate independent variable, you would run into problems with
+  collinearity if fitting the study data with a generalized linear model or
+  other regression model. One implication of this is that the confidence
+  intervals on effect estimates for the two variables would be very inflated,
+  because the model would struggle to figure out which of the two variables the
+  weight should be placed on, and so this uncertainty would be reflected in the
+  size of the associated confidence intervals.
+  + If you see an effect, it would be very hard to try to determine if the
+  causal pathway goes through the first hazard or the second. To mitigate
+  effects, it is important to understand the pathway through which they happen,
+  and it might be easier to get clues towards pathways if the hazards are better
+  separated. (Analogy: if you were able to conduct a controlled experiment to
+  look at the effects of each hazard, jointly and in combination, you would
+  design separation in the assignment of these treatments, so you could
+  distinguish. We can't do that because we are limited to an observational
+  analysis, but the area of causal inference is doing a lot to explore how we
+  can design observational studies and analyze data to come closer to what we
+  might be able to see with a randomized control study, and which of those
+  methods we might be able to use for tropical cyclone epidemiology will depend
+  on the interplay of these patterns of exposures.)
+2. These results will not be surprising to an atmospheric scientist / disaster
+researcher, but there are environmental epidemiologists who have done research
+on other exposures and are now starting to study tropical cyclones (session at
+ISEE, for example). It is useful for epidemiologists entering into tropical
+cyclone research to understand these facets of tropical cyclone exposure,
+including the distinction between the very coastal wind exposures and other
+hazards that tend to reach further inland.
+3. There are epidemiological studies that have used only one hazard for exposure
+assessment. This has most often been the case for wind. If this exposure
+assessment is meant to capture "tropical cyclone exposure" in general, with all
+the hazards that are related to tropical cyclones, then there is the chance for
+exposure misclassification if this single hazard is used.
+4. In the past, it was a very complex issue to try to pull together data on all
+these hazards. We agree that now that we have provided a dataset with all of
+them, epidemiologists should be thinking about multi-hazard analyses. However,
+there still will be some barriers to that. [Recent work on multi-pollutant
+exposures and the complexities associated with that.] If one of the hazards
+dominates in explaining associated health risk, then in some cases it might be
+reasonable to focus on that hazard, but in that case it is critical, based on
+our results, to remember that the exposure assessment is not capturing all
+hazards of the storms.
 
 We have moved other suggestions that you sent in "Track Changes" of the Word 
 document for the original manuscript and address each in detail below.
@@ -1118,19 +1132,19 @@ as a proxy for exposure (Grabich et al. 2015a)."}
 
 **Response:** 
 
-It is obvious that it is typically better, but in cases where the proxy is much more
-practical to measure, it may need to be more than just a bit better, but 
-instead substantially better. Also, there could be some cases where the proxy 
-might actually be better---for example, if the proxy can be measured with 
-very low level, while the direct exposure measure might only be measurable 
-with high error. In that case, the proxy could be the better metric and might
-provide a more precise estimate of the association with health risk.
+It is obvious that it is typically better, but in cases where the proxy is much
+more practical to measure, it may need to be more than just a bit better, but
+instead substantially better. Also, there could be some cases where the proxy
+might actually be better---for example, if the proxy can be measured with very
+low level, while the direct exposure measure might only be measurable with high
+error. In that case, the proxy could be the better metric and might provide a
+more precise estimate of the association with health risk.
 
 [Env. Epi. book---advantages and disadvantages of different types of measures]
 
-We agree that it is helpful to clarify for readers that these independent hazards
-can come together in a storm event at different intensities and at different time
-windows. We have added some text on this: 
+We agree that it is helpful to clarify for readers that these independent
+hazards can come together in a storm event at different intensities and at
+different time windows. We have added some text on this:
 
 [Added text]
 
@@ -1167,57 +1181,58 @@ low. The Jaccard index is one measure of similarities between categorical
 
 Another consideration is collinearity. If one hazard is the exposure of interest
 and another hazard is a potential confounder, then the model should adjust the
-confounder or it will be misspecified and be prone to bias. However, if the 
-exposure of interest and the potential confounder are very strongly correlated/in
-agreement, then including both as independent variables in a regression model
-often causes numerical problems in fitting the regression model, including 
-instability in the estimated coefficients and inflated variance. In very extreme
-cases, the statistical software may not be able to invert the matrix [? only for
-linear regression?].
+confounder or it will be misspecified and be prone to bias. However, if the
+exposure of interest and the potential confounder are very strongly
+correlated/in agreement, then including both as independent variables in a
+regression model often causes numerical problems in fitting the regression
+model, including instability in the estimated coefficients and inflated
+variance. In very extreme cases, the statistical software may not be able to
+invert the matrix [? only for linear regression?].
 
 Therefore, it is helpful for epidemiologists to understand if these independent
-storm-associated hazards tend to be strongly associated (in high agreement), 
+storm-associated hazards tend to be strongly associated (in high agreement),
 both within specific storms (for single-storm studies) and on average across
-most large storms (for multi-storm studies). This knowledge will help them in 
-identifying potential confounders if they are interested in studying the 
-effects of a single hazard of the storm and also in determining if control for
-these potential confounders among other storm hazards might cause numerical 
-problems or other collinearity-associated problems when fitting a regression 
-model.
+most large storms (for multi-storm studies). This knowledge will help them in
+identifying potential confounders if they are interested in studying the effects
+of a single hazard of the storm and also in determining if control for these
+potential confounders among other storm hazards might cause numerical problems
+or other collinearity-associated problems when fitting a regression model.
 
 If a researcher wishes to study the storm as a whole, then the researcher 
 could either seek a single measure to capture exposure to the storm as a whole
 or investigate more complex models that model the influence of the storm through
 pathways of several different hazards. 
 
-If a researcher wants a single measure for the storm as a whole, then it is helpful
-to know how well exposure assessments based on the hazard components of the storm
-agree with each other. If there is strong agreement, then any of those hazards could
-be used as a primary marker of exposure assessment. This is conceptually similar to 
-checking for observer / rater agreement. 
+If a researcher wants a single measure for the storm as a whole, then it is
+helpful to know how well exposure assessments based on the hazard components of
+the storm agree with each other. If there is strong agreement, then any of those
+hazards could be used as a primary marker of exposure assessment. This is
+conceptually similar to checking for observer / rater agreement.
 
-> "When the row and column variable srepresent different observers' rating the same
-subjects or objects, interest is focused on *observer agreement* rather than mere 
-association. In this case, measures and tests of agreement provide a method of
-assessing the reliability of a subjective classification or assessment procedure."
-[@friendly2015discrete]
+> "When the row and column variable srepresent different observers' rating the
+same subjects or objects, interest is focused on *observer agreement* rather
+than mere association. In this case, measures and tests of agreement provide a
+method of assessing the reliability of a subjective classification or assessment
+procedure." [@friendly2015discrete]
 
-> "In assessing the strength of *agreement* we usually have a more stringent 
-criterion than in measuring the strength of *association*, because observers 
+> "In assessing the strength of *agreement* we usually have a more stringent
+criterion than in measuring the strength of *association*, because observers
 ratings can be strongly associated without strong agreement. For example, one
 rater could use a more stringent criterion and thus consistently rate subjects
-one category lower (on an ordinal scale) than another rater. More generally, 
-measures of agreement must take account of the marginal frequencies with which two 
-raters use the categories. If observers tend to use the categories with different
-frequency, this will affect measures of agreement." [@friendly2015discrete]
+one category lower (on an ordinal scale) than another rater. More generally,
+measures of agreement must take account of the marginal frequencies with which
+two raters use the categories. If observers tend to use the categories with
+different frequency, this will affect measures of agreement."
+[@friendly2015discrete]
 
-When you have an array of two or more exposures that are strongly correlated, 
-including them together in a regression model can cause problems from collinearity
-[@schisterman2017collinearity]. 
+When you have an array of two or more exposures that are strongly correlated,
+including them together in a regression model can cause problems from
+collinearity [@schisterman2017collinearity].
 
-> "Environmental exposures ... often consist of an array of related individual 
+> "Environmental exposures ... often consist of an array of related individual
 factors that may be highly correlated with each other, causing concern about the
-impact of collinearity when attempting to identify individual effects." [@schisterman2017collinearity]
+impact of collinearity when attempting to identify individual effects."
+[@schisterman2017collinearity]
 
 **Commonly have multiple factors of interest, correlated**
 
@@ -1236,20 +1251,20 @@ the results of breaking---selected strands of this causal web." [@krieger1994epi
 
 This is in contrast to focusing on single factors: 
 
-> "Expressly challenging the still-pervasive tendency of epidemiologists to think
-in terms of single 'agents' causing discrete diseases, the provocative metaphor
-and model of the 'web' invited epidemiologists to embrace a more sophisticated
-view of causality." [@krieger1994epidemiology]
+> "Expressly challenging the still-pervasive tendency of epidemiologists to
+think in terms of single 'agents' causing discrete diseases, the provocative
+metaphor and model of the 'web' invited epidemiologists to embrace a more
+sophisticated view of causality." [@krieger1994epidemiology]
 
 In this framework, epidemiology helps by identifying where it would help to
 break strands of the web: 
 
 > "Using this model, MacMahon et al. drew several important inferences about
-prevention and research that remain part of epidemiologic thinking to this 
-day. Arguing that 'to effect preventative measures, it is not necessary to 
-understand causal mechanisms in their entirity', they stated that 'even knowledge
-of one small component may allow some degree of prevention' since 'wherever the
-chain is broken the disease will be prevented'." [@krieger1994epidemiology]
+prevention and research that remain part of epidemiologic thinking to this day.
+Arguing that 'to effect preventative measures, it is not necessary to understand
+causal mechanisms in their entirity', they stated that 'even knowledge of one
+small component may allow some degree of prevention' since 'wherever the chain
+is broken the disease will be prevented'." [@krieger1994epidemiology]
 
 In other words, if you can identify *necessary* causes, you can craft 
 *practical* interventions. 
@@ -1269,13 +1284,14 @@ highly correlated variables." [@schisterman2017collinearity]
 **Methods to tackle multiple causality**
 
 When the aim is to explore the influences of multiple associated factors, there
-are some different strategies that can be used. These include multiple regression
-and path analysis: 
+are some different strategies that can be used. These include multiple
+regression and path analysis:
 
-> "Evolutionary ecologists have recently turned to path analysis, multiple regression,
-and related techniques to analyse systems of multiple causality. While these
-techniques are often seen as competitors, they are, in fact, related, and as a 
-result the problems of these techniques are similar." [@petraitis1996inferring]
+> "Evolutionary ecologists have recently turned to path analysis, multiple
+regression, and related techniques to analyse systems of multiple causality.
+While these techniques are often seen as competitors, they are, in fact,
+related, and as a result the problems of these techniques are similar."
+[@petraitis1996inferring]
 
 **Implications of collinearity**
 
@@ -1289,15 +1305,15 @@ inferential models. For predictive models, it can be a problem if you later use
 the model to predict in a case where the correlation structure is different than
 in the training data. 
 
-> "The dependence of regression and path coefficients on the correlation structure
-is often glossed over. Yet this dependence means that inferences about the strengths
-of path coefficients are conditional upon the correlational structure among the 
-predictor variables. If the correlation structure of the sample does not
-match the correlational structure of the population then regression and path 
-coefficients will not estimate relative strengths accurately. This can occur if
-sampling is not random or if analysis is based on data from experiments with 
-factorial designs, which break the correlational structure amnog the predictor
-variables." [@petraitis1996inferring]
+> "The dependence of regression and path coefficients on the correlation
+structure is often glossed over. Yet this dependence means that inferences about
+the strengths of path coefficients are conditional upon the correlational
+structure among the predictor variables. If the correlation structure of the
+sample does not match the correlational structure of the population then
+regression and path coefficients will not estimate relative strengths
+accurately. This can occur if sampling is not random or if analysis is based on
+data from experiments with factorial designs, which break the correlational
+structure amnog the predictor variables." [@petraitis1996inferring]
 
 These implications can depend on whether the modeling goal is predictive or 
 inferential. 
@@ -1333,16 +1349,17 @@ unadjusted model, for either one or two confounders:
 due to misspecification, similar to results for a single confounder."
 [@schisterman2017collinearity]
 
-Extreme collinearity can create numerical problems [@schisterman2017collinearity]. 
+Extreme collinearity can create numerical problems
+[@schisterman2017collinearity].
 
-> "Under the extremely unlikely scenario of extreme collinearity [(abs. rho of 0.999 
-or higher)], the numerical matrix inversion required for estimation fails, resulting
-in unstable and biased predictors." [@schisterman2017collinearity]
+> "Under the extremely unlikely scenario of extreme collinearity [(abs. rho of
+0.999 or higher)], the numerical matrix inversion required for estimation fails,
+resulting in unstable and biased predictors." [@schisterman2017collinearity]
 
-> "Only for extreme values of rho cloes to 1 or -1 is beta-squareed nonidentifiable
-due to numerical instability; otherwise, the correctly specified model produces
-the most desirable (e.g., unbiased) estimates of the total effect of the exposure
-on the outcome." [@schisterman2017collinearity]
+> "Only for extreme values of rho cloes to 1 or -1 is beta-squareed
+nonidentifiable due to numerical instability; otherwise, the correctly specified
+model produces the most desirable (e.g., unbiased) estimates of the total effect
+of the exposure on the outcome." [@schisterman2017collinearity]
 
 Collinearity can cause imprecision in coefficient estimates, even if those
 estimates are unbiased [@schisterman2017collinearity].
@@ -1352,34 +1369,37 @@ variables in a multiple regression model; it is usually invoked when some
 correlations are 'large', but an actual magnitude test is not well defined.[1]"
 [@gunasekara2008glossary]
 
-> "Collinearity occurs in multiple regression models when two (or more---multicollinearity)
-exposure variables are included in the model but are so similar to each other that
-they are essentially measuring at least part of the same thing. Collinearity 
-creates problems with interpreting the analysis by affecting the standard errors
-of the variables (as it increases variance)[24] and by causing biased estimates for one
-or both of the collinear terms (sometimes dramatically so) [25]. If there is perfect
-collinearity between two variables then one should be dropped from the model. However, 
-dropping exposure variables to reduce multicollinearity may lead to bias in the model
-from dropping useful information." [@gunasekara2008glossary]
+> "Collinearity occurs in multiple regression models when two (or
+more---multicollinearity) exposure variables are included in the model but are
+so similar to each other that they are essentially measuring at least part of
+the same thing. Collinearity creates problems with interpreting the analysis by
+affecting the standard errors of the variables (as it increases variance)[24]
+and by causing biased estimates for one or both of the collinear terms
+(sometimes dramatically so) [25]. If there is perfect collinearity between two
+variables then one should be dropped from the model. However, dropping exposure
+variables to reduce multicollinearity may lead to bias in the model from
+dropping useful information." [@gunasekara2008glossary]
 
-> "It might be argued in some cases that it is appropriate to include (collinear) 
-variables in a model even when they are highly correlated, because the theoretical 
-basis for including the variables is strong and the results of the model are consistent
-with expectations [10]. In such cases, models with and without the variables would be
-tested and compared. Such consideraion of alternative models tends to be described
-as an issue of (mis)-specification in econometrics. However, in epidemiology this
-tends to be described in terms of mediating and *intermediary variables*. Thus, an
-epidemiologist might argue for including an intermediate variable in a model (and 
-testing it against a model without the variable) because including that variable might 
-elucidate direct and indirect pathways between the exposure and outcome variables. 
-An econometrician might do the same thing but describe this in terms of finding the
-correct model specification." [@gunasekara2008glossary]
+> "It might be argued in some cases that it is appropriate to include
+(collinear) variables in a model even when they are highly correlated, because
+the theoretical basis for including the variables is strong and the results of
+the model are consistent with expectations [10]. In such cases, models with and
+without the variables would be tested and compared. Such consideraion of
+alternative models tends to be described as an issue of (mis)-specification in
+econometrics. However, in epidemiology this tends to be described in terms of
+mediating and *intermediary variables*. Thus, an epidemiologist might argue for
+including an intermediate variable in a model (and testing it against a model
+without the variable) because including that variable might elucidate direct and
+indirect pathways between the exposure and outcome variables. An econometrician
+might do the same thing but describe this in terms of finding the correct model
+specification." [@gunasekara2008glossary]
 
 **Techniques to address collinearity**
 
-There are study designs that might help to separate different effects. For example, 
-some matching designs might help in creating a subset of data in which the association 
-that exists in the full dataset is broken (e.g., @leal2012multicollinearity).
+There are study designs that might help to separate different effects. For
+example, some matching designs might help in creating a subset of data in which
+the association that exists in the full dataset is broken (e.g.,
+@leal2012multicollinearity).
 
 > "Matching is typically employed to reduce model dependence and estimate 
 associations in a more empirical way than would be necessary without 
@@ -1388,18 +1408,20 @@ tool to verify whether the effects of environmental variables that are highly
 correlated with each other could be disentangled." [@leal2012multicollinearity]
 
 You could also explore techniques of dimension reduction, to create a smaller
-subset of independent variables for which the correlation is broken. For example, 
-you could use PCA [@leal2012multicollinearity]. 
+subset of independent variables for which the correlation is broken. For
+example, you could use PCA [@leal2012multicollinearity].
 
-There are other techniques that allow some bias in estimates in an attempt to reduce
-problems from collinearity, like ridge regression [@petraitis1996inferring]. 
+There are other techniques that allow some bias in estimates in an attempt to
+reduce problems from collinearity, like ridge regression
+[@petraitis1996inferring].
 
 > "Several biased estimation techniquest ahve been proposed as a way to combat
-collinearity (Myers 1990). These are controversial methods. Ridge regression, for
-example, biases the regression coefficients in order to improve the model's 
-ability to predict the criterion variable. The estimates of the individual regression
-coefficients may be very biased even though when taken together they provide a 
-very good prediction of the criterion variable." [@petraitis1996inferring]
+collinearity (Myers 1990). These are controversial methods. Ridge regression,
+for example, biases the regression coefficients in order to improve the model's
+ability to predict the criterion variable. The estimates of the individual
+regression coefficients may be very biased even though when taken together they
+provide a very good prediction of the criterion variable."
+[@petraitis1996inferring]
 
 > "When correct specification of the models still leads to 
 problems for conventional regression methods, one can apply modern techniques
@@ -1408,9 +1430,9 @@ such as Bayesian hierarchical models with shrinkage estimators."
 
 **Are effects of different factors 'separable'?**
 
-Epidemiology often aims to inform policy decisions. In this case, it can be important
-to characterize the separate effects of different associated factors that contribute
-to the health risk [@leal2012multicollinearity]. 
+Epidemiology often aims to inform policy decisions. In this case, it can be
+important to characterize the separate effects of different associated factors
+that contribute to the health risk [@leal2012multicollinearity].
 
 > "To develop efficient public health interventions addressing the obesity 
 epidemic, it is important to identify exactly which aspects of the
@@ -1422,11 +1444,12 @@ different interventions." [@leal2012multicollinearity]
 However, it can be very difficult to separate the effects of different factors
 if those factors are strongly correlated [@leal2012multicollinearity]: 
 
-> "However, many neighborhood characteristics, especially those related to the 
-densities of physical features and services, are strongly correlated with 
-each other. Therefore, it is not clear whether it is even possible to disentangle
-the effects of these different environmental dimensions, even if they are hypothesized
-to influence obesity risk through distinct causal pathways." [@leal2012multicollinearity]
+> "However, many neighborhood characteristics, especially those related to the
+densities of physical features and services, are strongly correlated with each
+other. Therefore, it is not clear whether it is even possible to disentangle the
+effects of these different environmental dimensions, even if they are
+hypothesized to influence obesity risk through distinct causal pathways."
+[@leal2012multicollinearity]
 
 
 
@@ -1451,49 +1474,54 @@ these metrics."}
 
 **Response:** 
 
-As we note in our general response to your comments, we agree in general with your
-instinct here. However, there are some subtle points to note. 
+As we note in our general response to your comments, we agree in general with
+your instinct here. However, there are some subtle points to note.
 
-First, we understand the potential appeal of creating a single exposure 
-summary score based on a summation of exposures. This simplifies some of the 
-statistical modeling, for example, and also provides a single exposure estimate to 
-provide as the key study conclusion. However, in many areas of tropical cyclone epidemiology, 
-it is unlikely that exposure to each type of hazard should be given equal weight. For 
-example, an analysis of respiratory health in the months after the storm might hypothesize
-a strong connection with flooding, and smaller connections with rainfall and winds (through
-the pathway of property damage). Use of a pre-defined summation of exposure to each hazard
-would mask some of the potential association. 
+First, we understand the potential appeal of creating a single exposure summary
+score based on a summation of exposures. This simplifies some of the statistical
+modeling, for example, and also provides a single exposure estimate to provide
+as the key study conclusion. However, in many areas of tropical cyclone
+epidemiology, it is unlikely that exposure to each type of hazard should be
+given equal weight. For example, an analysis of respiratory health in the months
+after the storm might hypothesize a strong connection with flooding, and smaller
+connections with rainfall and winds (through the pathway of property damage).
+Use of a pre-defined summation of exposure to each hazard would mask some of the
+potential association.
 
-While a summary statistic could be defined that adds a weight to each exposure, it would
-often be unclear *a priori* what weight each hazard exposure should be given. A better 
-method might be to use a regression framework, where each hazard exposure is included as
-a separate explanatory variable, and the model uses the observed data to determine the 
-appropriate weight for each hazard in terms of modifying risk to the outcome of interest. 
-To explore the influence of multiple concurrent hazards, interaction terms could be added.
+While a summary statistic could be defined that adds a weight to each exposure,
+it would often be unclear *a priori* what weight each hazard exposure should be
+given. A better method might be to use a regression framework, where each hazard
+exposure is included as a separate explanatory variable, and the model uses the
+observed data to determine the appropriate weight for each hazard in terms of
+modifying risk to the outcome of interest. To explore the influence of multiple
+concurrent hazards, interaction terms could be added.
 
-However, if our analysis had found that hazard exposures follow very similar patterns, in 
-terms of the counties exposed during a storm, then this strong agreement would result in 
-a number of problems in fitting and interpreting these types of models. First, strong
-agreement in two or more of the explanatory variables in a regression model leads to 
-collinearity, which among other implications often leads to a large inflation of confidence
-intervals for the effect estimates of the correlated explanatory variables. Further, if 
-the hazard exposures were in strong agreement, then it would be difficult or impossible to
-disentagle the effects of the separate hazards, as a strong effect for one would be 
-impossible to interpret with confidence, since the strong agreement in the data (and resulting
-low co-variability in the variables in the data) could cause the model to mistakenly 
-attribute the effect of one hazard to the other. Further, it may become impossible in this
-case to estimate synergistic effects between the two, as an indicator of an interaction
-between the two exposures would be almost collinear with the two main effects.
+However, if our analysis had found that hazard exposures follow very similar
+patterns, in terms of the counties exposed during a storm, then this strong
+agreement would result in a number of problems in fitting and interpreting these
+types of models. First, strong agreement in two or more of the explanatory
+variables in a regression model leads to collinearity, which among other
+implications often leads to a large inflation of confidence intervals for the
+effect estimates of the correlated explanatory variables. Further, if the hazard
+exposures were in strong agreement, then it would be difficult or impossible to
+disentagle the effects of the separate hazards, as a strong effect for one would
+be impossible to interpret with confidence, since the strong agreement in the
+data (and resulting low co-variability in the variables in the data) could cause
+the model to mistakenly attribute the effect of one hazard to the other.
+Further, it may become impossible in this case to estimate synergistic effects
+between the two, as an indicator of an interaction between the two exposures
+would be almost collinear with the two main effects.
 
-In our analysis, we find that this is usually not the case for the four tropical cyclone 
-hazards that we consider. Instead, we find that for most storms, the hazards are fairly 
-well-separated in terms of the counties they effect. There is a particularly strong pattern
-where inland counties can be exposed to extreme rain and flooding, but not wind. This 
-separation opens the door for some interesting study designs and statistical modeling. 
-For example, these patterns suggest that a study could investigate whether storm-associated
-rains alone create a health risk, as there are many exposures with only rain in inland 
-counties, and so health associations could be explored here and contrasted with coastal 
-areas that experienced both wind and extreme rain.
+In our analysis, we find that this is usually not the case for the four tropical
+cyclone hazards that we consider. Instead, we find that for most storms, the
+hazards are fairly well-separated in terms of the counties they effect. There is
+a particularly strong pattern where inland counties can be exposed to extreme
+rain and flooding, but not wind. This separation opens the door for some
+interesting study designs and statistical modeling. For example, these patterns
+suggest that a study could investigate whether storm-associated rains alone
+create a health risk, as there are many exposures with only rain in inland
+counties, and so health associations could be explored here and contrasted with
+coastal areas that experienced both wind and extreme rain.
 
 
 \begin{shaded}
@@ -1514,10 +1542,11 @@ right of each graph in Figure 2) between 0.87 and 0.98. "}
 
 **Response:** 
 
-This is a great idea. In the original manuscript, we describe this lower correlation
-at higher precipitation values through the use of examples from specific storms, and
-discuss the potential reasons for it, but measuring the correlation specifically within
-these higher-precipitation events would add more quantitative evidence to this discussion.
+This is a great idea. In the original manuscript, we describe this lower
+correlation at higher precipitation values through the use of examples from
+specific storms, and discuss the potential reasons for it, but measuring the
+correlation specifically within these higher-precipitation events would add more
+quantitative evidence to this discussion.
 
 Here is the text where we discuss this point in the original manuscript:
 
@@ -1535,9 +1564,9 @@ disagreement is unlikely to influence results, as both data sources agree in
 identifying these as storms with high rainfall, but would be important to
 consider for cases that include rainfall as a continuous measurement."
 
-We have added estimates of these correlations specifically for high-precipitation
-events in a new table in the Supplemental Material (Table S1, reproduced 
-as Table \@ref(tab:highprecipcorr) of this response document).
+We have added estimates of these correlations specifically for
+high-precipitation events in a new table in the Supplemental Material (Table S1,
+reproduced as Table \@ref(tab:highprecipcorr) of this response document).
 
 \input{tables/precip_high_corr.tex}
 
@@ -1641,13 +1670,13 @@ with among of precipitation (Hurricane Floyd, Hurricane Florence), and from
 flash flooding associated with the rate of precipitation (Virginia storms).]
 
 [A better future direction might be through regression models with multiple
-explanatory pathways. This allows the model to fit different weights to each. Other
-models can also be explored, like regression trees, which might have an easier time
-capturing non-linearity (if exposure is included as a continuous value, as with 
-wind and rain) and interactions when there are co-exposures to two or more hazards.
-Both of these are able (and will) either exclude or give a very low weight to an 
-explanatory variable that does not help much in explaining variation in the health 
-outcome.]
+explanatory pathways. This allows the model to fit different weights to each.
+Other models can also be explored, like regression trees, which might have an
+easier time capturing non-linearity (if exposure is included as a continuous
+value, as with wind and rain) and interactions when there are co-exposures to
+two or more hazards. Both of these are able (and will) either exclude or give a
+very low weight to an explanatory variable that does not help much in explaining
+variation in the health outcome.]
 
 \begin{shaded}
 \textbf{R2 Comment 8:}
@@ -1784,53 +1813,55 @@ This practice extends back over 100 years, when data were collected from many
 [offices?] in the US by telegram [?] at regular times during the day and used to
 create synoptic weather maps that captured major weather systems in the country.
 
-> "In order to allow comparison of surface conditions at the same time throughout 
-the world, the groups regulating the collection of hydrometeorological data have
-established a standard time for taking observations. These observations will have
-times observed within the 10 minutes preceding the UTC standard time. Hence 
-surface observations for meteorological use have timestamps reflecting 0000, 
-0300, 0600, 0900, 1200, 1500, 1800, 2100 UTC." [@usnwstime]
+> "In order to allow comparison of surface conditions at the same time
+throughout the world, the groups regulating the collection of
+hydrometeorological data have established a standard time for taking
+observations. These observations will have times observed within the 10 minutes
+preceding the UTC standard time. Hence surface observations for meteorological
+use have timestamps reflecting 0000, 0300, 0600, 0900, 1200, 1500, 1800, 2100
+UTC." [@usnwstime]
 
 > "Since the end of World War II, observers have launched rawinsonde observation
-worldwide at 00 and 12 UTC (coordinated universal time). High-threat situations, 
-such as impending TC landfall, may dictate observations at 6-h or even 3-h intervals. 
-Interpolating rawinsonde observations to the model's mesh and starting the calculation
-at a synoptic time is the simplest way to prepare a model initial condition."
-[@willoughby2007hurricane]
+worldwide at 00 and 12 UTC (coordinated universal time). High-threat situations,
+such as impending TC landfall, may dictate observations at 6-h or even 3-h
+intervals. Interpolating rawinsonde observations to the model's mesh and
+starting the calculation at a synoptic time is the simplest way to prepare a
+model initial condition." [@willoughby2007hurricane]
 
-> "Because simple interpolation in space and time is a less-than-optimum way to 
-use observations, nonsynoptic data require elaborate four-dimensional variational
-data assimilation schemes." [@willoughby2007hurricane]
+> "Because simple interpolation in space and time is a less-than-optimum way to
+use observations, nonsynoptic data require elaborate four-dimensional
+variational data assimilation schemes." [@willoughby2007hurricane]
 
-> "By 1941, charts for the 750, 500, and 250 mbar surfaces were being prepared daily
-for 0400, 1200, and 2000 GMT." [@grahame2000development]
+> "By 1941, charts for the 750, 500, and 250 mbar surfaces were being prepared
+daily for 0400, 1200, and 2000 GMT." [@grahame2000development]
 
-> "During the period considered here, NHC issued advisories 3 h after the standard
-synoptic time (0300, 0900, 1500, and 2100 UTC)." [@torn2012uncertainty]
+> "During the period considered here, NHC issued advisories 3 h after the
+standard synoptic time (0300, 0900, 1500, and 2100 UTC)." [@torn2012uncertainty]
 
-> "The operation data assimilation and forecast cycle interval is 6 h" [@aberson201010]
+> "The operation data assimilation and forecast cycle interval is 6 h"
+[@aberson201010]
 
-> "Dan Petersen asked whether a data deficiency really exists with all the 
-observational sources in the Atlantic region, or are the data not being
-properly used in the numerical models? ... Steve Lord emphasized the difficulty of the 
-task because many of these observations are not obtained at the synoptic times..."
-[@elsberry1992there]
+> "Dan Petersen asked whether a data deficiency really exists with all the
+observational sources in the Atlantic region, or are the data not being properly
+used in the numerical models? ... Steve Lord emphasized the difficulty of the
+task because many of these observations are not obtained at the synoptic
+times..." [@elsberry1992there]
 
-> "In the modern era, forecasters rely on purely dynamical models that integrate the 
-Navier-Stokes equations for atmospheric motions to represent both the storm itself and
-its surroundings. Numerical models are structured on a computational grid with 
-temperature, moisture, and wind tabulated in more-or-less rectangular cells." 
-[@willoughby2007hurricane]
+> "In the modern era, forecasters rely on purely dynamical models that integrate
+the Navier-Stokes equations for atmospheric motions to represent both the storm
+itself and its surroundings. Numerical models are structured on a computational
+grid with temperature, moisture, and wind tabulated in more-or-less rectangular
+cells." [@willoughby2007hurricane]
 
-> "Predicting the weather required a widespread but highly coordinated team of 
-observers and forecasters. Organization was key... They transmitted data from the 
-field using forms and protocols adapted from those that Abbe had developed while 
-forecasting the weather from Cincinnati, Ohio. The information arrived by telegraph
-coded to maximize accuracy and minimize the word count and changes. The reports piled
-up in a rush at the appointed hours." [@willis2006cleveland]
+> "Predicting the weather required a widespread but highly coordinated team of
+observers and forecasters. Organization was key... They transmitted data from
+the field using forms and protocols adapted from those that Abbe had developed
+while forecasting the weather from Cincinnati, Ohio. The information arrived by
+telegraph coded to maximize accuracy and minimize the word count and changes.
+The reports piled up in a rush at the appointed hours." [@willis2006cleveland]
 
-> "Three times daily the duty forecaster broadcast a synopsis of prevailing weather
-conditions nationwide..." [@willis2006cleveland]
+> "Three times daily the duty forecaster broadcast a synopsis of prevailing
+weather conditions nationwide..." [@willis2006cleveland]
 
 > "The requirement of synoptic data collection is easily met by the
 'conventional' observing system now serving as the main source of meteorological 
@@ -1841,11 +1872,10 @@ Since large-scale weather features are very larger, relevant data for a synoptic
 map often comes from locations with different local times. The need for
 synchronized weather data collection therefore actually played an important role
 in establishing standardized time zones in the United States in [year]. Synoptic
-weather times are typically set based on the Universal Time Constant, with times 
-recorded in Coordinated Universal Time (i.e.,
-Greenwich ...), and time stamps on weather maps and data based on this time zone
-often is given a "Z" (for "Zulu", an earlier name for this timezone) after the
-time.
+weather times are typically set based on the Universal Time Constant, with times
+recorded in Coordinated Universal Time (i.e., Greenwich ...), and time stamps on
+weather maps and data based on this time zone often is given a "Z" (for "Zulu",
+an earlier name for this timezone) after the time.
 
 > "Accuracy in forecasting depended on the accurate timing of observations. At
 first weather observers used local time because no system of standard time
@@ -2057,33 +2087,35 @@ studies of tornado climatology [@tippett2016more; @brooks2003climatological;
 collected by the SPC and archived in the National Oceanic and Atmospheric 
 Administration publication *Storm Data*." [@brooks2003climatological]
 
-> "Data such as tornado magnitude, path length, path width, and so on are recorded
-by the National Climatic Data Center (NCDC) as a public service and for use
-in meteorological, climatological, and engineering studies (Edwards et al. 2013)."
-[@strader2015climatology]
+> "Data such as tornado magnitude, path length, path width, and so on are
+recorded by the National Climatic Data Center (NCDC) as a public service and for
+use in meteorological, climatological, and engineering studies (Edwards et al.
+2013)." [@strader2015climatology]
 
 Sometimes used in conjunction with other NWS data products: 
 
 > "Initially, tornado cases available in the NWS's Damage Assessment Toolkit
-(NOAA, 2014) were employed, which is a GIS-based framework for collecting, storing, 
-and retrieving damage survey data (Camp et al., 2014). This toolkit provides a 
-variety of tornado event filtering (tornado survey point, track, footprint, and/or
-swath) and download options [key mark-up language (.kml) or shapefile (.shp)], supplying
-an initial sample of georeferenced damage assessments. In this study, a tornado 
-footprint is defined as the maximum areal extent of tornado intensity inferred by 
-the damage, wind speed measured directly by mobile Doppler radar, or assessed
-theoretically as the recorded length multiplied with the maximum width as reported in 
-Storm Data." [@strader2015climatology]
+(NOAA, 2014) were employed, which is a GIS-based framework for collecting,
+storing, and retrieving damage survey data (Camp et al., 2014). This toolkit
+provides a variety of tornado event filtering (tornado survey point, track,
+footprint, and/or swath) and download options [key mark-up language (.kml) or
+shapefile (.shp)], supplying an initial sample of georeferenced damage
+assessments. In this study, a tornado footprint is defined as the maximum areal
+extent of tornado intensity inferred by the damage, wind speed measured directly
+by mobile Doppler radar, or assessed theoretically as the recorded length
+multiplied with the maximum width as reported in Storm Data."
+[@strader2015climatology]
 
-> "To serve the public interest and the National Climatic Data Center (NCDC) storm 
-data record, the National Weather Service (NWS) documents the path length, width, 
-and maximum damage rating for every tornado county segment (NOAA 2007).[Footnote
-in manuscript: County segments of tornado paths are then combined at the NWS Storm
-Prediction Center to yield a unified one-tornado (ONETOR) dataset of whole-tornado 
-records (Schaefer and Edwards 1999).] Such data are used in meteorological and 
-climatological research, as well as in determining construction standard for 
-critical infrastructure such as high-tension electric lines and nuclear power plants
-(e.g., Ramsdell et al. 2007)." [@edwards2013tornado]
+> "To serve the public interest and the National Climatic Data Center (NCDC)
+storm data record, the National Weather Service (NWS) documents the path length,
+width, and maximum damage rating for every tornado county segment (NOAA
+2007).[Footnote in manuscript: County segments of tornado paths are then
+combined at the NWS Storm Prediction Center to yield a unified one-tornado
+(ONETOR) dataset of whole-tornado records (Schaefer and Edwards 1999).] Such
+data are used in meteorological and climatological research, as well as in
+determining construction standard for critical infrastructure such as
+high-tension electric lines and nuclear power plants (e.g., Ramsdell et al.
+2007)." [@edwards2013tornado]
 
 Sometimes used in conjunction with other datasets: 
 
@@ -2099,18 +2131,18 @@ Frazulis." [in a study of tornado fatalities] [@Ashley2007]
 
 History: 
 
-> "During the early 1950s, the US Weather Bureau began a concerted effort to 
-count all US tornadoes. In 1950, a list of tornadoes was provided in the 
-*Climatological Data National Summary*, but it was not until 1953, the first 
-full year of the issuance of Weather Bureau tornado watches, that the agency 
-began to formally count all tornadoes. The *Climaticalogical Data National Summary*
-document evolved into *Storm Data* by 1959, which, in addition to tornado 
-data, included information on other storm perils, such as severe hail, high 
-winds, and floods (Grazulis 1993). Over the years, the tornado dataset 
-has been formatted and adjusted by the National Severe Storms Forecast 
-Center and Storm Prediction Center (SPC), and currently the National Tornado 
-Database is administered by the NWS Headquarters, SPC, and NCDC 
-(McCarthy 2003)." [@Ashley2007]
+> "During the early 1950s, the US Weather Bureau began a concerted effort to
+count all US tornadoes. In 1950, a list of tornadoes was provided in the
+*Climatological Data National Summary*, but it was not until 1953, the first
+full year of the issuance of Weather Bureau tornado watches, that the agency
+began to formally count all tornadoes. The *Climaticalogical Data National
+Summary* document evolved into *Storm Data* by 1959, which, in addition to
+tornado data, included information on other storm perils, such as severe hail,
+high winds, and floods (Grazulis 1993). Over the years, the tornado dataset has
+been formatted and adjusted by the National Severe Storms Forecast Center and
+Storm Prediction Center (SPC), and currently the National Tornado Database is
+administered by the NWS Headquarters, SPC, and NCDC (McCarthy 2003)."
+[@Ashley2007]
 
 \begin{shaded}
 \textbf{R3 Comment 6:}
@@ -2160,9 +2192,9 @@ appreciate.
 
 [Typo here? I don't think there's a Figure S7.]
 
-We have revised this figure to show an x-axis truncated at the minimum observed 
-value ($\sim75\%$), as requested. The original and revised versions of this paper 
-are reproduced in this response document as Figure \@ref(fig:fig3).
+We have revised this figure to show an x-axis truncated at the minimum observed
+value ($\sim75\%$), as requested. The original and revised versions of this
+paper are reproduced in this response document as Figure \@ref(fig:fig3).
 
 \begin{shaded}
 \textbf{EHP Request 2:}
@@ -2192,14 +2224,15 @@ quickly and accurately judge relative distances in scientific figures
 [@liu2018somewhere]. The family of colormaps we used in the figures is currently
 considered the gold standard for scientific figures [@nunez2018optimizing].
 
-For example, in Figures \@ref(fig:fig5check1) and \@ref(fig:fig5check2) (left) of this
-response document, we have reproduced the current version of Figure 5 as it
-would appear to someone with three common types of color vision deficiencies:
+For example, in Figures \@ref(fig:fig5check1) and \@ref(fig:fig5check2) (left)
+of this response document, we have reproduced the current version of Figure 5 as
+it would appear to someone with three common types of color vision deficiencies:
 deuteranomaly (defective green cone cells, the most common type), as well as
 protanopia (defective red cone cells) and tritanopia (defective blue cone
 cells). We have also shown how the Figure would appear in grayscale in
-\@ref(fig:fig5check2) (right). We have included similar versions of other 
-figures from the manuscript in response to later requests from EHP in this response.
+\@ref(fig:fig5check2) (right). We have included similar versions of other
+figures from the manuscript in response to later requests from EHP in this
+response.
 
 ```{r fig5check1, fig.cap="Reproduction of revised version of Figure 5 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).", out.width="90%", fig.align = "center"}
 include_graphics("figures/averageexposureonly_check1.pdf")
