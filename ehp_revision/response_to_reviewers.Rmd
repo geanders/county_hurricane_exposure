@@ -756,7 +756,7 @@ the area boundaries (although the modeling for wind may be to the area's geograp
 mean center rather than population mean center).
 
 > "We initially developed software to model exclusively Atlantic-basin storms
-[@tormwindmodel]. There are two characteristics of Northwestern Pacific Ocean
+[@stormwindmodel]. There are two characteristics of Northwestern Pacific Ocean
 basin storm data that prevent direct use of the current version of the software.
 First, the software currently requires Western Hemisphere longitude inputs.
 Second, the ``Best Tracks'' data from the China Meteorological Administration
