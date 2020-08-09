@@ -22,11 +22,13 @@ The open-source data generally correspond well with data from other potential
 sources (Figures~\ref{fig:raincomparison}\,--\,\ref{fig:floodcomparison}), but
 there are caveats. The rainfall data are generally well-correlated with
 ground-based observations, but may sometimes underestimate very high rainfall
-values (Figure~\ref{fig:raincomparison}). When rainfall data is used to create
-binary exposure classifications, this disagreement is unlikely to influence
-results, as both data sources agree in identifying these as storms with high
-rainfall, but would be important to consider for cases that include rainfall as
-a continuous measurement. 
+values (Figure~\ref{fig:raincomparison}), and in some counties the correlation
+was substantially lower when considering only tropical cyclones with cumulative
+local rainfall of 75 mm or more (Supplemental Table 1). When rainfall data is
+used to create binary exposure classifications, this disagreement is unlikely
+to influence results, as both data sources agree in identifying these as storms
+with high rainfall, but would be important to consider for cases that include
+rainfall as a continuous measurement. 
 
 The peak sustained wind estimates are based on modeled, rather than observed,
 values, and while the modeled wind data generally agree well
@@ -151,9 +153,9 @@ towards the null (estimating a lower or null association compared to the true
 association that exists) or away from the null (estimating a larger association
 than actually exists)~\parencite{savitz2016interpreting, armstrong1998effect}.  
 
-We did find a small set of tropical cyclones for which for which
-agreement was high across several single-hazard exposure assessments (e.g.,
-Floyd in~1999, Irene in 2011, Hannah in~2008, Bertha in~1996; Ernesto in~2006
+We did find a small set of tropical cyclones for which for which agreement was
+high across several single-hazard exposure assessments (e.g., Floyd in~1999,
+Irene in 2011, Hannah in~2008, Bertha in~1996; Ernesto in~2006
 (Figure~\ref{fig:jaccard})).  Hurricanes Floyd in~1999 and Irene in~2011 both
 made their first \ac{US} landfall in North Carolina at minor hurricane
 intensity (Category~2 and~1, respectively) and then skimmed the eastern coast
@@ -164,13 +166,17 @@ flooding in North Carolina (Floyd) and New England
 in~2008, Bertha in~1996, and Ernesto in~2006 also followed the eastern
 coastline. For these storms, the tropical cyclones' persistent proximity to
 water may have helped maintain wind speeds in similar patterns to rain and
-distance-based exposures, resulting in more similarities across
-exposure assessments compared to other tropical cyclones.  For these storms, it
-may be possible to assess exposure to multiple hazards of the storm using a
-single metric, perhaps even a proxy like the distance between the county
-and the storm's track.  However, for these storms it may be difficult to
-untangle the contribution of each hazard to the overall effect of the storm,
-given that several hazards have similar geographical patterns. 
+distance-based exposures, resulting in more similarities across exposure
+assessments compared to other tropical cyclones.  For these storms, it may be
+possible to assess exposure to multiple hazards of the storm using a single
+metric, perhaps even a proxy like the distance between the county and the
+storm's track. \textbf{With the dataset we describe in this paper, however,
+there is little need to limit analysis based on exposure to a single hazard or
+proxy, although multi-hazard studies of storms with high agreement among hazard
+exposures should look out for modeling issues from multicollinearity.} Further,
+for these storms it may be difficult to untangle the contribution of each
+hazard to the overall effect of the storm, given that several hazards have
+similar geographical patterns. 
 
 \subsection*{Limitations}
 

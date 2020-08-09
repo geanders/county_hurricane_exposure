@@ -272,6 +272,78 @@ non-differential measurement error [?].
 Not only can the exposure be measured with error, but so too can potential
 confounders and potential effect modifiers.
 
+We provide exposure assessments at the county level. This spatial scale allows
+for easy integration with health outcome data aggregated at the county level.
+However, there are also some things to consider when modeling associations
+at an ecological rather than individual level. The considerations are 
+particularly nuanced when investigating the health risks associated with a 
+disaster. 
+
+Often in epidemiology, a study aims to estimate how an exposure changes the
+risk of a health outcome for an individual. The data might be collected for
+lots of people, but the key question is this---if a person is exposed, how 
+does his or her risk of the outcome change. If you are exposed to this hazard, 
+how much more likely are you to have the outcome? To get sick, or injured, or
+to die? This inference is at the individual level. 
+
+Even when individual-level inference is the goal, sometimes data is only 
+available at an aggregated level. For example, privacy concerns might
+mean that health outcomes are only made available as a county-wide daily 
+count. You can fit a mode with this aggregated data, which will estimate the
+association between exposure and health risk at the ecological level. This
+contextual effect estimate is sometimes used as an estimate of individual-level
+association, but doing so can introduce ecological/multi-level bias. The 
+individual-level effect estimate can be very biased from the true association, 
+even to the point of reversing the effect estimate---estimating a protective
+effect when the true effect is detrimental, for example.
+
+This ecological fallacy plays out in two ways. First, if you use a single 
+exposure measurement for everyone in an area, some people will be misclassified
+(or have exposure measured with error, for a continuous metric) unless the 
+exposure is perfectly homogeneous across the area. This will typically not
+be the case. This exposure misclassification can bias estimates of the 
+association between exposure and outcome in the same way exposure 
+misclassification through any other mechanism would.
+
+Next, ecological bias could result from confounding, even if the confounders
+are controlled in the ecological-level model. When you aggregate data, you 
+lose information about how both the exposure and potential confounders vary
+across individuals within the area of aggregation. As a result, a factor
+could still confound the inference of an individual-level association, even 
+if it is controlled for at a population level in an ecological model. For 
+example, a study of the association between risk of pre-term birth and 
+tropical cyclone exposure could control for county-level smoking when 
+modeling county-level storm exposure and county-level rates of pre-term births.
+Even with this control, an observed association could result from differences
+in individual smoking status, if there is within-county variation in 
+smoking and if this has a different pattern across people in the county than
+variation in exposure from the county-wide exposure estimate.
+
+For disasters, there are added nuances. First, for exposure it may not just 
+matter what the level of exposure is in a person's immediate scope. Disasters
+bring physical hazards that can harm people directly, but also through indirect
+pathways. For example, a tropical cyclone can bring high winds that cause 
+power outages, and as a result those affected could be exposed to more outdoor
+hazards (outdoor air pollution, heat), struggle to safely store perishable
+food and medications, and lose means to power medical equipment. While extreme
+winds at a person's residence would increase their risk of a power outage, 
+outages could also be caused by damage to the grid in another part of the 
+community. In some cases, then, the level of exposure in a person's community
+may be as important in opening a pathway of risk as exposure at the person's
+immediate location. 
+
+What's more, if the disaster has a large health impact, the health outcome of
+one person in the community could affect the risk of the outcome (or other
+adverse outcomes) for others. This situation is often only the case for 
+infectious diseases, where one person with the disease can spread it to others.
+However, if the community-wide impact is large enough, it can affect access
+to and effectiveness of medical care for everyone in the community. This
+effect has been seen recently with Covid 19---attempts to "flatten the curve"
+aim to avoid moving into a state where a community's health system becomes
+overwhelmed and can no longer deliver a typical level of care to those in the
+community. This effect could happen with either infectious or non-infectious
+diseases.
+
 When a proxy exposure estimates is used for many people covered by a study, this
 can result in a type of exposure measurement error called *Berkson error*. In
 this case, the true exposure of each individual is randomly distributed around
@@ -1694,6 +1766,37 @@ observations, but may sometimes underestimate very high rainfall values (Figure
 \end{shaded}
 
 **Response:** 
+This is a great suggestion and helps provided quantitative support to the text
+in the paper that the reviewer highlighted when making this comment. We have
+added a table in the Supplemental Material that provides the Spearman
+correlation coefficients for both all tropical cyclones to come near the sample
+counties (replicating the analysis shown in Figure 2 of the main text) and
+then when the analysis is limited to only those events with cumulative
+precipitation of 75 mm or higher based on either data source.
+
+In several cases, the correlation was much weaker when limiting analysis to
+these severe rainfall events. For example, in Miami-Dade County, FL, the
+Spearman correlation coefficient was 0.94 for all 64 tropical cyclones that came
+near the county over the analysis period, while it was only 0.49 among the 18
+storms with cumulative precipitation of 75 mm or more. There was a similar
+reduction in Mobile County, AL. However, for some counties, the correlation
+remained high (e.g., Harris County, TX; Orleans Parish, LA), although in all
+cases there are small numbers of extreme precipitation events (5--20 across
+these sample counties), and so there is likely substantial random variation in
+these correlation estimates, since they are based on small numbers of 
+observations.
+
+[Include copy of table here.]
+
+Finally, we have added a bit to the text that the reviewer cited to mention 
+this point and to direct readers to the added supplemental table: 
+
+> Text in revised manuscript (relevant addition in bold):
+"The rainfall data are generally well-correlated with ground-based
+observations, but may sometimes underestimate very high rainfall values (Figure
+2), **and in some counties the correlation was substantially lower when 
+considering only tropical cyclones with cumulative local rainfall of 75 mm
+or more (Supplemental Table 1)**."
 
 \begin{shaded}
 \textbf{R2 Comment 9:}
@@ -1712,6 +1815,8 @@ introduce exposure misclassification."}
 \end{shaded}
 
 **Response:** 
+[Add new analysis of what percent of counties misclassified if distance 
+is used as proxy for each hazard?]
 
 \begin{shaded}
 \textbf{R2 Comment 10:}
@@ -1730,6 +1835,19 @@ distance between the county and the storm’s track."}
 \end{shaded}
 
 **Response:** 
+We agree. This type of approach has not always been easy in the past, but can
+be easily implemented with the dataset we publish here. We have added to the
+text on this point: 
+
+> Text in revised manuscript (relevant addition in bold):
+"For these storms, it may be possible to assess exposure to multiple
+hazards of the storm using a single metric, perhaps even a proxy like the
+distance between the county and the storm’s track. **With the dataset we 
+describe in this paper, however, there is little need to limit analysis
+based on exposure to a single hazard or proxy, although multi-hazard studies
+of storms with high agreement among hazard exposures should look out for 
+modeling issues from multicollinearity.**"
+
 
 # Reviewer 3: {-#reviewer-3}
 
