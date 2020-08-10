@@ -229,6 +229,90 @@ counties near the storm's central track, since winds decay quickly as you move
 from the storm's center, and storms typically weaken rapidly once they make 
 landfall and can no longer draw on warm ocean waters for energy.
 
+This exposure data is provided at the county level, and this can lead to 
+exposure measurement error / exposure misclassification in studies that 
+infer to the individual level. In this case, there will be several processes
+at play. First, the hazards of the storm will not be uniform across the
+county. The degree of this within-county spatial heterogeneity will usually 
+vary by hazard. The within-county heterogeneity is likely lowest for rain and for
+wind at lower levels. For rain, there can be particularly severe rain bands, 
+but often a storm's rainfield will bring high precipitation to a large 
+area. Wind can have a high heterogeneity close to the storm's center 
+(storm winds decay most quickly with distance near the storm's center)
+and near landfall (winds decay rapidly after landfall). Other hazards can 
+be very local within the county, only affecting a small proportion of the total
+county area. A tornado is a clear example---while it causes severe destruction
+in its track, areas just off the track can be unharmed, creating a dramatic
+spatial gradient in damage within a county. Floods can follow both. Some hurricanes
+have caused widespread flooding (e.g., Floyd, Katrina) while some have caused
+flooding that is more spatially focused (inland, with flashfloods? coast flooding
+just near the coast?). For tidewater/coastal areas, there is often a dense 
+network of waterway. When rains occur further up the watershed, these all
+become flooded. 
+
+Second is the question of whether exposure measured at the resident's location
+would be ideal. This is the case typically when studying an exposure that is 
+a chemical substance. In this case, the pathway depends on the substance entering 
+the body. For tropical cyclones, health risk could result from stress, problems
+accessing medical care, or repercussions of power outages (higher exposure to 
+outdoor hazards like heat and air pollution, problems storing food and using 
+some medical equipment). For these, high levels of wind and other hazards in the
+person's community may be as or more important than at their precise location. 
+
+Measurement error can be either random or systematic. Systematic error can often 
+be corrected with adjustment if the direction and typical size of the error is 
+understood. Random error cannot in the same way. Either type of measurement error
+can be either differential (associated with the probability of the outcome) or 
+non-differential (independent of the distribution / probability of the outcome).
+In simpler models, this characteristic might help in predicting whether the resulting
+bias is likely toward the null; however, more complex models (e.g., statistical 
+models with adjustment for potential confounders) are trickier to diagnose in terms
+of the likely implications of differential versus non-differential measurement 
+error [?]. 
+
+Not only can the exposure be measured with error, but so too can potential confounders
+and potential effect modifiers.
+
+When a proxy exposure estimates is used for many people covered by a study, this
+can result in a type of exposure measurement error called *Berkson error*. In this 
+case, the true exposure of each individual is randomly distributed around this 
+proxy/aggregate-level exposure estimate, with a mean exposure level among the 
+subjects that is equal to the proxy/aggregate-level measure. In other words, the 
+group as a whole is assigned a common exposure level, when in fact this is the 
+average exposure level across members of that group, but the individuals' 
+true exposure levels are randomly distributed around this mean group level to 
+which they are all assigned for modeling.
+
+Berkson: 
+
+$$
+T = X + E
+$$
+where: 
+
+- $T$: true individual exposure
+- $X$: proxy exposure, assigned to everyone in the group
+- $E$: error, with mean of 0, independent of $X$
+
+The dataset provides exposure by group/area (county), not by individual. These
+ecological exposure estimates require us to assume that the exposure level is
+the same for all individuals in that county. It ignores/smooths over within-county
+variability in exposure.
+
+For wind and rain, we're essentially basing exposure assessment on modeling of
+exposure. For rain, this is a based on a re-analysis model that
+incorporates/integrates observed data from the area and time, using a model to
+integrate data from diverse sources. For wind, the exposure estimates are based
+on a model, with a core based on the Willoughby wind model. For flooding and
+tornadoes, the exposure is based on records of events anywhere in the county,
+and in many cases may be based, essentially, on exposure assessment, as in many
+cases someone like someone at a NOAA [?] center have determined whether the
+event should be reported in the database.
+
+Even exposure at each person's residence would not suffice, since people move 
+around during the day (although perhaps less for most people during a severe
+storm).
+
 Data that is aggregated across a population---for example, the total number of 
 deaths in a geographic area in a certain time period---is known as *ecological
 data*, and studies that base inference on this type of data are known as *ecological
@@ -552,6 +636,40 @@ as important to recognize the presence of ecological fallacy as to
 recognize psychologistic or individualistic fallacy (Subramanian et al. 2009)."
 [@idrovo2011three]
 
+Confounding in general: 
+
+> "A confounder ... is associated with an exposure or risk factor for the outcome
+and with the outcome independent of the exposure, but is not on the causal pathway
+between the exposure and the outcome. Confounding occurs when the relationship
+between an exposure variable and the outcome variable is contaminated, so that the
+measure of association between these two variables is actually also capturing the
+effects of a third variable, the confounding variable. For example, many factors 
+are associated with income (exposure) and health (outcome), such as education, 
+employment or wealth? It may be that these factors explain part of the observed
+assocation." [@gunasekara2008glossary]
+
+Measurement error in general:
+
+> "Measurement error: The different between an observed variable and the variable 
+that belongs in a multiple regression equation. Measurement error is the random 
+or systematic error arising during data collection of variables. The measured
+variable x is measured with error eta, which is the distance from x to the 
+'true' value of x. Measurement error can produce bias such as attenuating the
+estimators of exposure variables, but may also have more complex effects. Longitudinal
+data analyses such as fixed effects models can actually augment the problem of 
+measurement error in mis-measured explanatory variables that change little over
+time." [@gunasekara2008glossary]
+
+Study validity: 
+
+> "Study validity refers to the degree to which the inferences drawn from a study are
+warranted when account is taken of the study methods; the representativeness of
+the study sample; and the nature of the population from which it is drawn.[5]
+There are two types of study validity. *Internal validity* is the degree to which the
+results of a study are correct for the sample of people being studied. *External 
+validity* (generalisability) is the degree to which the study results hold true
+for a population beyond the subjects in the study or other settings.[20]"
+
 \begin{shaded}
 \textbf{R1 Comment 2:}
 Are there opportunities to expand this approach internationally? Some decisions
@@ -729,7 +847,7 @@ Line 95---wondering if there is a better word for "hits" here. Maybe "exposed?"
 \noindent
 \textit{"In many cases, these studies analyze multi-year, multi-community data,
 allowing them to estimate average associations over many disasters and to
-explore how a disaster’s characteristics, or the characteristics of the
+explore how a disaster's characteristics, or the characteristics of the
 community it hits, modify associated health risks (e.g., Anderson and Bell 2010;
 Son et al. 2012; Liu et al. 2017)."}
 \end{quotation}
@@ -742,7 +860,7 @@ Thank you for this suggestion. We have changed the wording in this sentence:
 > **Text in revised manuscript (relevant change in bold):**
 "In many cases, these studies analyze multi-year, multi-community data, allowing
 them to estimate average associations over many disasters and to explore how a
-disaster’s characteristics, or the characteristics ofthe **affected
+disaster's characteristics, or the characteristics ofthe **affected
 communities**, modify associated health risks (e.g., Anderson and Bell 2010; Son
 et al. 2012; Liu et al. 2017)."
 
@@ -860,7 +978,8 @@ full lifecycle of experimental, field, and computational research required by
 engineers and scientists to effectively address the threats posed to civil 
 infrastructure by natural hazards. The integration of data and computation 
 in the cloud will enable new research discoveries in natural hazards engineering, 
-which in turn can lead to more hazard-resilient civil infrastructure." [@rathje2017designsafe]
+which in turn can lead to more hazard-resilient civil infrastructure." 
+[@rathje2017designsafe]
 
 *Access to R:*
 
@@ -980,7 +1099,7 @@ document for the original manuscript and address each in detail below.
 
 \begin{shaded}
 \textbf{Reviewer 2 (R2) Comment 1:}
-Line 164: Isn’t it obvious to use better exposure measures than proxies? Wind,
+Line 164: Isn't it obvious to use better exposure measures than proxies? Wind,
 rainfall, tornado, and flood are direct products of storms while distance is
 only proxy of those exposures. Rather than calculating agreement among the
 exposures, it would be important to note that these are independent hazards that
@@ -1228,6 +1347,34 @@ on the outcome." [@schisterman2017collinearity]
 Collinearity can cause imprecision in coefficient estimates, even if those
 estimates are unbiased [@schisterman2017collinearity].
 
+> "Multicollinearity: A term that refers to correlation among the independent
+variables in a multiple regression model; it is usually invoked when some 
+correlations are 'large', but an actual magnitude test is not well defined.[1]"
+[@gunasekara2008glossary]
+
+> "Collinearity occurs in multiple regression models when two (or more---multicollinearity)
+exposure variables are included in the model but are so similar to each other that
+they are essentially measuring at least part of the same thing. Collinearity 
+creates problems with interpreting the analysis by affecting the standard errors
+of the variables (as it increases variance)[24] and by causing biased estimates for one
+or both of the collinear terms (sometimes dramatically so) [25]. If there is perfect
+collinearity between two variables then one should be dropped from the model. However, 
+dropping exposure variables to reduce multicollinearity may lead to bias in the model
+from dropping useful information." [@gunasekara2008glossary]
+
+> "It might be argued in some cases that it is appropriate to include (collinear) 
+variables in a model even when they are highly correlated, because the theoretical 
+basis for including the variables is strong and the results of the model are consistent
+with expectations [10]. In such cases, models with and without the variables would be
+tested and compared. Such consideraion of alternative models tends to be described
+as an issue of (mis)-specification in econometrics. However, in epidemiology this
+tends to be described in terms of mediating and *intermediary variables*. Thus, an
+epidemiologist might argue for including an intermediate variable in a model (and 
+testing it against a model without the variable) because including that variable might 
+elucidate direct and indirect pathways between the exposure and outcome variables. 
+An econometrician might do the same thing but describe this in terms of finding the
+correct model specification." [@gunasekara2008glossary]
+
 **Techniques to address collinearity**
 
 There are study designs that might help to separate different effects. For example, 
@@ -1396,7 +1543,7 @@ as Table \@ref(tab:highprecipcorr) of this response document).
 
 \begin{shaded}
 \textbf{R2 Comment 4:}
-Figure 4: I would add Y-axis label “NOAA classification."
+Figure 4: I would add Y-axis label "NOAA classification."
 \end{shaded}
 
 **Response:** 
@@ -1472,7 +1619,15 @@ rain."}
 
 **Response:** 
 
-[Check: *exposure matrix* in occupational epidemiology...]
+> "A job exposure matrix (JEM) may be defined as a cross classification of jobs
+and occupational exposures. Some matrices are based on tasks, instead of jobs. 
+... Usually there is a group of experts who build the matrix based on their 
+own knowledge and experience on occupational exopsures. The experts should 
+assess exposure to an open or fixed list of occupational exposures (that can 
+include chemical, physical, biological, and/or psychosocial agents) for an
+open or fixed list of jobs (or tasks) usually coded according to some established
+national or international classification system. Some JEMs also include 
+information for different calendar time periods." [@garcia2003glossary]
 
 [New advances in multi-pollutant analysis.]
 
