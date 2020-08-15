@@ -416,7 +416,7 @@ Even exposure at each person's residence would not suffice, since people move
 around during the day (although perhaps less for most people during a severe
 storm).
 
-Data that is aggregated across a population---for example, the total number of
+Data that are aggregated across a population---for example, the total number of
 deaths in a geographic area in a certain time period---is known as *ecological
 data*, and studies that base inference on this type of data are known as
 *ecological studies*. Terms include *ecological*, *aggregate*, *contextual
