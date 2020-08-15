@@ -102,35 +102,42 @@ discussion in the discussion section.
 
 **Response:** 
 
-This is an excellent point. We have add text to the Discussion: 
+This is an excellent point. We have add text to the Discussion on the potential
+limitations of using aggregated, county-level exposure data in a research study: 
 
-The dataset we present here provides exposure assessments at the county level.
+> **Text added to Discussion (added text in bold):**
+**"The dataset we present here provides exposure assessments at the county level.
 This spatial scale allows for easy integration with health outcome data
 aggregated at the county level. Such aggregated or ecological data is often used
 for disaster epidemiology, as aggregated data may be easier to access than
 individual-level data, especially at a scale that covers many locations and a
 long time period and so allows higher statistical power and a broader range of
-exposure levels within the study [@wakefield2008overcoming].
+exposure levels within the study [@wakefield2008overcoming].**
 
-These ecological exposure estimates, however, set a common exposure level
+> "**These ecological exposure estimates, however, set a common exposure level
 throughout the county, ignoring within-county variability, even though such
 variability often exists. For some hazards, this within-county variation in
 exposure level could be stark. For example, tornadoes cause very localized
 damage, directly along the tornado's path---a tornado can destroy homes on one
 side of a street while leaving those on the opposite side untouched. Levels of
 other hazards, like storm-associated winds and rain, will also vary within a
-county, but it will be unlikely that a county will have one area that is exposed
-to extremes of these hazards from a tropical cyclone while other parts of the
-county are completely unexposed, as both the wind fields and rain fields of
-tropical cyclones tend to be large in comparison to the size of a county.
+county, but typically with smoother variation. In particular, it will be
+unlikely that a county will have one area that is exposed to extremes of these
+hazards from a tropical cyclone while other parts of the county are completely
+unexposed, as both the wind fields and rain fields of tropical cyclones tend to
+be large in comparison to the size of a county.**
 
-Aggregated data can be used to infer contextual level associations---for
+> "**Aggregated data can be used to infer contextual level associations---for
 example, the association between county-level exposure to a storm hazard and
 county-wide rates of a health outcome. However, ecological data is also
 sometimes used to infer individual-level associations (e.g., the association
 between personal exposure to a storm hazard and personal risk of  experiencing
 the health outcome). Individual-level inference from ecological/aggregated data
-is prone to ecological bias [@greenland1994invited; @portnov2007ecological].
+is susceptible to ecological bias [@greenland1994invited; @portnov2007ecological;
+@idrovo2011three]. Researchers who use the data provided here for ecological
+studies---with the aim of making individual-level inferences---should be aware
+of this potential and could explore approaches for minimizing risk of ecological
+bias (e.g., @wakefield2008overcoming).**"
 
 -----------------------------------------------------------------------------
 

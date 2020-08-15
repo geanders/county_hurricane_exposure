@@ -2309,8 +2309,13 @@
     <bcf:citekey order="81">armstrong1998effect</bcf:citekey>
     <bcf:citekey order="82">avila2013atlantic</bcf:citekey>
     <bcf:citekey order="82">lawrence2000atlantic</bcf:citekey>
-    <bcf:citekey order="83">stormwindmodel</bcf:citekey>
-    <bcf:citekey order="84">shiny2019</bcf:citekey>
+    <bcf:citekey order="83">wakefield2008overcoming</bcf:citekey>
+    <bcf:citekey order="84">greenland1994invited</bcf:citekey>
+    <bcf:citekey order="84">portnov2007ecological</bcf:citekey>
+    <bcf:citekey order="84">idrovo2011three</bcf:citekey>
+    <bcf:citekey order="85">wakefield2008overcoming</bcf:citekey>
+    <bcf:citekey order="86">stormwindmodel</bcf:citekey>
+    <bcf:citekey order="87">shiny2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
