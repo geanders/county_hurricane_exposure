@@ -130,7 +130,7 @@ county-wide rates of a health outcome. However, ecological data is also
 sometimes used to infer individual-level associations (e.g., the association
 between personal exposure to a storm hazard and personal risk of  experiencing
 the health outcome). Individual-level inference from ecological/aggregated data
-is prone to ecological bias [].
+is prone to ecological bias [@greenland1994invited; @portnov2007ecological].
 
 -----------------------------------------------------------------------------
 
