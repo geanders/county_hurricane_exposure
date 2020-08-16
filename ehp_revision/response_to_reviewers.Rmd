@@ -249,6 +249,36 @@ tornado strict upon a fixed, sufficiently sturdy, and well-calibrated wind
 measuring station is quite rare. Only 31 direct in situ tornado observations are
 evident between 1894 and 2011." [@edwards2013tornado]
 
+This question could be explored to some degree through a study that uses the 
+physical hazard data provided in this dataset as the exposure and FEMA disaster
+declarations as the outcome. Such a study could clarify the degree to which 
+each hazard---and its intensity---helps in explaining that probablity that 
+a disaster declaration is issued. It could also clarify the degree to which 
+other factors, beyond the intensity of these hazards, drive the probability of
+a county receiving a disaster declaration. For example, if two counties 
+are exposed to a storm-associated hazard of the same intensity, they may 
+still have different probabilities of associated societal impacts, as a 
+community that is regularly exposed to that hazard may be more "hardened" 
+against it. Other differences in infrastructure and factors associated with 
+vulnerability could similarly introduce variability. 
+
+At a more complex level, studies could explore the causal pathways from the 
+initial physical hazard to resulting damage/property loss through to associations
+with health outcomes, to provide a clearer idea of the direct and indirect 
+pathways leading to health impacts from tropical cyclones.
+
+For both of these studies, however, there may be better sources of damage
+estimates to use than FEMA disaster declarations. FEMA disaster declarations 
+can be prone to political and other influences, and since their primary function
+is not to record damage but rather to be a step in getting help to communities, 
+they can be problematic to use as an unbiased estimate of damage levels in 
+epidmiological research. One study, for example, found ... . There are other
+estimates of property damage that might be less problematic, including the 
+estimates recorded in NOAA's Storm Events database and data from private 
+insurers, although the quality of disaster loss data is well known to be
+less than ideal for secondary research [can be prone to bias through a number
+of mechanisms] [ref to Gall paper?].
+
 \begin{shaded}
 \textbf{R1 Comment 4:}
 Line 95---wondering if there is a better word for "hits" here. Maybe "exposed?"
