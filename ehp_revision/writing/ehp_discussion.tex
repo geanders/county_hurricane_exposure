@@ -84,6 +84,28 @@ hazard metrics~\parencite{chakraborty2005population, peduzzi2009assessing}.
 This functionality can be critical, as different hazards of tropical cyclones can
 act synergistically in causing impacts~\parencite{smith2009}.  
 
+\textbf{This dataset is limited to the contiguous US. The precipitation data is
+extracted and aggregated to the county level from a re-analysis data product.
+While the re-analysis product used here (NLDAS-2) only covers the contiguous
+US, other similar re-analysis products, as well as other types of precipitation
+datasets, have global coverage \parencite{sun2018review}. The wind data are
+generated based on a model that is currently US-focused
+\parencite{stormwindmodel}, but could be extended to other areas, although this
+would require adding new land/sea masks within the associated software, as well
+as accounting for differences across storm basins in wind averaging periods
+\parencite{harper2010guidelines} and in the direction of cyclonic winds in the
+Northern versus Southern Hemisphere. Further, since the core of the wind model
+was developed based on data from Atlantic-basin storms
+\parencite{willoughby2006parametric}, an extension to other areas should
+include separate validation and calibration to ensure it performs appropriately
+in those settings. Other wind field modeling software is also available that
+already provides a global coverage, like Geoscience Australia's Tropical
+Cyclone Risk Model (http://geoscienceaustralia.github.io/tcrm/). For tornado
+and flood events, the data described in this paper drew on a US-focused storm
+events database, and so international extension of data on these hazards would
+require access to similar databases covering other countries. Finally, the
+relevant geopolitical boundaries to use for aggregation would vary by country
+(e.g., municipalities in Mexico, districts in India).}
 
 \subsection*{Patterns in tropical cyclone exposures}
 
