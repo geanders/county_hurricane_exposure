@@ -279,6 +279,39 @@ insurers, although the quality of disaster loss data is well known to be
 less than ideal for secondary research [can be prone to bias through a number
 of mechanisms] [ref to Gall paper?].
 
+FEMA declaration is largely subjective, requiring state governors and/or tribal
+chiefs to submit a proposal for government aid on the basis that local resources
+are overwhelmed [@FEMA]. As a result, using FEMA disaster declarations as
+exposure classification to hurricanes restricts exposure to 1) those states
+whose resources are overwhelmed and 2) those states who apply for FEMA aid.
+(FEMA is likely less objective given societal effects (politics) [@Kunkel1999])
+As a result, other severely impacted counties and states that may not fit FEMA
+criteria are excluded and may therefore be incorrectly identified as unexposed,
+preventing researchers from assessing the full impact of a given hurricane
+[JMF-- the Grabich 2016 study actually found that FEMA assigned the highest
+exposure, and may overestimate the health effects of a hurricane; GBA-- let's
+think about why that might have had "false positives". I think that would be an
+interesting point to include here.]. Researchers have found heterogeneity in
+exposure assignments of counties, both within and between storms, when different
+metrics of exposure are used [@Grabich2016; @Grabich2015]. Such
+missclassification can have important consequences in assessments of the public
+health and economic impacts of tropical storms.
+
+One study used FEMA disaster declarations as a binary indicator of tropical
+storm exposure [@Grabich2016]. They found that this metric tended to assess a
+lot more counties as "exposed" to a storm than distance- or wind-based metrics
+[@Grabich2016], although they only compared the two exposure metrics as applied
+to four storms (Hurricanes Charley, Frances, Ivan, and Jeanne in Florida in
+2004).
+
+Data on storm impacts, including property damage or insurance claims data, are
+sometimes available through storm databases or publications (e.g., NOAA's Storm
+Events data, *Monthly Weather Review*). While such data could potentially be
+used to create an exposure metric, tropical storm damage data requires some
+normalization, to incorporate both changes in dollar value over time and also
+changes in development in at-risk areas, to be comparable over extended time
+periods [@Pielke1998].
+
 \begin{shaded}
 \textbf{R1 Comment 4:}
 Line 95---wondering if there is a better word for "hits" here. Maybe "exposed?"
@@ -539,6 +572,106 @@ hazards of the storms.
 
 We have moved other suggestions that you sent in "Track Changes" of the Word 
 document for the original manuscript and address each in detail below.
+
+The largest-scale county-level exposure study is likely that of @Zandbergen2009,
+which estimated exposure in US counties to all US landfalling Atlantic basin
+tropical storms between 1851 and 2003, using both distance and an exposure
+metric that incorporated distance and windspeed. They used this exposure
+evaluation to create maps of total exposure to tropical storms within US
+counties, as well as to explore associations between a county's long-term
+exposure to tropical storms and its location, distance from the coast, size, and
+shape [@Zandbergen2009]. @Kruk2010 explored exposure to hurricane-related winds
+in the United States, including inland areas, for 1900-2008.
+
+Geographical patterns can differ for these different
+storm hazards, and so exposure assessment based on one hazard could create
+exposure misclassification if the pathway for health risks is through a
+different storm hazard.   
+
+A tropical cyclone's high winds can bring health risks and property damage
+through structural damage of houses and other buildings, falling trees, and
+wind-borne debris [@rappaport2000] and cause power
+outages [@liu2005; han2009], which introduce a number of threats to
+human and ecological health, including water quality risks if the outage affects
+wastewater treatment plants [@mallin2006].  Other risks can exist
+without severe wind; for example, one study found that most of the direct
+hurricane-related deaths in the US between 1970 and 1999 occurred in cases
+when wind was below hurricane strength, including for Tropical Storms Charley
+in 1998 and Alberto in 1994 [@rappaport2000].  Tropical cyclones can
+produce excessive rain, especially in certain topographies (e.g., near
+mountains), so counties well inland sometimes experience more extreme rain than
+coastal counties. Flood risks from tropical cyclones can result from this rain,
+although the two risks are not perfectly correlated [@chen2015]. In the
+US, over half of hurricane-related direct deaths from 1970 to 1999 from
+Atlantic basin storms were a result of freshwater
+flooding [@rappaport2000]. Flooding can also degrade water
+quality [@mallin2006], which can threaten both human and ecological
+health.
+
+If a study misclassifies exposure to the hazard or hazards that cause the
+health risk being studied, the study will generate biased estimates of tropical
+cyclone risks and impacts. Further, when different studies use different
+methods to assess exposure to tropical cyclones, their results are difficult to
+meaningfully compare and aggregate. If different methods identify
+similar sets of communities as ``exposed'',  these concerns are less serious.
+However, if different methods differ substantially in which communities they
+identify as ``exposed'', it makes it very important that epidemiological
+studies are thoughtful in how they assess exposure.
+
+These analyses can also help researchers compare and interpret results from
+previous epidemiological studies that have assessed tropical cyclone exposure in
+different ways, helping to [synthesize] previous epidemiologic results to form a
+better picture of how these storms can affect human health.
+
+However, these frequency maps, together with evidence from
+specific tropical cyclones (Figures \ref{fig:ivanexposure}
+and \ref{fig:jaccard}),  do illustrate the potential for strong differences in
+spatial patterns in tropical cyclone exposures, depending on which tropical
+cyclone hazards are considered.  A few previous studies have sought to
+determine county-level exposure to tropical cyclones over multi-year periods,
+including @zandbergen2009, which estimated exposure in US
+counties to all US landfalling Atlantic-basin tropical cyclones
+between 1851 and 2003, using both a distance-based metric and a metric that
+combined distance and windspeed, and [@kruk2010], which explored
+exposure to hurricane-related winds in the US, including inland areas,
+for 1900--2008.  Our results suggest that such exposure assessments may
+perform well in capturing some tropical cyclone hazards (e.g., wind), but
+likely miss other potentially dangerous tropical cyclone exposures, especially
+for hazards that repeatedly threaten northern or inland counties (e.g., rain,
+flooding).
+
+Therefore, use of distance to assess tropical cyclone exposure for impact
+studies could result in problematic exposure misclassification, which could mask
+true associations, even strong associations, between tropical cyclone exposure
+and outcomes of interest in impact studies [@savitz2016interpreting;
+armstrong1998effect]. The use of a single hazard-based metric (e.g., wind) could
+cause similar problems if the impact is driven, at least in part, by a different
+hazard or by multiple hazards of the tropical cyclone.
+
+If measurements of one storm hazard are used as a proxy to capture exposure to
+a different hazard, or a non-hazard proxy like distance to the storm track is
+used to assess exposure to storm hazards, the resulting exposure
+misclassification could be differential (i.e., associated with the outcome of
+interest or with factors associated with risk of the outcome of interest). 
+
+Therefore for most tropical cyclones, since exposure assessments often differ
+across storm hazards, as well as between each storm hazard and a distance-based
+proxy measurement, exposure misclassification is a potential risk.
+
+Further, we investigated agreement in exposure assessment across these metrics
+when applied individually. We found large differences in which counties are
+exposed to different hazards of tropical cyclones and that distance is, at
+best, a moderate, and often a very poor, surrogate for exposure to the specific
+tropical cyclone hazards of high wind, extreme rainfall, flooding, and
+tornadoes. Use of distance as a surrogate for any of these hazards, or exposure
+assessment based on one hazard when the pathway for health impacts is in part
+or full through another storm hazard, could lead to exposure misclassification.
+In the case of tropical cyclone risk and impact studies, including
+epidemiological studies, this would result in biased estimates.  Our findings
+highlight the importance of clarifying the potential pathway from tropical
+cyclone hazards to health impacts when conducting tropical cyclone
+epidemiological studies, and then basing exposure assessment on these hazards.
+
 
 **Response:** 
 
@@ -1495,6 +1628,20 @@ metrics of tropical cyclone exposure for storms in 1996 and later."}
 
 **Response:** 
 
+As suggested, we have added that these events are based on reports in the
+Methods, in addition to our previous discussion of the point in the Discussion:
+
+> **Revised text (relevant addition in bold):**
+To identify flood- and tornado-based tropical cyclone exposures in US counties,
+we matched storm tracks with event listings from the National Oceanic and
+Atmospheric Administration (NOAA)’s Storm Event Database (NOAA NCEI 2020).
+**Events are listed in this database based on reports from ... and other
+sources.** While this database has recorded storm data, particularly tornadoes,
+since 1950, its coverage changed substantially in 1996 to cover more types of
+storm events, including flood events (NOAA NCEI 2020). We therefore only
+considered flood metrics of tropical cyclone exposure for storms in 1996 and
+later."
+
 \begin{shaded}
 \textbf{R3 Comment 5:}
 Line 294: What is meant by the phrase "traditional tornado event database"?
@@ -1510,6 +1657,13 @@ data."}
 \end{shaded}
 
 **Response:** 
+
+This database is NOAA's database of records on tornado events in the United 
+States. It is the original source for the only other national tornado database
+available for the country (the SPC's ...), which provides a version of the 
+same data in which tornado events are joined into a single record in cases where 
+they cross county lines. There is no other comparable source of data on tornado
+occurrences that could be used for a comparison as validation. 
 
 The NOAA Storm Events database originated as a database for recording tornadoes
 [? anything else] in the US in 195[x], and was originally called ... . The
@@ -1629,11 +1783,132 @@ classifying continuous exposures into binary ones within the table.
 
 **Response:** 
 
-Wind: gale force?
+For all outcomes, there are various reasonable choices that can be picked for
+the threshold in defining exposure. There is not room to go into these details
+within Table 1, so instead we added a separate table to the Supplemental
+Material that provides both some reasoning behind the thresholds selected in
+this study and also other reasonable thresholds that could be considered.
+Ultimately, this choice will depend on what a researcher considers as plausible
+causal pathways for the outcome he or she is studying. For example, if power
+outages form a plausible step in the pathway, then the threshold for gale-force
+or strong gale-force winds might be reasonable, while if the pathway is more
+likely to be through larger-scale building destruction, a higher threshold would
+be more reasonable. Some studies have done sensitivity analyses to consider how
+results changed using different exposure metrics. For example, @Czajkowski2011
+performed a sensitivity analysis using different assumptions about wind decay
+away from the center of a storm, while @Currie2013, who used a distance-based
+exposure metric, considered different buffer distances as a sensitivity
+analysis.
 
-Precipitation: 
 
-Distance: 
+- **Wind:** This threshold is the threshold for gale-force and higher winds
+based on the Beaufort wind scale. This value is used by the National Hurricane
+Center [?] as the outer limit of winds for its wind radii product in storm 
+tracking data. Other reasonable choices for a threshold of wind exposure 
+could include the two more intense thresholds also used in the NHC [?] wind
+radii estimates of storm extent (50 knots and 64 knots, the later of which 
+is the threshold for hurricane-force winds on the Beaufort Scale) or other
+thresholds on the Beaufort Scale (e.g., "strong gale", which starts at 
+41 knots; "storm", which starts at 48 knots; "violent storm", which starts
+at 56 knots).
+
+- **Rain:** This threshold is ... Other reasonable thresholds might be ... or
+might incorporate different ranges of days around the storm's closest approach
+to a county in calculating the cumulative precipitation. For example, ... For
+the most part, using our window (two days before to one day after a storm's
+closest approach) captured most of the storm-associated precipitation that would
+have been counted using a wider window from five days before to two days after a
+storm's closest approach, even for a large, slow storm. However, for a storm
+that loops and so passes some counties twice, such as Allison (2001), this
+four-day window may not be adequate, and lead to an underestimation of total
+rainfall associated with the storm relative to estimates for faster-moving
+storms. Other storms that looped over or near land and so passed close to US
+counties twice include Allison (1989), Alberto (1994), Gordon (1994), Dennis
+(1999), Edouard (2002), Fay (2002), Alex (2004), Ivan (2004), Dennis (2005), and
+Ophelia (2005). One difficulty in measuring rain exposure consistently across
+many different storms is how many days to include in the rain total. Some
+storms, especially ones associated with dangerous rainfalls, can move very
+slowly, meaning a window of several days needs to be used to fully capture
+storm-related rainfall. For example, one study used a period of over four days
+to provide storm rainfall totals from the slow-moving Hurricane Danny in 1997
+[@Medlin2007]. Single-storm studies often measure rainfall as the total rainfall
+over the full "event" (e.g., Medlin2007); however, the timing of the event is
+determine in a customized way for each storm, making it difficult to extend to
+multi-storm analyses. We included more days prior to the storm because
+storm-related rains often precede the passing of the storm's center [ref]. 
+
+
+- **Distance:** This threshold is one that has been commonly used in studies in
+which distance from the storm's track is used as a proxy for tropical cyclone
+exposure (for example, [refs]). Further, [anything in relation to storm size?].
+Other reasonable thresholds for distance include ..., all of which have also
+been used in previous research in assessing tropical cyclone exposure using
+distance from the storm's track as a proxy. Other distance-based exposure
+metrics have defined "exposure" to occur only when a storm's center track passes
+through a county's boundary (e.g., @Zandbergen2009, who describe this metric of
+exposure as a "hit" on the county; @Kinney2008 is another example that
+considered highest exposures for counties directly on the storm's path). This
+way of measuring exposure can exclude nearby counties that suffered extreme
+conditions from the storm but were not directly on the hurricane's track
+[@Kruk2010], especially since hurricanes can have a width ([typical storm width;
+citation])[JMF-- Weatherford and Gray paper referenced in Grabich 2016 may be a
+good place to start. Suggest 30-60km width of the eye of the storm itself] that
+is much larger than a typical county's width and since a hurricane's maximum
+winds can extend well away from the storm's center. Further, exposure assessed
+using this method is associated with the size [@Zandbergen2009; @Kruk2010] and
+shape [@Zandbergen2009] of a county. (While some studies have avoided this
+problem by determining exposure for equal-area grid cells (e.g., [@Kruk2010]),
+in studies where exposure needs to be matched with a county-level outcome, some
+process of aggregation from grid cells to counties would still need to be
+performed.) By contrast, assessing distance-based exposure based on measuring
+distance between the storm track and each county's center would be less
+susceptible to differences in county size and shape and so might be a more
+reliable metric of exposure than determining if a storm track ever crossed a
+county boundary. Further, assessing the minimum distance between county center
+and the storm track, as we do here, allows for a continuous, rather than binary,
+metric of distance-based exposure to a storm. To date, distance parameters
+involved with assessing risk of a particular storm have been rather arbitrary,
+contributing to the necessity in understanding how such parameters influence a
+county's exposure status. In assessing the risk of a given storm based on
+distance, recent studies have defined the distance from the storm track affected
+by a given storm differently. @Czajkowski2011 assessed county-level risk and
+exposure based on a three-tierd definition, with primary counties being those
+closest to the storm track on either side, secondary counties being adjacent to
+primary coutnies, and tertiary counties adjacent to secondary counties. Such a
+definition resulted in an exposure defenition based on an average distance
+radius of 120 km [75 miles] on either side of the storm track [@Czajkowski2011].
+Such a distance is slightly larger than that commonly used by public health
+departments (i.e., 100 km) [@Czajkowski2011]. Other studies used distance
+buffers of 30 kilometers [@Currie2013] or of 30, 60, and 100 kilometers as
+thresholds for identifying distance-based exposure [@Grabich2016] [check the
+Grabich paper-- was this distance to any part of a county, or to the center of
+the county?; JMF-- I think any part of the county]. Another study used a
+distance criterion of 60 kilometers from the storm track, classifying all
+counties for which the 60 km buffer fully or partially passed through the
+county's boundaries as exposed [@Grabich2015] [again, check to see if this was
+to any point in the county or to some center point of the county][JMF-- it is
+not abundantly clear in the Grabich 2016 article; based on their graphs it seems
+like they considered a county exposed if the definition they used crossed any
+county boundary. The Grabich 2015 paper specifies both full and partial counties
+being included]. In a study assessing the association between hurricanes and
+undesireable birth outcomes, researchers found that results were not sensitive
+to the omission of residences 100 km from the storm path, and that results
+varied insignificantly from 30-75 km [@Currie2013]. One study used distance to
+determine exposure to landfalling US hurricanes by assigning counties along the
+storm's tracks as "primary" exposures, counties neighboring primary counties as
+"secondary" counties, and counties neighboring secondary counties as "tertiary"
+counties; this method correspond to a distance buffer of approximately 75 miles
+(120 kilometers) from the storm track for a county to qualify as "exposed" to a
+storm [@Czajkowski2011]. The study found that about 30 direct hurricane
+fatalities over their study period (1970--2007) occurred outside of this
+distance range from the storm center [@Czajkowski2011], suggesting that this
+distance choice can cause some counties with dangerous exposures to a storm to
+be mis-identified as "unexposed". Tropical cyclones vary dramatically in size:
+US tropical cyclones have been observed with radii to maximum winds as small as
+20-km and as large as 200-km [@mallin2006; @quiring2011variations].
+
+
+
 
 \begin{shaded}
 \textbf{R3 Comment 7:}
@@ -1649,9 +1924,7 @@ on the wind radii dataset described in the text, as requested. The original and
 revised versions of this paper are reproduced in this response document as
 Figure \@ref(fig:fig3).
 
-[Also revise figure legend?]
-
-```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Figure caption.}", fig.show = "hold", out.width="50%"}
+```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Comparison of two sources of wind exposure estimates: (1) modeled peak sustained surface wind and (2) estimates based on HURDAT2's wind speed radii. Each point represents a storm, with the x-axis giving the percent of counties classified in the same category of peak sustained surface wind (< 34 kt; 34--49.9 kt; 50--63.9 kt; $\\ge$64 kt) by both sources of data. The color of each point gives the number of study counties that were exposed to peak sustained surface wind of at least 34 kt (based on modeled wind). Estimates are shown for study storms since 2004, the earliest year for which post-storm reanalysis wind speed radii are routinely available in HURDAT2, and for which at least one study county had a peak sustained wind of $\\ge$34 kt based on the post-storm wind radii.}", fig.show = "hold", out.width="50%"}
 include_graphics("../figures/windcomparison.pdf")
 include_graphics("figures/windcomparison.pdf")
 ```
