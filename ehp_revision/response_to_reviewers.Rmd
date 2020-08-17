@@ -389,102 +389,54 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 
 **Response:** 
 
-Great idea!
+It turns out that, because we have shared the data as an R package, it should
+already be accessible to use on the DesignSafe platform.
 
-We have investigated this. DesignSafe is ...
+DesignSafe is an online platform sponsered by the National Science Foundation as
+part of the Natural Hazards Engineering Research Infrastructure
+[@rathje2017designsafe]. This platform can be used to store, share, and publish
+citable data related to natural hazards through its Data Depot. It goes beyond a
+data repository, however, and also allows researchers to conduct data
+integration and analysis in the cloud through its Discovery Workspace, while
+drawing on data stored in the Data Depot and while using scientific programming
+tools.
 
-As part of its platform, DesignSafe allows users to work in a number of 
-programming languages, including R (through Jupyter Notebooks). Therefore, 
-DesignSafe users already have access to any data shared through an R package, 
-including the data we present in this manuscript, without the data needing 
-to be separately loaded and published through DesignSafe's Data Depot. 
+As part of its platform, DesignSafe allows users to work in a number of
+programming languages, including R (through Jupyter Notebooks)
+[@rathje2017designsafe]. Therefore, DesignSafe users already have access to any
+data shared through an R package, including the data we present in this
+manuscript, without the data needing to be separately loaded and published
+through DesignSafe's Data Depot.
+
+This is great, because it might otherwise be difficult to try to maintain copies
+of the dataset in different repositories (i.e., one copy as an R package and
+another as a DesignSafe dataset), and there could be confusion about things like
+the equivalence of the two copies. R packages are citable through a standard
+format that gives the R package version, while data publicly shared on
+DesignSafe is assigned a digital object identifiers (DOI)
+[@rathje2017designsafe], and so different citations would be used for the same
+dataset depending on how the user accessed it. If updates of one copy were not
+immediately updated for the other copy, the copies could get out of sync, and
+maintaining two synced copies would add would add an extra layer of work with
+each update to the R package (we have been updating several hazards as new data
+becomes available). DesignSafe's interface with R avoids this problem by
+allowing its users direct access to our package and its data through that path,
+as it allows for a single, citable, licensed version of the data stored and
+shared from a single location, with no question of syncing separate versions of
+the data or clarifying licensing and citation practices across two storage
+locations.
 
 We have added a note in the manuscript to let readers know that, because the
-data is shared through an R package, and because DesignSafe's [Workspace] allows
-users to work in R, the data can be fully accessed and used for those working on
-the DesignSafe platform by using the same code in a DesignSafe Jupyter notebook
-that would otherwise be used on a local computer.
+data is shared through an R package, and because DesignSafe's Discovery
+Workspace allows users to work in R, the data can be fully accessed and used for
+those working on the DesignSafe platform by using the same code in a DesignSafe
+Jupyter notebook that would otherwise be used on a local computer.
 
-This is good, because otherwise there would be a good deal of overlap between
-the data on DesignSafe and that in the R package. R packages already created a
-citable source, comparable to the DOI assigned to data by DesignSafe when it is
-published. Further, R packages include licensing information, as does DesignSafe
-for published data. Finally, if the data were shared through both platforms, it
-would be critical to make sure that it was clear that the two datasets are
-analogous and also to keep them up to date with each other, which would add an
-extra layer of work with each update to the R package (we have been updating
-several hazards as new data becomes available). It is wonderful that
-DesignSafe's interface with R avoids this problem by allowing its users direct
-access to our package and its data through that path, as it allows for a single,
-citable, licensed version of the data stored and shared from a single location,
-with no question of syncing separate versions of the data or clarifying
-licensing and citation practices across two storage locations.
-
-*What is DesignSafe:*
-
-> "DesignSafe is the cyberinfrastructure platform that has been developed as
-part of NHERI to support natural hazards engineering research, and
-it succeeds the NEEShub cyberinfrastructure that was developed for the
-earthquake engineering community through the Network for Earthquake
-Engineering Simulation (NEES) program." [@rathje2017designsafe]
-
-> "DesignSafe plays an important role in integrating the various NHERI
-components and the research taking place at NHERI facilities, but also has the
-broader goal of enabling transformative research in natural hazards and
-engineering across the numerous technical disciplines engaged in this field."
-[@rathje2017designsafe]
-
-> "DesignSafe has been developed as a flexible, extensible, community-driven
-cyberinfrastructure, and it embraces a cloud strategy for the big data generated
-in natural hazards engineering. DesignSafe provides a comprehensive CI that
-supports the full research lifecycle from planning to execution to analysis to
-publication and curation." [@rathje2017designsafe]
-
-> "The future of natural hazards engineering research requires the integration
-of diverse data sets from a variety of sources including experiments,
-computational simulation, and field reconnaissance, as well as a variety of
-research disciplines including earth science, social science, building science,
-and architecture. The DesignSafe cyberinfrastructure has been designed to
-provide the functionalities that will enable transformative research in natural
-hazards engineering. By adopting a cloud strategy, DesignSafe allows for a
-fundamental change in the way that research is performed. It provides a
-comprehensive cyberinfrastructure that supports research workflows, data
-analysis, and visualization, as well as the full lifecycle of experimental,
-field, and computational research required by engineers and scientists to
-effectively address the threats posed to civil infrastructure by natural
-hazards. The integration of data and computation in the cloud will enable new
-research discoveries in natural hazards engineering, which in turn can lead to
-more hazard-resilient civil infrastructure." [@rathje2017designsafe]
-
-*Access to R:*
-
-> "The real revolution takes place downstream of data generation. Here, data 
-analytics and visualization are performed in the cloud within the *Discovery
-Workspace* while accessing any data within the *Data Depot*. Researchers can 
-invoke common analysis programs, such as MATLAB, as well as other analysis/
-visualization tools, such as Jupyter notebooks. A Jupyter notebook is an 
-electronic notebook that allows users to embed rich text elements as well
-as computer code, graphs, and visualizations within a single notebook that
-can be shared through the web. Over 40 different programming languages are 
-supported in Jupyter, including Python and R, and MATLAB code can be easily 
-converted, making Jupyter a versatile tool for research. Performing analysis in 
-the cloud allows researchers to integrate and explore various data without
-tedious downloads. Additionally, using a seamless cyberinfrastructure to 
-complete all research tasks enables tracking and relating of the processes 
-applied to data." [@rathje2017designsafe]
-
-*Data Depot:*
-
-> "the Data Depot, a flexible data repository with streamlined data management
-tools." [@rathje2017designsafe]
-
-> "As data progresses towards publication the requirements for metadata 
-increase as metadata provides users with search and discovery functions. At
-the end of the research project the user may edit the information for 
-publication and complete the process of assigning digital object identifiers
-(DOIs) and applying the appropriate license. On-demand assistance from a 
-curator is available to provide training and guide users through their data
-curation and publication needs." [@rathje2017designsafe]
+> **Text added to the Methods of the revised manuscript (added text in bold):**
+"**By sharing this data as an R package, it is also accessible through 
+cloud-based computing platforms that incorporate Jupyter notebooks, including
+the National Science Foundations's DesignSafe platform for natural hazards
+engineering research [@rathje2017designsafe].**"
 
 # Reviewer 2: {-#reviewer-2}
 
@@ -1410,191 +1362,21 @@ Coordinated Universal Time (UTC)."}
 
 **Response:** 
 
-"Synoptic meteorology" refers to ...
-A key idea is that observations from a widespread geographical area can be
-integrate to provide a picture of large-scale weather [features?], including
-large areas of high or low pressure [?].
-
-> "In meteorology, the term synoptic denotes simultaneous observations taken
-globally, or at least over a large area." [@willoughby2007hurricane]
-
-> "Nearly 20 years ago [from 1937] [Bjerknes] declared that numerous and 
-important problems might be solved with the aid of observations already 
-assembled in the archives of different bureaus, but that the difficulties
-in making these observations serve a special purpose were unsurmountable
-for the individual scholar. He added that, in particular, the synoptic 
-charts representing the momentary states of the atmosphere over large
-areas of the earth, in all the necessary details and exactitude, were 
-excessively difficult to assemble. His proposal was that there be entered
-at the central bureau of each country, on the appropriate maps, all the available
-observations taken in that country and that there be employed, by the different
-bureaus, maps that may be superimposed or juxtaposed." [@gregg1937international]
-
-However, to integrate data from many sources to provide inputs for broadscale,
-synoptic analysis, it is helpful to use some standards in collecting these data
-at different locations. To facilitate numerical weather forecasting and other
-synoptic meteorology, weather data are regularly collected at standardized
-times, so that the data can be more easily integrated as an input to models.
-This practice extends back over 100 years, when data were collected from many
-[offices?] in the US by telegram [?] at regular times during the day and used to
-create synoptic weather maps that captured major weather systems in the country.
-
-> "In order to allow comparison of surface conditions at the same time
-throughout the world, the groups regulating the collection of
-hydrometeorological data have established a standard time for taking
-observations. These observations will have times observed within the 10 minutes
-preceding the UTC standard time. Hence surface observations for meteorological
-use have timestamps reflecting 0000, 0300, 0600, 0900, 1200, 1500, 1800, 2100
-UTC." [@usnwstime]
-
-> "Since the end of World War II, observers have launched rawinsonde observation
-worldwide at 00 and 12 UTC (coordinated universal time). High-threat situations,
-such as impending TC landfall, may dictate observations at 6-h or even 3-h
-intervals. Interpolating rawinsonde observations to the model's mesh and
-starting the calculation at a synoptic time is the simplest way to prepare a
-model initial condition." [@willoughby2007hurricane]
-
-> "Because simple interpolation in space and time is a less-than-optimum way to
-use observations, nonsynoptic data require elaborate four-dimensional
-variational data assimilation schemes." [@willoughby2007hurricane]
-
-> "By 1941, charts for the 750, 500, and 250 mbar surfaces were being prepared
-daily for 0400, 1200, and 2000 GMT." [@grahame2000development]
-
-> "During the period considered here, NHC issued advisories 3 h after the
-standard synoptic time (0300, 0900, 1500, and 2100 UTC)." [@torn2012uncertainty]
-
-> "The operation data assimilation and forecast cycle interval is 6 h"
-[@aberson201010]
-
-> "Dan Petersen asked whether a data deficiency really exists with all the
-observational sources in the Atlantic region, or are the data not being properly
-used in the numerical models? ... Steve Lord emphasized the difficulty of the
-task because many of these observations are not obtained at the synoptic
-times..." [@elsberry1992there]
-
-> "In the modern era, forecasters rely on purely dynamical models that integrate
-the Navier-Stokes equations for atmospheric motions to represent both the storm
-itself and its surroundings. Numerical models are structured on a computational
-grid with temperature, moisture, and wind tabulated in more-or-less rectangular
-cells." [@willoughby2007hurricane]
-
-> "Predicting the weather required a widespread but highly coordinated team of
-observers and forecasters. Organization was key... They transmitted data from
-the field using forms and protocols adapted from those that Abbe had developed
-while forecasting the weather from Cincinnati, Ohio. The information arrived by
-telegraph coded to maximize accuracy and minimize the word count and changes.
-The reports piled up in a rush at the appointed hours." [@willis2006cleveland]
-
-> "Three times daily the duty forecaster broadcast a synopsis of prevailing
-weather conditions nationwide..." [@willis2006cleveland]
-
-> "The requirement of synoptic data collection is easily met by the
-'conventional' observing system now serving as the main source of meteorological 
-data throughout the world, since it is based on human observations which could 
-be scheduled at convenient synoptic times." [@morel1971initialization]
-
-Since large-scale weather features are very larger, relevant data for a synoptic
-map often comes from locations with different local times. The need for
-synchronized weather data collection therefore actually played an important role
-in establishing standardized time zones in the United States in [year]. Synoptic
-weather times are typically set based on the Universal Time Constant, with times
-recorded in Coordinated Universal Time (i.e., Greenwich ...), and time stamps on
-weather maps and data based on this time zone often is given a "Z" (for "Zulu",
-an earlier name for this timezone) after the time.
-
-> "Accuracy in forecasting depended on the accurate timing of observations. At
-first weather observers used local time because no system of standard time
-existed, either in the United States or abroad. Local time often meant railroad
-time, and that could vary as much as 20 minutes from the time proper to the
-local meridian. Abbe called for change, emphasizing the need for simultaneous
-readings by Signal Service observers in order to construct accurate charts and
-weather maps. In 1875, he recommended to the president of the American
-Meteorological Society the establishment of a committee on standard time. ...
-Abbe's report in 1879 recommended the system of meridians that is now in general
-use ... a system of time meridians one hour apart across the country, anchored
-on the Greenwich prime meridian." [@willis2006cleveland]
-
-> "From Abbe's perspective, however, the full potential for dynamic weather
-prediction would not be achieved without standard time worldwide."
-[@willis2006cleveland]
-
-> "The time in all hydrometeorological products is expressed according to 
-a single standard, which is the Universal Coordinated Time (UTC) 
-(formerly known as Greenwich Mean Time [GMT] or Zulu (zero) Time [Z])."
-[@usnwstime]
-
-> "The U.S. National Weather Service base all data and product times on the 
-UTC standard. ... A common practice is to include a time of the observation 
-or event denoting the time with a following capital letter 'Z' to indicate the 
-time as UTC." [@usnwstime]
-
-> "The extent and the hour of the observations changed over time. Originally the
-observers took the readings at 0735, 1635, and 2335, Washington time, but the
-last reading was soon changed to 2300 so that the information could be included
-in the morning newspapers. Before the introduction of standard time and time
-zones within the United States, a confusing multiplicity of local times existed.
-In 1870 there were over 100 such regional times. For the purposes of the
-meteorological observations, observers used Washington time until 1885.
-Thereafter the observers took their readings according to eastern time, or that
-at the 75th meridian west of Greenwich, England. Observers also made local-time
-readings from 1876 to 1881.[30]" [@raines1996getting]
-
-> "Once the observers had gathered the weather data, the means of reporting and
-disseminating it became most important. Like the Smithsonian, the chief signal
-officer made arrangements with the leading commercial telegraph companies to
-carry the tri-daily reports. Civilian telegraph experts established special
-circuits routed to the Signal Office. The initial arrangement with Western Union
-regarding transmission was only temporary, and at the end of the trial period
-the company refused to continue service. The House Appropriations Committee held
-hearings over the dispute and ruled that the company had a mandate to transmit
-the weather information as government business. The Signal Corps compensated the
-company, however, at rates determined by the postmaster general.[34]" [@raines1996getting]
-
-> "When making the daily telegraphic reports, the weather observers used special
-codes to reduce their length to twenty words in the morning and ten in each of
-the other two reports, thereby saving the government both time and money.[35]
-Regular transmission of the reports began at 0735 on 1 November 1870 from
-twenty-four stations stretching from Boston, Massachusetts, south to Key West,
-Florida, and west to Cheyenne in the Wyoming Territory. In addition to the
-station atop Mount Washington (opened in December 1870), the Signal Corps soon
-reached new heights in weather reporting with the station on Pikes Peak that
-began reporting in November 1873.[36]" [@raines1996getting]
-
-> "To provide a picture of weather conditions across the country, the observers
-made their reports as nearly simultaneous as possible. The weather service did
-not initially make forecasts, and the enabling legislation did not specifically
-call for it to do so. Eventually general forecasts, referred to as
-probabilities, emanated from the Signal Office in Washington. Locally, the
-observers posted bulletins and maps in the offices of boards of trade and
-chambers of commerce to provide weather information to the public. Post offices
-also displayed daily bulletins, and observers supplied local newspapers with
-data. Some communities appointed meteorological committees to confer with the
-chief signal officer and to serve as a check upon the operations of the local
-weather station. On the national level, the Signal Office in Washington issued
-daily weather maps compiled from the reports received from all the stations. It
-also published the Daily Weather Bulletin, Weekly Weather Chronicle, and the
-Monthly Weather Review. All were available for sale to the public. Myer
-estimated that through these various means at least one third of American
-households received the Signal Corps' weather information in some form. A
-railway bulletin service, initiated in 1879, enabled stations along many major
-railroads to display weather information.[37]" [@raines1996getting]
-
-> "The Signal Corps' telegraph network soon expanded beyond the eastern
-seaboard. In 1874 Congress enacted legislation directing the War Department to
-build lines to connect military posts and protect frontier settlements in Texas
-against Indians and Mexicans. Other acts authorized lines in Arizona and New
-Mexico and, somewhat later, the Northwest. These lines were intended to serve
-sparsely settled areas where commercial lines were not yet available. For the
-most part, soldiers maintained and operated the lines, but the Corps employed
-some civilians. As the telegraph extended its reach, the weather system also
-grew, because the operators doubled as weather observers." [@raines1996getting]
-
-> "Until 1934 the Weather Bureau offices operated 12--15 hours a day with two
-basic observations taken at 8 a.m. and 8 p.m. The observations were transmitted
-via telegraph. There were no satellite images and few upper air observations."
-\url{https://www.weather.gov/dvn/armistice_day_blizzard}
-
+Some weather data are collected at standardized times, so that observations from
+different locations can be meaningfully integrated to provide a view of
+large-scale (synoptic) weather systems and patterns [@usnwstime;
+@willoughby2007hurricane; @willis2006cleveland; @raines1996getting]. This
+practice extends back over 100 years, when weather data for the US were
+collected by local weather offices and sent by telegram at regular times each
+day into a central office, which used this information to create synoptic
+weather maps that captured major weather systems in the county and from this
+sent back forecasts to local weather offices, also at standardized times
+[@willis2006cleveland; @raines1996getting]. Synoptic weather times are typically
+set based on the Universal Time Constant, with times recorded in Coordinated
+Universal Time (i.e., Greenwich Mean Time), and time stamps on weather maps and
+data based on this time zone often is given a "Z" (for "Zulu", an earlier name
+for this timezone) after the time [@usnwstime;
+@morris2008time].
 
 We have added text to clarify the meaning of "synoptic times" in the text:
 
@@ -1651,12 +1433,12 @@ Methods, in addition to our previous discussion of the point in the Discussion:
 To identify flood- and tornado-based tropical cyclone exposures in US counties,
 we matched storm tracks with event listings from the National Oceanic and
 Atmospheric Administration (NOAA)’s Storm Event Database (NOAA NCEI 2020).
-**Events are listed in this database based on reports from ... and other
-sources.** While this database has recorded storm data, particularly tornadoes,
-since 1950, its coverage changed substantially in 1996 to cover more types of
-storm events, including flood events (NOAA NCEI 2020). We therefore only
-considered flood metrics of tropical cyclone exposure for storms in 1996 and
-later."
+**Events are listed in this database based on reports from National Weather
+Service personnel and other sources.** While this database has recorded storm
+data, particularly tornadoes, since 1950, its coverage changed substantially in
+1996 to cover more types of storm events, including flood events (NOAA NCEI
+2020). We therefore only considered flood metrics of tropical cyclone exposure
+for storms in 1996 and later."
 
 \begin{shaded}
 \textbf{R3 Comment 5:}
@@ -1935,10 +1717,10 @@ text? Is so, I suggest clarifying this in the figure label.
 
 **Response:** 
 
-We have revised the x-axis on the figure to clarify that the comparison is based
-on the wind radii dataset described in the text, as requested. The original and
-revised versions of this paper are reproduced in this response document as
-Figure \@ref(fig:fig3).
+Yes, it is the same. We have revised the x-axis on the figure to clarify that
+the comparison is based on the wind radii dataset described in the text, as
+requested. The original and revised versions of this paper are reproduced in
+this response document as Figure \@ref(fig:fig3).
 
 ```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Comparison of two sources of wind exposure estimates: (1) modeled peak sustained surface wind and (2) estimates based on HURDAT2's wind speed radii. Each point represents a storm, with the x-axis giving the percent of counties classified in the same category of peak sustained surface wind (< 34 kt; 34--49.9 kt; 50--63.9 kt; $\\ge$64 kt) by both sources of data. The color of each point gives the number of study counties that were exposed to peak sustained surface wind of at least 34 kt (based on modeled wind). Estimates are shown for study storms since 2004, the earliest year for which post-storm reanalysis wind speed radii are routinely available in HURDAT2, and for which at least one study county had a peak sustained wind of $\\ge$34 kt based on the post-storm wind radii.}", fig.show = "hold", out.width="50%"}
 include_graphics("../figures/windcomparison.pdf")

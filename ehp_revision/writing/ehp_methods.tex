@@ -123,11 +123,13 @@ category based on both data sources.
 To identify flood- and tornado-based tropical cyclone exposures in \ac{US}
 counties, we matched storm tracks with event listings from the National Oceanic
 and Atmospheric Administration (NOAA)'s Storm Event
-Database~\parencite{stormevents}. While this database has recorded storm data,
-particularly tornadoes, since~1950, its coverage changed substantially in~1996
-to cover more types of storm events, including flood
-events~\parencite{stormevents}. We therefore only considered flood metrics of
-tropical cyclone exposure for storms in~1996 and later.
+Database~\parencite{stormevents}. \textbf{Events are listed in this database
+based on reports from National Weather Service personnel and other sources.}
+While this database has recorded storm data, particularly tornadoes,
+since~1950, its coverage changed substantially in~1996 to cover more types of
+storm events, including flood events~\parencite{stormevents}. We therefore only
+considered flood metrics of tropical cyclone exposure for storms in~1996 and
+later.
 
 For each tropical cyclone, we identified all events with event types related to
 flooding (``Flood,'' ``Flash Flood,'' ``Coastal Flood'') or tornadoes
@@ -247,5 +249,9 @@ years when all exposure data were available (1996\,--\,2011).
 \subsection*{Data and code access}
 
 We have posted most study data as an open-source R package
-\parencite{hurricaneexposuredata}. We have posted remaining data and code at
+\parencite{hurricaneexposuredata}. \textbf{By sharing this data as an R package, it
+is also accessible through cloud-based computing platforms that
+incorporate Jupyter notebooks, including the National Science Foundations's
+DesignSafe platform for natural hazards engineering research
+\parencite{rathje2017designsafe}.} We have posted remaining data and code at
 \url{https://github.com/geanders/county_hurricane_exposure}.
