@@ -1175,6 +1175,22 @@ in 2004 based on flooding and tornadoes (Table 2)."
 
 **Response:** 
 
+We hope that these results can help epidemiologists who are planning new
+multi-year studies of tropical cyclones and associated health risks. For 
+planning a multi-year study, it is helpful to know how many exposures the 
+study might incorporate, as this can help in giving a general idea of whether
+the study might have adequate statistical power to investigate a certain 
+research question. This table provides some basic summaries of the extent
+of exposure to different tropical cyclone hazards, both on average for the
+storms in the study and also for those storms that were most extensive. 
+Further, as with other results in the study, it provides evidence that 
+patterns in different hazards can vary substantially, both because some 
+hazards are much less likely to expose counties (e.g., torndaoes are a fairly 
+rare exposure, based on this table) and also because there is variation in 
+the most extensive storms across the hazards considered.
+
+We have added text to help the readers interpret this table ...
+
 \begin{shaded}
 \textbf{R2 Comment 6:}
 Subsection of Results on \textit{Agreement across exposure metrics}: 
