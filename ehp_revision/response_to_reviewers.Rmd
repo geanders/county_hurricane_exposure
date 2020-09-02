@@ -1456,20 +1456,31 @@ data."}
 
 **Response:** 
 
-This database is NOAA's database of records on tornado events in the United 
+This database is NOAA's database of records on tornado events in the United
 States. It is the original source for the only other national tornado database
-available for the country (the SPC's ...), which provides a version of the 
-same data in which tornado events are joined into a single record in cases where 
-they cross county lines. There is no other comparable source of data on tornado
-occurrences that could be used for a comparison as validation. 
+available for the country (the Storm Prediction Center [SPC]'s National Tornado
+Database), which provides a version of the same data in which tornado events are
+joined into a single record in cases where they cross county lines. There is no
+other comparable source of data on tornado occurrences that could be used for a
+comparison as validation.
 
 The NOAA Storm Events database originated as a database for recording tornadoes
-[? anything else] in the US in 195[x], and was originally called ... . The
-database has gone through a number of expansions to cover more events, and it
-now includes reports of other types of [hydrometeorological?] disaster events,
-including floods, extreme heat and cold, wildfires, frost, hail, ... . However,
-it has maintained its status as the database of record [?] for tornadoes in the
-United States.
+in the US in 1953, and was originally called the Climatological Data National
+Summary [@Ashley2007]. The database has gone through a number of expansions to
+cover more events, and it now includes reports of other types of
+hydrometeorological disaster events, including floods, extreme heat and cold,
+wildfires, frost, and hail. However, it has maintained its status as the
+database of record for tornadoes in the United States.
+
+We have changed the text in the manuscript to make this clearer: 
+
+> "The tornado observations from this dataset---**along with the derived version
+of the data available through the Storm Prediction Center's National Tornado
+Database---are the tornado event data of record** for the US. **There are no other
+collections of tornado data comparable in temporal or geographical scope,** and so
+we did not further validate the tornado event data."
+
+
 
 Examples of research papers that leverage this database as a record of tornado
 events, or the version of it shared by the [Severe Storm ...] through their
