@@ -123,7 +123,7 @@ category based on both data sources.
 To identify flood- and tornado-based tropical cyclone exposures in \ac{US}
 counties, we matched storm tracks with event listings from the National Oceanic
 and Atmospheric Administration (NOAA)'s Storm Event
-Database~\parencite{stormevents}. \textbf{Events are listed in this database
+Database~\parencite{stormevents}. \textbf{Events are included in this database
 based on reports from National Weather Service personnel and other sources.}
 While this database has recorded storm data, particularly tornadoes,
 since~1950, its coverage changed substantially in~1996 to cover more types of
@@ -145,21 +145,24 @@ reported by forecast zone; for these, the event was matched to the appropriate
 county if possible using regular expression matching of listed county
 names~\parencite{noaastormevents}. 
 
-The tornado observations from this dataset form a traditional tornado event
-database for the \ac{US}, and so we did not further validate
+The tornado observations from this dataset---\textbf{along with the derived
+version of the data available through the Storm Prediction Center's National
+Tornado Database~\parencite{center2020storm}---are the official tornado event
+data} for the \ac{US}. \textbf{There are no other collections of tornado data
+comparable in emporal or geographic scope,} and so we did not further validate
 the tornado event data. It is difficult to characterize flooding at the county
 level because flooding can be very localized and can be triggered by a variety
 of causes. To investigate the extent to which the NOAA flood event listings
 capture extremes that might be identified with other flooding data sources, we
 investigated a sample of study counties, comparing the flood event data during
 tropical storms with streamflow measurements at \ac{US} Geological Survey
-county streamflow gages \parencite{usgsgages, countyfloods, dataRetrieval}.  
-We considered nine study counties, selecting counties geographically spread
-through storm-prone areas of the eastern \ac{US} and with at least one streamflow
-gage reporting data during all events. The sample counties were: Baltimore County,
-MD; Bergen County, NJ; Escambia County, FL; Fairfield County, CT; Fulton
-County, GA; Harris County, TX; Mobile County, AL; Montgomery County, PA; and
-Wake County, NC. 
+county streamflow gages \parencite{usgsgages, countyfloods, dataRetrieval}.  We
+considered nine study counties, selecting counties geographically spread
+through storm-prone areas of the eastern \ac{US} and with at least one
+streamflow gage reporting data during all events. The sample counties were:
+Baltimore County, MD; Bergen County, NJ; Escambia County, FL; Fairfield County,
+CT; Fulton County, GA; Harris County, TX; Mobile County, AL; Montgomery County,
+PA; and Wake County, NC. 
 
 For each county, we first identified all streamflow gages in the county with
 complete data for Jan.~1~1996\,--\,Dec.~31,~2018. If a storm did not come

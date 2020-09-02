@@ -89,7 +89,8 @@ much appreciate efforts that promote our collective ability to learn from and
 across disasters to build cumulative science. 
 \end{shaded}
 
-**Response:** 
+**Response:** Thank you for your helpful suggestions. We have responded to 
+each in detail below.
 
 \begin{shaded}
 \textbf{Reviewer 1 (R1) Comment 1:}
@@ -470,10 +471,86 @@ purpose and benefit of the analysis.
 
 \end{shaded}
 
+**Response:** 
+
 Thank you for this suggestion, and we can see that we could have more clearly 
 articulated in the original manuscript how our assessment of patterns in and 
 among exposures to specific hazards can help epidemiologists to design their
-studies and the statistical methods to analyze the resulting data. 
+studies and the statistical methods to analyze the resulting data. We provide
+a detailed response in our response below to Comment 1 from this reviewer.
+
+We have moved other suggestions that you sent in "Track Changes" of the Word 
+document for the original manuscript and address each in detail below. When 
+there were several comments on a related topic, we have grouped them together
+to provide a more cohesive response to the point.
+
+\begin{shaded}
+\textbf{Reviewer 2 (R2) Comment 1:}
+
+Several of the comments added by the reviewer in the Word document focused on the
+purpose of calculating agreement among hazard-based metrics. These were:
+
+\begin{itemize}
+\item Line 164: Isn't it obvious to use better exposure measures than proxies?
+Wind, rainfall, tornado, and flood are direct products of storms while distance
+is only proxy of those exposures. Rather than calculating agreement among the
+exposures, it would be important to note that these are independent hazards that
+can come together or come with different intensity and at different time
+windows.
+\item Line 354: I am not sure why different exposures should be compared and
+measured the agreement. I would just treat each exposure as single independent
+exposure and give a summary score by summing all the exposure with some
+weighting for multiple exposures. I may not understand the importance of this
+approach. If so, adding the explanation would help readers not to questioning.
+\item Subsection of Results on \textit{Agreement across exposure metrics}: 
+As stated below, storms bring different hazards to different locations with
+different time. What would be new learning by comparing these different pairs of
+exposure metrics. Somewhat apple and orange comparison. Maybe providing more
+explanation can help what the important learning from this is. I may not catch
+it. Similar comment was added earlier.
+\item Lines 494--495: Why this agreement is important? Same questions added above
+already, but still wonder what I missed. It seems like the authors try to
+develop an exposure matrix that is common in occupational epidemiology, but it
+is only valid method when the exposures are similar and lead to the same health
+outcomes.  Rain, wind, flood, and tornado should be treated separately, maybe
+except rain and flood. It is possible to be an extreme storm with only severe
+wind without major impacts from other exposures. Tornado is a good example.
+\end{itemize}
+
+The text in the manuscript for comments with line numbers are reproduced below: 
+
+\textit{Lines 164--166 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"They found important differences, concluding that a study may be prone
+to bias from exposure misclassification if distance to the storm track is used
+as a proxy for exposure (Grabich et al. 2015a)."}
+\end{quotation}
+
+\textit{Line 354 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"Finally, we investigated how well exposure assessment agreed across
+these metrics."}
+\end{quotation}
+
+\textit{Line 491--495 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"For another set of tropical cyclones (e.g., Ernesto in 2006, and Bertha
+in 1996, Isabel in 2003), there was moderate to good agreement for pairwise
+combinations of distance, rain, and wind, but poor agreement for other
+combinations of metrics, while for another set of storms (e.g., Matthew in 2004
+and Katrina in 2005), there was moderate to good agreement between distance and
+rain."}
+\end{quotation}
+
+\end{shaded}
+
+**Response:** 
 
 1. If exposure to the different hazards strongly agrees (i.e., when a county is
 exposed to one hazard, they are typically also exposed to a second), this would
@@ -522,8 +599,6 @@ reasonable to focus on that hazard, but in that case it is critical, based on
 our results, to remember that the exposure assessment is not capturing all
 hazards of the storms.
 
-We have moved other suggestions that you sent in "Track Changes" of the Word 
-document for the original manuscript and address each in detail below.
 
 The largest-scale county-level exposure study is likely that of @Zandbergen2009,
 which estimated exposure in US counties to all US landfalling Atlantic basin
@@ -624,29 +699,7 @@ highlight the importance of clarifying the potential pathway from tropical
 cyclone hazards to health impacts when conducting tropical cyclone
 epidemiological studies, and then basing exposure assessment on these hazards.
 
-
-**Response:** 
-
-\begin{shaded}
-\textbf{Reviewer 2 (R2) Comment 1:}
-Line 164: Isn't it obvious to use better exposure measures than proxies? Wind,
-rainfall, tornado, and flood are direct products of storms while distance is
-only proxy of those exposures. Rather than calculating agreement among the
-exposures, it would be important to note that these are independent hazards that
-can come together or come with different intensity and at different time
-windows.
-
-\textit{Lines 164--166 from original manuscript:}
-
-\begin{quotation}
-\noindent
-\textit{"They found important differences, concluding that a study may be prone
-to bias from exposure misclassification if distance to the storm track is used
-as a proxy for exposure (Grabich et al. 2015a)."}
-\end{quotation}
-\end{shaded}
-
-**Response:** 
+---------------------------------------------------------------------------
 
 It is obvious that it is typically better, but in cases where the proxy is much
 more practical to measure, it may need to be more than just a bit better, but
@@ -967,28 +1020,7 @@ effects of these different environmental dimensions, even if they are
 hypothesized to influence obesity risk through distinct causal pathways."
 [@leal2012multicollinearity]
 
-
-
-\begin{shaded}
-\textbf{R2 Comment 2:}
-Line 354: I am not sure why different exposures should be compared and measured
-the agreement. I would just treat each exposure as single independent exposure
-and give a summary score by summing all the exposure with some weighting for
-multiple exposures.
-
-I may not understand the importance of this approach. If so, adding the
-explanation would help readers not to questioning.
-
-\textit{Line 354 from original manuscript:}
-
-\begin{quotation}
-\noindent
-\textit{"Finally, we investigated how well exposure assessment agreed across
-these metrics."}
-\end{quotation}
-\end{shaded}
-
-**Response:** 
+-----------------------------------------------------------------------------
 
 As we note in our general response to your comments, we agree in general with
 your instinct here. However, there are some subtle points to note.
@@ -1039,12 +1071,54 @@ create a health risk, as there are many exposures with only rain in inland
 counties, and so health associations could be explored here and contrasted with
 coastal areas that experienced both wind and extreme rain.
 
+-------------------------------------------------------------------------------
+
+> "A job exposure matrix (JEM) may be defined as a cross classification of jobs
+and occupational exposures. Some matrices are based on tasks, instead of jobs. 
+... Usually there is a group of experts who build the matrix based on their 
+own knowledge and experience on occupational exopsures. The experts should 
+assess exposure to an open or fixed list of occupational exposures (that can 
+include chemical, physical, biological, and/or psychosocial agents) for an
+open or fixed list of jobs (or tasks) usually coded according to some established
+national or international classification system. Some JEMs also include 
+information for different calendar time periods." [@garcia2003glossary]
+
+[New advances in multi-pollutant analysis.]
+
+[Some of the hazards could create similar risks, if they converge on a common
+pathway of risk. For example, if pathway is through stress from property damage,
+individually and in the county, then several hazards could indeed lead to the
+same health outcomes (e.g., PTSD, other psychological markers, risk of acute
+cardiovascular outcomes, etc.). One example is extreme level of destruction both
+from wind (Hurricane Andrew, Hurricane Hugo), from river flooding associated
+with among of precipitation (Hurricane Floyd, Hurricane Florence), and from
+flash flooding associated with the rate of precipitation (Virginia storms).]
+
+[A better future direction might be through regression models with multiple
+explanatory pathways. This allows the model to fit different weights to each.
+Other models can also be explored, like regression trees, which might have an
+easier time capturing non-linearity (if exposure is included as a continuous
+value, as with wind and rain) and interactions when there are co-exposures to
+two or more hazards. Both of these are able (and will) either exclude or give a
+very low weight to an explanatory variable that does not help much in explaining
+variation in the health outcome.]
+
 
 \begin{shaded}
-\textbf{R2 Comment 3:}
-Line 394: It looks like the correlation coefficients can be very low if measured
+\textbf{R2 Comment 2:}
+
+Other comments were related to correlations estimated in the validation 
+analysis for the precipitation data:
+
+\begin{itemize}
+\item Line 394: It looks like the correlation coefficients can be very low if measured
 from 75mm or somewhere around.  This seems to be a significant issue for
 analyzing storms with heavier rainfall using NLDAS-2 data.
+\item Line 515: It would be informative to provide correlation coefficient for only
+above 75 mm measures.
+\end{itemize}
+
+The text from the referenced lines are reproduced below:
 
 \textit{Line 392--394 from original manuscript:}
 
@@ -1053,6 +1127,15 @@ analyzing storms with heavier rainfall using NLDAS-2 data.
 \textit{"Within these counties, storm-related rainfall measurements were
 well-correlated between the two data sources, with rank correlations (bottom
 right of each graph in Figure 2) between 0.87 and 0.98. "}
+\end{quotation}
+
+\textit{Line 514--515 from original manuscript:}
+
+\begin{quotation}
+\noindent
+\textit{"The rainfall data are generally well-correlated with ground-based
+observations, but may sometimes underestimate very high rainfall values (Figure
+2)."}
 \end{quotation}
 \end{shaded}
 
@@ -1086,8 +1169,42 @@ reproduced as Table \@ref(tab:highprecipcorr) of this response document).
 
 \input{tables/precip_high_corr.tex}
 
+---------------------------------------------------------------------------
+
+This is a great suggestion and helps provided quantitative support to the text
+in the paper that the reviewer highlighted when making this comment. We have
+added a table in the Supplemental Material that provides the Spearman
+correlation coefficients for both all tropical cyclones to come near the sample
+counties (replicating the analysis shown in Figure 2 of the main text) and
+then when the analysis is limited to only those events with cumulative
+precipitation of 75 mm or higher based on either data source.
+
+In several cases, the correlation was much weaker when limiting analysis to
+these severe rainfall events. For example, in Miami-Dade County, FL, the
+Spearman correlation coefficient was 0.94 for all 64 tropical cyclones that came
+near the county over the analysis period, while it was only 0.49 among the 18
+storms with cumulative precipitation of 75 mm or more. There was a similar
+reduction in Mobile County, AL. However, for some counties, the correlation
+remained high (e.g., Harris County, TX; Orleans Parish, LA), although in all
+cases there are small numbers of extreme precipitation events (5--20 across
+these sample counties), and so there is likely substantial random variation in
+these correlation estimates, since they are based on small numbers of 
+observations.
+
+[Include copy of table here.]
+
+Finally, we have added a bit to the text that the reviewer cited to mention 
+this point and to direct readers to the added supplemental table: 
+
+> Text in revised manuscript (relevant addition in bold):
+"The rainfall data are generally well-correlated with ground-based
+observations, but may sometimes underestimate very high rainfall values (Figure
+2), **and in some counties the correlation was substantially lower when 
+considering only tropical cyclones with cumulative local rainfall of 75 mm
+or more (Supplemental Table 1)**."
+
 \begin{shaded}
-\textbf{R2 Comment 4:}
+\textbf{R2 Comment 3:}
 Figure 4: I would add Y-axis label "NOAA classification."
 \end{shaded}
 
@@ -1105,7 +1222,7 @@ include_graphics("figures/floodcomparison.pdf")
 ```
 
 \begin{shaded}
-\textbf{R2 Comment 5:}
+\textbf{R2 Comment 4:}
 Table 2: This is another confusing table. Not sure what compared here. The
 second column is a mean \# of exposed counties over years and the third column
 seems like showing single storm with the max \# of exposed counties. Not sure
@@ -1143,123 +1260,10 @@ the most extensive storms across the hazards considered.
 
 We have added text to help the readers interpret this table ...
 
-\begin{shaded}
-\textbf{R2 Comment 6:}
-Subsection of Results on \textit{Agreement across exposure metrics}: 
-As stated below, storms bring different hazards to different locations with
-different time. What would be new learning by comparing these different pairs of
-exposure metrics. Somewhat apple and orange comparison. Maybe providing more
-explanation can help what the important learning from this is. I may not catch
-it. Similar comment was added earlier.
-\end{shaded}
 
-**Response:** 
 
 \begin{shaded}
-\textbf{R2 Comment 7:}
-Lines 494--495: Why this agreement is important? Same questions added above
-already, but still wonder what I missed. It seems like the authors try to
-develop an exposure matrix that is common in occupational epidemiology, but it
-is only valid method when the exposures are similar and lead to the same health
-outcomes.  Rain, wind, flood, and tornado should be treated separately, maybe
-except rain and flood. It is possible to be an extreme storm with only severe
-wind without major impacts from other exposures. Tornado is a good example.
-
-\textit{Line 491--495 from original manuscript:}
-
-\begin{quotation}
-\noindent
-\textit{"For another set of tropical cyclones (e.g., Ernesto in 2006, and Bertha
-in 1996, Isabel in 2003), there was moderate to good agreement for pairwise
-combinations of distance, rain, and wind, but poor agreement for other
-combinations of metrics, while for another set of storms (e.g., Matthew in 2004
-and Katrina in 2005), there was moderate to good agreement between distance and
-rain."}
-\end{quotation}
-\end{shaded}
-
-**Response:** 
-
-> "A job exposure matrix (JEM) may be defined as a cross classification of jobs
-and occupational exposures. Some matrices are based on tasks, instead of jobs. 
-... Usually there is a group of experts who build the matrix based on their 
-own knowledge and experience on occupational exopsures. The experts should 
-assess exposure to an open or fixed list of occupational exposures (that can 
-include chemical, physical, biological, and/or psychosocial agents) for an
-open or fixed list of jobs (or tasks) usually coded according to some established
-national or international classification system. Some JEMs also include 
-information for different calendar time periods." [@garcia2003glossary]
-
-[New advances in multi-pollutant analysis.]
-
-[Some of the hazards could create similar risks, if they converge on a common
-pathway of risk. For example, if pathway is through stress from property damage,
-individually and in the county, then several hazards could indeed lead to the
-same health outcomes (e.g., PTSD, other psychological markers, risk of acute
-cardiovascular outcomes, etc.). One example is extreme level of destruction both
-from wind (Hurricane Andrew, Hurricane Hugo), from river flooding associated
-with among of precipitation (Hurricane Floyd, Hurricane Florence), and from
-flash flooding associated with the rate of precipitation (Virginia storms).]
-
-[A better future direction might be through regression models with multiple
-explanatory pathways. This allows the model to fit different weights to each.
-Other models can also be explored, like regression trees, which might have an
-easier time capturing non-linearity (if exposure is included as a continuous
-value, as with wind and rain) and interactions when there are co-exposures to
-two or more hazards. Both of these are able (and will) either exclude or give a
-very low weight to an explanatory variable that does not help much in explaining
-variation in the health outcome.]
-
-\begin{shaded}
-\textbf{R2 Comment 8:}
-Line 515: It would be informative to provide correlation coefficient for only
-above 75 mm measures.
-
-\textit{Line 514--515 from original manuscript:}
-
-\begin{quotation}
-\noindent
-\textit{"The rainfall data are generally well-correlated with ground-based
-observations, but may sometimes underestimate very high rainfall values (Figure
-2)."}
-\end{quotation}
-\end{shaded}
-
-**Response:** 
-This is a great suggestion and helps provided quantitative support to the text
-in the paper that the reviewer highlighted when making this comment. We have
-added a table in the Supplemental Material that provides the Spearman
-correlation coefficients for both all tropical cyclones to come near the sample
-counties (replicating the analysis shown in Figure 2 of the main text) and
-then when the analysis is limited to only those events with cumulative
-precipitation of 75 mm or higher based on either data source.
-
-In several cases, the correlation was much weaker when limiting analysis to
-these severe rainfall events. For example, in Miami-Dade County, FL, the
-Spearman correlation coefficient was 0.94 for all 64 tropical cyclones that came
-near the county over the analysis period, while it was only 0.49 among the 18
-storms with cumulative precipitation of 75 mm or more. There was a similar
-reduction in Mobile County, AL. However, for some counties, the correlation
-remained high (e.g., Harris County, TX; Orleans Parish, LA), although in all
-cases there are small numbers of extreme precipitation events (5--20 across
-these sample counties), and so there is likely substantial random variation in
-these correlation estimates, since they are based on small numbers of 
-observations.
-
-[Include copy of table here.]
-
-Finally, we have added a bit to the text that the reviewer cited to mention 
-this point and to direct readers to the added supplemental table: 
-
-> Text in revised manuscript (relevant addition in bold):
-"The rainfall data are generally well-correlated with ground-based
-observations, but may sometimes underestimate very high rainfall values (Figure
-2), **and in some counties the correlation was substantially lower when 
-considering only tropical cyclones with cumulative local rainfall of 75 mm
-or more (Supplemental Table 1)**."
-
-\begin{shaded}
-\textbf{R2 Comment 9:}
+\textbf{R2 Comment 5:}
 Line 602: This is not a new finding, but how much misclassified would be a good
 question to answer.
 
@@ -1279,7 +1283,7 @@ introduce exposure misclassification."}
 is used as proxy for each hazard?]
 
 \begin{shaded}
-\textbf{R2 Comment 10:}
+\textbf{R2 Comment 6:}
 Lines 626--627: It would still be beneficial to treat each exposure as a single
 variable first and then consider overall impact. Only if each exposure data are
 available.
@@ -1323,6 +1327,9 @@ improve the clarity of the manuscript.
 \end{shaded}
 
 **Response:** 
+
+Thank you for the helpful suggestions and recommendations. We have responded in 
+detail to each comment or question below.
 
 \begin{shaded}
 \textbf{Reviewer 3 (R3) Comment 1:}
@@ -1433,7 +1440,7 @@ Methods, in addition to our previous discussion of the point in the Discussion:
 To identify flood- and tornado-based tropical cyclone exposures in US counties,
 we matched storm tracks with event listings from the National Oceanic and
 Atmospheric Administration (NOAA)’s Storm Event Database (NOAA NCEI 2020).
-**Events are listed in this database based on reports from National Weather
+**Events are included in this database based on reports from National Weather
 Service personnel and other sources.** While this database has recorded storm
 data, particularly tornadoes, since 1950, its coverage changed substantially in
 1996 to cover more types of storm events, including flood events (NOAA NCEI
@@ -1456,13 +1463,13 @@ data."}
 
 **Response:** 
 
-This database is NOAA's database of records on tornado events in the United
-States. It is the original source for the only other national tornado database
-available for the country (the Storm Prediction Center [SPC]'s National Tornado
-Database), which provides a version of the same data in which tornado events are
-joined into a single record in cases where they cross county lines. There is no
-other comparable source of data on tornado occurrences that could be used for a
-comparison as validation.
+This database is NOAA's official database on tornado events in the United States
+[@mccarthy2003nws]. It is the original source for the only other national
+tornado database available for the country (the Storm Prediction Center [SPC]'s
+National Tornado Database [@center2020storm]), which provides a version of the
+same data in which tornado events are joined into a single record in cases where
+they cross county lines. There is no other comparable source of data on tornado
+occurrences that could be used for a comparison as validation.
 
 The NOAA Storm Events database originated as a database for recording tornadoes
 in the US in 1953, and was originally called the Climatological Data National
@@ -1472,117 +1479,18 @@ hydrometeorological disaster events, including floods, extreme heat and cold,
 wildfires, frost, and hail. However, it has maintained its status as the
 database of record for tornadoes in the United States.
 
-We have changed the text in the manuscript to make this clearer: 
+We have changed the text in the manuscript to make this clearer, changing the
+wording to clarify that this is the official NOAA data on tornado events in the
+US and that there are no other data sources of comparable scope that could be
+used for validation:
 
-> "The tornado observations from this dataset---**along with the derived version
+> **Text added to the revised manuscript (relevant additions in bold):**
+"The tornado observations from this dataset---**along with the derived version
 of the data available through the Storm Prediction Center's National Tornado
-Database---are the tornado event data of record** for the US. **There are no other
-collections of tornado data comparable in temporal or geographical scope,** and so
-we did not further validate the tornado event data."
-
-
-
-Examples of research papers that leverage this database as a record of tornado
-events, or the version of it shared by the [Severe Storm ...] through their
-website [ref], include ... .
-
-[Is this database used to validate tornado forecasts / warnings?]
-
-This database has evolved through several stages but has, since its earliest
-iteration in the 1950s, served as the National Weather Service's [?] data of
-record on tornado events. While there is also a database maintained by the 
-[Severe Storm ...], the two databases have different names but almost 
-identical information once data are aggregated to a daily, county-level 
-measure of whether there was a tornado recorded in that county on that date. 
-[Difference between the two and why there are two.]
-
-There is no other tornado base at the same temporal and spatial scale that
-we could use for validation.
-
-This database serves as the basis for much of the large-scale (e.g., assessing
-patterns over the US over long time periods) tornado-based research for the US. 
-It does have some well-documented limitations. One is a notable increase over 
-time in the number of tornadoes reported, particularly for the weakest, F0 [?]
-tornadoes. [This stabilizes some in the age of radar?]
-
-> "Weather events listed in the publication Storm Data are considered to be
-the official database for tornadoes by the National Weather Service." 
-[written by someone at the NWS Storm Prediction Center] [@mccarthy2003nws]
-
-The US National Weather Service's Storm Prediction Center has a tornado database
-called the "National Tornado Database" [@center2020storm]. This uses the NOAA
-Storm Events database as its primary source [@center2020storm]. They note on their
-website: 
-
-> "The tables below provide the links to comma separated values (.csv) files for
-tornadoes, hail, and damaging winds, as compiled from *NWS Storm Data*. Tornado 
-reports exist back to 1950 while hail and damaging wind events date from 1955.
-
-The NOAA Storm Events database, or the Storm Prediction Center's version of the
-tornado database have been used in a number of studies, including in a number of
-studies of tornado climatology [@tippett2016more; @brooks2003climatological;
-@strader2015climatology].
-
-> "The dataset we will use is the so-called smooth log of severe-weather reports
-collected by the SPC and archived in the National Oceanic and Atmospheric 
-Administration publication *Storm Data*." [@brooks2003climatological]
-
-> "Data such as tornado magnitude, path length, path width, and so on are
-recorded by the National Climatic Data Center (NCDC) as a public service and for
-use in meteorological, climatological, and engineering studies (Edwards et al.
-2013)." [@strader2015climatology]
-
-Sometimes used in conjunction with other NWS data products: 
-
-> "Initially, tornado cases available in the NWS's Damage Assessment Toolkit
-(NOAA, 2014) were employed, which is a GIS-based framework for collecting,
-storing, and retrieving damage survey data (Camp et al., 2014). This toolkit
-provides a variety of tornado event filtering (tornado survey point, track,
-footprint, and/or swath) and download options [key mark-up language (.kml) or
-shapefile (.shp)], supplying an initial sample of georeferenced damage
-assessments. In this study, a tornado footprint is defined as the maximum areal
-extent of tornado intensity inferred by the damage, wind speed measured directly
-by mobile Doppler radar, or assessed theoretically as the recorded length
-multiplied with the maximum width as reported in Storm Data."
-[@strader2015climatology]
-
-> "To serve the public interest and the National Climatic Data Center (NCDC)
-storm data record, the National Weather Service (NWS) documents the path length,
-width, and maximum damage rating for every tornado county segment (NOAA
-2007).[Footnote in manuscript: County segments of tornado paths are then
-combined at the NWS Storm Prediction Center to yield a unified one-tornado
-(ONETOR) dataset of whole-tornado records (Schaefer and Edwards 1999).] Such
-data are used in meteorological and climatological research, as well as in
-determining construction standard for critical infrastructure such as
-high-tension electric lines and nuclear power plants (e.g., Ramsdell et al.
-2007)." [@edwards2013tornado]
-
-Sometimes used in conjunction with other datasets: 
-
-> "The contiguous U.S. tornado fatality dataset utilized in this study was 
-transcribed and compiled from two primary sources: (1) a long-term study of 
-U.S. tornados by Grazulis (1993, 1997, hereafter Grazulis dataset) and 
-(2) the National Climatic Data Center's Storm Data (NCDC 1959--2005) and 
-'Storm Events' datavase. The Grazulis dataset included 'significant' tornado
-events, including all events that are known to have produced a fatality, 
-from 1680 to 1995. Storm Data reports from 1959 to 2005 were utilized to 
-supplement the existing record of killer tornado events documented by 
-Frazulis." [in a study of tornado fatalities] [@Ashley2007]
-
-History: 
-
-> "During the early 1950s, the US Weather Bureau began a concerted effort to
-count all US tornadoes. In 1950, a list of tornadoes was provided in the
-*Climatological Data National Summary*, but it was not until 1953, the first
-full year of the issuance of Weather Bureau tornado watches, that the agency
-began to formally count all tornadoes. The *Climaticalogical Data National
-Summary* document evolved into *Storm Data* by 1959, which, in addition to
-tornado data, included information on other storm perils, such as severe hail,
-high winds, and floods (Grazulis 1993). Over the years, the tornado dataset has
-been formatted and adjusted by the National Severe Storms Forecast Center and
-Storm Prediction Center (SPC), and currently the National Tornado Database is
-administered by the NWS Headquarters, SPC, and NCDC (McCarthy 2003)."
-[@Ashley2007]
+Database [@center2020storm]---are the official tornado event data** for the US.
+**There are no other collections of tornado data comparable in temporal or
+geographical scope,** and so we did not further validate the tornado event
+data."
 
 \begin{shaded}
 \textbf{R3 Comment 6:}
@@ -1730,8 +1638,8 @@ text? Is so, I suggest clarifying this in the figure label.
 
 Yes, it is the same. We have revised the x-axis on the figure to clarify that
 the comparison is based on the wind radii dataset described in the text, as
-requested. The original and revised versions of this paper are reproduced in
-this response document as Figure \@ref(fig:fig3).
+requested. The original and revised versions of Figure 3 of the manuscript are
+reproduced in this response document as Figure \@ref(fig:fig3).
 
 ```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Comparison of two sources of wind exposure estimates: (1) modeled peak sustained surface wind and (2) estimates based on HURDAT2's wind speed radii. Each point represents a storm, with the x-axis giving the percent of counties classified in the same category of peak sustained surface wind (< 34 kt; 34--49.9 kt; 50--63.9 kt; $\\ge$64 kt) by both sources of data. The color of each point gives the number of study counties that were exposed to peak sustained surface wind of at least 34 kt (based on modeled wind). Estimates are shown for study storms since 2004, the earliest year for which post-storm reanalysis wind speed radii are routinely available in HURDAT2, and for which at least one study county had a peak sustained wind of $\\ge$34 kt based on the post-storm wind radii.}", fig.show = "hold", out.width="50%"}
 include_graphics("../figures/windcomparison.pdf")
@@ -1748,8 +1656,6 @@ appreciate.
 \end{shaded}
 
 **Response:** 
-
-[Typo here? I don't think there's a Figure S7.]
 
 We have revised this figure to show an x-axis truncated at the minimum observed
 value ($\sim75\%$), as requested. The original and revised versions of this
