@@ -199,18 +199,40 @@ matter?
 
 This is a great question, and we are aware of a number of studies on the
 societal impacts of tropical cyclones that have used FEMA disaster declarations
-to assess county-level exposure to tropical cyclones [refs]. 
+to assess county-level exposure to tropical cyclones. 
 
-However, evidence from prior tropical cyclone epidemiology that doing so is
-problematic and should be avoided [@grabich2015measuring]. FEMA's disaster
-declarations are issued to provide assistance, based on damage assessment, to
-individuals or the entire public in certain locations where catastrophes
-overwhelm the state or local government [@mccarthy2014fema], and any use of them
-for exposure assessment is secondary. Due to the political nature of disaster
-declaration process, these declarations are often subject to many political and
-economic factors [@mccarthy2014fema; @logue1981research]. One epidemiological
-study specifically focused on exposure assessment for tropical cyclone
-epidemiology and compared use of FEMA declarations with other methods of
+There are two elements that are important related to this question. First, many
+of the health impacts of tropical cyclones will likely come through indirect
+pathways, including through damage to property and infrastructure. Ultimately,
+it would be useful to have large-scale databases of these secondary exposure
+pathways to use for more complex studies of the pathways between the physical
+hazards of these storms and how they affect human health. In this sense,
+something like the FEMA declarations could be considered not as a proxy for
+assessing exposure to physical hazards, but rather as a proxy of damage caused
+by the storm, and so a measurement informative for one of these indirect
+pathways from physical hazards of the storm to health impacts, through something
+like a mediation analysis. We have added text to the manuscript on this point:
+
+...
+
+In terms of using FEMA declarations as a source for this, however, there are 
+some limitations. These declarations are on average tied to the amount of 
+damage and other impacts experienced following a storm, but there are a number
+of other considerations that drive whether a disaster is declared or not. 
+These contributing factors could vary by location (especially from one state
+to another) and also over time, especially over the long period we've included
+for our other data. Given that, these may not be the best data source to use
+to try to capture estimates of the damage or impacts to a community in a multi-year, 
+multi-site dataset like the one we present.
+
+FEMA's disaster declarations are issued to provide assistance, based on damage
+assessment, to individuals or the entire public in certain locations where
+catastrophes overwhelm the state or local government [@mccarthy2014fema], and
+any use of them for exposure assessment is secondary. Due to the political
+nature of disaster declaration process, these declarations are often subject to
+many political and economic factors [@mccarthy2014fema; @logue1981research]. One
+epidemiological study specifically focused on exposure assessment for tropical
+cyclone epidemiology and compared use of FEMA declarations with other methods of
 exposure assessment, including one based directly on the storm hazard of wind
 [@grabich2015measuring]. They found that exposure assessment based on FEMA
 declarations tended to overassign counties to be "exposed," resulting in false
@@ -219,6 +241,22 @@ political and economic nature of these declarations, there is likely variation
 across time and geography in the likelihood of a given exposure resulting in a
 disaster declaration. This is particularly worrisome for a study that seeks to
 explore risk across multiple years and affected communities.
+
+Other sources of data may be better suited to use as a marker of damage to
+assess that pathway of indirect health impacts from a tropical cyclone. For
+example, data on storm impacts, including property damage or insurance claims
+data, are sometimes available through storm databases or publications (e.g.,
+NOAA's Storm Events data, *Monthly Weather Review*). While such data could
+potentially be used to create an exposure metric, tropical storm damage data
+requires some normalization, to incorporate both changes in dollar value over
+time and also changes in development in at-risk areas, to be comparable over
+extended time periods [@Pielke1998].
+
+---------------------------------------------------------------------------
+
+
+However, evidence from prior tropical cyclone epidemiology that doing so is
+problematic and should be avoided [@grabich2015measuring]. 
 
 We have added some discussion of this point... 
 
@@ -390,8 +428,8 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 
 **Response:** 
 
-It turns out that, because we have shared the data as an R package, it should
-already be accessible to use on the DesignSafe platform.
+It turns out that it should already be accessible to use on the DesignSafe
+platform, because we have shared the data as an R package.
 
 DesignSafe is an online platform sponsered by the National Science Foundation as
 part of the Natural Hazards Engineering Research Infrastructure
@@ -1141,43 +1179,17 @@ observations, but may sometimes underestimate very high rainfall values (Figure
 
 **Response:** 
 
-This is a great idea. In the original manuscript, we describe this lower
+This is a great suggestion. In the original manuscript, we describe this lower
 correlation at higher precipitation values through the use of examples from
 specific storms, and discuss the potential reasons for it, but measuring the
 correlation specifically within these higher-precipitation events would add more
 quantitative evidence to this discussion.
-
-Here is the text where we discuss this point in the original manuscript:
-
-> **Text in original manuscript:**
-"There was some evidence that our primary rainfall metric may tend to
-underestimate rainfall totals in storms with extremely high rainfall, based on
-a few heavy-rainfall storms in Harris County, TX, Mobile County, AL, Charleston
-County, SC, and Wake County, NC (Figure 2)."
-
-> **Text in original manuscript:**
-"The rainfall data are generally well-correlated with ground-based observations,
-but may sometimes underestimate very high rainfall values (Figure 2). When
-rainfall data is used to create binary exposure classifications, this
-disagreement is unlikely to influence results, as both data sources agree in
-identifying these as storms with high rainfall, but would be important to
-consider for cases that include rainfall as a continuous measurement."
 
 We have added estimates of these correlations specifically for
 high-precipitation events in a new table in the Supplemental Material (Table S1,
 reproduced as Table \@ref(tab:highprecipcorr) of this response document).
 
 \input{tables/precip_high_corr.tex}
-
----------------------------------------------------------------------------
-
-This is a great suggestion and helps provided quantitative support to the text
-in the paper that the reviewer highlighted when making this comment. We have
-added a table in the Supplemental Material that provides the Spearman
-correlation coefficients for both all tropical cyclones to come near the sample
-counties (replicating the analysis shown in Figure 2 of the main text) and
-then when the analysis is limited to only those events with cumulative
-precipitation of 75 mm or higher based on either data source.
 
 In several cases, the correlation was much weaker when limiting analysis to
 these severe rainfall events. For example, in Miami-Dade County, FL, the
@@ -1191,12 +1203,10 @@ these sample counties), and so there is likely substantial random variation in
 these correlation estimates, since they are based on small numbers of 
 observations.
 
-[Include copy of table here.]
+We have added text to mention this point and to direct readers to the added
+supplemental table:
 
-Finally, we have added a bit to the text that the reviewer cited to mention 
-this point and to direct readers to the added supplemental table: 
-
-> Text in revised manuscript (relevant addition in bold):
+> **Text in revised manuscript (relevant addition in bold):**
 "The rainfall data are generally well-correlated with ground-based
 observations, but may sometimes underestimate very high rainfall values (Figure
 2), **and in some counties the correlation was substantially lower when 
@@ -1279,8 +1289,64 @@ introduce exposure misclassification."}
 \end{shaded}
 
 **Response:** 
-[Add new analysis of what percent of counties misclassified if distance 
-is used as proxy for each hazard?]
+
+Figure 7 of the main text is meant to help illustrate the potential for 
+exposure misclassification, including when using a distance-based metric as
+a proxy. We selected to use the Jaccard index because we are using data for 
+counties at a large spatial scale. For any storm, there will be large parts of
+our study area that are clearly unaffected, because they are so far from the 
+storm. If we measured misclassification using a metric that includes these
+counties in the denominator, it would be overly optimistic, and wouldn't help
+to pinpoint the potential for disagreement in areas nearer the storm path. 
+
+However, one downside of this metric is that it does not help readers understand
+the direction that disagreement is going. For example, it does not provide 
+information about how many counties were classified as "exposed" based on a 
+distance proxy but "unexposed" by a hazard-based proxy. This could be useful in 
+interpreting our results in Figure 7 of the main table. 
+
+We have added four new tables in the Supplemental Material, one for each of the 
+hazard-based metrics we considered. We have reproduced these tables in this response
+document as Tables [x]--[x] Each breaks down agreement and disagreement
+between the distance-based proxy metric and that hazard-based metric within several
+storms in our study period, focusing on storms with at least 250 counties exposed
+by at least one of the metrics considered. All of these storms are included in 
+Figure 7.
+
+\input{tables/wind_misclass.tex}
+
+\input{tables/rain_misclass.tex}
+
+\input{tables/flood_misclass.tex}
+
+\input{tables/tornado_misclass.tex}
+
+These tables allow readers both to investigate general patterns in disagreement
+and exposure misclassification across these storms and also to see cases of unusual 
+storms. For example, for most storms, disagreement between the distance proxy 
+metric and the wind-based metric resulted mainly from mis-classification of 
+counties as exposed based on distance while they did not experience gale-force winds.
+However, there were a few storms, like Hurricane Bertha in 1996, where the 
+inverse was the case, and a distance-based metric would have missed a large number
+of counties that experienced gale-force winds from the storm (misclassified them
+as unexposed), but not misclassified many counties as exposed when they in fact
+did not experience winds at this level.
+
+We have added a reference to these new tables in the main text of the manuscript: 
+
+> **Text in the revised manuscript (relevant addition in bold):** 
+"We drew similar conclusions when we investigated all 46 tropical cyclones
+between 1996 and 2011 (when data for all five metrics were available) for which
+100 or more counties were exposed based on at least one metric (Figure 7;
+**Tables S[x]--S[x] provide the underlying numbers for the most extensive of
+these, the storms for which 250 of more counties were exposed based on at least
+one metric)**."
+
+> **Text in the revised manuscript (relevant addition in bold):**
+"Based on our results, the use of a distance-based metric to assess exposure to
+any of these hazards, or the use of measurements from one hazard as a proxy for
+exposure to any of the other hazards considered, would often introduce exposure
+misclassification **(Tables S[x]--S[x])**."
 
 \begin{shaded}
 \textbf{R2 Comment 6:}
@@ -1406,7 +1472,7 @@ This is correct---the population centers from the US 2010 Decennial Census were
 used throughout. We have added text to the manuscript to clarify this: 
 
 > **Text in revised manuscript (relevant addition in bold):**
-"At each 15- interval, we measured the distance between the storm's
+"At each 15-min interval, we measured the distance between the storm's
 center and each county's population mean center, **as of the 2010 US Decennial
 Census** (US Census Bureau 2020)."
 
