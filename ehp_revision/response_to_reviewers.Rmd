@@ -32,6 +32,8 @@ header-includes:
 - \usepackage{xtab}
 - \usepackage{rotating}
 - \allowdisplaybreaks
+- \usepackage[markers,nolists]{endfloat}
+- \pagenumbering{gobble}
 ---
 
 ```{r setup, include=FALSE}

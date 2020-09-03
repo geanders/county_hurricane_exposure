@@ -1,0 +1,63 @@
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth]{../figures/averageexposureonly} \includegraphics[width=0.4\linewidth]{figures/averageexposureonly}
+
+}
+
+\caption{Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\textbf{Hits} per county per decade' to '\textbf{Exposures} per county per decade' (bold used to highlight change). Figure caption in the revised manuscript: \textit{Figure caption.}}\label{fig:fig5}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{../figures/floodcomparison} \includegraphics[width=1\linewidth]{figures/floodcomparison}
+
+}
+
+\caption{Reproduction of Figure 4 from the original manuscript (top) and revised version in the resubmitted manuscript (bottom). In the revised version, we have added a title to the y-axis ('Classification based on NOAA Storm Events Data'), binned the values shown by each point's fill, so these colors are easier to distinguish, increased the size of the points, and changed the algorithm for jittering, so none of the points overlap.}\label{fig:fig4}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{../figures/windcomparison} \includegraphics[width=0.5\linewidth]{figures/windcomparison} \caption{Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \textit{Comparison of two sources of wind exposure estimates: (1) modeled peak sustained surface wind and (2) estimates based on HURDAT2's wind speed radii. Each point represents a storm, with the x-axis giving the percent of counties classified in the same category of peak sustained surface wind (< 34 kt; 34--49.9 kt; 50--63.9 kt; $\ge$64 kt) by both sources of data. The color of each point gives the number of study counties that were exposed to peak sustained surface wind of at least 34 kt (based on modeled wind). Estimates are shown for study storms since 2004, the earliest year for which post-storm reanalysis wind speed radii are routinely available in HURDAT2, and for which at least one study county had a peak sustained wind of $\ge$34 kt based on the post-storm wind radii.}}\label{fig:fig3}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{figures/averageexposureonly_check1}
+
+}
+
+\caption{Reproduction of revised version of Figure 5 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).}\label{fig:fig5check1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{figures/averageexposureonly_check2}
+
+}
+
+\caption{Reproduction of revised version of Figure 5 to check accessibility to readers with a third type of color vision deficiency, tritanopia (left) and for printing the figure in grayscale (right).}\label{fig:fig5check2}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/windcomparison_check1} \caption{Reproduction of revised version of Figure 3 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).}\label{fig:fig3check1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/windcomparison_check2} \caption{Reproduction of revised version of Figure 3 to check accessibility to readers with a third type of color vision deficiency, tritanopia (left) and for printing the figure in grayscale (right).}\label{fig:fig3check2}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/jaccard_heatmap_check1} \includegraphics[width=0.5\linewidth]{figures/jaccard_heatmap_check2} \caption{Reproduction of revised version of Figure 6 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).}\label{fig:fig6check1}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/jaccard_heatmap_check3} \includegraphics[width=0.5\linewidth]{figures/jaccard_heatmap_check4} \caption{Reproduction of revised version of Figure 6 to check accessibility to readers with a third type of color vision deficiency, tritanopia (left) and for printing the figure in grayscale (right).}\label{fig:fig6check2}
+\end{figure}
