@@ -1215,7 +1215,7 @@ correlation specifically within these higher-precipitation events would add more
 quantitative evidence to this discussion.
 
 We have added estimates of these correlations specifically for
-high-precipitation events in a new table in the Supplemental Material (Table S1
+high-precipitation events in a new table in the Supplemental Material (Table S2
 of the manuscript, reproduced as Table \@ref(tab:highprecipcorr) of this
 response document).
 
@@ -1378,7 +1378,7 @@ We have added a reference to these new tables in the main text of the manuscript
 "We drew similar conclusions when we investigated all 46 tropical cyclones
 between 1996 and 2011 (when data for all five metrics were available) for which
 100 or more counties were exposed based on at least one metric (Figure 7;
-**Tables S[x]--S[x] provide the underlying numbers for the most extensive of
+**Tables S3--S6 provide underlying numbers for the most extensive of
 these, the storms for which 250 of more counties were exposed based on at least
 one metric)**."
 
@@ -1386,7 +1386,7 @@ one metric)**."
 "Based on our results, the use of a distance-based metric to assess exposure to
 any of these hazards, or the use of measurements from one hazard as a proxy for
 exposure to any of the other hazards considered, would often introduce exposure
-misclassification **(Tables S[x]--S[x])**."
+misclassification **(Tables S3--S6)**."
 
 \medskip
 
@@ -1643,6 +1643,25 @@ away from the center of a storm, while @currie2013, who used a distance-based
 exposure metric, considered different buffer distances as a sensitivity
 analysis.
 
+We have added text to introduce this supplemental table in the revised manuscript, 
+both in the Methods and in the Discussion: 
+
+> **Text in the revised Methods (added text in bold)**:
+"For other exposure metrics, each county was
+classified as exposed to a tropical cyclone based on whether the exposure
+metric exceeded a certain threshold (Table~\ref{tab:exposuremetrics}). We
+picked reasonable thresholds (e.g., the threshold for gale-force wind for wind
+exposure; **Table S1**), but others could be used with the open-source data and its
+associated software."
+
+> **Text in the revised Discussion (added text in bold)**:
+"Finally, to assess patterns and agreement for binary exposure classifications,
+we have chosen one set of sensible thresholds for binary classifications based
+on continuous metrics (rainfall, maximum sustained surface wind, and distance
+from the storm's track), **but other thresholds would be reasonable
+depending on hypothesized pathways for a given epidemiological study (Table
+S1)**."
+
 \medskip
 
 \begin{shaded}
@@ -1809,12 +1828,32 @@ degrade the information content of  the figure.
 As we note in our response to EHP Request 2, we used colormaps for all figures
 that are designed to be perceptible both for those with common types of color
 vision deficiency and when printed in grayscale Figures \@ref(fig:fig5check1)
-and \@ref(fig:fig5check2) show what Figure 5 of the main text would look like
-under three common types of color vision deficiency and when printed in black
-and white. Figures \@ref(fig:fig6check1) and \@ref(fig:fig6check2) show the same
-thing for Figure 6 of the main text. Therefore, these figures should not require
-any exemption from accessibility requirements, as they should satisfy these
-requirements.
+and \@ref(fig:fig5check2) at the end of this response show what Figure 5 of the
+main text would look like under three common types of color vision deficiency
+and when printed in black and white. Figures \@ref(fig:fig6check1) and
+\@ref(fig:fig6check2) at the end of this response show the same thing for Figure
+6 of the main text.
+
+For Figure 6 of the main text, for some types of color balance, it could be
+unclear which of the two color legends pairs with which part of the graph. We
+have therefore added a note to the figure legend to clarify: 
+
+> **Figure legend for Figure 6 in revised manuscript (added text shown in bold)**: 
+"Agreement between exposure classifications based on different single-hazard
+exposure metrics for all storms between~1996 and~2011 for which at least~100
+counties were exposed based on at least one metric. Each row shows one storm,
+and the color of each cell shows the measured Jaccard index for each pair of
+exposure metrics (proportion of counties classified as exposed by both metrics
+out of counties classified as exposed by either metric). For Grace in 2003 and
+Ida in 2009, there were no county exposures for either the tornado-based metric
+or the wind-based metric (indicated by gray squares). Colors to the right of the
+heatmap show the number of exposed counties based on any of the metrics, **and
+this panel is linked with the color scale labeled '# of counties exposed by
+any metric'.** Storms are displayed within clusters that have similar patterns
+based on hierarchical clustering."
+
+These figures should therefore not require any exemption from accessibility
+requirements, as they should satisfy these requirements.
 
 ```{r fig6check1, fig.cap="Reproduction of revised version of Figure 6 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).", fig.show = "hold", out.width="50%"}
 include_graphics("figures/jaccard_heatmap_check1.pdf")

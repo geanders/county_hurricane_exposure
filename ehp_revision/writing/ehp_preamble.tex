@@ -40,6 +40,8 @@
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
 
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+     
 \renewbibmacro{in:}{}
 \DeclareFieldFormat{pages}{#1}
 \renewbibmacro*{volume+number+eid}{%
