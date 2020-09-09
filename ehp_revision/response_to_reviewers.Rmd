@@ -32,7 +32,7 @@ header-includes:
 - \usepackage{xtab}
 - \usepackage{rotating}
 - \allowdisplaybreaks
-- \usepackage[markers,nolists]{endfloat}
+- \usepackage[nomarkers]{endfloat}
 - \pagenumbering{gobble}
 ---
 
@@ -45,7 +45,7 @@ library(knitr)
 ```
 
 
-# Overall comments {-#overall-comments}
+# Overview {-#overview}
 
 \colorlet{shadecolor}{blue!8}
 \begin{shaded}
@@ -252,7 +252,7 @@ NOAA's Storm Events data, *Monthly Weather Review*). While such data could
 potentially be used to create an exposure metric, tropical storm damage data
 requires some normalization, to incorporate both changes in dollar value over
 time and also changes in development in at-risk areas, to be comparable over
-extended time periods [@Pielke1998].
+extended time periods [@pielke1998].
 
 ---------------------------------------------------------------------------
 
@@ -325,7 +325,7 @@ chiefs to submit a proposal for government aid on the basis that local resources
 are overwhelmed [@FEMA]. As a result, using FEMA disaster declarations as
 exposure classification to hurricanes restricts exposure to 1) those states
 whose resources are overwhelmed and 2) those states who apply for FEMA aid.
-(FEMA is likely less objective given societal effects (politics) [@Kunkel1999])
+(FEMA is likely less objective given societal effects (politics) [@kunkel1999])
 As a result, other severely impacted counties and states that may not fit FEMA
 criteria are excluded and may therefore be incorrectly identified as unexposed,
 preventing researchers from assessing the full impact of a given hurricane
@@ -334,14 +334,14 @@ exposure, and may overestimate the health effects of a hurricane; GBA-- let's
 think about why that might have had "false positives". I think that would be an
 interesting point to include here.]. Researchers have found heterogeneity in
 exposure assignments of counties, both within and between storms, when different
-metrics of exposure are used [@Grabich2016; @Grabich2015]. Such
+metrics of exposure are used [@grabich2015measuring; @grabich2015]. Such
 missclassification can have important consequences in assessments of the public
 health and economic impacts of tropical storms.
 
 One study used FEMA disaster declarations as a binary indicator of tropical
-storm exposure [@Grabich2016]. They found that this metric tended to assess a
+storm exposure [@grabich2015measuring]. They found that this metric tended to assess a
 lot more counties as "exposed" to a storm than distance- or wind-based metrics
-[@Grabich2016], although they only compared the two exposure metrics as applied
+[@grabich2015measuring], although they only compared the two exposure metrics as applied
 to four storms (Hurricanes Charley, Frances, Ivan, and Jeanne in Florida in
 2004).
 
@@ -351,7 +351,7 @@ Events data, *Monthly Weather Review*). While such data could potentially be
 used to create an exposure metric, tropical storm damage data requires some
 normalization, to incorporate both changes in dollar value over time and also
 changes in development in at-risk areas, to be comparable over extended time
-periods [@Pielke1998].
+periods [@pielke1998].
 
 \begin{shaded}
 \textbf{R1 Comment 4:}
@@ -592,31 +592,140 @@ rain."}
 
 **Response:** 
 
-1. If exposure to the different hazards strongly agrees (i.e., when a county is
-exposed to one hazard, they are typically also exposed to a second), this would
-have several implications for epidemiological research, especially for
-multi-year studies:
-  + From a statistical modeling point of view, if you tried to include each
-  hazard as a separate independent variable, you would run into problems with
-  collinearity if fitting the study data with a generalized linear model or
-  other regression model. One implication of this is that the confidence
-  intervals on effect estimates for the two variables would be very inflated,
-  because the model would struggle to figure out which of the two variables the
-  weight should be placed on, and so this uncertainty would be reflected in the
-  size of the associated confidence intervals.
-  + If you see an effect, it would be very hard to try to determine if the
-  causal pathway goes through the first hazard or the second. To mitigate
-  effects, it is important to understand the pathway through which they happen,
-  and it might be easier to get clues towards pathways if the hazards are better
-  separated. (Analogy: if you were able to conduct a controlled experiment to
-  look at the effects of each hazard, jointly and in combination, you would
-  design separation in the assignment of these treatments, so you could
-  distinguish. We can't do that because we are limited to an observational
-  analysis, but the area of causal inference is doing a lot to explore how we
-  can design observational studies and analyze data to come closer to what we
-  might be able to see with a randomized control study, and which of those
-  methods we might be able to use for tropical cyclone epidemiology will depend
-  on the interplay of these patterns of exposures.)
+The reviewer makes a good point that it is important for us to clarify our
+motivation for measuring agreement between the hazard-based metrics, as well as
+to show readers how our results from these measures can be used to help in
+designing studies and planning statistical analysis for tropical cyclone
+epidemiology.
+
+A tropical cyclone brings a number of physical hazards, including the four 
+included in our study---wind, rain, flooding, and tornadoes. These separate 
+hazards may each cause health impacts and in some cases might act together 
+in synergy in elevating health risks. For example, severe wind and rain 
+together might create a higher probability of power outages, since the rain 
+could soften the ground and make it more likely that the wind can uproot 
+trees. These physical hazards tend to follow different patterns, and this is
+something that's intuitively understood by atmospheric scientists who study 
+the storms. Storm winds tend to decrease rapidly once a storm's center is 
+over land, for example, because the storm loses its main energy source---warm
+water. Rainfall can persist, and might be particularly severe when the storm 
+hits landscape that is not smooth, like the Appalachian Mountains. Tornadoes
+can be generated in outer bands of the storm, far from the storm's center, 
+but this tends to only happen in the southern half of the US. Rain and flooding
+will sometimes align spatially, but you can also have severe flooding downstream
+from the area that receives the most severe rain, particularly in coastal areas
+with large networks of waterways.
+
+None of these patterns would be particularly surprising to an atmospheric scientist, 
+but many epidemiologists might not be aware of them, or of how they play into
+exposure assessment for tropical cyclone epidemiology. Many environmental 
+epidemiologists have a training that was focused more on epidemiology and 
+biostatistics and rely on collaborations with experts in engineering,
+atmospheric science, or environmental health to ensure that they understand
+and are appropriately applying exposure assessment. In the case of tropical 
+cyclones, it is clear that they generate a mixture of physical hazards. 
+There has been a lot of methodological development and thought recently in 
+environmental epidemiology about how to study mixtures of chemicals---for example, 
+the mixture of air pollutants that a person might be exposed to, rather than 
+studying the individual effects of single air pollutants. 
+These mixture methods require an understanding of how the different components
+are associated with each other. In the case of binary, rather than continuous,
+exposure, this will be expressed as agreement among the different exposures.
+
+First, if exposure to a pair of different hazards strongly agrees (i.e., when a
+county is exposed to one hazard, they are typically also exposed to a second),
+this would have several implications for epidemiological research, especially
+for multi-year studies:
+
+- From a statistical modeling point of view, if you tried to include each hazard
+as a separate independent variable, you would run into problems with
+collinearity if fitting the study data with a generalized linear model or other
+regression model. One implication of this is that the confidence intervals on
+effect estimates for the two variables would be inflated, potentially a lot,
+because the model would struggle to figure out which of the two variables the
+weight should be placed on, and so this uncertainty would be reflected in the
+size of the associated confidence intervals.
+- If you see an effect, it would be very hard to try to determine if the causal
+pathway goes through the first hazard or the second. To mitigate effects, it is
+important to understand the pathway through which they happen, and it might be
+easier to get clues towards pathways if the hazards are better separated. By
+analogy, if you were able to conduct a controlled experiment to look at the
+effects of each hazard, jointly and in combination, you would design separation
+in the assignment of these treatments, so you could distinguish between the two
+factors. For tropical cyclone epidemiology, we are limited to an observational
+analysis, but the area of causal inference is doing a lot to explore how we can
+design observational studies and analyze data to come closer to what we might be
+able to see with a randomized control study. To determine which of those methods
+could be used for tropical cyclone epidemiology, it is important to understand
+the interplay of these patterns of exposures.
+- If this is the case, and a study is conducted on a single hazard of the storm, 
+then there is the risk that results have been confounded by a different hazard
+of the storm. 
+- On the positive side, in this case the researcher may be able to fit a simpler
+statistical model to estimate the joint effects of exposure to the storm as a
+whole. Statistical models of mixtures can be complex to lay out, and their 
+results can be hard to interpret and explain to others. If all hazards of a 
+tropical cyclone follow very similar spatial patterns, then it would be 
+reasonable to model tropical cyclone exposure based on one of the hazards
+(and it agreement is strong enough, it wouldn't make much difference which 
+of the hazards was used for this). This would allow for the use of very 
+straightforward statistical modeling, drawing on well-developed models currently
+used in environmental epidemiology to study things like the health risk associated
+with exposure to a single pollutant or a single physical hazard like outdoor 
+temperature. 
+
+Second, if a pair of hazards tend to have little spatial overlap among 
+counties, this also brings some implications for epidemiological study design
+and statistical analysis: 
+
+- In this case, a single-hazard analysis could miss a lot of the risk created
+by the storm as a whole. This is a concern because there have been some cases
+of studies that have assessed exposure based on a single storm, typically wind.
+[Grabich example, Darren Sun example]. We are aware of one other paper 
+currently under review that takes this same approach of focusing on the wind
+hazard of these storms. .... In interpreting these papers, it is helpful to
+know if this hazard can stand as a reasonable proxy to the collection of 
+physical hazards of the storm. If not, the paper must be interpreted as 
+investigating
+
+In the past, much of tropical cyclone epidemiology focused on cases studies of
+single storms. Multi-year studies are becoming more common. Both types of
+studies are important in exploring both typical and unusual health risks that
+can be caused by these storms. Therefore, it's important to understand the
+patterns between these different hazards both for single storms and across many
+storms. In our analysis, we find that these hazards typically are not in strong
+agreement across most storms, suggesting that mixture methods could be
+meaningfully applied in most cases, and that there may often be the chance to
+separate the role of different hazards through such models. However, we also
+find that there are a few storms for which the hazards follow very similar
+spatial patterns (Hurricane Floyd in 1999, for example), and in these cases
+there may be problems of multi-collinearity and non-separability of different
+hazard effects if a researcher tries to fit a model that incorporates each
+separate hazard.
+
+
+
+Issues: 
+
+1. **Interpretation** Effect of one hazard, or storm as a whole?
+
+
+2. **Confounding**
+
+
+3. **Multi-collinearity**
+
+
+4. **Disentangling role of different hazards**
+
+
+5. **Statistical power** (to separate effects of different hazards)
+
+
+
+------------------------------------------------------------------------------
+
+  
 2. These results will not be surprising to an atmospheric scientist / disaster
 researcher, but there are environmental epidemiologists who have done research
 on other exposures and are now starting to study tropical cyclones (session at
@@ -640,14 +749,14 @@ our results, to remember that the exposure assessment is not capturing all
 hazards of the storms.
 
 
-The largest-scale county-level exposure study is likely that of @Zandbergen2009,
+The largest-scale county-level exposure study is likely that of @zandbergen2009,
 which estimated exposure in US counties to all US landfalling Atlantic basin
 tropical storms between 1851 and 2003, using both distance and an exposure
 metric that incorporated distance and windspeed. They used this exposure
 evaluation to create maps of total exposure to tropical storms within US
 counties, as well as to explore associations between a county's long-term
 exposure to tropical storms and its location, distance from the coast, size, and
-shape [@Zandbergen2009]. @Kruk2010 explored exposure to hurricane-related winds
+shape [@zandbergen2009]. @kruk2010 explored exposure to hurricane-related winds
 in the United States, including inland areas, for 1900-2008.
 
 Geographical patterns can differ for these different
@@ -1573,15 +1682,20 @@ the threshold in defining exposure. There is not room to go into these details
 within Table 1, so instead we added a separate table to the Supplemental
 Material that provides both some reasoning behind the thresholds selected in
 this study and also other reasonable thresholds that could be considered.
+This is Table S1 of the revised manuscript and has been reproduced as 
+Table [x] at the end of this response document.
+
+\input{tables/thresholds_table.tex}
+
 Ultimately, this choice will depend on what a researcher considers as plausible
 causal pathways for the outcome he or she is studying. For example, if power
 outages form a plausible step in the pathway, then the threshold for gale-force
 or strong gale-force winds might be reasonable, while if the pathway is more
 likely to be through larger-scale building destruction, a higher threshold would
 be more reasonable. Some studies have done sensitivity analyses to consider how
-results changed using different exposure metrics. For example, @Czajkowski2011
+results changed using different exposure metrics. For example, @czajkowski2011
 performed a sensitivity analysis using different assumptions about wind decay
-away from the center of a storm, while @Currie2013, who used a distance-based
+away from the center of a storm, while @currie2013, who used a distance-based
 exposure metric, considered different buffer distances as a sensitivity
 analysis.
 
@@ -1616,8 +1730,8 @@ storms, especially ones associated with dangerous rainfalls, can move very
 slowly, meaning a window of several days needs to be used to fully capture
 storm-related rainfall. For example, one study used a period of over four days
 to provide storm rainfall totals from the slow-moving Hurricane Danny in 1997
-[@Medlin2007]. Single-storm studies often measure rainfall as the total rainfall
-over the full "event" (e.g., Medlin2007); however, the timing of the event is
+[@medlin2007]. Single-storm studies often measure rainfall as the total rainfall
+over the full "event" (e.g., @medlin2007); however, the timing of the event is
 determine in a customized way for each storm, making it difficult to extend to
 multi-storm analyses. We included more days prior to the storm because
 storm-related rains often precede the passing of the storm's center [ref]. 
@@ -1630,19 +1744,19 @@ Other reasonable thresholds for distance include ..., all of which have also
 been used in previous research in assessing tropical cyclone exposure using
 distance from the storm's track as a proxy. Other distance-based exposure
 metrics have defined "exposure" to occur only when a storm's center track passes
-through a county's boundary (e.g., @Zandbergen2009, who describe this metric of
-exposure as a "hit" on the county; @Kinney2008 is another example that
+through a county's boundary (e.g., @zandbergen2009, who describe this metric of
+exposure as a "hit" on the county; @kinney2008 is another example that
 considered highest exposures for counties directly on the storm's path). This
 way of measuring exposure can exclude nearby counties that suffered extreme
 conditions from the storm but were not directly on the hurricane's track
-[@Kruk2010], especially since hurricanes can have a width ([typical storm width;
+[@kruk2010], especially since hurricanes can have a width ([typical storm width;
 citation])[JMF-- Weatherford and Gray paper referenced in Grabich 2016 may be a
 good place to start. Suggest 30-60km width of the eye of the storm itself] that
 is much larger than a typical county's width and since a hurricane's maximum
 winds can extend well away from the storm's center. Further, exposure assessed
-using this method is associated with the size [@Zandbergen2009; @Kruk2010] and
-shape [@Zandbergen2009] of a county. (While some studies have avoided this
-problem by determining exposure for equal-area grid cells (e.g., [@Kruk2010]),
+using this method is associated with the size [@zandbergen2009; @kruk2010] and
+shape [@zandbergen2009] of a county. (While some studies have avoided this
+problem by determining exposure for equal-area grid cells (e.g., [@kruk2010]),
 in studies where exposure needs to be matched with a county-level outcome, some
 process of aggregation from grid cells to counties would still need to be
 performed.) By contrast, assessing distance-based exposure based on measuring
@@ -1656,21 +1770,21 @@ involved with assessing risk of a particular storm have been rather arbitrary,
 contributing to the necessity in understanding how such parameters influence a
 county's exposure status. In assessing the risk of a given storm based on
 distance, recent studies have defined the distance from the storm track affected
-by a given storm differently. @Czajkowski2011 assessed county-level risk and
-exposure based on a three-tierd definition, with primary counties being those
+by a given storm differently. @czajkowski2011 assessed county-level risk and
+exposure based on a three-tiered definition, with primary counties being those
 closest to the storm track on either side, secondary counties being adjacent to
-primary coutnies, and tertiary counties adjacent to secondary counties. Such a
+primary counties, and tertiary counties adjacent to secondary counties. Such a
 definition resulted in an exposure defenition based on an average distance
-radius of 120 km [75 miles] on either side of the storm track [@Czajkowski2011].
+radius of 120 km [75 miles] on either side of the storm track [@czajkowski2011].
 Such a distance is slightly larger than that commonly used by public health
-departments (i.e., 100 km) [@Czajkowski2011]. Other studies used distance
-buffers of 30 kilometers [@Currie2013] or of 30, 60, and 100 kilometers as
-thresholds for identifying distance-based exposure [@Grabich2016] [check the
+departments (i.e., 100 km) [@czajkowski2011]. Other studies used distance
+buffers of 30 kilometers [@currie2013] or of 30, 60, and 100 kilometers as
+thresholds for identifying distance-based exposure [@grabich2015measuring] [check the
 Grabich paper-- was this distance to any part of a county, or to the center of
 the county?; JMF-- I think any part of the county]. Another study used a
 distance criterion of 60 kilometers from the storm track, classifying all
 counties for which the 60 km buffer fully or partially passed through the
-county's boundaries as exposed [@Grabich2015] [again, check to see if this was
+county's boundaries as exposed [@grabich2015] [again, check to see if this was
 to any point in the county or to some center point of the county][JMF-- it is
 not abundantly clear in the Grabich 2016 article; based on their graphs it seems
 like they considered a county exposed if the definition they used crossed any
@@ -1678,15 +1792,15 @@ county boundary. The Grabich 2015 paper specifies both full and partial counties
 being included]. In a study assessing the association between hurricanes and
 undesireable birth outcomes, researchers found that results were not sensitive
 to the omission of residences 100 km from the storm path, and that results
-varied insignificantly from 30-75 km [@Currie2013]. One study used distance to
+varied insignificantly from 30-75 km [@currie2013]. One study used distance to
 determine exposure to landfalling US hurricanes by assigning counties along the
 storm's tracks as "primary" exposures, counties neighboring primary counties as
 "secondary" counties, and counties neighboring secondary counties as "tertiary"
 counties; this method correspond to a distance buffer of approximately 75 miles
 (120 kilometers) from the storm track for a county to qualify as "exposed" to a
-storm [@Czajkowski2011]. The study found that about 30 direct hurricane
+storm [@czajkowski2011]. The study found that about 30 direct hurricane
 fatalities over their study period (1970--2007) occurred outside of this
-distance range from the storm center [@Czajkowski2011], suggesting that this
+distance range from the storm center [@czajkowski2011], suggesting that this
 distance choice can cause some counties with dangerous exposures to a storm to
 be mis-identified as "unexposed". Tropical cyclones vary dramatically in size:
 US tropical cyclones have been observed with radii to maximum winds as small as
