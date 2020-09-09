@@ -54,7 +54,7 @@ Developing a consistent and comparable metric for exposure to tropical cyclones
 would be a valuable addition to the literature. All reviewers had questions
 about the exposure metric, including the challenges of using county-level data
 where not everyone in a county would have been exposed and the difficulties of
-going from country-level to individual -level risks. Further the comparison of
+going from country-level to individual-level risks. Further the comparison of
 different storm hazards could be clarified. The reviewers identified several
 issues where further explanation would increase the accessibility of the
 manuscript.
@@ -62,7 +62,7 @@ manuscript.
 
 Thank you for the opportunity to revise and resubmit this manuscript. We
 appreciate the helpful suggestions from the reviewers for clarifying and
-deepening the discussion in the paper.
+deepening the discussion in the paper. 
 
 Broadly, we have: 
 
@@ -79,6 +79,12 @@ figures, as well as confirmed that the color scales will be accessible.
 5. Corrected typos and improved wording throughout based on suggestions of the
 reviewers.
 
+For figures and tables that were changed in the revision, we have reproduced them 
+at the end of this response, as well as some figures showing how figures will be
+perceived for those who are colorblind and when printed in grayscale.
+
+\medskip
+
 # Reviewer 1: {-#reviewer-1:}
 
 ## Overall comments {-#overall-comments}
@@ -93,6 +99,8 @@ across disasters to build cumulative science.
 
 **Response:** Thank you for your helpful suggestions. We have responded to 
 each in detail below.
+
+\medskip
 
 \begin{shaded}
 \textbf{Reviewer 1 (R1) Comment 1:}
@@ -111,12 +119,11 @@ exposure data in a research study:
 
 > **Text added to Discussion (added text in bold):** "Second, these data are
 aggregated to the county level. **This spatial scale allows for easy integration
-with health outcome data aggregated at the county level. Such aggregated or
-ecological data is often used for disaster epidemiology, as aggregated data may
-be easier to access than individual-level data, especially at a scale that
-covers many locations and a long time period and so allows higher statistical
-power and a broader range of exposure levels within the study
-[@wakefield2008overcoming].**
+with health outcome data aggregated at the county level. Such data is often used
+for disaster epidemiology, as aggregated data may be easier to access than
+individual-level data, especially at a scale that covers many locations and a
+long time period and so allows higher statistical power and a broader range of
+exposure levels within the study [@wakefield2008overcoming].**
 
 > "**These ecological exposure estimates, however, set a common exposure level
 throughout the county, ignoring within-county variability, even though such
@@ -143,6 +150,8 @@ studies---with the aim of making individual-level inferences---should be aware
 of this potential and could explore approaches for minimizing risk of ecological
 bias (e.g., @wakefield2008overcoming).**"
 
+\medskip
+
 \begin{shaded}
 \textbf{R1 Comment 2:}
 Are there opportunities to expand this approach internationally? Some decisions
@@ -156,10 +165,9 @@ While there would be some limitations in comparisons based on differences in the
 scale of county-equivalents, many countries affected by tropical cyclones do
 have geopolitical areas that are fairly comparable to US counties, like
 municipalities in Mexico, districts in India. There would be a few challenges,
-however, in developing the exposure dataset for the hazards that we cover in the
-US in the data presented in this paper. We have added text to the paper's
-Discussion on opportunities and barriers to expanding this approach
-internationally:
+however, in extending the exposure dataset for the hazards that we present in
+this paper. We have added text to the paper's Discussion on opportunities and
+barriers to expanding this approach internationally:
 
 > Text added to the Discussion (added text in bold): 
 "**This dataset is limited to the contiguous US. Some exposure estimates would
@@ -176,7 +184,7 @@ direction of cyclonic winds in the Northern versus Southern Hemisphere. Further,
 since the core of the wind model was developed based on data from Atlantic-basin
 storms [@willoughby2006parametric], an extension to other areas should include
 separate validation and calibration to ensure it performs appropriately in those
-settings. Other wind field modeling software is also available that already
+settings. Alternatively, other wind field modeling software is available that
 provides a global coverage, like Geoscience Australia's Tropical Cyclone Risk
 Model (http://geoscienceaustralia.github.io/tcrm/). For tornado and flood
 events, the data described in this paper drew on a US-focused storm events
@@ -184,6 +192,8 @@ database, and so international extension of data on these hazards would require
 access to similar databases covering other countries. Finally, the relevant
 geopolitical boundaries to use for aggregation would vary by country (e.g.,
 municipalities in Mexico, districts in India).**"
+
+\medskip
 
 \begin{shaded}
 \textbf{R1 Comment 3:}
@@ -199,159 +209,58 @@ matter?
 
 **Response:** 
 
-This is a great question, and we are aware of a number of studies on the
-societal impacts of tropical cyclones that have used FEMA disaster declarations
-to assess county-level exposure to tropical cyclones. 
+This is a great question. For tropical cyclones, some health impacts will come
+directly from physical exposures like wind, rain, and flooding. However, many of
+the impacts might come through indirect pathways, which start from physical
+hazards but move through pathways related to property damage, infrastructure
+damage, access to typical medical care, mold growth, and a number of other
+intermediates. Ultimately, it would be useful to have large-scale databases of
+these secondary exposure pathways to use for more complex studies of the
+pathways between the physical hazards of these storms and how they affect human
+health. In this sense, something like the FEMA declarations could be considered
+not as a proxy for assessing exposure to physical hazards, but rather as a proxy
+of damage caused by the storm, and so a measurement informative for one of these
+indirect pathways from physical hazards of the storm to health impacts, through
+something like a mediation analysis.
 
-There are two elements that are important related to this question. First, many
-of the health impacts of tropical cyclones will likely come through indirect
-pathways, including through damage to property and infrastructure. Ultimately,
-it would be useful to have large-scale databases of these secondary exposure
-pathways to use for more complex studies of the pathways between the physical
-hazards of these storms and how they affect human health. In this sense,
-something like the FEMA declarations could be considered not as a proxy for
-assessing exposure to physical hazards, but rather as a proxy of damage caused
-by the storm, and so a measurement informative for one of these indirect
-pathways from physical hazards of the storm to health impacts, through something
-like a mediation analysis. We have added text to the manuscript on this point:
-
-...
-
-In terms of using FEMA declarations as a source for this, however, there are 
-some limitations. These declarations are on average tied to the amount of 
-damage and other impacts experienced following a storm, but there are a number
-of other considerations that drive whether a disaster is declared or not. 
-These contributing factors could vary by location (especially from one state
-to another) and also over time, especially over the long period we've included
-for our other data. Given that, these may not be the best data source to use
-to try to capture estimates of the damage or impacts to a community in a multi-year, 
-multi-site dataset like the one we present.
-
+However, there are some limitations to the FEMA disaster declarations in terms
+of using them as a proxy for the amount of damage a storm caused in a county.
 FEMA's disaster declarations are issued to provide assistance, based on damage
 assessment, to individuals or the entire public in certain locations where
 catastrophes overwhelm the state or local government [@mccarthy2014fema], and
 any use of them for exposure assessment is secondary. Due to the political
 nature of disaster declaration process, these declarations are often subject to
-many political and economic factors [@mccarthy2014fema; @logue1981research]. One
-epidemiological study specifically focused on exposure assessment for tropical
-cyclone epidemiology and compared use of FEMA declarations with other methods of
-exposure assessment, including one based directly on the storm hazard of wind
-[@grabich2015measuring]. They found that exposure assessment based on FEMA
-declarations tended to overassign counties to be "exposed," resulting in false
-positives [@grabich2015measuring]. A further concern is that, given the
-political and economic nature of these declarations, there is likely variation
-across time and geography in the likelihood of a given exposure resulting in a
-disaster declaration. This is particularly worrisome for a study that seeks to
-explore risk across multiple years and affected communities.
+many political and economic factors [@mccarthy2014fema; @logue1981research].
+Given the political and economic nature of these declarations, there is likely
+variation across time and geography in the likelihood of a given exposure
+resulting in a disaster declaration. This would be particularly worrisome for a
+study that seeks to explore risk across multiple years and affected communities.
 
-Other sources of data may be better suited to use as a marker of damage to
-assess that pathway of indirect health impacts from a tropical cyclone. For
-example, data on storm impacts, including property damage or insurance claims
-data, are sometimes available through storm databases or publications (e.g.,
-NOAA's Storm Events data, *Monthly Weather Review*). While such data could
-potentially be used to create an exposure metric, tropical storm damage data
-requires some normalization, to incorporate both changes in dollar value over
-time and also changes in development in at-risk areas, to be comparable over
-extended time periods [@pielke1998].
-
----------------------------------------------------------------------------
-
-
-However, evidence from prior tropical cyclone epidemiology that doing so is
-problematic and should be avoided [@grabich2015measuring]. 
-
-We have added some discussion of this point... 
-
-- Future research could expand the work by [@grabich2015measuring] to determine
-the extent of these issues with use of FEMA disaster declarations for
-epidemiological exposure assessment. This would need to go beyond the comparison
-with exposure assessment based on storm hazards, because sometimes the
-characteristics of the affected community modifies the amount of disaster that
-results from hazards of a certain severity. For example, a community that it
-exposed often might be more "hardened" against damage from the storm (any work
-from Seth on this) and so might experience less infrastructure damage from a
-tropical cyclone with certain characteristics compared to a community that is
-rarely exposed to tropical cyclones. One interesting direction would be to
-investigate if there is evidence of differences in probablity of disaster
-declarations at geopolitical boundaries, like when comparing counties on either
-side of a state border.
-
-There are some cases where damage reports are directly used to infer the
-intensity of the weather event. For example, damage surveying is used following
-a tornado to assign the tornado's class on the [enhanced] Fujita scale. However,
-this is not the intent of FEMA damage reports, which instead are used to
-determine post-disaster aid [?] and are influenced by a number of political
-factors.
-
-> "Because of the historic lack of direct measurements and remotely sensed
-tornado wind speeds at or near group level, damage surveying has remained the
-most common form for indicating tornado strength. ... The occurrence of a direct
-tornado strict upon a fixed, sufficiently sturdy, and well-calibrated wind
-measuring station is quite rare. Only 31 direct in situ tornado observations are
-evident between 1894 and 2011." [@edwards2013tornado]
-
-This question could be explored to some degree through a study that uses the 
-physical hazard data provided in this dataset as the exposure and FEMA disaster
-declarations as the outcome. Such a study could clarify the degree to which 
-each hazard---and its intensity---helps in explaining that probablity that 
-a disaster declaration is issued. It could also clarify the degree to which 
-other factors, beyond the intensity of these hazards, drive the probability of
-a county receiving a disaster declaration. For example, if two counties 
-are exposed to a storm-associated hazard of the same intensity, they may 
-still have different probabilities of associated societal impacts, as a 
-community that is regularly exposed to that hazard may be more "hardened" 
-against it. Other differences in infrastructure and factors associated with 
-vulnerability could similarly introduce variability. 
-
-At a more complex level, studies could explore the causal pathways from the 
-initial physical hazard to resulting damage/property loss through to associations
-with health outcomes, to provide a clearer idea of the direct and indirect 
-pathways leading to health impacts from tropical cyclones.
-
-For both of these studies, however, there may be better sources of damage
-estimates to use than FEMA disaster declarations. FEMA disaster declarations 
-can be prone to political and other influences, and since their primary function
-is not to record damage but rather to be a step in getting help to communities, 
-they can be problematic to use as an unbiased estimate of damage levels in 
-epidmiological research. One study, for example, found ... . There are other
-estimates of property damage that might be less problematic, including the 
-estimates recorded in NOAA's Storm Events database and data from private 
-insurers, although the quality of disaster loss data is well known to be
-less than ideal for secondary research [can be prone to bias through a number
-of mechanisms] [ref to Gall paper?].
-
-FEMA declaration is largely subjective, requiring state governors and/or tribal
-chiefs to submit a proposal for government aid on the basis that local resources
-are overwhelmed [@FEMA]. As a result, using FEMA disaster declarations as
-exposure classification to hurricanes restricts exposure to 1) those states
-whose resources are overwhelmed and 2) those states who apply for FEMA aid.
-(FEMA is likely less objective given societal effects (politics) [@kunkel1999])
-As a result, other severely impacted counties and states that may not fit FEMA
-criteria are excluded and may therefore be incorrectly identified as unexposed,
-preventing researchers from assessing the full impact of a given hurricane
-[JMF-- the Grabich 2016 study actually found that FEMA assigned the highest
-exposure, and may overestimate the health effects of a hurricane; GBA-- let's
-think about why that might have had "false positives". I think that would be an
-interesting point to include here.]. Researchers have found heterogeneity in
-exposure assignments of counties, both within and between storms, when different
-metrics of exposure are used [@grabich2015measuring; @grabich2015]. Such
-missclassification can have important consequences in assessments of the public
-health and economic impacts of tropical storms.
-
-One study used FEMA disaster declarations as a binary indicator of tropical
-storm exposure [@grabich2015measuring]. They found that this metric tended to assess a
-lot more counties as "exposed" to a storm than distance- or wind-based metrics
-[@grabich2015measuring], although they only compared the two exposure metrics as applied
-to four storms (Hurricanes Charley, Frances, Ivan, and Jeanne in Florida in
-2004).
-
-Data on storm impacts, including property damage or insurance claims data, are
-sometimes available through storm databases or publications (e.g., NOAA's Storm
-Events data, *Monthly Weather Review*). While such data could potentially be
-used to create an exposure metric, tropical storm damage data requires some
+Other sources of data may therefore be better suited to use as a marker of
+damage to assess that pathway of indirect health impacts from a tropical
+cyclone. For example, data on storm impacts, including property damage or
+insurance claims data, are sometimes available through storm databases or
+publications (e.g., NOAA's Storm Events data, tropical cyclone reports published
+in the *Monthly Weather Review*). While such data could potentially be used to
+create an exposure metric, tropical storm damage data requires some
 normalization, to incorporate both changes in dollar value over time and also
 changes in development in at-risk areas, to be comparable over extended time
 periods [@pielke1998].
+
+We have added text discussing this point to the Discussion:
+
+> **Text in revised manuscript (added text in bold):**
+"**The dataset we present focuses on the physical hazards of a tropical cyclone.
+However, health impacts will often some through indirect pathways, including
+through damage to property and infrastructure. In future work, it would be
+useful to expand this dataset to add data related to these pathways, to allow
+research exploring the role of indirect pathways from tropical cyclone phyiscal
+hazards to health risk. This expansion could include adding data on normalized
+storm-associated damages, or proxy measurements of such damages, from sources
+like the US NOAA's Storm Events database and the US Federal Emergency Management
+Agency's county-level disaster declarations.**"
+
+\medskip
 
 \begin{shaded}
 \textbf{R1 Comment 4:}
@@ -376,18 +285,21 @@ Thank you for this suggestion. We have changed the wording in this sentence:
 > **Text in revised manuscript (relevant change in bold):**
 "In many cases, these studies analyze multi-year, multi-community data, allowing
 them to estimate average associations over many disasters and to explore how a
-disaster's characteristics, or the characteristics ofthe **affected
+disaster's characteristics, or the characteristics of the **affected
 communities**, modify associated health risks (e.g., Anderson and Bell 2010; Son
 et al. 2012; Liu et al. 2017)."
 
 We also used the word "Hits per county per decade" in the legend for Figure 5 in
-the main text and Figure S3 of the Supplemental Material. We have revised the
-wording in these figures to "Exposures per county per decade".
+the main text (reproduced in this response document as Figure \@ref(fig:fig5))
+and Figure S3 of the Supplemental Material. We have revised the wording in these
+figures to "Exposures per county per decade".
 
 ```{r fig5, fig.cap="Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\\textbf{Hits} per county per decade' to '\\textbf{Exposures} per county per decade' (bold used to highlight change). Figure caption in the revised manuscript: \\textit{Figure caption.}", fig.show = "hold", out.width="40%", fig.align = "center"}
 include_graphics("../figures/averageexposureonly.pdf")
 include_graphics("figures/averageexposureonly.pdf")
 ```
+
+\medskip
 
 \begin{shaded}
 \textbf{R1 Comment 5:}
@@ -418,6 +330,8 @@ approach. When different studies use different datasets or storm hazards
 when assessing storm exposure, it becomes difficult to compare and aggregate
 findings."
 
+\medskip
+
 \begin{shaded}
 \textbf{R1 Comment 6:}
 This is not a comment on the paper, but the authors may also want to consider
@@ -430,8 +344,8 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 
 **Response:** 
 
-It turns out that it should already be accessible to use on the DesignSafe
-platform, because we have shared the data as an R package.
+It turns out that the data we present should already be accessible to use on the
+DesignSafe platform, because we have shared the data as an R package.
 
 DesignSafe is an online platform sponsered by the National Science Foundation as
 part of the Natural Hazards Engineering Research Infrastructure
@@ -440,9 +354,7 @@ citable data related to natural hazards through its Data Depot. It goes beyond a
 data repository, however, and also allows researchers to conduct data
 integration and analysis in the cloud through its Discovery Workspace, while
 drawing on data stored in the Data Depot and while using scientific programming
-tools.
-
-As part of its platform, DesignSafe allows users to work in a number of
+tools. As part of its platform, DesignSafe allows users to work in a number of
 programming languages, including R (through Jupyter Notebooks)
 [@rathje2017designsafe]. Therefore, DesignSafe users already have access to any
 data shared through an R package, including the data we present in this
@@ -478,6 +390,8 @@ Jupyter notebook that would otherwise be used on a local computer.
 cloud-based computing platforms that incorporate Jupyter notebooks, including
 the National Science Foundations's DesignSafe platform for natural hazards
 engineering research [@rathje2017designsafe].**"
+
+\medskip
 
 # Reviewer 2: {-#reviewer-2}
 
@@ -519,10 +433,12 @@ among exposures to specific hazards can help epidemiologists to design their
 studies and the statistical methods to analyze the resulting data. We provide
 a detailed response in our response below to Comment 1 from this reviewer.
 
-We have moved other suggestions that you sent in "Track Changes" of the Word 
-document for the original manuscript and address each in detail below. When 
-there were several comments on a related topic, we have grouped them together
-to provide a more cohesive response to the point.
+We have moved other suggestions that the reviewer sent in "Track Changes" of the
+Word document for the original manuscript and address each in detail below. When
+there were several comments on a related topic, we have grouped them together to
+provide a more cohesive response to the point.
+
+\medskip
 
 \begin{shaded}
 \textbf{Reviewer 2 (R2) Comment 1:}
@@ -1252,6 +1168,7 @@ two or more hazards. Both of these are able (and will) either exclude or give a
 very low weight to an explanatory variable that does not help much in explaining
 variation in the health outcome.]
 
+\medskip
 
 \begin{shaded}
 \textbf{R2 Comment 2:}
@@ -1292,13 +1209,14 @@ observations, but may sometimes underestimate very high rainfall values (Figure
 
 This is a great suggestion. In the original manuscript, we describe this lower
 correlation at higher precipitation values through the use of examples from
-specific storms, and discuss the potential reasons for it, but measuring the
+specific storms, and discuss the potential reasons for it. Measuring the
 correlation specifically within these higher-precipitation events would add more
 quantitative evidence to this discussion.
 
 We have added estimates of these correlations specifically for
-high-precipitation events in a new table in the Supplemental Material (Table S1,
-reproduced as Table \@ref(tab:highprecipcorr) of this response document).
+high-precipitation events in a new table in the Supplemental Material (Table S1
+of the manuscript, reproduced as Table \@ref(tab:highprecipcorr) of this
+response document).
 
 \input{tables/precip_high_corr.tex}
 
@@ -1324,6 +1242,8 @@ observations, but may sometimes underestimate very high rainfall values (Figure
 considering only tropical cyclones with cumulative local rainfall of 75 mm
 or more (Supplemental Table 1)**."
 
+\medskip
+
 \begin{shaded}
 \textbf{R2 Comment 3:}
 Figure 4: I would add Y-axis label "NOAA classification."
@@ -1334,13 +1254,15 @@ Figure 4: I would add Y-axis label "NOAA classification."
 This is a great suggestion. We have made this change, as well as several changes
 in response to EHP's Request 4 later in this response.
 
-The original and revised versions of Figure 4 of the paper are reproduced in
+The original and revised versions of Figure 4 of the manuscript are reproduced in
 Figure \@ref(fig:fig4) of this response.
 
 ```{r fig4, fig.cap="Reproduction of Figure 4 from the original manuscript (top) and revised version in the resubmitted manuscript (bottom). In the revised version, we have added a title to the y-axis ('Classification based on NOAA Storm Events Data'), binned the values shown by each point's fill, so these colors are easier to distinguish, increased the size of the points, and changed the algorithm for jittering, so none of the points overlap.", fig.show = "hold", fig.align = "center", out.width="100%"}
 include_graphics("../figures/floodcomparison.pdf")
 include_graphics("figures/floodcomparison.pdf")
 ```
+
+\medskip
 
 \begin{shaded}
 \textbf{R2 Comment 4:}
@@ -1381,7 +1303,7 @@ the most extensive storms across the hazards considered.
 
 We have added text to help the readers interpret this table ...
 
-
+\medskip
 
 \begin{shaded}
 \textbf{R2 Comment 5:}
@@ -1401,28 +1323,27 @@ introduce exposure misclassification."}
 
 **Response:** 
 
-Figure 7 of the main text is meant to help illustrate the potential for 
-exposure misclassification, including when using a distance-based metric as
-a proxy. We selected to use the Jaccard index because we are using data for 
-counties at a large spatial scale. For any storm, there will be large parts of
-our study area that are clearly unaffected, because they are so far from the 
-storm. If we measured misclassification using a metric that includes these
-counties in the denominator, it would be overly optimistic, and wouldn't help
-to pinpoint the potential for disagreement in areas nearer the storm path. 
+Figure 7 of the main text is meant to help illustrate the potential for exposure
+misclassification, including when using a distance-based metric as a proxy. We
+used the Jaccard index because we are using data for all eastern US counties.
+For any storm, however, there will be large parts of this area that are
+unquestionably unaffected, because they are so far from the storm. For example,
+during Hurricane Floyd in 1999, the storm made landfall in North Carolina and
+moved northward along the Eastern Seaboard. While there will be questions in
+some case about whether counties in the Mid-Atlantic and New England were
+exposed to this storm, counties in Texas, Louisiana, and other states in the
+west of the study area were unquestionably unexposed to this storm. If we
+measured misclassification using a metric that includes these counties in the
+denominator, it would be overly optimistic because of the strong agreement in
+counties far from the storm, like Texas counties during Hurricane Floyd, and
+wouldn't help to pinpoint the potential for disagreement in areas nearer the
+storm path.
 
 However, one downside of this metric is that it does not help readers understand
 the direction that disagreement is going. For example, it does not provide 
 information about how many counties were classified as "exposed" based on a 
 distance proxy but "unexposed" by a hazard-based proxy. This could be useful in 
 interpreting our results in Figure 7 of the main table. 
-
-We have added four new tables in the Supplemental Material, one for each of the 
-hazard-based metrics we considered. We have reproduced these tables in this response
-document as Tables [x]--[x] Each breaks down agreement and disagreement
-between the distance-based proxy metric and that hazard-based metric within several
-storms in our study period, focusing on storms with at least 250 counties exposed
-by at least one of the metrics considered. All of these storms are included in 
-Figure 7.
 
 \input{tables/wind_misclass.tex}
 
@@ -1432,16 +1353,22 @@ Figure 7.
 
 \input{tables/tornado_misclass.tex}
 
-These tables allow readers both to investigate general patterns in disagreement
-and exposure misclassification across these storms and also to see cases of unusual 
-storms. For example, for most storms, disagreement between the distance proxy 
-metric and the wind-based metric resulted mainly from mis-classification of 
-counties as exposed based on distance while they did not experience gale-force winds.
-However, there were a few storms, like Hurricane Bertha in 1996, where the 
-inverse was the case, and a distance-based metric would have missed a large number
-of counties that experienced gale-force winds from the storm (misclassified them
-as unexposed), but not misclassified many counties as exposed when they in fact
-did not experience winds at this level.
+We have added four new tables in the Supplemental Material, one for each of the
+hazard-based metrics we considered. We have reproduced these tables in this
+response document as Tables [x]--[x] Each breaks down agreement and disagreement
+between the distance-based proxy metric and that hazard-based metric within
+several storms in our study period. These tables focus on storms with at least
+250 counties exposed by at least one of the metrics considered. These tables
+allow readers both to investigate general patterns in disagreement and exposure
+misclassification across these storms and also to see cases of unusual storms.
+For example, for most storms, disagreement between the distance proxy metric and
+the wind-based metric resulted mainly from mis-classification of counties as
+exposed based on distance while they did not experience gale-force winds.
+However, there were a few storms, like Hurricane Bertha in 1996, where the
+inverse was the case, and a distance-based metric would have missed a large
+number of counties that experienced gale-force winds from the storm
+(misclassified them as unexposed), but not misclassified many counties as
+exposed when they in fact did not experience winds at this level.
 
 We have added a reference to these new tables in the main text of the manuscript: 
 
@@ -1458,6 +1385,8 @@ one metric)**."
 any of these hazards, or the use of measurements from one hazard as a proxy for
 exposure to any of the other hazards considered, would often introduce exposure
 misclassification **(Tables S[x]--S[x])**."
+
+\medskip
 
 \begin{shaded}
 \textbf{R2 Comment 6:}
@@ -1489,6 +1418,7 @@ based on exposure to a single hazard or proxy, although multi-hazard studies
 of storms with high agreement among hazard exposures should look out for 
 modeling issues from multicollinearity.**"
 
+\medskip
 
 # Reviewer 3: {-#reviewer-3}
 
@@ -1507,6 +1437,8 @@ improve the clarity of the manuscript.
 
 Thank you for the helpful suggestions and recommendations. We have responded in 
 detail to each comment or question below.
+
+\medskip
 
 \begin{shaded}
 \textbf{Reviewer 3 (R3) Comment 1:}
@@ -1529,6 +1461,8 @@ specific to the Northern Hemisphere:
 "**In the Northern Hemisphere, cyclonic winds are counterclockwise,** so
 extreme winds are more common to the track's right where cyclonic winds move in
 concert with the tropical cyclone's forward motion."
+
+\medskip
 
 \begin{shaded}
 \textbf{R3 Comment 2:}
@@ -1569,6 +1503,8 @@ We have added text to clarify the meaning of "synoptic times" in the text:
 at **four standardized times for weather data collection (synoptic times),**
 6:00 am, 12:00 pm, 6:00 pm, and 12:00 am Coordinated Universal Time (UTC)."
 
+\medskip
+
 \begin{shaded}
 \textbf{R3 Comment 3:}
 Several of the exposures are calculated for the population mean center of each
@@ -1586,6 +1522,8 @@ used throughout. We have added text to the manuscript to clarify this:
 "At each 15-min interval, we measured the distance between the storm's
 center and each county's population mean center, **as of the 2010 US Decennial
 Census** (US Census Bureau 2020)."
+
+\medskip
 
 \begin{shaded}
 \textbf{R3 Comment 4:}
@@ -1623,6 +1561,8 @@ data, particularly tornadoes, since 1950, its coverage changed substantially in
 1996 to cover more types of storm events, including flood events (NOAA NCEI
 2020). We therefore only considered flood metrics of tropical cyclone exposure
 for storms in 1996 and later."
+
+\medskip
 
 \begin{shaded}
 \textbf{R3 Comment 5:}
@@ -1668,6 +1608,8 @@ Database [@center2020storm]---are the official tornado event data** for the US.
 **There are no other collections of tornado data comparable in temporal or
 geographical scope,** and so we did not further validate the tornado event
 data."
+
+\medskip
 
 \begin{shaded}
 \textbf{R3 Comment 6:}
@@ -1806,8 +1748,7 @@ be mis-identified as "unexposed". Tropical cyclones vary dramatically in size:
 US tropical cyclones have been observed with radii to maximum winds as small as
 20-km and as large as 200-km [@mallin2006; @quiring2011variations].
 
-
-
+\medskip
 
 \begin{shaded}
 \textbf{R3 Comment 7:}
@@ -1828,6 +1769,8 @@ include_graphics("../figures/windcomparison.pdf")
 include_graphics("figures/windcomparison.pdf")
 ```
 
+\medskip
+
 # Requests from EHP: {-#requests-from-ehp}
 
 \begin{shaded}
@@ -1842,6 +1785,8 @@ appreciate.
 We have revised this figure to show an x-axis truncated at the minimum observed
 value ($\sim75\%$), as requested. The original and revised versions of this
 paper are reproduced in this response document as Figure \@ref(fig:fig3).
+
+\medskip
 
 \begin{shaded}
 \textbf{EHP Request 2:}
@@ -1889,6 +1834,7 @@ include_graphics("figures/averageexposureonly_check1.pdf")
 include_graphics("figures/averageexposureonly_check2.pdf")
 ```
 
+\medskip
 
 \begin{shaded}
 \textbf{EHP Request 3:}
@@ -1918,6 +1864,8 @@ include_graphics("figures/windcomparison_check1.pdf")
 ```{r fig3check2, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with a third type of color vision deficiency, tritanopia (left) and for printing the figure in grayscale (right).", out.width="100%"}
 include_graphics("figures/windcomparison_check2.pdf")
 ```
+
+\medskip
 
 \begin{shaded}
 \textbf{EHP Request 4:}
@@ -1951,6 +1899,8 @@ see.
 - Using a different algorithm to "jitter" the points, so there are no points that
 overlap each other. 
 
+\medskip
+
 \begin{shaded}
 \textbf{EHP Request 5:}
 Figures 5--6: Please check to see if the colors used can be distinguished if
@@ -1982,6 +1932,8 @@ include_graphics("figures/jaccard_heatmap_check3.pdf")
 include_graphics("figures/jaccard_heatmap_check4.pdf")
 ```
 
+\medskip
+
 \begin{shaded}
 \textbf{R2 Comment 6:}
 Supplemental Material: Please provide your supplemental material file in Word
@@ -1992,5 +1944,7 @@ Supplemental Material: Please provide your supplemental material file in Word
 
 We have provided the Supplemental Material in the Word file format in our
 revised submission.
+
+\medskip
 
 # References for the response {-#references-for-the-response}

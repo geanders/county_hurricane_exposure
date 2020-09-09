@@ -744,6 +744,161 @@ factors [@harper2010guidelines] to convert central storm maximum sustained wind
 measurements to a common averaging period prior to applying further steps of the
 wind model."
 
+# R1 Comment 3
+
+In this paper, we present a dataset that focuses on exposure to the primary
+physical hazards of wind, rain, tornadoes, and flooding. We do not include data
+related to intermediate pathways, but such data could be a very interesting
+future expansion of the data.
+
+There are two elements that are important related to this question. First, many
+of the health impacts of tropical cyclones will likely come through indirect
+pathways, including through damage to property and infrastructure. Ultimately,
+it would be useful to have large-scale databases of these secondary exposure
+pathways to use for more complex studies of the pathways between the physical
+hazards of these storms and how they affect human health. In this sense,
+something like the FEMA declarations could be considered not as a proxy for
+assessing exposure to physical hazards, but rather as a proxy of damage caused
+by the storm, and so a measurement informative for one of these indirect
+pathways from physical hazards of the storm to health impacts, through something
+like a mediation analysis. We have added text to the manuscript on this point:
+
+
+In terms of using FEMA declarations as a source for this, however, there are 
+some limitations. These declarations are on average tied to the amount of 
+damage and other impacts experienced following a storm, but there are a number
+of other considerations that drive whether a disaster is declared or not. 
+These contributing factors could vary by location (especially from one state
+to another) and also over time, especially over the long period we've included
+for our other data. Given that, these may not be the best data source to use
+to try to capture estimates of the damage or impacts to a community in a multi-year, 
+multi-site dataset like the one we present.
+
+FEMA's disaster declarations are issued to provide assistance, based on damage
+assessment, to individuals or the entire public in certain locations where
+catastrophes overwhelm the state or local government [@mccarthy2014fema], and
+any use of them for exposure assessment is secondary. Due to the political
+nature of disaster declaration process, these declarations are often subject to
+many political and economic factors [@mccarthy2014fema; @logue1981research]. One
+epidemiological study specifically focused on exposure assessment for tropical
+cyclone epidemiology and compared use of FEMA declarations with other methods of
+exposure assessment, including one based directly on the storm hazard of wind
+[@grabich2015measuring]. They found that exposure assessment based on FEMA
+declarations tended to overassign counties to be "exposed," resulting in false
+positives [@grabich2015measuring]. A further concern is that, given the
+political and economic nature of these declarations, there is likely variation
+across time and geography in the likelihood of a given exposure resulting in a
+disaster declaration. This is particularly worrisome for a study that seeks to
+explore risk across multiple years and affected communities.
+
+Other sources of data may be better suited to use as a marker of damage to
+assess that pathway of indirect health impacts from a tropical cyclone. For
+example, data on storm impacts, including property damage or insurance claims
+data, are sometimes available through storm databases or publications (e.g.,
+NOAA's Storm Events data, *Monthly Weather Review*). While such data could
+potentially be used to create an exposure metric, tropical storm damage data
+requires some normalization, to incorporate both changes in dollar value over
+time and also changes in development in at-risk areas, to be comparable over
+extended time periods [@pielke1998].
+
+
+However, evidence from prior tropical cyclone epidemiology that doing so is
+problematic and should be avoided [@grabich2015measuring]. 
+
+We have added some discussion of this point... 
+
+- Future research could expand the work by [@grabich2015measuring] to determine
+the extent of these issues with use of FEMA disaster declarations for
+epidemiological exposure assessment. This would need to go beyond the comparison
+with exposure assessment based on storm hazards, because sometimes the
+characteristics of the affected community modifies the amount of disaster that
+results from hazards of a certain severity. For example, a community that it
+exposed often might be more "hardened" against damage from the storm (any work
+from Seth on this) and so might experience less infrastructure damage from a
+tropical cyclone with certain characteristics compared to a community that is
+rarely exposed to tropical cyclones. One interesting direction would be to
+investigate if there is evidence of differences in probablity of disaster
+declarations at geopolitical boundaries, like when comparing counties on either
+side of a state border.
+
+There are some cases where damage reports are directly used to infer the
+intensity of the weather event. For example, damage surveying is used following
+a tornado to assign the tornado's class on the [enhanced] Fujita scale. However,
+this is not the intent of FEMA damage reports, which instead are used to
+determine post-disaster aid [?] and are influenced by a number of political
+factors.
+
+> "Because of the historic lack of direct measurements and remotely sensed
+tornado wind speeds at or near group level, damage surveying has remained the
+most common form for indicating tornado strength. ... The occurrence of a direct
+tornado strict upon a fixed, sufficiently sturdy, and well-calibrated wind
+measuring station is quite rare. Only 31 direct in situ tornado observations are
+evident between 1894 and 2011." [@edwards2013tornado]
+
+This question could be explored to some degree through a study that uses the 
+physical hazard data provided in this dataset as the exposure and FEMA disaster
+declarations as the outcome. Such a study could clarify the degree to which 
+each hazard---and its intensity---helps in explaining that probablity that 
+a disaster declaration is issued. It could also clarify the degree to which 
+other factors, beyond the intensity of these hazards, drive the probability of
+a county receiving a disaster declaration. For example, if two counties 
+are exposed to a storm-associated hazard of the same intensity, they may 
+still have different probabilities of associated societal impacts, as a 
+community that is regularly exposed to that hazard may be more "hardened" 
+against it. Other differences in infrastructure and factors associated with 
+vulnerability could similarly introduce variability. 
+
+At a more complex level, studies could explore the causal pathways from the 
+initial physical hazard to resulting damage/property loss through to associations
+with health outcomes, to provide a clearer idea of the direct and indirect 
+pathways leading to health impacts from tropical cyclones.
+
+For both of these studies, however, there may be better sources of damage
+estimates to use than FEMA disaster declarations. FEMA disaster declarations 
+can be prone to political and other influences, and since their primary function
+is not to record damage but rather to be a step in getting help to communities, 
+they can be problematic to use as an unbiased estimate of damage levels in 
+epidmiological research. One study, for example, found ... . There are other
+estimates of property damage that might be less problematic, including the 
+estimates recorded in NOAA's Storm Events database and data from private 
+insurers, although the quality of disaster loss data is well known to be
+less than ideal for secondary research [can be prone to bias through a number
+of mechanisms] [ref to Gall paper?].
+
+FEMA declaration is largely subjective, requiring state governors and/or tribal
+chiefs to submit a proposal for government aid on the basis that local resources
+are overwhelmed [@FEMA]. As a result, using FEMA disaster declarations as
+exposure classification to hurricanes restricts exposure to 1) those states
+whose resources are overwhelmed and 2) those states who apply for FEMA aid.
+(FEMA is likely less objective given societal effects (politics) [@kunkel1999])
+As a result, other severely impacted counties and states that may not fit FEMA
+criteria are excluded and may therefore be incorrectly identified as unexposed,
+preventing researchers from assessing the full impact of a given hurricane
+[JMF-- the Grabich 2016 study actually found that FEMA assigned the highest
+exposure, and may overestimate the health effects of a hurricane; GBA-- let's
+think about why that might have had "false positives". I think that would be an
+interesting point to include here.]. Researchers have found heterogeneity in
+exposure assignments of counties, both within and between storms, when different
+metrics of exposure are used [@grabich2015measuring; @grabich2015]. Such
+missclassification can have important consequences in assessments of the public
+health and economic impacts of tropical storms.
+
+One study used FEMA disaster declarations as a binary indicator of tropical
+storm exposure [@grabich2015measuring]. They found that this metric tended to assess a
+lot more counties as "exposed" to a storm than distance- or wind-based metrics
+[@grabich2015measuring], although they only compared the two exposure metrics as applied
+to four storms (Hurricanes Charley, Frances, Ivan, and Jeanne in Florida in
+2004).
+
+Data on storm impacts, including property damage or insurance claims data, are
+sometimes available through storm databases or publications (e.g., NOAA's Storm
+Events data, *Monthly Weather Review*). While such data could potentially be
+used to create an exposure metric, tropical storm damage data requires some
+normalization, to incorporate both changes in dollar value over time and also
+changes in development in at-risk areas, to be comparable over extended time
+periods [@pielke1998].
+
+
 # R1 Comment 6
 
 *What is DesignSafe:*
