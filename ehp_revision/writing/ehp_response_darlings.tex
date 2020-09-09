@@ -1155,7 +1155,7 @@ basic observations taken at 8 a.m. and 8 p.m. The observations were transmitted
 via telegraph. There were no satellite images and few upper air observations."
 \url{https://www.weather.gov/dvn/armistice_day_blizzard}
 
-R3 Comment 5
+# R3 Comment 5
 
 This database serves as the basis for much of the large-scale (e.g., assessing
 patterns over the US over long time periods) tornado-based research for the US. 
@@ -1242,3 +1242,112 @@ been formatted and adjusted by the National Severe Storms Forecast Center and
 Storm Prediction Center (SPC), and currently the National Tornado Database is
 administered by the NWS Headquarters, SPC, and NCDC (McCarthy 2003)."
 [@Ashley2007]
+
+# R3 Comment 6
+
+- **Wind:** This threshold is the threshold for gale-force and higher winds
+based on the Beaufort wind scale. This value is used by the National Hurricane
+Center [?] as the outer limit of winds for its wind radii product in storm 
+tracking data. Other reasonable choices for a threshold of wind exposure 
+could include the two more intense thresholds also used in the NHC [?] wind
+radii estimates of storm extent (50 knots and 64 knots, the later of which 
+is the threshold for hurricane-force winds on the Beaufort Scale) or other
+thresholds on the Beaufort Scale (e.g., "strong gale", which starts at 
+41 knots; "storm", which starts at 48 knots; "violent storm", which starts
+at 56 knots).
+
+- **Rain:** This threshold is ... Other reasonable thresholds might be ... or
+might incorporate different ranges of days around the storm's closest approach
+to a county in calculating the cumulative precipitation. For example, ... For
+the most part, using our window (two days before to one day after a storm's
+closest approach) captured most of the storm-associated precipitation that would
+have been counted using a wider window from five days before to two days after a
+storm's closest approach, even for a large, slow storm. However, for a storm
+that loops and so passes some counties twice, such as Allison (2001), this
+four-day window may not be adequate, and lead to an underestimation of total
+rainfall associated with the storm relative to estimates for faster-moving
+storms. Other storms that looped over or near land and so passed close to US
+counties twice include Allison (1989), Alberto (1994), Gordon (1994), Dennis
+(1999), Edouard (2002), Fay (2002), Alex (2004), Ivan (2004), Dennis (2005), and
+Ophelia (2005). One difficulty in measuring rain exposure consistently across
+many different storms is how many days to include in the rain total. Some
+storms, especially ones associated with dangerous rainfalls, can move very
+slowly, meaning a window of several days needs to be used to fully capture
+storm-related rainfall. For example, one study used a period of over four days
+to provide storm rainfall totals from the slow-moving Hurricane Danny in 1997
+[@medlin2007]. Single-storm studies often measure rainfall as the total rainfall
+over the full "event" (e.g., @medlin2007); however, the timing of the event is
+determine in a customized way for each storm, making it difficult to extend to
+multi-storm analyses. We included more days prior to the storm because
+storm-related rains often precede the passing of the storm's center [ref]. 
+
+
+- **Distance:** This threshold is one that has been commonly used in studies in
+which distance from the storm's track is used as a proxy for tropical cyclone
+exposure (for example, [refs]). Further, [anything in relation to storm size?].
+Other reasonable thresholds for distance include ..., all of which have also
+been used in previous research in assessing tropical cyclone exposure using
+distance from the storm's track as a proxy. Other distance-based exposure
+metrics have defined "exposure" to occur only when a storm's center track passes
+through a county's boundary (e.g., @zandbergen2009, who describe this metric of
+exposure as a "hit" on the county; @kinney2008 is another example that
+considered highest exposures for counties directly on the storm's path). This
+way of measuring exposure can exclude nearby counties that suffered extreme
+conditions from the storm but were not directly on the hurricane's track
+[@kruk2010], especially since hurricanes can have a width ([typical storm width;
+citation])[JMF-- Weatherford and Gray paper referenced in Grabich 2016 may be a
+good place to start. Suggest 30-60km width of the eye of the storm itself] that
+is much larger than a typical county's width and since a hurricane's maximum
+winds can extend well away from the storm's center. Further, exposure assessed
+using this method is associated with the size [@zandbergen2009; @kruk2010] and
+shape [@zandbergen2009] of a county. (While some studies have avoided this
+problem by determining exposure for equal-area grid cells (e.g., [@kruk2010]),
+in studies where exposure needs to be matched with a county-level outcome, some
+process of aggregation from grid cells to counties would still need to be
+performed.) By contrast, assessing distance-based exposure based on measuring
+distance between the storm track and each county's center would be less
+susceptible to differences in county size and shape and so might be a more
+reliable metric of exposure than determining if a storm track ever crossed a
+county boundary. Further, assessing the minimum distance between county center
+and the storm track, as we do here, allows for a continuous, rather than binary,
+metric of distance-based exposure to a storm. To date, distance parameters
+involved with assessing risk of a particular storm have been rather arbitrary,
+contributing to the necessity in understanding how such parameters influence a
+county's exposure status. In assessing the risk of a given storm based on
+distance, recent studies have defined the distance from the storm track affected
+by a given storm differently. @czajkowski2011 assessed county-level risk and
+exposure based on a three-tiered definition, with primary counties being those
+closest to the storm track on either side, secondary counties being adjacent to
+primary counties, and tertiary counties adjacent to secondary counties. Such a
+definition resulted in an exposure defenition based on an average distance
+radius of 120 km [75 miles] on either side of the storm track [@czajkowski2011].
+Such a distance is slightly larger than that commonly used by public health
+departments (i.e., 100 km) [@czajkowski2011]. Other studies used distance
+buffers of 30 kilometers [@currie2013] or of 30, 60, and 100 kilometers as
+thresholds for identifying distance-based exposure [@grabich2015measuring] [check the
+Grabich paper-- was this distance to any part of a county, or to the center of
+the county?; JMF-- I think any part of the county]. Another study used a
+distance criterion of 60 kilometers from the storm track, classifying all
+counties for which the 60 km buffer fully or partially passed through the
+county's boundaries as exposed [@grabich2015] [again, check to see if this was
+to any point in the county or to some center point of the county][JMF-- it is
+not abundantly clear in the Grabich 2016 article; based on their graphs it seems
+like they considered a county exposed if the definition they used crossed any
+county boundary. The Grabich 2015 paper specifies both full and partial counties
+being included]. In a study assessing the association between hurricanes and
+undesireable birth outcomes, researchers found that results were not sensitive
+to the omission of residences 100 km from the storm path, and that results
+varied insignificantly from 30-75 km [@currie2013]. One study used distance to
+determine exposure to landfalling US hurricanes by assigning counties along the
+storm's tracks as "primary" exposures, counties neighboring primary counties as
+"secondary" counties, and counties neighboring secondary counties as "tertiary"
+counties; this method correspond to a distance buffer of approximately 75 miles
+(120 kilometers) from the storm track for a county to qualify as "exposed" to a
+storm [@czajkowski2011]. The study found that about 30 direct hurricane
+fatalities over their study period (1970--2007) occurred outside of this
+distance range from the storm center [@czajkowski2011], suggesting that this
+distance choice can cause some counties with dangerous exposures to a storm to
+be mis-identified as "unexposed". Tropical cyclones vary dramatically in size:
+US tropical cyclones have been observed with radii to maximum winds as small as
+20-km and as large as 200-km [@mallin2006; @quiring2011variations].
+
