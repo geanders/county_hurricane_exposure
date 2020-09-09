@@ -35,9 +35,9 @@ Philadelphia, PA & 52 & 0.96 & 6 & 0.77\\
  
 \begin{table}[ht]
 \centering
-\caption{Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.}
+\caption{Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.}
 \label{tab:misclasswind}
-\begin{tabular}{cp{3cm}p{3cm}p{3cm}p{3cm}}
+\begin{tabular}{cP{3cm}P{3cm}P{3cm}P{3cm}}
   \toprule
 Storm & Exposed for both distance metric and wind metric & Exposed for distance metric but unexposed for wind metric & Exposed for wind metric but unexposed for distance metric & Unexposed for both distance metric and wind metric \\
   \midrule
@@ -58,11 +58,20 @@ Frances (2004) & 44 & 277 & 13 & 2,062 \\
   Arlene (2005) & 4 & 232 & 0 & 2,160 \\
   Bill (2003) & 19 & 211 & 0 & 2,166 \\
   Dennis (1999) & 17 & 183 & 13 & 2,183 \\
+  Hanna (2008) & 135 & 57 & 12 & 2,192 \\
+  Isabel (2003) & 105 & 42 & 56 & 2,193 \\
   Ernesto (2006) & 93 & 99 & 4 & 2,200 \\
+  Helene (2000) & 18 & 174 & 0 & 2,204 \\
   Rita (2005) & 26 & 139 & 20 & 2,211 \\
   Fran (1996) & 46 & 105 & 30 & 2,215 \\
+  Earl (1998) & 133 & 36 & 11 & 2,216 \\
   Floyd (1999) & 124 & 15 & 40 & 2,217 \\
+  Irene (2011) & 114 & 6 & 46 & 2,230 \\
   Lee (2011) & 34 & 110 & 0 & 2,252 \\
+  Josephine (1996) & 62 & 61 & 3 & 2,270 \\
+  Hermine (2010) & 22 & 101 & 1 & 2,272 \\
+  Bonnie (2004) & 0 & 109 & 0 & 2,287 \\
+  Frances (1998) & 15 & 47 & 0 & 2,334 \\
    \bottomrule
 \end{tabular}
 \end{table}
@@ -70,9 +79,9 @@ Frances (2004) & 44 & 277 & 13 & 2,062 \\
  
 \begin{table}[ht]
 \centering
-\caption{Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns.  Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.).}
+\caption{Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns.  Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.).}
 \label{tab:misclassrain}
-\begin{tabular}{cp{3cm}p{3cm}p{3cm}p{3cm}}
+\begin{tabular}{cP{3cm}P{3cm}P{3cm}P{3cm}}
   \toprule
 Storm & Exposed for both distance metric and rain metric & Exposed for distance metric but unexposed for rain metric & Exposed for rain metric but unexposed for distance metric & Unexposed for both distance metric and rain metric \\
   \midrule
@@ -96,8 +105,17 @@ Frances (2004) & 207 & 114 & 257 & 1,818 \\
   Arlene (2005) & 39 & 197 & 23 & 2,137 \\
   Dennis (1999) & 90 & 110 & 56 & 2,140 \\
   Ernesto (2006) & 124 & 68 & 63 & 2,141 \\
+  Irene (2011) & 119 & 1 & 106 & 2,170 \\
+  Hanna (2008) & 100 & 92 & 33 & 2,171 \\
+  Hermine (2010) & 44 & 79 & 102 & 2,171 \\
   Fran (1996) & 89 & 62 & 73 & 2,172 \\
+  Earl (1998) & 72 & 97 & 38 & 2,189 \\
   Bertha (1996) & 103 & 80 & 20 & 2,193 \\
+  Helene (2000) & 28 & 164 & 11 & 2,193 \\
+  Frances (1998) & 27 & 35 & 139 & 2,195 \\
+  Josephine (1996) & 94 & 29 & 77 & 2,196 \\
+  Bonnie (2004) & 56 & 53 & 56 & 2,231 \\
+  Isabel (2003) & 88 & 59 & 17 & 2,232 \\
    \bottomrule
 \end{tabular}
 \end{table}
@@ -105,9 +123,9 @@ Frances (2004) & 207 & 114 & 257 & 1,818 \\
  
 \begin{table}[ht]
 \centering
-\caption{Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.}
+\caption{Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.}
 \label{tab:misclassflood}
-\begin{tabular}{cp{3cm}p{3cm}p{3cm}p{3cm}}
+\begin{tabular}{cP{3cm}P{3cm}P{3cm}P{3cm}}
   \toprule
 Storm & Exposed for both distance metric and flood metric & Exposed for distance metric but unexposed for flood metric & Exposed for flood metric but unexposed for distance metric & Unexposed for both distance metric and flood metric \\
   \midrule
@@ -130,9 +148,18 @@ Ivan (2004) & 79 & 205 & 238 & 1,874 \\
   Fran (1996) & 46 & 105 & 77 & 2,168 \\
   Dennis (1999) & 38 & 162 & 19 & 2,177 \\
   Ernesto (2006) & 44 & 148 & 27 & 2,177 \\
+  Hanna (2008) & 52 & 140 & 26 & 2,178 \\
+  Helene (2000) & 13 & 179 & 20 & 2,184 \\
   Bertha (1996) & 27 & 156 & 17 & 2,196 \\
+  Irene (2011) & 108 & 12 & 79 & 2,197 \\
   Rita (2005) & 4 & 161 & 26 & 2,205 \\
+  Earl (1998) & 4 & 165 & 11 & 2,216 \\
   Lee (2011) & 18 & 126 & 36 & 2,216 \\
+  Hermine (2010) & 16 & 107 & 40 & 2,233 \\
+  Isabel (2003) & 39 & 108 & 9 & 2,240 \\
+  Josephine (1996) & 27 & 96 & 32 & 2,241 \\
+  Bonnie (2004) & 10 & 99 & 29 & 2,258 \\
+  Frances (1998) & 8 & 54 & 23 & 2,311 \\
    \bottomrule
 \end{tabular}
 \end{table}
@@ -140,9 +167,9 @@ Ivan (2004) & 79 & 205 & 238 & 1,874 \\
  
 \begin{table}[ht]
 \centering
-\caption{Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.}
+\caption{Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.}
 \label{tab:misclasstornado}
-\begin{tabular}{cp{3cm}p{3cm}p{3cm}p{3cm}}
+\begin{tabular}{cP{3cm}P{3cm}P{3cm}P{3cm}}
   \toprule
 Storm & Exposed for both distance metric and tornado metric & Exposed for distance metric but unexposed for tornado metric & Exposed for tornado metric but unexposed for distance metric & Unexposed for both distance metric and tornado metric \\
   \midrule
@@ -163,11 +190,20 @@ Frances (2004) & 6 & 315 & 66 & 2,009 \\
   Danny (1997) & 9 & 220 & 4 & 2,163 \\
   Rita (2005) & 8 & 157 & 41 & 2,190 \\
   Dennis (1999) & 0 & 200 & 1 & 2,195 \\
+  Helene (2000) & 5 & 187 & 6 & 2,198 \\
   Ernesto (2006) & 2 & 190 & 1 & 2,203 \\
+  Hanna (2008) & 0 & 192 & 1 & 2,203 \\
   Bertha (1996) & 13 & 170 & 4 & 2,209 \\
+  Earl (1998) & 8 & 161 & 7 & 2,220 \\
   Fran (1996) & 1 & 150 & 4 & 2,241 \\
   Lee (2011) & 14 & 130 & 11 & 2,241 \\
+  Isabel (2003) & 0 & 147 & 1 & 2,248 \\
   Floyd (1999) & 11 & 128 & 1 & 2,256 \\
+  Hermine (2010) & 1 & 122 & 12 & 2,261 \\
+  Josephine (1996) & 7 & 116 & 12 & 2,261 \\
+  Bonnie (2004) & 13 & 96 & 22 & 2,265 \\
+  Irene (2011) & 9 & 111 & 0 & 2,276 \\
+  Frances (1998) & 1 & 61 & 10 & 2,324 \\
    \bottomrule
 \end{tabular}
 \end{table}

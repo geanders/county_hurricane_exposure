@@ -34,6 +34,7 @@ header-includes:
 - \allowdisplaybreaks
 - \usepackage[nomarkers]{endfloat}
 - \pagenumbering{gobble}
+- \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 ---
 
 ```{r setup, include=FALSE}
@@ -1779,8 +1780,8 @@ were indeed dark blue, representing 0%, but we can see that readers might have
 questioned if this was the case or if the scale made it harder to see subtler
 differences.
 
-We have made several changes to make this
-figure easier for readers to see and interpret. These changes include:
+We have made several changes to make this figure easier for readers to see and
+interpret. These changes include:
 
 - Binning the values shown by the points fill, so that readers only need to 
 be able to distinguish among four colors, rather than across a larger scale.
@@ -1808,11 +1809,12 @@ degrade the information content of  the figure.
 As we note in our response to EHP Request 2, we used colormaps for all figures
 that are designed to be perceptible both for those with common types of color
 vision deficiency and when printed in grayscale Figures \@ref(fig:fig5check1)
-and \@ref(fig:fig5check1) show what Figure 5 would look like under three common
-types of color vision deficiency and when printed in black and white. Figures
-\@ref(fig:fig6check1) and \@ref(fig:fig6check2) show the same thing for Figure
-6. Therefore, these figures should not require any exemption from accessibility
-requirements, as they should satisfy these requirements.
+and \@ref(fig:fig5check2) show what Figure 5 of the main text would look like
+under three common types of color vision deficiency and when printed in black
+and white. Figures \@ref(fig:fig6check1) and \@ref(fig:fig6check2) show the same
+thing for Figure 6 of the main text. Therefore, these figures should not require
+any exemption from accessibility requirements, as they should satisfy these
+requirements.
 
 ```{r fig6check1, fig.cap="Reproduction of revised version of Figure 6 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).", fig.show = "hold", out.width="50%"}
 include_graphics("figures/jaccard_heatmap_check1.pdf")

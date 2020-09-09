@@ -117,7 +117,7 @@ misclass <- distance_data %>%
   dplyr::group_by(storm_id) %>%
   dplyr::mutate(counties_exposed = sum(any_exposure)) %>%
   ungroup() %>%
-  dplyr::filter(counties_exposed >= 250)
+  dplyr::filter(counties_exposed >= 200)
 
 misclass_rain <- misclass %>% 
   mutate(dist_rain = distance & rain, 
@@ -144,8 +144,8 @@ misclass_rain %>%
   mutate(Storm = str_replace(Storm, "-", " ("), 
          Storm = paste0(Storm, ")")) %>% 
   mutate_at(2:5, prettyNum, big.mark = ",") %>% 
-  xtable(align = "ccp{3cm}p{3cm}p{3cm}p{3cm}",
-         caption = "Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns.  Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.).", 
+  xtable(align = "ccP{3cm}P{3cm}P{3cm}P{3cm}",
+         caption = "Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns.  Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.).", 
          label = "tab:misclassrain") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
          only.contents = FALSE,
@@ -177,8 +177,8 @@ misclass_wind %>%
   mutate(Storm = str_replace(Storm, "-", " ("), 
          Storm = paste0(Storm, ")")) %>% 
   mutate_at(2:5, prettyNum, big.mark = ",") %>% 
-  xtable(align = "ccp{3cm}p{3cm}p{3cm}p{3cm}",
-         caption = "Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.",
+  xtable(align = "ccP{3cm}P{3cm}P{3cm}P{3cm}",
+         caption = "Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.",
          label = "tab:misclasswind") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
         only.contents = FALSE,
@@ -211,8 +211,8 @@ misclass_flood %>%
   mutate(Storm = str_replace(Storm, "-", " ("), 
          Storm = paste0(Storm, ")")) %>% 
   mutate_at(2:5, prettyNum, big.mark = ",") %>% 
-  xtable(align = "ccp{3cm}p{3cm}p{3cm}p{3cm}",
-         caption = "Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.", 
+  xtable(align = "ccP{3cm}P{3cm}P{3cm}P{3cm}",
+         caption = "Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.", 
          label = "tab:misclassflood") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
         only.contents = FALSE,
@@ -244,8 +244,8 @@ misclass_tornado %>%
   mutate(Storm = str_replace(Storm, "-", " ("), 
          Storm = paste0(Storm, ")")) %>% 
   mutate_at(2:5, prettyNum, big.mark = ",") %>% 
-  xtable(align = "ccp{3cm}p{3cm}p{3cm}p{3cm}",
-         caption = "Caption. Limited to storms with at least 250 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure [x] of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.", 
+  xtable(align = "ccP{3cm}P{3cm}P{3cm}P{3cm}",
+         caption = "Caption. Limited to storms with at least 200 counties assessed as exposed based on at least one exposure metric considered in this study. Numbers are out of 2,396 counties in the study area (states in the eastern half of the US). Exposure assessment is based on the thresholds given in Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is based on numbers in the second through fourth columns (the value in the second column divide by the sum of numbers in the second through fourth columns). Storms are ordered based on the number of counties exposed to at least one of these two exposure metrics.", 
          label = "tab:misclasstornado") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
         only.contents = FALSE,
