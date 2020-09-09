@@ -1355,20 +1355,21 @@ interpreting our results in Figure 7 of the main table.
 
 We have added four new tables in the Supplemental Material, one for each of the
 hazard-based metrics we considered. We have reproduced these tables in this
-response document as Tables [x]--[x] Each breaks down agreement and disagreement
-between the distance-based proxy metric and that hazard-based metric within
-several storms in our study period. These tables focus on storms with at least
-250 counties exposed by at least one of the metrics considered. These tables
-allow readers both to investigate general patterns in disagreement and exposure
-misclassification across these storms and also to see cases of unusual storms.
-For example, for most storms, disagreement between the distance proxy metric and
-the wind-based metric resulted mainly from mis-classification of counties as
-exposed based on distance while they did not experience gale-force winds.
-However, there were a few storms, like Hurricane Bertha in 1996, where the
-inverse was the case, and a distance-based metric would have missed a large
-number of counties that experienced gale-force winds from the storm
-(misclassified them as unexposed), but not misclassified many counties as
-exposed when they in fact did not experience winds at this level.
+response document as Tables \@ref(tab:misclasswind)--\@ref(tab:misclassflood)
+Each breaks down agreement and disagreement between the distance-based proxy
+metric and that hazard-based metric within several storms in our study period.
+These tables focus on storms with at least 250 counties exposed by at least one
+of the metrics considered. These tables allow readers both to investigate
+general patterns in disagreement and exposure misclassification across these
+storms and also to see cases of unusual storms. For example, for most storms,
+disagreement between the distance proxy metric and the wind-based metric
+resulted mainly from mis-classification of counties as exposed based on distance
+while they did not experience gale-force winds. However, there were a few
+storms, like Hurricane Bertha in 1996, where the inverse was the case, and a
+distance-based metric would have missed a large number of counties that
+experienced gale-force winds from the storm (misclassified them as unexposed),
+but not misclassified many counties as exposed when they in fact did not
+experience winds at this level.
 
 We have added a reference to these new tables in the main text of the manuscript: 
 
