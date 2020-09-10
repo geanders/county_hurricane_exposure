@@ -1273,9 +1273,28 @@ seems like showing single storm with the max \# of exposed counties. Not sure
 what info I should digest from this table.
 \end{shaded}
 
-> **Text from Results of original manuscript:**
-"Across the four storm hazards considered, there was wide variation in the
-average number of county exposures per year (Table 2). For tropical cyclone
+**Response:** 
+
+We hope that these results can help epidemiologists who are planning new
+single-storm or multi-year studies of tropical cyclones and associated health
+risks. For planning a multi-year study, it is helpful to know how many exposures
+the study might incorporate, as this can help in giving a general idea of
+whether the study might have adequate statistical power to investigate a certain
+research question. Similarly, for single-storm studies, it is helpful to know
+how widespread exposure can be for a specific hazard during a very large storm.
+This table provides some basic summaries of the extent of exposure to different
+tropical cyclone hazards, both on average for the storms in the study and also
+for those storms that were most extensive. 
+
+We have added text to help the readers interpret this table:
+
+> **Text from Results of revised manuscript (added text in bold):**
+"**Table 2 provides summary statistics describing the extent of counties
+assessed as exposed based on specific storm hazards, to help epidemiologists in
+planning studies, including understanding the potential statistical power to
+study specific exposures, both for multi-storm and single-storm studies.**
+Across the four storm hazards considered, there was wide variation in the
+average number of county exposures per year. For tropical cyclone
 tornadoes, there were on average about 40 county exposures per year within our
 study. County exposures were more frequent for tropical cyclone wind exposures
 (>160/year on average), even more frequent for tropical cyclone flood exposures
@@ -1285,24 +1304,6 @@ least one tropical cyclone that exposed over 250 counties (Table 2). However,
 the largest-extent tropical cyclone varied across hazards: Frances in 2004
 exposed the most counties based on rain, Michael in 2018 based on wind, and Ivan
 in 2004 based on flooding and tornadoes (Table 2)."
-
-**Response:** 
-
-We hope that these results can help epidemiologists who are planning new
-multi-year studies of tropical cyclones and associated health risks. For 
-planning a multi-year study, it is helpful to know how many exposures the 
-study might incorporate, as this can help in giving a general idea of whether
-the study might have adequate statistical power to investigate a certain 
-research question. This table provides some basic summaries of the extent
-of exposure to different tropical cyclone hazards, both on average for the
-storms in the study and also for those storms that were most extensive. 
-Further, as with other results in the study, it provides evidence that 
-patterns in different hazards can vary substantially, both because some 
-hazards are much less likely to expose counties (e.g., torndaoes are a fairly 
-rare exposure, based on this table) and also because there is variation in 
-the most extensive storms across the hazards considered.
-
-We have added text to help the readers interpret this table ...
 
 \medskip
 
