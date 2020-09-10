@@ -295,7 +295,7 @@ the main text (reproduced in this response document as Figure \@ref(fig:fig5))
 and Figure S3 of the Supplemental Material. We have revised the wording in these
 figures to "Exposures per county per decade".
 
-```{r fig5, fig.cap="Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\\textbf{Hits} per county per decade' to '\\textbf{Exposures} per county per decade' (bold used to highlight change). Figure caption in the revised manuscript: \\textit{Figure caption.}", fig.show = "hold", out.width="40%", fig.align = "center"}
+```{r fig5, fig.cap="Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\\textbf{Hits} per county per decade' to '\\textbf{Exposures} per county per decade' (bold used to highlight change).}", fig.show = "hold", out.width="40%", fig.align = "center"}
 include_graphics("../figures/averageexposureonly.pdf")
 include_graphics("figures/averageexposureonly.pdf")
 ```
@@ -509,665 +509,105 @@ rain."}
 
 **Response:** 
 
+We have included a measurement of agreement between different hazard-based
+exposure metrics for two reasons. First, while we agree with the reviewer that a
+direct measurement is always preferable to a proxy, there are still some studies
+that, when assessing tropical cyclone exposure based on measurements of physical
+hazards, use a single hazard for this exposure assessment. We are most familar
+with cases where a wind-based metric has been the focus in these cases (e.g.,
+@sun2020tropical, @grabich2015measuring). Therefore, sometimes might not be
+ideal, it is done in practice. To interpret these studies, it is helpful to
+understand the degree to which this single-hazard metric agrees with exposure
+patterns for other hazards. If the exposure patterns are in strong agreement for
+all hazards, then these studies could be interpreted as estimating risk
+associated with exposure to tropical cyclones as a whole. If the exposure
+patterns are in low to moderate agreement, then these studies should be
+interpreted instead as estimating the risk associated with that specific storm
+hazard, but not for all storm hazards. In this case, if the agreement is
+moderate, though, there is a chance of confounding from other storm hazards
+(i.e., an association that is attributed to one storm hazard was actually the
+result of another that was not included in the model). In this paper, we present
+measurements of agreement across four hazard-based exposure metrics that can
+provide insight on these points.
+
+Second (and related), epidemiologists need to understand how these exposure
+measurements agree to help in planning studies and statistical approaches to
+interpreting the resulting data. In this sense, "agreement" is providing a
+measure similar to correlation for continuous variables; our choice of agreement
+with the binary exposure classifications reflects the more common use of binary
+classifications for most tropical cyclone epidemiology to date.
+
+There are several things that an epidemiologist could derive from these results
+to help in designing a study and the associated statistical analysis. First, the
+results we present can help epidemiologists determine if they can use a single
+metric of tropical cyclone exposure in their studies, or if they need to instead
+consider tropical cyclones as a mixture of hazards. There are a number of
+practical reasons to use a single exposure metric, if doing so is reasonable
+(even if it's not conceptually ideal). While there have been advances in methods
+for mixtures research in environmental epidemiology, these are often more
+complex than the long-used and well-developed methods for studying single
+exposures, and many epidemiologists are much more comfortable with methods for
+single exposures compared to methods for mixtures. Further, it can be easier to
+communicate results from single-exposure studies clearly and succinctly.
+Therefore, if there is a reasonable way to measure exposure with a single
+metric, there are practical reasons that recommend that approach, even if
+conceptually it might be preferable to incorporate separate hazards. 
+
+If, at the county level, there were strong agreement among exposure patterns for
+the different tropical cyclone hazards we considered, it might have been
+reasonable to recommend the use of a single hazard-based metric as a proxy for
+exposure to all storm hazards in epidemiological studies for practical reasons.
+We found that this is almost never the case, although there are a few select
+storms (like Hurricane Floyd in 1999) where such an approach might be
+justifiable. Most atmospheric scientists would not be surprised by our findings
+about this disagreement in exposure patterns for different tropical cyclone
+hazards, but this finding is not as self-evident for environmental
+epidemiologists. Based on a recent conference of the Interational Society for
+Environmental Epidemiology, for example, there are a number of environmental
+epidemiologists with backgrounds focused on methods and other ambient exposures
+(e.g., air pollution, heat) who are beginning to include tropical cyclones as an
+exposure of interest in their studies, and we believe these results would be
+novel and useful to many of them.
+
+Second, in cases where it is clear that a mixture approach is necessary, these
+results can help in understanding what challenges might arise in statistical
+analysis. While one approach to including several hazards could be to create an
+index of tropical cyclone exposure by taking a weighted sum of all hazards, for
+most health outcomes it is unclear *a priori* what the weight for each hazard
+should be in such an index, and so it will often be preferable to discover those
+weights from the data by fitting a statistical model that includes each hazard
+as an independent variable. In these cases, strong correlation (or agreement, in
+the case of binary exposures) among separate independent variables can create
+both numerical issues (e.g., variance inflation from multicollinearity) and
+difficulties in interpretation (e.g., difficulty infering the role of specific
+hazards and separating the influece of each). If an epidemiologist has a good
+understanding of these patterns in their data, he or she can adopt methods that
+address potential issues, including using matching-based study designs to create
+a subset of storms to study in which separate hazards are well-distinguished
+from each other, incorporation of dimension-reduction methods like principal
+components analysis, or shrinkage techniques that allow for a small amount of
+bias in estimation of associations in return for reducing problems from
+collinearity (e.g., ridge regression) [@leal2012multicollinearity;
+@schisterman2017collinearity].
+
 The reviewer makes a good point that it is important for us to clarify our
 motivation for measuring agreement between the hazard-based metrics, as well as
 to show readers how our results from these measures can be used to help in
 designing studies and planning statistical analysis for tropical cyclone
-epidemiology.
-
-A tropical cyclone brings a number of physical hazards, including the four 
-included in our study---wind, rain, flooding, and tornadoes. These separate 
-hazards may each cause health impacts and in some cases might act together 
-in synergy in elevating health risks. For example, severe wind and rain 
-together might create a higher probability of power outages, since the rain 
-could soften the ground and make it more likely that the wind can uproot 
-trees. These physical hazards tend to follow different patterns, and this is
-something that's intuitively understood by atmospheric scientists who study 
-the storms. Storm winds tend to decrease rapidly once a storm's center is 
-over land, for example, because the storm loses its main energy source---warm
-water. Rainfall can persist, and might be particularly severe when the storm 
-hits landscape that is not smooth, like the Appalachian Mountains. Tornadoes
-can be generated in outer bands of the storm, far from the storm's center, 
-but this tends to only happen in the southern half of the US. Rain and flooding
-will sometimes align spatially, but you can also have severe flooding downstream
-from the area that receives the most severe rain, particularly in coastal areas
-with large networks of waterways.
-
-None of these patterns would be particularly surprising to an atmospheric scientist, 
-but many epidemiologists might not be aware of them, or of how they play into
-exposure assessment for tropical cyclone epidemiology. Many environmental 
-epidemiologists have a training that was focused more on epidemiology and 
-biostatistics and rely on collaborations with experts in engineering,
-atmospheric science, or environmental health to ensure that they understand
-and are appropriately applying exposure assessment. In the case of tropical 
-cyclones, it is clear that they generate a mixture of physical hazards. 
-There has been a lot of methodological development and thought recently in 
-environmental epidemiology about how to study mixtures of chemicals---for example, 
-the mixture of air pollutants that a person might be exposed to, rather than 
-studying the individual effects of single air pollutants. 
-These mixture methods require an understanding of how the different components
-are associated with each other. In the case of binary, rather than continuous,
-exposure, this will be expressed as agreement among the different exposures.
-
-First, if exposure to a pair of different hazards strongly agrees (i.e., when a
-county is exposed to one hazard, they are typically also exposed to a second),
-this would have several implications for epidemiological research, especially
-for multi-year studies:
-
-- From a statistical modeling point of view, if you tried to include each hazard
-as a separate independent variable, you would run into problems with
-collinearity if fitting the study data with a generalized linear model or other
-regression model. One implication of this is that the confidence intervals on
-effect estimates for the two variables would be inflated, potentially a lot,
-because the model would struggle to figure out which of the two variables the
-weight should be placed on, and so this uncertainty would be reflected in the
-size of the associated confidence intervals.
-- If you see an effect, it would be very hard to try to determine if the causal
-pathway goes through the first hazard or the second. To mitigate effects, it is
-important to understand the pathway through which they happen, and it might be
-easier to get clues towards pathways if the hazards are better separated. By
-analogy, if you were able to conduct a controlled experiment to look at the
-effects of each hazard, jointly and in combination, you would design separation
-in the assignment of these treatments, so you could distinguish between the two
-factors. For tropical cyclone epidemiology, we are limited to an observational
-analysis, but the area of causal inference is doing a lot to explore how we can
-design observational studies and analyze data to come closer to what we might be
-able to see with a randomized control study. To determine which of those methods
-could be used for tropical cyclone epidemiology, it is important to understand
-the interplay of these patterns of exposures.
-- If this is the case, and a study is conducted on a single hazard of the storm, 
-then there is the risk that results have been confounded by a different hazard
-of the storm. 
-- On the positive side, in this case the researcher may be able to fit a simpler
-statistical model to estimate the joint effects of exposure to the storm as a
-whole. Statistical models of mixtures can be complex to lay out, and their 
-results can be hard to interpret and explain to others. If all hazards of a 
-tropical cyclone follow very similar spatial patterns, then it would be 
-reasonable to model tropical cyclone exposure based on one of the hazards
-(and it agreement is strong enough, it wouldn't make much difference which 
-of the hazards was used for this). This would allow for the use of very 
-straightforward statistical modeling, drawing on well-developed models currently
-used in environmental epidemiology to study things like the health risk associated
-with exposure to a single pollutant or a single physical hazard like outdoor 
-temperature. 
-
-Second, if a pair of hazards tend to have little spatial overlap among 
-counties, this also brings some implications for epidemiological study design
-and statistical analysis: 
-
-- In this case, a single-hazard analysis could miss a lot of the risk created
-by the storm as a whole. This is a concern because there have been some cases
-of studies that have assessed exposure based on a single storm, typically wind.
-[Grabich example, Darren Sun example]. We are aware of one other paper 
-currently under review that takes this same approach of focusing on the wind
-hazard of these storms. .... In interpreting these papers, it is helpful to
-know if this hazard can stand as a reasonable proxy to the collection of 
-physical hazards of the storm. If not, the paper must be interpreted as 
-investigating
-
-In the past, much of tropical cyclone epidemiology focused on cases studies of
-single storms. Multi-year studies are becoming more common. Both types of
-studies are important in exploring both typical and unusual health risks that
-can be caused by these storms. Therefore, it's important to understand the
-patterns between these different hazards both for single storms and across many
-storms. In our analysis, we find that these hazards typically are not in strong
-agreement across most storms, suggesting that mixture methods could be
-meaningfully applied in most cases, and that there may often be the chance to
-separate the role of different hazards through such models. However, we also
-find that there are a few storms for which the hazards follow very similar
-spatial patterns (Hurricane Floyd in 1999, for example), and in these cases
-there may be problems of multi-collinearity and non-separability of different
-hazard effects if a researcher tries to fit a model that incorporates each
-separate hazard.
-
-
-
-Issues: 
-
-1. **Interpretation** Effect of one hazard, or storm as a whole?
-
-
-2. **Confounding**
-
-
-3. **Multi-collinearity**
-
-
-4. **Disentangling role of different hazards**
-
-
-5. **Statistical power** (to separate effects of different hazards)
-
-
-
-------------------------------------------------------------------------------
-
-  
-2. These results will not be surprising to an atmospheric scientist / disaster
-researcher, but there are environmental epidemiologists who have done research
-on other exposures and are now starting to study tropical cyclones (session at
-ISEE, for example). It is useful for epidemiologists entering into tropical
-cyclone research to understand these facets of tropical cyclone exposure,
-including the distinction between the very coastal wind exposures and other
-hazards that tend to reach further inland.
-3. There are epidemiological studies that have used only one hazard for exposure
-assessment. This has most often been the case for wind. If this exposure
-assessment is meant to capture "tropical cyclone exposure" in general, with all
-the hazards that are related to tropical cyclones, then there is the chance for
-exposure misclassification if this single hazard is used.
-4. In the past, it was a very complex issue to try to pull together data on all
-these hazards. We agree that now that we have provided a dataset with all of
-them, epidemiologists should be thinking about multi-hazard analyses. However,
-there still will be some barriers to that. [Recent work on multi-pollutant
-exposures and the complexities associated with that.] If one of the hazards
-dominates in explaining associated health risk, then in some cases it might be
-reasonable to focus on that hazard, but in that case it is critical, based on
-our results, to remember that the exposure assessment is not capturing all
-hazards of the storms.
-
-
-The largest-scale county-level exposure study is likely that of @zandbergen2009,
-which estimated exposure in US counties to all US landfalling Atlantic basin
-tropical storms between 1851 and 2003, using both distance and an exposure
-metric that incorporated distance and windspeed. They used this exposure
-evaluation to create maps of total exposure to tropical storms within US
-counties, as well as to explore associations between a county's long-term
-exposure to tropical storms and its location, distance from the coast, size, and
-shape [@zandbergen2009]. @kruk2010 explored exposure to hurricane-related winds
-in the United States, including inland areas, for 1900-2008.
-
-Geographical patterns can differ for these different
-storm hazards, and so exposure assessment based on one hazard could create
-exposure misclassification if the pathway for health risks is through a
-different storm hazard.   
-
-A tropical cyclone's high winds can bring health risks and property damage
-through structural damage of houses and other buildings, falling trees, and
-wind-borne debris [@rappaport2000] and cause power
-outages [@liu2005; han2009], which introduce a number of threats to
-human and ecological health, including water quality risks if the outage affects
-wastewater treatment plants [@mallin2006].  Other risks can exist
-without severe wind; for example, one study found that most of the direct
-hurricane-related deaths in the US between 1970 and 1999 occurred in cases
-when wind was below hurricane strength, including for Tropical Storms Charley
-in 1998 and Alberto in 1994 [@rappaport2000].  Tropical cyclones can
-produce excessive rain, especially in certain topographies (e.g., near
-mountains), so counties well inland sometimes experience more extreme rain than
-coastal counties. Flood risks from tropical cyclones can result from this rain,
-although the two risks are not perfectly correlated [@chen2015]. In the
-US, over half of hurricane-related direct deaths from 1970 to 1999 from
-Atlantic basin storms were a result of freshwater
-flooding [@rappaport2000]. Flooding can also degrade water
-quality [@mallin2006], which can threaten both human and ecological
-health.
-
-If a study misclassifies exposure to the hazard or hazards that cause the
-health risk being studied, the study will generate biased estimates of tropical
-cyclone risks and impacts. Further, when different studies use different
-methods to assess exposure to tropical cyclones, their results are difficult to
-meaningfully compare and aggregate. If different methods identify
-similar sets of communities as ``exposed'',  these concerns are less serious.
-However, if different methods differ substantially in which communities they
-identify as ``exposed'', it makes it very important that epidemiological
-studies are thoughtful in how they assess exposure.
-
-These analyses can also help researchers compare and interpret results from
-previous epidemiological studies that have assessed tropical cyclone exposure in
-different ways, helping to [synthesize] previous epidemiologic results to form a
-better picture of how these storms can affect human health.
-
-However, these frequency maps, together with evidence from
-specific tropical cyclones (Figures \ref{fig:ivanexposure}
-and \ref{fig:jaccard}),  do illustrate the potential for strong differences in
-spatial patterns in tropical cyclone exposures, depending on which tropical
-cyclone hazards are considered.  A few previous studies have sought to
-determine county-level exposure to tropical cyclones over multi-year periods,
-including @zandbergen2009, which estimated exposure in US
-counties to all US landfalling Atlantic-basin tropical cyclones
-between 1851 and 2003, using both a distance-based metric and a metric that
-combined distance and windspeed, and [@kruk2010], which explored
-exposure to hurricane-related winds in the US, including inland areas,
-for 1900--2008.  Our results suggest that such exposure assessments may
-perform well in capturing some tropical cyclone hazards (e.g., wind), but
-likely miss other potentially dangerous tropical cyclone exposures, especially
-for hazards that repeatedly threaten northern or inland counties (e.g., rain,
-flooding).
-
-Therefore, use of distance to assess tropical cyclone exposure for impact
-studies could result in problematic exposure misclassification, which could mask
-true associations, even strong associations, between tropical cyclone exposure
-and outcomes of interest in impact studies [@savitz2016interpreting;
-armstrong1998effect]. The use of a single hazard-based metric (e.g., wind) could
-cause similar problems if the impact is driven, at least in part, by a different
-hazard or by multiple hazards of the tropical cyclone.
-
-If measurements of one storm hazard are used as a proxy to capture exposure to
-a different hazard, or a non-hazard proxy like distance to the storm track is
-used to assess exposure to storm hazards, the resulting exposure
-misclassification could be differential (i.e., associated with the outcome of
-interest or with factors associated with risk of the outcome of interest). 
-
-Therefore for most tropical cyclones, since exposure assessments often differ
-across storm hazards, as well as between each storm hazard and a distance-based
-proxy measurement, exposure misclassification is a potential risk.
-
-Further, we investigated agreement in exposure assessment across these metrics
-when applied individually. We found large differences in which counties are
-exposed to different hazards of tropical cyclones and that distance is, at
-best, a moderate, and often a very poor, surrogate for exposure to the specific
-tropical cyclone hazards of high wind, extreme rainfall, flooding, and
-tornadoes. Use of distance as a surrogate for any of these hazards, or exposure
-assessment based on one hazard when the pathway for health impacts is in part
-or full through another storm hazard, could lead to exposure misclassification.
-In the case of tropical cyclone risk and impact studies, including
-epidemiological studies, this would result in biased estimates.  Our findings
-highlight the importance of clarifying the potential pathway from tropical
-cyclone hazards to health impacts when conducting tropical cyclone
-epidemiological studies, and then basing exposure assessment on these hazards.
-
----------------------------------------------------------------------------
-
-It is obvious that it is typically better, but in cases where the proxy is much
-more practical to measure, it may need to be more than just a bit better, but
-instead substantially better. Also, there could be some cases where the proxy
-might actually be better---for example, if the proxy can be measured with very
-low level, while the direct exposure measure might only be measurable with high
-error. In that case, the proxy could be the better metric and might provide a
-more precise estimate of the association with health risk.
-
-[Env. Epi. book---advantages and disadvantages of different types of measures]
-
-We agree that it is helpful to clarify for readers that these independent
-hazards can come together in a storm event at different intensities and at
-different time windows. We have added some text on this:
-
-[Added text]
-
-However, we disagree that this should be down as an alternative to calculating
-agreement. Epidemiologists need to understand how these exposure measurements
-agree to help in planning studies and statistical approaches to interpreting the
-resulting data. In this sense, "agreement" is providing a measure similar to
-correlation for continuous variables; our choice of agreement with the binary
-exposure classifications reflects the more common use of binary classifications
-for most tropical cyclone epidemiology to date.
-
-Epidemiological studies might focus on tropical cyclone exposures at two levels.
-First, they might wish to focus on a specific hazard. For example, a study might
-hypothesize that mold growth following flooding from a tropical storm might
-increase risk of respiratory health outcomes in the months after a storm. In
-this case, the clear causal pathway recommends a focus on one of the storm
-hazards, rather than all storm hazards. However, other storm hazards could
-confound the association between flood exposure and respiratory health risk if
-the other hazards are ignored *and* if they are associated with both the
-exposure of interest (storm-associated flooding) and the health outcome. For
-example, if wind exposure assessments are in high agreement with flood exposure
-assessments for storms, and if wind affects risk of respiratory outcomes by
-causing extensive property damage and creating extreme psychological stress,
-which can have repercussions on respiratory health, then the wind hazard could
-confound the estimated association between storm-related flood exposure and the
-health outcome.
-
-This bias would be higher when the confounder and exposure of interest are more
-strongly correlated (for continuous variables) or in higher agreement (for
-categorical variables). Conversely, if the exposure and the potential confounder
-are, in practice, only weakly associated, then the potential for confounding is
-low. The Jaccard index is one measure of similarities between categorical
-(including binary) coefficients.
-
-Another consideration is collinearity. If one hazard is the exposure of interest
-and another hazard is a potential confounder, then the model should adjust the
-confounder or it will be misspecified and be prone to bias. However, if the
-exposure of interest and the potential confounder are very strongly
-correlated/in agreement, then including both as independent variables in a
-regression model often causes numerical problems in fitting the regression
-model, including instability in the estimated coefficients and inflated
-variance. In very extreme cases, the statistical software may not be able to
-invert the matrix [? only for linear regression?].
-
-Therefore, it is helpful for epidemiologists to understand if these independent
-storm-associated hazards tend to be strongly associated (in high agreement),
-both within specific storms (for single-storm studies) and on average across
-most large storms (for multi-storm studies). This knowledge will help them in
-identifying potential confounders if they are interested in studying the effects
-of a single hazard of the storm and also in determining if control for these
-potential confounders among other storm hazards might cause numerical problems
-or other collinearity-associated problems when fitting a regression model.
-
-If a researcher wishes to study the storm as a whole, then the researcher 
-could either seek a single measure to capture exposure to the storm as a whole
-or investigate more complex models that model the influence of the storm through
-pathways of several different hazards. 
-
-If a researcher wants a single measure for the storm as a whole, then it is
-helpful to know how well exposure assessments based on the hazard components of
-the storm agree with each other. If there is strong agreement, then any of those
-hazards could be used as a primary marker of exposure assessment. This is
-conceptually similar to checking for observer / rater agreement.
-
-> "When the row and column variable srepresent different observers' rating the
-same subjects or objects, interest is focused on *observer agreement* rather
-than mere association. In this case, measures and tests of agreement provide a
-method of assessing the reliability of a subjective classification or assessment
-procedure." [@friendly2015discrete]
-
-> "In assessing the strength of *agreement* we usually have a more stringent
-criterion than in measuring the strength of *association*, because observers
-ratings can be strongly associated without strong agreement. For example, one
-rater could use a more stringent criterion and thus consistently rate subjects
-one category lower (on an ordinal scale) than another rater. More generally,
-measures of agreement must take account of the marginal frequencies with which
-two raters use the categories. If observers tend to use the categories with
-different frequency, this will affect measures of agreement."
-[@friendly2015discrete]
-
-When you have an array of two or more exposures that are strongly correlated,
-including them together in a regression model can cause problems from
-collinearity [@schisterman2017collinearity].
-
-> "Environmental exposures ... often consist of an array of related individual
-factors that may be highly correlated with each other, causing concern about the
-impact of collinearity when attempting to identify individual effects."
-[@schisterman2017collinearity]
-
-**Commonly have multiple factors of interest, correlated**
-
-In some areas of epidemiology, researchers have moved toward the idea of a 
-"web of causality": 
-
-> "'Multiple causation' is the canon of contemporary epidemiology, and its
-metaphor and model is the 'web of causation'. Expressed through the notion
-of 'multifactorial etiology' and embedded in the statistical techniques
-of 'multivariate analysis', the belief that population patterns of health 
-and disease can be explained by a complex web of numerous interconnected 
-risk and protective factors has become one of this discipline's central 
-concepts. Equally entrenched is the corrolary that epidemiology's power
-to improve the public's health rests upon its ability to identify---and predict
-the results of breaking---selected strands of this causal web." [@krieger1994epidemiology]
-
-This is in contrast to focusing on single factors: 
-
-> "Expressly challenging the still-pervasive tendency of epidemiologists to
-think in terms of single 'agents' causing discrete diseases, the provocative
-metaphor and model of the 'web' invited epidemiologists to embrace a more
-sophisticated view of causality." [@krieger1994epidemiology]
-
-In this framework, epidemiology helps by identifying where it would help to
-break strands of the web: 
-
-> "Using this model, MacMahon et al. drew several important inferences about
-prevention and research that remain part of epidemiologic thinking to this day.
-Arguing that 'to effect preventative measures, it is not necessary to understand
-causal mechanisms in their entirity', they stated that 'even knowledge of one
-small component may allow some degree of prevention' since 'wherever the chain
-is broken the disease will be prevented'." [@krieger1994epidemiology]
-
-In other words, if you can identify *necessary* causes, you can craft 
-*practical* interventions. 
-
-In some fields of epidemiology (e.g., nutritional epidemiology), it is common 
-to study cases where there are multiple potential risk factors, and these 
-factors are often strongly correlated [@schisterman2017collinearity].
-
-> "The dynamics of many important ecological and evolutionary processes are 
-often influenced by multiple interacting factors, and attempting to understand 
-the dynamics of such systems presents difficult technical and philosophical 
-problems." [@petraitis1996inferring]
-
-> "Often in practice, investigators are faced with decisions of how to handle
-highly correlated variables." [@schisterman2017collinearity]
-
-**Methods to tackle multiple causality**
-
-When the aim is to explore the influences of multiple associated factors, there
-are some different strategies that can be used. These include multiple
-regression and path analysis:
-
-> "Evolutionary ecologists have recently turned to path analysis, multiple
-regression, and related techniques to analyse systems of multiple causality.
-While these techniques are often seen as competitors, they are, in fact,
-related, and as a result the problems of these techniques are similar."
-[@petraitis1996inferring]
-
-**Implications of collinearity**
-
-> "Two variables are defined as collinear if one can be expressed as an exact
-or near linear combination of the other. ... In general, collinearity between
-variables is described by the magnitude of their correlation." 
-[@schisterman2017collinearity]
-
-It can complicate inference of model coefficients. This is always a concern for 
-inferential models. For predictive models, it can be a problem if you later use
-the model to predict in a case where the correlation structure is different than
-in the training data. 
-
-> "The dependence of regression and path coefficients on the correlation
-structure is often glossed over. Yet this dependence means that inferences about
-the strengths of path coefficients are conditional upon the correlational
-structure among the predictor variables. If the correlation structure of the
-sample does not match the correlational structure of the population then
-regression and path coefficients will not estimate relative strengths
-accurately. This can occur if sampling is not random or if analysis is based on
-data from experiments with factorial designs, which break the correlational
-structure amnog the predictor variables." [@petraitis1996inferring]
-
-These implications can depend on whether the modeling goal is predictive or 
-inferential. 
-
-> "When the goal is to choose covariates based on their predictive value, 
-concerns about collinearity stem from the desire to improve parameter estimates'
-precision, which can be inflated when highly correlated covariates are included
-in the model." [@schisterman2017collinearity]
-
-> "In a causal framework, on the other hand, interest is often centered on a
-specific effect from a correctly specified causal model, even in the presence of
-highly correlated data, despite a potential loss of statistical efficiency.
-Under such a viewpoint, bias due to misspecification of the causal associations
-is a more devastating result than reduced precision of parameter estimates
-correctly estimated. Furthermore, a precisely but incorrectly estimated
-parameter may lead to invalid inferences. ... Relying on conventional
-variable-selection algorithms and standard analyses can ignore important
-confounders and even produce extremely imprecise confidence intervals."
-[@schisterman2017collinearity]
-
-The amount of bias in the unadjusted model (in terms of bias from an unadjusted
-confounder) depends on the strength of association between the exposure of
-interest and the potential confounder [@schisterman2017collinearity].
-
-> "This is especially important for the confounding variable scenario, where 
-correctly specifying the model may result in adjusting for a nearly 
-collinear variable." [@schisterman2017collinearity]
-
-The degree of agreement will influence the degree of confounding in an 
-unadjusted model, for either one or two confounders: 
-
-> "In this confounding scenario, increasing correlation exacerbates the bias
-due to misspecification, similar to results for a single confounder."
-[@schisterman2017collinearity]
-
-Extreme collinearity can create numerical problems
-[@schisterman2017collinearity].
-
-> "Under the extremely unlikely scenario of extreme collinearity [(abs. rho of
-0.999 or higher)], the numerical matrix inversion required for estimation fails,
-resulting in unstable and biased predictors." [@schisterman2017collinearity]
-
-> "Only for extreme values of rho cloes to 1 or -1 is beta-squareed
-nonidentifiable due to numerical instability; otherwise, the correctly specified
-model produces the most desirable (e.g., unbiased) estimates of the total effect
-of the exposure on the outcome." [@schisterman2017collinearity]
-
-Collinearity can cause imprecision in coefficient estimates, even if those
-estimates are unbiased [@schisterman2017collinearity].
-
-> "Multicollinearity: A term that refers to correlation among the independent
-variables in a multiple regression model; it is usually invoked when some 
-correlations are 'large', but an actual magnitude test is not well defined.[1]"
-[@gunasekara2008glossary]
-
-> "Collinearity occurs in multiple regression models when two (or
-more---multicollinearity) exposure variables are included in the model but are
-so similar to each other that they are essentially measuring at least part of
-the same thing. Collinearity creates problems with interpreting the analysis by
-affecting the standard errors of the variables (as it increases variance)[24]
-and by causing biased estimates for one or both of the collinear terms
-(sometimes dramatically so) [25]. If there is perfect collinearity between two
-variables then one should be dropped from the model. However, dropping exposure
-variables to reduce multicollinearity may lead to bias in the model from
-dropping useful information." [@gunasekara2008glossary]
-
-> "It might be argued in some cases that it is appropriate to include
-(collinear) variables in a model even when they are highly correlated, because
-the theoretical basis for including the variables is strong and the results of
-the model are consistent with expectations [10]. In such cases, models with and
-without the variables would be tested and compared. Such consideraion of
-alternative models tends to be described as an issue of (mis)-specification in
-econometrics. However, in epidemiology this tends to be described in terms of
-mediating and *intermediary variables*. Thus, an epidemiologist might argue for
-including an intermediate variable in a model (and testing it against a model
-without the variable) because including that variable might elucidate direct and
-indirect pathways between the exposure and outcome variables. An econometrician
-might do the same thing but describe this in terms of finding the correct model
-specification." [@gunasekara2008glossary]
-
-**Techniques to address collinearity**
-
-There are study designs that might help to separate different effects. For
-example, some matching designs might help in creating a subset of data in which
-the association that exists in the full dataset is broken (e.g.,
-@leal2012multicollinearity).
-
-> "Matching is typically employed to reduce model dependence and estimate 
-associations in a more empirical way than would be necessary without 
-matching. In line with this practice, matching was employed as a diagnostic
-tool to verify whether the effects of environmental variables that are highly 
-correlated with each other could be disentangled." [@leal2012multicollinearity]
-
-You could also explore techniques of dimension reduction, to create a smaller
-subset of independent variables for which the correlation is broken. For
-example, you could use PCA [@leal2012multicollinearity].
-
-There are other techniques that allow some bias in estimates in an attempt to
-reduce problems from collinearity, like ridge regression
-[@petraitis1996inferring].
-
-> "Several biased estimation techniquest ahve been proposed as a way to combat
-collinearity (Myers 1990). These are controversial methods. Ridge regression,
-for example, biases the regression coefficients in order to improve the model's
-ability to predict the criterion variable. The estimates of the individual
-regression coefficients may be very biased even though when taken together they
-provide a very good prediction of the criterion variable."
-[@petraitis1996inferring]
-
-> "When correct specification of the models still leads to 
-problems for conventional regression methods, one can apply modern techniques
-such as Bayesian hierarchical models with shrinkage estimators."
-[@schisterman2017collinearity]
-
-**Are effects of different factors 'separable'?**
-
-Epidemiology often aims to inform policy decisions. In this case, it can be
-important to characterize the separate effects of different associated factors
-that contribute to the health risk [@leal2012multicollinearity].
-
-> "To develop efficient public health interventions addressing the obesity 
-epidemic, it is important to identify exactly which aspects of the
-environment influence obesity risk. For example, demonstrating that the density 
-of fast-food restaurants was associated with obesity risk and demnstrating that
-the density of sports facilities was associated with obesity risk would lead to 
-different interventions." [@leal2012multicollinearity]
-
-However, it can be very difficult to separate the effects of different factors
-if those factors are strongly correlated [@leal2012multicollinearity]: 
-
-> "However, many neighborhood characteristics, especially those related to the
-densities of physical features and services, are strongly correlated with each
-other. Therefore, it is not clear whether it is even possible to disentangle the
-effects of these different environmental dimensions, even if they are
-hypothesized to influence obesity risk through distinct causal pathways."
-[@leal2012multicollinearity]
-
------------------------------------------------------------------------------
-
-As we note in our general response to your comments, we agree in general with
-your instinct here. However, there are some subtle points to note.
-
-First, we understand the potential appeal of creating a single exposure summary
-score based on a summation of exposures. This simplifies some of the statistical
-modeling, for example, and also provides a single exposure estimate to provide
-as the key study conclusion. However, in many areas of tropical cyclone
-epidemiology, it is unlikely that exposure to each type of hazard should be
-given equal weight. For example, an analysis of respiratory health in the months
-after the storm might hypothesize a strong connection with flooding, and smaller
-connections with rainfall and winds (through the pathway of property damage).
-Use of a pre-defined summation of exposure to each hazard would mask some of the
-potential association.
-
-While a summary statistic could be defined that adds a weight to each exposure,
-it would often be unclear *a priori* what weight each hazard exposure should be
-given. A better method might be to use a regression framework, where each hazard
-exposure is included as a separate explanatory variable, and the model uses the
-observed data to determine the appropriate weight for each hazard in terms of
-modifying risk to the outcome of interest. To explore the influence of multiple
-concurrent hazards, interaction terms could be added.
-
-However, if our analysis had found that hazard exposures follow very similar
-patterns, in terms of the counties exposed during a storm, then this strong
-agreement would result in a number of problems in fitting and interpreting these
-types of models. First, strong agreement in two or more of the explanatory
-variables in a regression model leads to collinearity, which among other
-implications often leads to a large inflation of confidence intervals for the
-effect estimates of the correlated explanatory variables. Further, if the hazard
-exposures were in strong agreement, then it would be difficult or impossible to
-disentagle the effects of the separate hazards, as a strong effect for one would
-be impossible to interpret with confidence, since the strong agreement in the
-data (and resulting low co-variability in the variables in the data) could cause
-the model to mistakenly attribute the effect of one hazard to the other.
-Further, it may become impossible in this case to estimate synergistic effects
-between the two, as an indicator of an interaction between the two exposures
-would be almost collinear with the two main effects.
-
-In our analysis, we find that this is usually not the case for the four tropical
-cyclone hazards that we consider. Instead, we find that for most storms, the
-hazards are fairly well-separated in terms of the counties they effect. There is
-a particularly strong pattern where inland counties can be exposed to extreme
-rain and flooding, but not wind. This separation opens the door for some
-interesting study designs and statistical modeling. For example, these patterns
-suggest that a study could investigate whether storm-associated rains alone
-create a health risk, as there are many exposures with only rain in inland
-counties, and so health associations could be explored here and contrasted with
-coastal areas that experienced both wind and extreme rain.
-
--------------------------------------------------------------------------------
-
-> "A job exposure matrix (JEM) may be defined as a cross classification of jobs
-and occupational exposures. Some matrices are based on tasks, instead of jobs. 
-... Usually there is a group of experts who build the matrix based on their 
-own knowledge and experience on occupational exopsures. The experts should 
-assess exposure to an open or fixed list of occupational exposures (that can 
-include chemical, physical, biological, and/or psychosocial agents) for an
-open or fixed list of jobs (or tasks) usually coded according to some established
-national or international classification system. Some JEMs also include 
-information for different calendar time periods." [@garcia2003glossary]
-
-[New advances in multi-pollutant analysis.]
-
-[Some of the hazards could create similar risks, if they converge on a common
-pathway of risk. For example, if pathway is through stress from property damage,
-individually and in the county, then several hazards could indeed lead to the
-same health outcomes (e.g., PTSD, other psychological markers, risk of acute
-cardiovascular outcomes, etc.). One example is extreme level of destruction both
-from wind (Hurricane Andrew, Hurricane Hugo), from river flooding associated
-with among of precipitation (Hurricane Floyd, Hurricane Florence), and from
-flash flooding associated with the rate of precipitation (Virginia storms).]
-
-[A better future direction might be through regression models with multiple
-explanatory pathways. This allows the model to fit different weights to each.
-Other models can also be explored, like regression trees, which might have an
-easier time capturing non-linearity (if exposure is included as a continuous
-value, as with wind and rain) and interactions when there are co-exposures to
-two or more hazards. Both of these are able (and will) either exclude or give a
-very low weight to an explanatory variable that does not help much in explaining
-variation in the health outcome.]
+epidemiology. We have added text to the manuscript on these points: 
+
+> "Finally, we investigated how well exposure assessment agreed across these
+metrics. **These results can help epidemiologists answer several key questions as
+they interpret previous research and design new studies. For example, if a
+single storm hazard has been used to measure exposure in an epidemiological
+study, can the result be interpreted as an association with tropical cyclone
+exposure in general, or should it be limited to represent an association with
+that specific storm hazard? If a study investigates the association between a
+single storm hazard and a health outcome, could this estimate be confounded by
+other storm hazards? When planning a new study that will incorporate several
+storm hazards in a mixtures approach, will there likely be numerical problems in
+fitting the model from multicollinearity, or difficulties in disentangling the
+role of separate hazards?**"
 
 \medskip
 
@@ -1275,16 +715,17 @@ what info I should digest from this table.
 
 **Response:** 
 
-We hope that these results can help epidemiologists who are planning new
-single-storm or multi-year studies of tropical cyclones and associated health
-risks. For planning a multi-year study, it is helpful to know how many exposures
-the study might incorporate, as this can help in giving a general idea of
-whether the study might have adequate statistical power to investigate a certain
-research question. Similarly, for single-storm studies, it is helpful to know
-how widespread exposure can be for a specific hazard during a very large storm.
-This table provides some basic summaries of the extent of exposure to different
-tropical cyclone hazards, both on average for the storms in the study and also
-for those storms that were most extensive. 
+We included this table with the intent that these results can help
+epidemiologists who are planning new single-storm or multi-year studies of
+tropical cyclones and associated health risks. For planning a multi-year study,
+it is helpful to know how many exposures the study might incorporate, as this
+can help in giving a general idea of whether the study might have adequate
+statistical power to investigate a certain research question. Similarly, for
+single-storm studies, it is helpful to know how widespread exposure can be for a
+specific hazard during a very large storm. This table provides some basic
+summaries of the extent of exposure to different tropical cyclone hazards, both
+on average for the storms in the study and also for those storms that were most
+extensive.
 
 We have added text to help the readers interpret this table:
 
@@ -1679,7 +1120,7 @@ the comparison is based on the wind radii dataset described in the text, as
 requested. The original and revised versions of Figure 3 of the manuscript are
 reproduced in this response document as Figure \@ref(fig:fig3).
 
-```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Comparison of two sources of wind exposure estimates: (1) modeled peak sustained surface wind and (2) estimates based on HURDAT2's wind speed radii. Each point represents a storm, with the x-axis giving the percent of counties classified in the same category of peak sustained surface wind (< 34 kt; 34--49.9 kt; 50--63.9 kt; $\\ge$64 kt) by both sources of data. The color of each point gives the number of study counties that were exposed to peak sustained surface wind of at least 34 kt (based on modeled wind). Estimates are shown for study storms since 2004, the earliest year for which post-storm reanalysis wind speed radii are routinely available in HURDAT2, and for which at least one study county had a peak sustained wind of $\\ge$34 kt based on the post-storm wind radii.}", fig.show = "hold", out.width="50%"}
+```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1.", fig.show = "hold", out.width="50%"}
 include_graphics("../figures/windcomparison.pdf")
 include_graphics("figures/windcomparison.pdf")
 ```

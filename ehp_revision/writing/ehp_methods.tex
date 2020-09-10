@@ -228,18 +228,29 @@ tropical cyclone hazard, we first summed the total number of county-level
 exposures over available years and mapped patterns in
 these exposures. 
 
-Finally, we investigated how well exposure assessment agreed across 
-these metrics. For each storm we investigated the degree to which the 
-set of counties assessed as exposed based on one metric overlapped with the set
-assessed as exposed based on each other metric, including a metric that used
-distance of a county from the storm track as a proxy for exposure to storm hazards. 
-We calculated the within-storm
-Jaccard index ($J_s$)~\parencite{jaccard1901distribution, jaccard1908nouvelles} between
-each pair of exposure metrics. This measures similarity
-between two metrics ($X_{1,s}$ and~$X_{2,s}$) for tropical cyclone~$s$ as the
-proportion of counties in which both of the metrics classify the county as
-exposed out of all counties classified as exposed by at least one of the
-metrics:
+Finally, we investigated how well exposure assessment agreed across these
+metrics. \textbf{These results can help epidemiologists answer several key
+questions as they interpret previous research and design new studies. For
+example, if a single storm hazard has been used to measure exposure in an
+epidemiological study, can the result be interpreted as an association with
+tropical cyclone exposure in general, or should it be limited to represent an
+association with that specific storm hazard? If a study investigates the
+association between a single storm hazard and a health outcome, could this
+estimate be confounded by other storm hazards? When planning a new study that
+will incorporate several storm hazards in a mixtures approach, will there
+likely be numerical problems in fitting the model from multicollinearity, or
+difficulties in disentangling the role of separate hazards?}
+
+For each storm we investigated the degree to which the set of counties assessed
+as exposed based on one metric overlapped with the set assessed as exposed
+based on each other metric, including a metric that used distance of a county
+from the storm track as a proxy for exposure to storm hazards.  We calculated
+the within-storm Jaccard index ($J_s$)~\parencite{jaccard1901distribution,
+jaccard1908nouvelles} between each pair of exposure metrics. This measures
+similarity between two metrics ($X_{1,s}$ and~$X_{2,s}$) for tropical
+cyclone~$s$ as the proportion of counties in which both of the metrics classify
+the county as exposed out of all counties classified as exposed by at least one
+of the metrics:
 
 \begin{equation} 
 J_s = \frac{X_{1,s} \cap X_{2,s}}{X_{1,s} \cup X_{2,s}}
