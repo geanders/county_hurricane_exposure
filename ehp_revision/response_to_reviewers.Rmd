@@ -295,7 +295,7 @@ the main text (reproduced in this response document as Figure \@ref(fig:fig5))
 and Figure S3 of the Supplemental Material. We have revised the wording in these
 figures to "Exposures per county per decade".
 
-```{r fig5, fig.cap="Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\\textbf{Hits} per county per decade' to '\\textbf{Exposures} per county per decade' (bold used to highlight change).}", fig.show = "hold", out.width="40%", fig.align = "center"}
+```{r fig5, fig.cap="Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\\textbf{Hits} per county per decade' to '\\textbf{Exposures} per county per decade' (bold used to highlight change). Figure caption in the revised manuscript: \\textit{Figure caption.}", fig.show = "hold", out.width="40%", fig.align = "center"}
 include_graphics("../figures/averageexposureonly.pdf")
 include_graphics("figures/averageexposureonly.pdf")
 ```
@@ -1120,7 +1120,7 @@ the comparison is based on the wind radii dataset described in the text, as
 requested. The original and revised versions of Figure 3 of the manuscript are
 reproduced in this response document as Figure \@ref(fig:fig3).
 
-```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1.", fig.show = "hold", out.width="50%"}
+```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Comparison of two sources of wind exposure estimates: (1) modeled peak sustained surface wind and (2) estimates based on HURDAT2's wind speed radii. Each point represents a storm, with the x-axis giving the percent of counties classified in the same category of peak sustained surface wind (< 34 kt; 34--49.9 kt; 50--63.9 kt; $\\ge$64 kt) by both sources of data. The color of each point gives the number of study counties that were exposed to peak sustained surface wind of at least 34 kt (based on modeled wind). Estimates are shown for study storms since 2004, the earliest year for which post-storm reanalysis wind speed radii are routinely available in HURDAT2, and for which at least one study county had a peak sustained wind of $\\ge$34 kt based on the post-storm wind radii.}", fig.show = "hold", out.width="50%"}
 include_graphics("../figures/windcomparison.pdf")
 include_graphics("figures/windcomparison.pdf")
 ```
