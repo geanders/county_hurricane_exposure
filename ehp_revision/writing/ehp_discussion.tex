@@ -22,13 +22,13 @@ The open-source data generally correspond well with data from other potential
 sources (Figures~\ref{fig:raincomparison}\,--\,\ref{fig:floodcomparison}), but
 there are caveats. The rainfall data are generally well-correlated with
 ground-based observations, but may sometimes underestimate very high rainfall
-values (Figure~\ref{fig:raincomparison}), and in some counties the correlation
-was substantially lower when considering only tropical cyclones with cumulative
-local rainfall of 75 mm or more (Supplemental Table 1). When rainfall data is
-used to create binary exposure classifications, this disagreement is unlikely
-to influence results, as both data sources agree in identifying these as storms
-with high rainfall, but would be important to consider for cases that include
-rainfall as a continuous measurement. 
+values (Figure~\ref{fig:raincomparison}), \textbf{and in some counties the
+correlation was substantially lower when considering only tropical cyclones
+with cumulative local rainfall of 75 mm or more (Supplemental Table 1).} When
+rainfall data is used to create binary exposure classifications, this
+disagreement is unlikely to influence results, as both data sources agree in
+identifying these as storms with high rainfall, but would be important to
+consider for cases that include rainfall as a continuous measurement. 
 
 The peak sustained wind estimates are based on modeled, rather than observed,
 values, and while the modeled wind data generally agree well
@@ -84,12 +84,12 @@ hazard metrics~\parencite{chakraborty2005population, peduzzi2009assessing}.
 This functionality can be critical, as different hazards of tropical cyclones can
 act synergistically in causing impacts~\parencite{smith2009}.  
 
-\textbf{This dataset is limited to the contiguous US. The precipitation data is
-extracted and aggregated to the county level from a re-analysis data product.
-While the re-analysis product used here (NLDAS-2) only covers the contiguous
-US, other similar re-analysis products, as well as other types of precipitation
-datasets, have global coverage \parencite{sun2018review}. The wind data are
-generated based on a model that is currently US-focused
+\textbf{This dataset is limited to the contiguous US, and while expansion to
+global coverage would be useful and feasible, there would be some challenges.
+For precipitation data, the re-analysis product used here (NLDAS-2) only covers
+the contiguous US, although other re-analysis products, as well as other types
+of precipitation datasets, have global coverage \parencite{sun2018review}. The
+wind data are generated based on a model that is currently US-focused
 \parencite{stormwindmodel}, but could be extended to other areas, although this
 would require adding new land/sea masks within the associated software, as well
 as accounting for differences across storm basins in wind averaging periods
@@ -108,7 +108,7 @@ relevant geopolitical boundaries to use for aggregation would vary by country
 (e.g., municipalities in Mexico, districts in India).}
 
 \textbf{The dataset we present focuses on the physical hazards of a tropical
-cyclone.  However, health impacts will often some through indirect pathways,
+cyclone. However, health impacts will often come through indirect pathways,
 including through damage to property and infrastructure. In future work, it
 would be useful to expand this dataset to add data related to these pathways,
 to allow research exploring the role of indirect pathways from tropical cyclone
@@ -167,8 +167,8 @@ rees2001}.
 Based on our results, the use of a distance-based metric to assess exposure to
 any of these hazards, or the use of measurements from one hazard as a proxy for
 exposure to any of the other hazards considered, would often introduce exposure
-misclassification \textbf{(Tables S3--S6)}. This conclusion reinforces
-similar findings from a study of Florida's 2004 storm
+misclassification \textbf{(Figure \ref{fig:jaccard}, Tables S3--S6)}. This
+conclusion reinforces similar findings from a study of Florida's 2004 storm
 season~\parencite{grabich2015measuring}.  For some studies, such exposure
 misclassification might plausibly be differential.  For example, tropical
 cyclone wind exposures tend to be concentrated in counties near the coast,
@@ -225,24 +225,23 @@ Second, these data are aggregated to the county level. \textbf{This spatial
 scale allows for easy integration with health outcome data aggregated at the
 county level. Such data is often used for disaster epidemiology, as aggregated
 data may be easier to access than individual-level data, especially at a scale
-that covers many locations and a long time period and so allows higher
-statistical power and a broader range of exposure levels within the study
+that covers many locations and years and so allows higher statistical power and
+includes a broader range of exposure levels
 \parencite{wakefield2008overcoming}.}
 
-\textbf{These ecological exposure estimates, however, set a common exposure
+\textbf{Such ecological exposure assessment, however, sets a common exposure
 level throughout the county, ignoring within-county variability, even though
-such variability often exists. For some hazards, this within-county variation
-in exposure level could be stark. For example, tornadoes cause very localized
-damage, directly along the tornado's path---a tornado can destroy homes on one
-side of a street while leaving those on the opposite side untouched. Levels of
-other hazards, like storm-associated winds and rain, will also vary within a
-county, but typically with smoother variation. In particular, it will be
-unlikely that a county will have one area that is exposed to extremes of these
-hazards from a tropical cyclone while other parts of the county are completely
-unexposed, as both the wind fields and rain fields of tropical cyclones tend to
-be large in comparison to the size of a county.}
+such variability exists. For some hazards, this within-county variation could
+be stark. For example, tornadoes cause very localized damage, directly along
+the tornado's path---a tornado can destroy homes on one side of a street while
+leaving those on the opposite side untouched. Levels of other hazards, like
+storm-associated winds and rain, will also vary within a county, but typically
+with smoother variation. In particular, it will be unlikely that a county will
+have one area that is exposed to extremes of these hazards while other parts of
+the county are completely unexposed, as both the wind fields and rain fields of
+tropical cyclones tend to be large in comparison to the size of a county.}
 
-\textbf{Aggregated data can be used to infer contextual level
+\textbf{Aggregated data can be used to infer contextual-level
 associations---for example, the association between county-level exposure to a
 storm hazard and county-wide rates of a health outcome. However, ecological
 data is also sometimes used to infer individual-level associations (e.g., the

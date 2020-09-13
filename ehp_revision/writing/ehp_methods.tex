@@ -12,9 +12,9 @@ neared the \ac{US}.
 
 We first measured how close each storm's central track came to each county. We
 used tracking data from \ac{HURDAT2}, which records the storm center's position
-at four standardized times for weather data collection (synoptic times),
-6:00~am, 12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}.  We interpolated this
-position to~15-\si{\minute} intervals using natural cubic spline
+at \textbf{four standardized times for weather data collection (synoptic
+times)}, 6:00~am, 12:00~pm, 6:00~pm, and 12:00~am \ac{UTC}.  We interpolated
+this position to~15-\si{\minute} intervals using natural cubic spline
 interpolation~\parencite{hurricaneexposure}. At each~15-\si{\minute} interval,
 we measured the distance between the storm's center and each county's
 population mean center, \textbf{as of the 2010 US Decennial
@@ -152,7 +152,7 @@ The tornado observations from this dataset---\textbf{along with the derived
 version of the data available through the Storm Prediction Center's National
 Tornado Database~\parencite{center2020storm}---are the official tornado event
 data} for the \ac{US}. \textbf{There are no other collections of tornado data
-comparable in emporal or geographic scope,} and so we did not further validate
+comparable in temporal or geographic scope,} and so we did not further validate
 the tornado event data. It is difficult to characterize flooding at the county
 level because flooding can be very localized and can be triggered by a variety
 of causes. To investigate the extent to which the NOAA flood event listings
@@ -237,9 +237,9 @@ tropical cyclone exposure in general, or should it be limited to represent an
 association with that specific storm hazard? If a study investigates the
 association between a single storm hazard and a health outcome, could this
 estimate be confounded by other storm hazards? When planning a new study that
-will incorporate several storm hazards in a mixtures approach, will there
-likely be numerical problems in fitting the model from multicollinearity, or
-difficulties in disentangling the role of separate hazards?}
+will incorporate several storm hazards, might there be variance inflation from
+multicollinearity or difficulties in disentangling the roles of separate
+hazards?}
 
 For each storm we investigated the degree to which the set of counties assessed
 as exposed based on one metric overlapped with the set assessed as exposed
