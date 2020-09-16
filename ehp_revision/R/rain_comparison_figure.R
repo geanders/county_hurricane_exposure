@@ -385,16 +385,16 @@ supp_tab <- high_corr_table %>%
                      booktabs = TRUE, 
                      escape = FALSE, 
                      caption = "Precipitation correlation during all versus high-precipitation events.
-                     The same sample of counties is shown as in Figure ... of the main text.
-                     Events are cases where a tropical cyclone came within ... km of each of the 
+                     The same sample of counties is shown as in Figure 2 of the main text.
+                     Events are cases where a tropical cyclone came within 500 km of each of the 
                      listed counties. The number of total events gives the sum of all points
-                     shown on the main plot for the county in Figure ... of the main text. 
-                     The Spearman correlation for all events is the same as that shown in Figure ...
+                     shown on the main plot for the county in Figure 2 of the main text. 
+                     The Spearman correlation for all events is the same as that shown in Figure 2
                      of the main text. High-precipitation events are those for which storm-associated
                      precipitation was 75 mm or higher based on at least one of the two measures
-                     considered in this comparison (NLDAS and monitors). The Spearman correlation
-                     for these high-precipitation events is given in the last column of the 
-                     table.", 
+                     considered in this comparison (NLDAS-2 reanalysis data and ground-based stations). 
+                     The Spearman correlation between these two precipitation data sources is given
+                     for these high-precipitation events in the last column of the table.", 
                      align = "lcccc", 
                      label = "highprecipcorr") %>% 
         add_header_above(c(" ", "All events" = 2, "High-precipitation events" = 2)) 

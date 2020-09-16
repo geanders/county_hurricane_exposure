@@ -2000,18 +2000,17 @@
     <bcf:citekey order="2">mallin2006</bcf:citekey>
     <bcf:citekey order="2">quiring2011variations</bcf:citekey>
     <bcf:citekey order="3">czajkowski2011</bcf:citekey>
-    <bcf:citekey order="4">czajkowski2011</bcf:citekey>
-    <bcf:citekey order="5">grabich2015measuring</bcf:citekey>
-    <bcf:citekey order="5">grabich2015</bcf:citekey>
-    <bcf:citekey order="5">currie2013</bcf:citekey>
-    <bcf:citekey order="6">zhou2017spatial</bcf:citekey>
+    <bcf:citekey order="4">grabich2015measuring</bcf:citekey>
+    <bcf:citekey order="4">grabich2015</bcf:citekey>
+    <bcf:citekey order="4">currie2013</bcf:citekey>
+    <bcf:citekey order="5">zhou2017spatial</bcf:citekey>
+    <bcf:citekey order="6">schumacher2006characteristics</bcf:citekey>
     <bcf:citekey order="7">schumacher2006characteristics</bcf:citekey>
-    <bcf:citekey order="8">schumacher2006characteristics</bcf:citekey>
-    <bcf:citekey order="8">schumacher2005organization</bcf:citekey>
-    <bcf:citekey order="8">stevenson201410</bcf:citekey>
-    <bcf:citekey order="9">zhou2017spatial</bcf:citekey>
-    <bcf:citekey order="10">feldmann2019estimation</bcf:citekey>
-    <bcf:citekey order="11">cangialosi2016examination</bcf:citekey>
+    <bcf:citekey order="7">schumacher2005organization</bcf:citekey>
+    <bcf:citekey order="7">stevenson201410</bcf:citekey>
+    <bcf:citekey order="8">zhou2017spatial</bcf:citekey>
+    <bcf:citekey order="9">feldmann2019estimation</bcf:citekey>
+    <bcf:citekey order="10">cangialosi2016examination</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
