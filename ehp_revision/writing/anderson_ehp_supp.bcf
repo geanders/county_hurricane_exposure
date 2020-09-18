@@ -2003,14 +2003,16 @@
     <bcf:citekey order="4">grabich2015measuring</bcf:citekey>
     <bcf:citekey order="4">grabich2015</bcf:citekey>
     <bcf:citekey order="4">currie2013</bcf:citekey>
-    <bcf:citekey order="5">zhou2017spatial</bcf:citekey>
-    <bcf:citekey order="6">schumacher2006characteristics</bcf:citekey>
-    <bcf:citekey order="7">schumacher2006characteristics</bcf:citekey>
-    <bcf:citekey order="7">schumacher2005organization</bcf:citekey>
-    <bcf:citekey order="7">stevenson201410</bcf:citekey>
+    <bcf:citekey order="5">bosma2020intuitive</bcf:citekey>
+    <bcf:citekey order="6">noaaatlas</bcf:citekey>
+    <bcf:citekey order="7">noaaatlas</bcf:citekey>
     <bcf:citekey order="8">zhou2017spatial</bcf:citekey>
     <bcf:citekey order="9">feldmann2019estimation</bcf:citekey>
-    <bcf:citekey order="10">cangialosi2016examination</bcf:citekey>
+    <bcf:citekey order="10">schumacher2006characteristics</bcf:citekey>
+    <bcf:citekey order="11">schumacher2006characteristics</bcf:citekey>
+    <bcf:citekey order="11">schumacher2005organization</bcf:citekey>
+    <bcf:citekey order="11">stevenson201410</bcf:citekey>
+    <bcf:citekey order="12">cangialosi2016examination</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

@@ -37,6 +37,8 @@ header-includes:
 - \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 - \usepackage{longtable}
 - \DeclareDelayedFloatFlavor{longtable}{table}
+- \usepackage{pdflscape}
+- \setlength\LTcapwidth{\textwidth} 
 ---
 
 ```{r setup, include=FALSE}
@@ -235,7 +237,7 @@ nature of disaster declaration process, these declarations are often subject to
 many political and economic factors [@mccarthy2014fema; @logue1981research].
 Given the political and economic nature of these declarations, there is likely
 variation across time and geography in the likelihood of a given exposure
-resulting in a disaster declaration. This would be particularly worrisome for a
+resulting in a disaster declaration. This could be problematic for a
 study that seeks to explore risk across multiple years and affected communities.
 
 Other sources of data may therefore be better suited to use as a marker of
@@ -436,7 +438,7 @@ among exposures to specific hazards can help epidemiologists to design their
 studies and the statistical methods to analyze the resulting data. We provide
 a detailed response in our response below to Comment 1 from this reviewer.
 
-We have moved other suggestions that the reviewer sent in "Track Changes" of the
+We have moved suggestions that the reviewer sent in "Track Changes" of the
 Word document for the original manuscript and address each in detail below. When
 there were several comments on a related topic, we have grouped them together to
 provide a more cohesive response to the point.
@@ -513,11 +515,11 @@ rain."}
 
 We have included a measurement of agreement between different hazard-based
 exposure metrics for two reasons. First, while we agree with the reviewer that a
-direct measurement is always preferable to a proxy, there are still some studies
+direct measurement of each relevant hazard is preferable to a proxy, there are still some studies
 that, when assessing tropical cyclone exposure based on measurements of physical
 hazards, use a single hazard for this exposure assessment. We are most familar
-with cases where a wind-based metric has been the focus in these cases (e.g.,
-@sun2020tropical, @grabich2015measuring). Therefore, sometimes might not be
+with cases where a wind-based metric has been the focus (e.g.,
+@sun2020tropical, @grabich2015measuring). While this may not be 
 ideal, it is done in practice. To interpret these studies, it is helpful to
 understand the degree to which this single-hazard metric agrees with exposure
 patterns for other hazards. If the exposure patterns are in strong agreement for
@@ -526,11 +528,11 @@ associated with exposure to tropical cyclones as a whole. If the exposure
 patterns are in low to moderate agreement, then these studies should be
 interpreted instead as estimating the risk associated with that specific storm
 hazard, but not for all storm hazards. In this case, if the agreement is
-moderate, though, there is a chance of confounding from other storm hazards
+moderate, there is a chance of confounding from other storm hazards
 (i.e., an association that is attributed to one storm hazard was actually the
 result of another that was not included in the model). In this paper, we present
 measurements of agreement across four hazard-based exposure metrics that can
-provide insight on these points.
+provide insights on these points.
 
 Second (and related), epidemiologists need to understand how these exposure
 measurements agree to help in planning studies and statistical approaches to
@@ -581,14 +583,14 @@ weights from the data by fitting a statistical model that includes each hazard
 as an independent variable. In these cases, strong correlation (or agreement, in
 the case of binary exposures) among separate independent variables can create
 both numerical issues (e.g., variance inflation from multicollinearity) and
-difficulties in interpretation (e.g., difficulty infering the role of specific
-hazards and separating the influece of each). If an epidemiologist has a good
-understanding of these patterns in their data, he or she can adopt methods that
+difficulties in interpretation (e.g., difficulty inferring the role of specific
+hazards and separating the influence of each). If an epidemiologist has a good
+understanding of these patterns in the data, he or she can adopt methods that
 address potential issues, including using matching-based study designs to create
-a subset of storms to study in which separate hazards are well-distinguished
-from each other, incorporation of dimension-reduction methods like principal
+a subset of storms in which separate hazards are well-distinguished,
+incorporation of dimension-reduction methods like principal
 components analysis, or shrinkage techniques that allow for a small amount of
-bias in estimation of associations in return for reducing problems from
+bias in estimation in return for reducing problems from
 collinearity (e.g., ridge regression) [@leal2012multicollinearity;
 @schisterman2017collinearity].
 
@@ -654,12 +656,10 @@ This is a great suggestion. In the original manuscript, we describe this lower
 correlation at higher precipitation values through the use of examples from
 specific storms, and discuss the potential reasons for it. Measuring the
 correlation specifically within these higher-precipitation events would add more
-quantitative evidence to this discussion.
-
-We have added estimates of these correlations specifically for
-high-precipitation events in a new table in the Supplemental Material (Table S2
-of the manuscript, reproduced as Table \@ref(tab:highprecipcorr) of this
-response document).
+quantitative evidence to this discussion. We have added estimates of these
+correlations specifically for high-precipitation events in a new table in the
+Supplemental Material (Table S2 of the manuscript, reproduced as Table
+\@ref(tab:highprecipcorr) of this response document).
 
 \input{tables/precip_high_corr.tex}
 
@@ -670,7 +670,7 @@ near the county over the analysis period, while it was only 0.49 among the 18
 storms with cumulative precipitation of 75 mm or more. There was a similar
 reduction in Mobile County, AL. However, for some counties, the correlation
 remained high (e.g., Harris County, TX; Orleans Parish, LA), although in all
-cases there are small numbers of extreme precipitation events (5--20 across
+cases there are few extreme precipitation events (5--20 across
 these sample counties), and so there is likely substantial random variation in
 these correlation estimates, since they are based on small numbers of 
 observations.
@@ -682,14 +682,14 @@ supplemental table:
 "The rainfall data are generally well-correlated with ground-based
 observations, but may sometimes underestimate very high rainfall values (Figure
 2). **Further, in some counties, the correlation was substantially lower when 
-considering only tropical cyclones with cumulative local rainfall of 75 mm
-or more (Supplemental Table 1)**."
+considering only tropical cyclones with cumulative local rainfall of $\ge75$ mm
+(Supplemental Table 1)**."
 
 > **Text in revised Discussion (relevant addition in bold):**
 "The rainfall data are generally well-correlated with ground-based observations,
 but may sometimes underestimate very high rainfall values (Figure 2), **and in
 some counties the correlation was substantially lower when considering only
-tropical cyclones with cumulative local rainfall of 75 mm or more (Supplemental
+tropical cyclones with cumulative local rainfall of $\ge75$ mm (Supplemental
 Table 1).**"
 
 \medskip
@@ -702,10 +702,9 @@ Figure 4: I would add Y-axis label "NOAA classification."
 **Response:** 
 
 This is a great suggestion. We have made this change, as well as several changes
-in response to EHP's Request 4 later in this response.
-
-The original and revised versions of Figure 4 of the manuscript are reproduced in
-Figure \@ref(fig:fig4) of this response.
+in response to EHP's Request 4 later in this response. The original and revised
+versions of Figure 4 of the manuscript are reproduced in Figure \@ref(fig:fig4)
+of this response.
 
 ```{r fig4, fig.cap="Reproduction of Figure 4 from the original manuscript (top) and revised version in the resubmitted manuscript (bottom). In the revised version, we have added a title to the y-axis ('Classification based on NOAA Storm Events Data'), binned the values shown by each point's fill, so these colors are easier to distinguish, increased the size of the points, and changed the algorithm for jittering, so none of the points overlap.", fig.show = "hold", fig.align = "center", out.width="100%"}
 include_graphics("../figures/floodcomparison.pdf")
@@ -1081,15 +1080,19 @@ this study and also other reasonable thresholds that could be considered.
 This is Table S1 of the revised manuscript and has been reproduced as 
 Table \@ref(tab:thresholds) at the end of this response document.
 
-\begin{longtable}{lp{40em}}
-\caption{Caption. These are provided for the three exposure metrics for which our database includes continuous data, and so a threshold is selected to determine binary exposure based on the metric. This table provides reasoning for the choice of threshold used in this paper as well as guidance on other thresholds that could be considered, depending on the hypothesized pathways for an epidemiological study.}
+\begin{longtable}{lp{35em}}
+\caption{Reasons behind the choices of thresholds for binary exposure classifications, as well as discussion of some other reasonable choices. These are provided for the three exposure metrics for which our database includes continuous data, and so a threshold is selected to determine binary exposure based on the metric. This table provides reasoning for the choice of threshold used in this paper as well as guidance on other thresholds that could be considered, depending on the hypothesized pathways for an epidemiological study.} \\
 \label{tab:thresholds} \\
 \hline
 Metric & Threshold choice\\
 \hline
-Distance & In the manuscript, distance-based exposure was assessed if the storm track came within 100 km of county population mean center. This threshold for distance from the storm center has been used in prior research as a proxy for exposure to hazards from the storm \cite{grabich2015measuring}. Tropical cyclones vary dramatically in size: US tropical cyclones have been observed with radii to maximum winds as small as 20 km and as large as 200 km \cite{mallin2006, quiring2011variations}, and dangerous winds can extend beyond these maximum winds. One study \cite{czajkowski2011} assessed county-level risk and exposure based on a three-tiered definition, with primary counties being those closest to the storm track on either side, secondary counties being adjacent to primary counties, and tertiary counties adjacent to secondary counties. Such a definition resulted in an exposure defenition based on an average distance radius of 120 km on either side of the storm track \cite{czajkowski2011}. Other distance thresholds that could be considered include 60 km and 30 km, both of which have been used in previous research \cite{grabich2015measuring, grabich2015, currie2013}.\\
-Rain & In the manuscript, rain-based exposure was assessed if the county had cumulative rainfall of $\ge75$ mm over the period from two days before to one day after the storm’s closest approach and the storm track came within 500 km of the county population mean center. This threshold... Other reasonable definitions could vary both the threshold of rainfall (in mm) and also the choice of days surrounding the storm to include when calculating the cumulative rainfall. Tropical cyclone precipitation arrives before the center of the storm \cite{zhou2017spatial}. A variety of definitions have been used to identify both extreme or heavy rain (whether associated with a tropical cyclone or not) and tropical cyclone--associated rain. Some definitions of extreme rain events are higher than the threshold we use here---for example, one paper defined extreme rain events as cases in which a gauge reported 125 mm or more of rain in 24 hours \cite{schumacher2006characteristics}. Studies have also used definitions that are relative to the norms for a given location (e.g., 24 hour rainfall totals over the 50-year return value for the location, which the part of the US east of the Rocky Mountains range from 3.5 in [89 mm] to 13 in [330 mm]). \cite{schumacher2006characteristics, schumacher2005organization, stevenson201410}. A study focused on the risks that result from extreme rainfall may therefore reasonably choose a higher threshold than the 75 mm threshold we use in this analysis. In defining precipitation associated with tropical cyclones, studies have used thresholds of 12.5 mm per day as a metric of regions of ``moderately heavy'' rainfall \cite{zhou2017spatial} and, as a lower threshold, a lower limit of 10 mm of total storm precipitation---in conjunction with proximity to the storm's center---in identifying tropical cyclone precipitation events at a location \cite{feldmann2019estimation}. \\
-Wind & In the manuscript, wind-based exposure was assessed if modeled storm-associated peak sustained surface wind of $\ge34$ kts at the county’s population mean center. This threshold is being applied to local winds for each county, and it represents the threshold for gale-force winds on the Beaufort wind scale. This limit is used as the outer limit in measuring storm size through the US National Hurricane Center's wind radii for tropical cyclone forecasts \cite{cangialosi2016examination}. Other thresholds could be selected based on other points on the Beaufort scale---for example, $\ge48$ kts for capturing storm-force winds or $\ge64$ kts for capturing hurricane-force winds. As a note, hurricane-force winds will be rarely experienced for counties, as it will likely only be observed for very severe storms and even for those for counties near the storm's landfall. Many presentations of the Beaufort wind scale include descriptions of the conditions that winds in each category would produce both over land and at sea.\\
+\textbf{Distance} & Distance-based exposure was determined based on whether the storm track came within 100 km of county population mean center. This threshold has been used in prior research as a proxy for exposure to hazards from the storm (e.g., @grabich2015measuring). Tropical cyclones vary dramatically in size: US tropical cyclones have been observed with radii to maximum winds as small as 20 km and as large as 200 km [@mallin2006; @quiring2011variations], and dangerous winds can extend beyond these maximum winds. One study assessed county-level risk and exposure based on a three-tiered definition, with primary counties being those closest to the storm track on either side, secondary counties being adjacent to primary counties, and tertiary counties adjacent to secondary counties, which resulted in an average distance radius of 120 km on either side of the storm track [@czajkowski2011]. Other distance thresholds that could be considered include 60 km and 30 km, both of which have been used in previous research [@grabich2015measuring; @grabich2015; @currie2013]. However, based on the results presented in the main manuscript, hazard-based metrics should often be used directly rather than a distance-based proxy.\\
+
+\textbf{Rain} & Rain-based exposure was determined based on whether the county had cumulative rainfall of $\ge75$ mm over the period from two days before to one day after the storm’s closest approach and the storm track came within 500 km of the county population mean center. One recent study has highlighted that a two-year rainfall value (which is the median annual maximum rainfall) for a location can provide a useful threshold in identifying rainfall events with potential for societal impacts [@bosma2020intuitive]. For some of the more northern, inland communities included in our study area, the two-year rainfall value for two-, three- and four-day windows is in the 65--85 mm range. For example, Pittsburgh, PA, has two-year rainfall values of 69 mm for a two-day window, 74 mm for a three-day window, and 78 mm for a four-day window [@noaaatlas], consistent with the 75 mm threshold we selected for exposure classification in this paper. However, other thresholds, particularly higher thresholds, would be reasonable in some cases. For example, the two-year rainfall values tend to be much higher in counties of the study area that are further south and close to the coast. The two-year rainfall value for Miami for a three-day window, for example is 180 mm [@noaaatlas]. A variety of definitions have been used previously to identify both extreme or heavy rain (whether associated with a tropical cyclone or not) and tropical cyclone--associated rain. In defining precipitation associated with tropical cyclones, studies have used thresholds of 12.5 mm per day as a metric of regions of ``moderately heavy'' rainfall [@zhou2017spatial] and, as a lower threshold, a lower limit of 10 mm of total storm precipitation---\parfillskip=0pt\tabularnewline
+
+&in conjunction with proximity to the storm's center---in identifying tropical cyclone precipitation events at a location [@feldmann2019estimation]. Other definitions of extreme rain events---including but not limited to tropical cyclone--associated rainfall---are higher than the threshold we use here---for example, one paper defined extreme rain events as cases in which a gauge reported 125 mm or more of rain in 24 hours [@schumacher2006characteristics]. Studies have also used definitions that are relative to the norms for a given location (e.g., 24 hour rainfall totals over the 50-year return value for the location, which the part of the US east of the Rocky Mountains range from 3.5 in [89 mm] to 13 in [330 mm]). [@schumacher2006characteristics; @schumacher2005organization; @stevenson201410].\\
+
+\textbf{Wind} & Wind-based exposure was determined based on whether modeled storm-associated peak sustained surface wind were $\ge34$ kts at the county’s population mean center. This threshold is being applied to local winds for each county, and it represents the threshold for gale-force winds on the Beaufort wind scale. This limit is used as the outer limit in measuring storm size through the US National Hurricane Center's wind radii for tropical cyclone forecasts [@cangialosi2016examination]. Other thresholds could be selected based on other points on the Beaufort scale---for example, $\ge48$ kts for capturing storm-force winds or $\ge64$ kts for capturing hurricane-force winds. As a note, hurricane-force winds will be rarely experienced for counties, as it will likely only be observed for very severe storms and even for those for counties near the storm's landfall. Many presentations of the Beaufort wind scale include descriptions of the conditions that winds in each category would produce both over land and at sea.\\
 \hline
 \end{longtable}
 
