@@ -351,7 +351,7 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 It turns out that the data we present should already be accessible to use on the
 DesignSafe platform, because we have shared the data as an R package.
 
-DesignSafe is an online platform sponsered by the National Science Foundation as
+DesignSafe is an online platform sponsored by the National Science Foundation as
 part of the Natural Hazards Engineering Research Infrastructure
 [@rathje2017designsafe]. This platform can be used to store, share, and publish
 citable data related to natural hazards through its Data Depot. It goes beyond a
@@ -517,7 +517,7 @@ We have included a measurement of agreement between different hazard-based
 exposure metrics for two reasons. First, while we agree with the reviewer that a
 direct measurement of each relevant hazard is preferable to a proxy, there are still some studies
 that, when assessing tropical cyclone exposure based on measurements of physical
-hazards, use a single hazard for this exposure assessment. We are most familar
+hazards, use a single hazard for this exposure assessment. We are most familiar
 with cases where a wind-based metric has been the focus (e.g.,
 @sun2020tropical, @grabich2015measuring). While this may not be 
 ideal, it is done in practice. To interpret these studies, it is helpful to
@@ -566,7 +566,7 @@ storms (like Hurricane Floyd in 1999) where such an approach might be
 justifiable. Most atmospheric scientists would not be surprised by our findings
 about this disagreement in exposure patterns for different tropical cyclone
 hazards, but this finding is not as self-evident for environmental
-epidemiologists. Based on a recent conference of the Interational Society for
+epidemiologists. Based on a recent conference of the International Society for
 Environmental Epidemiology, for example, there are a number of environmental
 epidemiologists with backgrounds focused on methods and other ambient exposures
 (e.g., air pollution, heat) who are beginning to include tropical cyclones as an
@@ -777,7 +777,7 @@ introduce exposure misclassification."}
 Figure 7 of the main text is meant to help illustrate the potential for exposure
 misclassification, including when using a distance-based metric as a proxy. We
 used the Jaccard index because we are using data for all eastern US counties.
-For any storm, however, there will be large parts of this area that are
+For any storm, there will be large parts of this area that are
 unquestionably unaffected, because they are so far from the storm. For example,
 during Hurricane Floyd in 1999, the storm made landfall in North Carolina and
 moved northward along the Eastern Seaboard. While there will be questions in
@@ -790,11 +790,13 @@ counties far from the storm, like Texas counties during Hurricane Floyd, and
 wouldn't help to pinpoint the potential for disagreement in areas nearer the
 storm path.
 
+We therefore used the Jaccard index, which focuses on counties that were
+assessed as exposed based on at least one of the two metrics being compared.
 However, one downside of this metric is that it does not help readers understand
-the direction that disagreement is going. For example, it does not provide 
-information about how many counties were classified as "exposed" based on a 
-distance proxy but "unexposed" by a hazard-based proxy. This could be useful in 
-interpreting our results in Figure 7 of the main table. 
+the direction of that disagreement. For example, it does not provide information
+about how many counties were classified as "exposed" based on a distance proxy
+but "unexposed" by a hazard-based proxy. This could be useful in interpreting
+our results in Figure 7 of the main table.
 
 \input{tables/wind_misclass.tex}
 
@@ -804,23 +806,22 @@ interpreting our results in Figure 7 of the main table.
 
 \input{tables/tornado_misclass.tex}
 
-We have added four new tables in the Supplemental Material, one for each of the
-hazard-based metrics we considered. We have reproduced these tables in this
-response document as Tables \@ref(tab:misclasswind)--\@ref(tab:misclassflood)
-Each breaks down agreement and disagreement between the distance-based proxy
-metric and that hazard-based metric within several storms in our study period.
-These tables focus on storms with at least 250 counties exposed by at least one
-of the metrics considered. These tables allow readers both to investigate
-general patterns in disagreement and exposure misclassification across these
-storms and also to see cases of unusual storms. For example, for most storms,
-disagreement between the distance proxy metric and the wind-based metric
-resulted mainly from mis-classification of counties as exposed based on distance
-while they did not experience gale-force winds. However, there were a few
-storms, like Hurricane Bertha in 1996, where the inverse was the case, and a
-distance-based metric would have missed a large number of counties that
-experienced gale-force winds from the storm (misclassified them as unexposed),
-but not misclassified many counties as exposed when they in fact did not
-experience winds at this level.
+We have added four new tables in the Supplemental Material (Tables S3--S6), one
+for each of the hazard-based metrics we considered. We have reproduced these
+tables at the end of this response document as Tables
+\@ref(tab:misclasswind)--\@ref(tab:misclassflood). Each breaks down agreement
+and disagreement between the distance-based proxy metric and one hazard-based
+metric, focusing on storms with at least 200 counties exposed by at least one of
+the metrics considered. These tables allow readers both to investigate general
+patterns in disagreement and exposure misclassification across these storms and
+also to see cases of unusual storms. For example, for most storms, disagreement
+between the distance proxy metric and the wind-based metric resulted mainly from
+mis-classification of counties as exposed based on distance while they did not
+experience gale-force winds. However, there were a few storms, like Hurricane
+Bertha in 1996, where the inverse was the case, and a distance-based metric
+would have missed a large number of counties that experienced gale-force winds
+from the storm (misclassified them as unexposed), but not misclassified many
+counties as exposed when they in fact did not experience winds at this level.
 
 We have added a reference to these new tables in the main text of the manuscript: 
 
@@ -1035,8 +1036,8 @@ data."}
 
 This database is NOAA's official database on tornado events in the United States
 [@mccarthy2003nws]. It is the original source for the only other national
-tornado database available for the country (the Storm Prediction Center [SPC]'s
-National Tornado Database [@center2020storm]), which provides a version of the
+tornado database available for the country, the Storm Prediction Center [SPC]'s
+National Tornado Database [@center2020storm], which provides a version of the
 same data in which tornado events are joined into a single record in cases where
 they cross county lines. There is no other comparable source of data on tornado
 occurrences that could be used for a comparison as validation.
@@ -1072,13 +1073,39 @@ classifying continuous exposures into binary ones within the table.
 
 **Response:** 
 
-For all outcomes, there are various reasonable choices that can be picked for
+Ultimately, this choice will depend on what a researcher considers as plausible
+causal pathways for the outcome he or she is studying. For example, if power
+outages form a plausible step in the pathway, then the threshold for gale-force
+or strong gale-force winds might be reasonable, while if the pathway is more
+likely to be through larger-scale building destruction, a higher threshold would
+be more reasonable. 
+
+For all outcomes, there are therefore various reasonable choices that can be picked for
 the threshold in defining exposure. There is not room to go into these details
 within Table 1, so instead we added a separate table to the Supplemental
 Material that provides both some reasoning behind the thresholds selected in
 this study and also other reasonable thresholds that could be considered.
 This is Table S1 of the revised manuscript and has been reproduced as 
 Table \@ref(tab:thresholds) at the end of this response document.
+
+We have added text to introduce this supplemental table in the revised manuscript, 
+both in the Methods and in the Discussion: 
+
+> **Text in the revised Methods (added text in bold)**:
+"For other exposure metrics, each county was
+classified as exposed to a tropical cyclone based on whether the exposure
+metric exceeded a certain threshold (Table 1). We
+picked reasonable thresholds (e.g., the threshold for gale-force wind for wind
+exposure; **Table S1**), but others could be used with the open-source data and its
+associated software."
+
+> **Text in the revised Discussion (added text in bold)**:
+"Finally, to assess patterns and agreement for binary exposure classifications,
+we have chosen one set of sensible thresholds for binary classifications based
+on continuous metrics (rainfall, maximum sustained surface wind, and distance
+from the storm's track), **but other thresholds would be reasonable
+depending on hypothesized pathways for a given epidemiological study (Table
+S1)**."
 
 \begin{longtable}{lp{35em}}
 \caption{Reasons behind the choices of thresholds for binary exposure classifications, as well as discussion of some other reasonable choices. These are provided for the three exposure metrics for which our database includes continuous data, and so a threshold is selected to determine binary exposure based on the metric. This table provides reasoning for the choice of threshold used in this paper as well as guidance on other thresholds that could be considered, depending on the hypothesized pathways for an epidemiological study.} \\
@@ -1096,36 +1123,6 @@ Metric & Threshold choice\\
 \hline
 \end{longtable}
 
-Ultimately, this choice will depend on what a researcher considers as plausible
-causal pathways for the outcome he or she is studying. For example, if power
-outages form a plausible step in the pathway, then the threshold for gale-force
-or strong gale-force winds might be reasonable, while if the pathway is more
-likely to be through larger-scale building destruction, a higher threshold would
-be more reasonable. Some studies have done sensitivity analyses to consider how
-results changed using different exposure metrics. For example, @czajkowski2011
-performed a sensitivity analysis using different assumptions about wind decay
-away from the center of a storm, while @currie2013, who used a distance-based
-exposure metric, considered different buffer distances as a sensitivity
-analysis.
-
-We have added text to introduce this supplemental table in the revised manuscript, 
-both in the Methods and in the Discussion: 
-
-> **Text in the revised Methods (added text in bold)**:
-"For other exposure metrics, each county was
-classified as exposed to a tropical cyclone based on whether the exposure
-metric exceeded a certain threshold (Table~\ref{tab:exposuremetrics}). We
-picked reasonable thresholds (e.g., the threshold for gale-force wind for wind
-exposure; **Table S1**), but others could be used with the open-source data and its
-associated software."
-
-> **Text in the revised Discussion (added text in bold)**:
-"Finally, to assess patterns and agreement for binary exposure classifications,
-we have chosen one set of sensible thresholds for binary classifications based
-on continuous metrics (rainfall, maximum sustained surface wind, and distance
-from the storm's track), **but other thresholds would be reasonable
-depending on hypothesized pathways for a given epidemiological study (Table
-S1)**."
 
 \medskip
 
@@ -1143,7 +1140,7 @@ the comparison is based on the wind radii dataset described in the text, as
 requested. The original and revised versions of Figure 3 of the manuscript are
 reproduced in this response document as Figure \@ref(fig:fig3).
 
-```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1. Figure caption in the revised manuscript: \\textit{Comparison of two sources of wind exposure estimates: (1) modeled peak sustained surface wind and (2) estimates based on HURDAT2's wind speed radii. Each point represents a storm, with the x-axis giving the percent of counties classified in the same category of peak sustained surface wind (< 34 kt; 34--49.9 kt; 50--63.9 kt; $\\ge$64 kt) by both sources of data. The color of each point gives the number of study counties that were exposed to peak sustained surface wind of at least 34 kt (based on modeled wind). Estimates are shown for study storms since 2004, the earliest year for which post-storm reanalysis wind speed radii are routinely available in HURDAT2, and for which at least one study county had a peak sustained wind of $\\ge$34 kt based on the post-storm wind radii.}", fig.show = "hold", out.width="50%"}
+```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1.", fig.show = "hold", out.width="50%"}
 include_graphics("../figures/windcomparison.pdf")
 include_graphics("figures/windcomparison.pdf")
 ```
@@ -1185,7 +1182,7 @@ single-hued, like grayscale [@nunez2018optimizing; @viridis]. They are all
 perceptually uniform across the scale for those with normal color vision
 [@liu2018somewhere] and are close to perceptually uniform for those with common
 forms of color deficiency [@nunez2018optimizing]. They reproduce their original
-sequential gradient when printed in grayscale and so are perceptable when
+sequential gradient when printed in grayscale and so are perceptible when
 printed on a black-and-white printer [@van2015mpl; @nunez2018optimizing].
 Previous research has found that colormaps in this family allow viewers to more
 quickly and accurately judge relative distances in scientific figures
