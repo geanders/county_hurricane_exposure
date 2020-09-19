@@ -69,16 +69,21 @@ Thank you for the opportunity to revise and resubmit this manuscript. We
 appreciate the helpful suggestions from the reviewers for clarifying and
 deepening the discussion in the paper. 
 
-Broadly, we have: 
+The larger changes we have made include: 
 
-1. Added discussion on the question of county-level versus individual-level
-data. 
+1. Added discussion on the challenges and limitations of using aggregated, 
+county-level exposure assessment.
 2. Added explanations for how our comparisons among different storm hazards
-can help epidemiologists in designing studies and statistical analysis.
+can help epidemiologists in designing studies and planning statistical analysis.
+3. Added a supplemental table explaining the choice of thresholds for binary 
+exposure classification.
 3. Added a small analysis of the correlation in rainfall metrics specifically
 in cases of high rainfall ($\ge75$ mm of cumulative rainfall in the county
 associated with the storm), to deepen the discussion of potential disagreement
 in continuous measures of rainfall during extreme conditions. 
+4. Added supplemental tables that provide more details on patterns of exposure
+misclassification when comparing each hazard-based metric to a distance-based
+proxy metric.
 4. Changed labeling, axis range, and other presentation details for some
 figures, as well as confirmed that the color scales will be accessible.
 5. Corrected typos and improved wording throughout based on suggestions of the
@@ -117,6 +122,9 @@ discussion in the discussion section.
 \end{shaded}
 
 **Response:** 
+
+\hl{Roger and Meilin, could you take a look at this response and let me know if
+you have any comments of suggestions to add?}
 
 This is an excellent point. We have added text in the Limitations section of the
 Discussion on the potential limitations of using aggregated, county-level
@@ -164,6 +172,9 @@ authors discuss this?
 \end{shaded}
 
 **Response:** 
+
+\hl{Andrea, Mohammad, Seth, Steven, Bill, could you take a look at this response 
+and let me know if you have any comments of suggestions to add?}
 
 While there would be some limitations in comparisons based on differences in the
 scale of county-equivalents, many countries affected by tropical cyclones do
@@ -348,6 +359,15 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 
 **Response:** 
 
+\hl{Dirk, could you take a look at this response and let me know if you have
+any comments of suggestions to add? In particular, I don't have a lot of experience
+working with cloud-based platforms with Jupyter Notebooks. It sounds like that's 
+how the workspace for this DesignSafe platform works. My best guess is that you'd
+be able to download and use R packages in that type of workspace, including 
+a package hosted on a drat repository. Do you have any experience or insights on
+installing packages from different repositories while working on a Jupyter Notebook
+through an online platform?}
+
 It turns out that the data we present should already be accessible to use on the
 DesignSafe platform, because we have shared the data as an R package.
 
@@ -512,6 +532,9 @@ rain."}
 \end{shaded}
 
 **Response:** 
+
+\hl{Roger and Meilin, could you take a look at this response and let me know if
+you have any comments of suggestions to add?}
 
 We have included a measurement of agreement between different hazard-based
 exposure metrics for two reasons. First, while we agree with the reviewer that a
@@ -906,6 +929,9 @@ in the US). Would be good to clarify this.
 
 **Response:** 
 
+\hl{Andrea, could you take a look at this response and let me know if you have
+any comments of suggestions to add?}
+
 You are right, the opposite would be true in the Southern hemisphere. This
 difference is driven by the Coriolis effect on cyclonic rotation, in which the
 rotation of the earth diverts winds as they move toward the low pressure center
@@ -934,6 +960,9 @@ Coordinated Universal Time (UTC)."}
 \end{shaded}
 
 **Response:** 
+
+\hl{Andrea, could you take a look at this response and let me know if you have
+any comments of suggestions to add?}
 
 Some weather data are collected at standardized times, so that observations from
 different locations can be meaningfully integrated to provide a view of
@@ -1035,6 +1064,9 @@ data."}
 
 **Response:** 
 
+\hl{Andrea, could you take a look at this response and let me know if you have
+any comments of suggestions to add?}
+
 This database is NOAA's official database on tornado events in the United States
 [@mccarthy2003nws]. It is the original source for the only other national
 tornado database available for the country, the Storm Prediction Center [SPC]'s
@@ -1073,6 +1105,9 @@ classifying continuous exposures into binary ones within the table.
 \end{shaded}
 
 **Response:** 
+
+\hl{Andrea, Mohammad, Seth, Steven, and Bill, could you take a look at this
+response and let me know if you have any comments of suggestions to add?}
 
 Ultimately, this choice will depend on what a researcher considers as plausible
 causal pathways for the outcome he or she is studying. For example, if power
