@@ -168,7 +168,7 @@ authors discuss this?
 While there would be some limitations in comparisons based on differences in the
 scale of county-equivalents, many countries affected by tropical cyclones do
 have geopolitical areas that are fairly comparable to US counties, like
-municipalities in Mexico, districts in India. There would be a few challenges,
+municipalities in Mexico and districts in India. There would be a few challenges,
 however, in extending the exposure dataset for the hazards that we present in
 this paper. We have added text to the paper's Discussion on opportunities and
 barriers to expanding this approach internationally:
@@ -294,9 +294,9 @@ communities**, modify associated health risks (e.g., Anderson and Bell 2010; Son
 et al. 2012; Liu et al. 2017)."
 
 We also used the word "Hits per county per decade" in the legend for Figure 5 in
-the main text (reproduced in this response document as Figure \@ref(fig:fig5))
-and Figure S3 of the Supplemental Material. We have revised the wording in these
-figures to "Exposures per county per decade".
+the main text (reproduced at the end of this response document as Figure
+\@ref(fig:fig5)) and Figure S3 of the Supplemental Material. We have revised the
+wording in these figures to "Exposures per county per decade".
 
 ```{r fig5, fig.cap="Reproduction of Figure 5 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the figure legend was changed from '\\textbf{Hits} per county per decade' to '\\textbf{Exposures} per county per decade' (bold used to highlight change). Figure caption in the revised manuscript: \\textit{Figure caption.}", fig.show = "hold", out.width="40%", fig.align = "center"}
 include_graphics("../figures/averageexposureonly.pdf")
@@ -573,7 +573,7 @@ epidemiologists with backgrounds focused on methods and other ambient exposures
 exposure of interest in their studies, and we believe these results would be
 novel and useful to many of them.
 
-Second, in cases where it is clear that a mixture approach is necessary, these
+Further, in cases where it is clear that a mixture approach is necessary, these
 results can help in understanding what challenges might arise in statistical
 analysis. While one approach to including several hazards could be to create an
 index of tropical cyclone exposure by taking a weighted sum of all hazards, for
@@ -600,7 +600,8 @@ to show readers how our results from these measures can be used to help in
 designing studies and planning statistical analysis for tropical cyclone
 epidemiology. We have added text to the manuscript on these points: 
 
-> "Finally, we investigated how well exposure assessment agreed across these
+> **Text in revised manuscript (relevant added text in bold):** 
+"Finally, we investigated how well exposure assessment agreed across these
 metrics. **These results can help epidemiologists answer several key
 questions as they interpret previous research and design new studies. For
 example, if a single storm hazard has been used to measure exposure in an
@@ -659,7 +660,7 @@ correlation specifically within these higher-precipitation events would add more
 quantitative evidence to this discussion. We have added estimates of these
 correlations specifically for high-precipitation events in a new table in the
 Supplemental Material (Table S2 of the manuscript, reproduced as Table
-\@ref(tab:highprecipcorr) of this response document).
+\@ref(tab:highprecipcorr) at the end of this response document).
 
 \input{tables/precip_high_corr.tex}
 
@@ -704,7 +705,7 @@ Figure 4: I would add Y-axis label "NOAA classification."
 This is a great suggestion. We have made this change, as well as several changes
 in response to EHP's Request 4 later in this response. The original and revised
 versions of Figure 4 of the manuscript are reproduced in Figure \@ref(fig:fig4)
-of this response.
+at the end of this response.
 
 ```{r fig4, fig.cap="Reproduction of Figure 4 from the original manuscript (top) and revised version in the resubmitted manuscript (bottom). In the revised version, we have added a title to the y-axis ('Classification based on NOAA Storm Events Data'), binned the values shown by each point's fill, so these colors are easier to distinguish, increased the size of the points, and changed the algorithm for jittering, so none of the points overlap.", fig.show = "hold", fig.align = "center", out.width="100%"}
 include_graphics("../figures/floodcomparison.pdf")
@@ -781,7 +782,7 @@ For any storm, there will be large parts of this area that are
 unquestionably unaffected, because they are so far from the storm. For example,
 during Hurricane Floyd in 1999, the storm made landfall in North Carolina and
 moved northward along the Eastern Seaboard. While there will be questions in
-some case about whether counties in the Mid-Atlantic and New England were
+some cases about whether counties in the Mid-Atlantic and New England were
 exposed to this storm, counties in Texas, Louisiana, and other states in the
 west of the study area were unquestionably unexposed to this storm. If we
 measured misclassification using a metric that includes these counties in the
@@ -1113,13 +1114,13 @@ S1)**."
 \hline
 Metric & Threshold choice\\
 \hline
-\textbf{Distance} & Distance-based exposure was determined based on whether the storm track came within 100 km of county population mean center. This threshold has been used in prior research as a proxy for exposure to hazards from the storm (e.g., @grabich2015measuring). Tropical cyclones vary dramatically in size: US tropical cyclones have been observed with radii to maximum winds as small as 20 km and as large as 200 km [@mallin2006; @quiring2011variations], and dangerous winds can extend beyond these maximum winds. One study assessed county-level risk and exposure based on a three-tiered definition, with primary counties being those closest to the storm track on either side, secondary counties being adjacent to primary counties, and tertiary counties adjacent to secondary counties, which resulted in an average distance radius of 120 km on either side of the storm track [@czajkowski2011]. Other distance thresholds that could be considered include 60 km and 30 km, both of which have been used in previous research [@grabich2015measuring; @grabich2015; @currie2013]. However, based on the results presented in the main manuscript, hazard-based metrics should often be used directly rather than a distance-based proxy.\\
+\textbf{Distance} & Distance-based exposure was determined based on whether the storm track came within 100 km of county population mean center. This threshold has been used in prior research as a proxy for exposure to hazards from the storm (e.g., Grabich et al. 2015a). Tropical cyclones vary dramatically in size: US tropical cyclones have been observed with radii to maximum winds as small as 20 km and as large as 200 km (Mallin and Corbett 2006; Quiring et al. 2011), and dangerous winds can extend beyond these maximum winds. One study assessed county-level risk and exposure based on a three-tiered definition, with primary counties being those closest to the storm track on either side, secondary counties being adjacent to primary counties, and tertiary counties adjacent to secondary counties, which resulted in an average distance radius of 120 km on either side of the storm track (Czajkowski et al. 2011). Other distance thresholds that could be considered include 60 km and 30 km, both of which have been used in previous research (Grabich et al. 2015a; Grabich et al. 2015b; Currie and Rossin-Slater 2013). However, based on the results presented in the main manuscript, hazard-based metrics should often be used directly rather than a distance-based proxy.\\
 
-\textbf{Rain} & Rain-based exposure was determined based on whether the county had cumulative rainfall of $\ge75$ mm over the period from two days before to one day after the storm’s closest approach and the storm track came within 500 km of the county population mean center. One recent study has highlighted that a two-year rainfall value (which is the median annual maximum rainfall) for a location can provide a useful threshold in identifying rainfall events with potential for societal impacts [@bosma2020intuitive]. For some of the more northern, inland communities included in our study area, the two-year rainfall value for two-, three- and four-day windows is in the 65--85 mm range. For example, Pittsburgh, PA, has two-year rainfall values of 69 mm for a two-day window, 74 mm for a three-day window, and 78 mm for a four-day window [@noaaatlas], consistent with the 75 mm threshold we selected for exposure classification in this paper. However, other thresholds, particularly higher thresholds, would be reasonable in some cases. For example, the two-year rainfall values tend to be much higher in counties of the study area that are further south and close to the coast. The two-year rainfall value for Miami for a three-day window, for example is 180 mm [@noaaatlas]. A variety of definitions have been used previously to identify both extreme or heavy rain (whether associated with a tropical cyclone or not) and tropical cyclone--associated rain. In defining precipitation associated with tropical cyclones, studies have used thresholds of 12.5 mm per day as a metric of regions of ``moderately heavy'' rainfall [@zhou2017spatial] and, as a lower threshold, a lower limit of 10 mm of total storm precipitation---\parfillskip=0pt\tabularnewline
+\textbf{Rain} & Rain-based exposure was determined based on whether the county had cumulative rainfall of $\ge75$ mm over the period from two days before to one day after the storm’s closest approach and the storm track came within 500 km of the county population mean center. One recent study has highlighted that a two-year rainfall value (which is the median annual maximum rainfall) for a location can provide a useful threshold in identifying rainfall events with potential for societal impacts (Bosma et al. 2020). For some of the more northern, inland communities included in our study area, the two-year rainfall value for two-, three- and four-day windows is in the 65--85 mm range. For example, Pittsburgh, PA, has two-year rainfall values of 69 mm for a two-day window, 74 mm for a three-day window, and 78 mm for a four-day window (US NOAA 2020), consistent with the 75 mm threshold we selected for exposure classification in this paper. However, other thresholds, particularly higher thresholds, would be reasonable in some cases. For example, the two-year rainfall values tend to be much higher in counties of the study area that are further south and close to the coast. The two-year rainfall value for Miami for a three-day window, for example is 180 mm (US NOAA 2020). A variety of definitions have been used previously to identify both extreme or heavy rain (whether associated with a tropical cyclone or not) and tropical cyclone--associated rain. In defining precipitation associated with tropical cyclones, studies have used thresholds of 12.5 mm per day as a metric of regions of ``moderately heavy'' rainfall (Zhou and Matyas 2017) and, as a lower threshold, a lower limit of 10 mm of total storm precipitation---\parfillskip=0pt\tabularnewline
 
-&in conjunction with proximity to the storm's center---in identifying tropical cyclone precipitation events at a location [@feldmann2019estimation]. Other definitions of extreme rain events---including but not limited to tropical cyclone--associated rainfall---are higher than the threshold we use here---for example, one paper defined extreme rain events as cases in which a gauge reported 125 mm or more of rain in 24 hours [@schumacher2006characteristics]. Studies have also used definitions that are relative to the norms for a given location (e.g., 24 hour rainfall totals over the 50-year return value for the location, which the part of the US east of the Rocky Mountains range from 3.5 in [89 mm] to 13 in [330 mm]) [@schumacher2006characteristics; @schumacher2005organization; @stevenson201410].\\
+&in conjunction with proximity to the storm's center---in identifying tropical cyclone precipitation events at a location (Feldmann et al. 2019). Other definitions of extreme rain events---including but not limited to tropical cyclone--associated rainfall---are higher than the threshold we use here---for example, one paper defined extreme rain events as cases in which a gauge reported 125 mm or more of rain in 24 hours (Schumacher and Johnson 2006). Studies have also used definitions that are relative to the norms for a given location (e.g., 24 hour rainfall totals over the 50-year return value for the location, which the part of the US east of the Rocky Mountains range from 3.5 in [89 mm] to 13 in [330 mm]) (Schumacher and Johnson 2006; Schumacher and Johnson 2005; Stevenson and Schumacher 2014).\\
 
-\textbf{Wind} & Wind-based exposure was determined based on whether modeled storm-associated peak sustained surface wind was $\ge34$ kts at the county’s population mean center. This threshold is being applied to local winds for each county, and it represents the threshold for gale-force winds on the Beaufort wind scale. This limit is used as the outer limit in measuring storm size through the US National Hurricane Center's wind radii for tropical cyclone forecasts [@cangialosi2016examination]. Other thresholds could be selected based on other points on the Beaufort scale---for example, $\ge48$ kts for capturing storm-force winds or $\ge64$ kts for capturing hurricane-force winds. As a note, hurricane-force winds will be rarely experienced for counties, as it will likely only be observed for very severe storms and even for those, only for counties near the storm's landfall. Many presentations of the Beaufort wind scale include descriptions of the conditions that winds in each category would produce both over land and at sea.\\
+\textbf{Wind} & Wind-based exposure was determined based on whether modeled storm-associated peak sustained surface wind was $\ge34$ kts at the county’s population mean center. This threshold is being applied to local winds for each county, and it represents the threshold for gale-force winds on the Beaufort wind scale. This limit is used as the outer limit in measuring storm size through the US National Hurricane Center's wind radii for tropical cyclone forecasts (Cangialosi and Landsea 2016). Other thresholds could be selected based on other points on the Beaufort scale---for example, $\ge48$ kts for capturing storm-force winds or $\ge64$ kts for capturing hurricane-force winds. As a note, hurricane-force winds will be rarely experienced for counties, as it will likely only be observed for very severe storms and even for those, only for counties near the storm's landfall. Many presentations of the Beaufort wind scale include descriptions of the conditions that winds in each category would produce both over land and at sea.\\
 \hline
 \end{longtable}
 
@@ -1138,7 +1139,7 @@ text? Is so, I suggest clarifying this in the figure label.
 Yes, it is the same. We have revised the x-axis on the figure to clarify that
 the comparison is based on the wind radii dataset described in the text, as
 requested. The original and revised versions of Figure 3 of the manuscript are
-reproduced in this response document as Figure \@ref(fig:fig3).
+reproduced at the end of this response document as Figure \@ref(fig:fig3).
 
 ```{r fig3, fig.cap="Reproduction of Figure 3 from the original manuscript (left) and revised version in the resubmitted manuscript (right). In the revised version, the x-axis has been labelled to clarify that this axis is showing results based on the wind radii dataset described in the text, in response to Reviewer 3's Comment 7. The revised version also uses a more focused range for the x axis, as requested in EHP's Request 1.", fig.show = "hold", out.width="50%"}
 include_graphics("../figures/windcomparison.pdf")
@@ -1160,7 +1161,7 @@ appreciate.
 
 We have revised this figure to show an x-axis truncated at the minimum observed
 value ($\sim75\%$), as requested. The original and revised versions of this
-paper are reproduced in this response document as Figure \@ref(fig:fig3).
+paper are reproduced at the end of this response document as Figure \@ref(fig:fig3).
 
 \medskip
 
@@ -1190,12 +1191,12 @@ quickly and accurately judge relative distances in scientific figures
 considered the gold standard for scientific figures [@nunez2018optimizing].
 
 To help illustrate, in Figures \@ref(fig:fig5check1) and \@ref(fig:fig5check2)
-of this response document, we have reproduced the current version of Figure 5 as
-it would appear to someone with three common types of color vision deficiencies:
-deuteranomaly (defective green cone cells, the most common type), as well as
-protanopia (defective red cone cells) and tritanopia (defective blue cone
-cells). We have also shown how the Figure would appear in grayscale in Figure
-\@ref(fig:fig5check2) (right). We have included similar versions of other
+at the end of this response document, we have reproduced the current version of
+Figure 5 as it would appear to someone with three common types of color vision
+deficiencies: deuteranomaly (defective green cone cells, the most common type),
+as well as protanopia (defective red cone cells) and tritanopia (defective blue
+cone cells). We have also shown how the Figure would appear in grayscale in
+Figure \@ref(fig:fig5check2) (right). We have included similar versions of other
 figures from the manuscript in response to later requests from EHP in this
 response.
 
@@ -1219,16 +1220,16 @@ might help with this (if possible.)
 
 **Response:** 
 
-As we note in our response to EHP Request 2, we used colormaps for all
-figures that are designed to be perceptible both for those with common types of
-color vision deficiency and when printed in grayscale. We have increased the
-size of the circles in Figure 3 of the revised manuscript (reproduced in Figure
-\@ref(fig:fig3) of this response) so that the colors are clearer, as well as
-truncated the x-axis as requested in EHP Request 1. Also, we show in Figures
-\@ref(fig:fig3check1) and \@ref(fig:fig3check2) of this response how the revised
-Figure 3 would look with three common types of color vision deficiency as well
-as when printed in black and white. The gradient is clear when this figure is
-printed in black and white.
+As we note in our response to EHP Request 2, we used colormaps for all figures
+that are designed to be perceptible both for those with common types of color
+vision deficiency and when printed in grayscale. We have increased the size of
+the circles in Figure 3 of the revised manuscript (reproduced in Figure
+\@ref(fig:fig3) at the end of this response) so that the colors are clearer, as
+well as truncated the x-axis as requested in EHP Request 1. Also, we show in
+Figures \@ref(fig:fig3check1) and \@ref(fig:fig3check2) of this response how the
+revised Figure 3 would look with three common types of color vision deficiency
+as well as when printed in black and white. The gradient is clear when this
+figure is printed in black and white.
 
 ```{r fig3check1, fig.cap="Reproduction of revised version of Figure 3 to check accessibility to readers with two types of color vision deficiency, deuteranopia (left) and protanopia (right).", out.width="100%"}
 include_graphics("figures/windcomparison_check1.pdf")
@@ -1271,8 +1272,8 @@ see.
 - Using a different algorithm to "jitter" the points, so there are no points that
 overlap each other. 
 
-We have reproduced both the original and revised versions of Figure 4 as Figure
-\@ref(fig:fig4) of this response.
+We have reproduced both the original and revised versions of Figure 4 in the
+manuscript as Figure \@ref(fig:fig4) at the end of this response.
 
 \medskip
 
@@ -1280,7 +1281,7 @@ We have reproduced both the original and revised versions of Figure 4 as Figure
 \textbf{EHP Request 5:}
 Figures 5--6: Please check to see if the colors used can be distinguished if
 printed in black and white, and if not, use a “color-blind friendly” palette if
-possible. If this is not feasible, we can request and exemption from
+possible. If this is not feasible, we can request an exemption from
 accessibility requirements, but we try to do this only when alternatives  would
 degrade the information content of  the figure.
 \end{shaded}
@@ -1291,14 +1292,14 @@ As we note in our response to EHP Request 2, we used colormaps for all figures
 that are designed to be perceptible both for those with common types of color
 vision deficiency and when printed in grayscale Figures \@ref(fig:fig5check1)
 and \@ref(fig:fig5check2) at the end of this response show what Figure 5 of the
-main text would look like under three common types of color vision deficiency
+manuscript would look like under three common types of color vision deficiency
 and when printed in black and white. Figures \@ref(fig:fig6check1) and
 \@ref(fig:fig6check2) at the end of this response show the same thing for Figure
-6 of the main text.
+6 of the manuscript.
 
-For Figure 6 of the main text, for some types of color balance, it could be
-unclear which of the two color legends pairs with which part of the graph. We
-have therefore added a note to the figure legend to clarify: 
+For Figure 6 of the manuscript, for some types of color vision deficiency, it
+could be unclear which of the two color legends pairs with which part of the
+graph. We have therefore added a note to the figure legend to clarify:
 
 > **Figure legend for Figure 6 in revised manuscript (added text shown in bold)**: 
 "Agreement between exposure classifications based on different single-hazard
