@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.12
 [0] Config.pm:307> INFO - Logfile is 'anderson_ehp_supp.blg'
-[33] biber-darwin:315> INFO - === Fri Sep 18, 2020, 10:35:31
+[33] biber-darwin:315> INFO - === Sat Sep 19, 2020, 09:32:42
 [52] Biber.pm:371> INFO - Reading 'anderson_ehp_supp.bcf'
-[133] Biber.pm:889> INFO - Found 14 citekeys in bib section 0
-[145] Biber.pm:4093> INFO - Processing section 0
-[154] Biber.pm:4254> INFO - Looking for bibtex format file 'hurr_exposure.bib' for section 0
-[159] bibtex.pm:1523> INFO - LaTeX decoding ...
-[385] bibtex.pm:1340> INFO - Found BibTeX data source 'hurr_exposure.bib'
-[470] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/83/ffl13dn505z0jvklj1y612kw0000gn/T/bMa0z9rpr2/hurr_exposure.bib_87347.utf8, line 198, warning: undefined macro "Second"
+[132] Biber.pm:889> INFO - Found 14 citekeys in bib section 0
+[144] Biber.pm:4093> INFO - Processing section 0
+[153] Biber.pm:4254> INFO - Looking for bibtex format file 'hurr_exposure.bib' for section 0
+[158] bibtex.pm:1523> INFO - LaTeX decoding ...
+[383] bibtex.pm:1340> INFO - Found BibTeX data source 'hurr_exposure.bib'
+[472] Utils.pm:193> WARN - BibTeX subsystem: /var/folders/83/ffl13dn505z0jvklj1y612kw0000gn/T/NpyFmFh4Ef/hurr_exposure.bib_1437.utf8, line 198, warning: undefined macro "Second"
+[493] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
 [494] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[494] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
 [494] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
 [494] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
-[510] bbl.pm:636> INFO - Writing 'anderson_ehp_supp.bbl' with encoding 'UTF-8'
-[516] bbl.pm:739> INFO - Output to anderson_ehp_supp.bbl
-[516] Biber.pm:110> INFO - WARNINGS: 1
+[508] bbl.pm:636> INFO - Writing 'anderson_ehp_supp.bbl' with encoding 'UTF-8'
+[515] bbl.pm:739> INFO - Output to anderson_ehp_supp.bbl
+[515] Biber.pm:110> INFO - WARNINGS: 1

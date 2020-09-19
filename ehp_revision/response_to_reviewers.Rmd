@@ -683,14 +683,14 @@ supplemental table:
 observations, but may sometimes underestimate very high rainfall values (Figure
 2). **Further, in some counties, the correlation was substantially lower when 
 considering only tropical cyclones with cumulative local rainfall of $\ge75$ mm
-(Supplemental Table 1)**."
+(Supplemental Table 2)**."
 
 > **Text in revised Discussion (relevant addition in bold):**
 "The rainfall data are generally well-correlated with ground-based observations,
 but may sometimes underestimate very high rainfall values (Figure 2), **and in
 some counties the correlation was substantially lower when considering only
 tropical cyclones with cumulative local rainfall of $\ge75$ mm (Supplemental
-Table 1).**"
+Table 2).**"
 
 \medskip
 
@@ -829,10 +829,10 @@ We have added a reference to these new tables in the main text of the manuscript
 "We drew similar conclusions when we investigated all 46 tropical cyclones
 between 1996 and 2011 (when data for all five metrics were available) for
 which~100 or more counties were exposed based on at least one metric (Figure7;
-**for the most extensive of these, storms for which 250 of more counties were
+**for the most extensive of these, storms for which 200 of more counties were
 exposed based on at least one metric, Tables S3--S6 provide underlying numbers
-comparing exposure assessments for the distance-based proxy to each hazard-based
-metric**)."
+comparing exposure assessments between the distance-based proxy and each
+hazard-based metric**)."
 
 > **Text in the revised manuscript (relevant addition in bold):**
 "Based on our results, the use of a distance-based metric to assess exposure to
@@ -914,7 +914,7 @@ specific to the Northern Hemisphere:
 > **Text in revised manuscript (relevant addition in bold):**
 "**In the Northern Hemisphere, cyclonic winds are counterclockwise,** so
 extreme winds are more common to the track's right where cyclonic winds move in
-concert with the tropical cyclone's forward motion."
+concert with the tropical cyclone's forward motion (Halverson 2015)."
 
 \medskip
 
@@ -1117,9 +1117,9 @@ Metric & Threshold choice\\
 
 \textbf{Rain} & Rain-based exposure was determined based on whether the county had cumulative rainfall of $\ge75$ mm over the period from two days before to one day after the storm’s closest approach and the storm track came within 500 km of the county population mean center. One recent study has highlighted that a two-year rainfall value (which is the median annual maximum rainfall) for a location can provide a useful threshold in identifying rainfall events with potential for societal impacts [@bosma2020intuitive]. For some of the more northern, inland communities included in our study area, the two-year rainfall value for two-, three- and four-day windows is in the 65--85 mm range. For example, Pittsburgh, PA, has two-year rainfall values of 69 mm for a two-day window, 74 mm for a three-day window, and 78 mm for a four-day window [@noaaatlas], consistent with the 75 mm threshold we selected for exposure classification in this paper. However, other thresholds, particularly higher thresholds, would be reasonable in some cases. For example, the two-year rainfall values tend to be much higher in counties of the study area that are further south and close to the coast. The two-year rainfall value for Miami for a three-day window, for example is 180 mm [@noaaatlas]. A variety of definitions have been used previously to identify both extreme or heavy rain (whether associated with a tropical cyclone or not) and tropical cyclone--associated rain. In defining precipitation associated with tropical cyclones, studies have used thresholds of 12.5 mm per day as a metric of regions of ``moderately heavy'' rainfall [@zhou2017spatial] and, as a lower threshold, a lower limit of 10 mm of total storm precipitation---\parfillskip=0pt\tabularnewline
 
-&in conjunction with proximity to the storm's center---in identifying tropical cyclone precipitation events at a location [@feldmann2019estimation]. Other definitions of extreme rain events---including but not limited to tropical cyclone--associated rainfall---are higher than the threshold we use here---for example, one paper defined extreme rain events as cases in which a gauge reported 125 mm or more of rain in 24 hours [@schumacher2006characteristics]. Studies have also used definitions that are relative to the norms for a given location (e.g., 24 hour rainfall totals over the 50-year return value for the location, which the part of the US east of the Rocky Mountains range from 3.5 in [89 mm] to 13 in [330 mm]). [@schumacher2006characteristics; @schumacher2005organization; @stevenson201410].\\
+&in conjunction with proximity to the storm's center---in identifying tropical cyclone precipitation events at a location [@feldmann2019estimation]. Other definitions of extreme rain events---including but not limited to tropical cyclone--associated rainfall---are higher than the threshold we use here---for example, one paper defined extreme rain events as cases in which a gauge reported 125 mm or more of rain in 24 hours [@schumacher2006characteristics]. Studies have also used definitions that are relative to the norms for a given location (e.g., 24 hour rainfall totals over the 50-year return value for the location, which the part of the US east of the Rocky Mountains range from 3.5 in [89 mm] to 13 in [330 mm]) [@schumacher2006characteristics; @schumacher2005organization; @stevenson201410].\\
 
-\textbf{Wind} & Wind-based exposure was determined based on whether modeled storm-associated peak sustained surface wind were $\ge34$ kts at the county’s population mean center. This threshold is being applied to local winds for each county, and it represents the threshold for gale-force winds on the Beaufort wind scale. This limit is used as the outer limit in measuring storm size through the US National Hurricane Center's wind radii for tropical cyclone forecasts [@cangialosi2016examination]. Other thresholds could be selected based on other points on the Beaufort scale---for example, $\ge48$ kts for capturing storm-force winds or $\ge64$ kts for capturing hurricane-force winds. As a note, hurricane-force winds will be rarely experienced for counties, as it will likely only be observed for very severe storms and even for those for counties near the storm's landfall. Many presentations of the Beaufort wind scale include descriptions of the conditions that winds in each category would produce both over land and at sea.\\
+\textbf{Wind} & Wind-based exposure was determined based on whether modeled storm-associated peak sustained surface wind was $\ge34$ kts at the county’s population mean center. This threshold is being applied to local winds for each county, and it represents the threshold for gale-force winds on the Beaufort wind scale. This limit is used as the outer limit in measuring storm size through the US National Hurricane Center's wind radii for tropical cyclone forecasts [@cangialosi2016examination]. Other thresholds could be selected based on other points on the Beaufort scale---for example, $\ge48$ kts for capturing storm-force winds or $\ge64$ kts for capturing hurricane-force winds. As a note, hurricane-force winds will be rarely experienced for counties, as it will likely only be observed for very severe storms and even for those, only for counties near the storm's landfall. Many presentations of the Beaufort wind scale include descriptions of the conditions that winds in each category would produce both over land and at sea.\\
 \hline
 \end{longtable}
 

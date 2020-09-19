@@ -153,7 +153,7 @@ misclass_rain %>%
          Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is 
          calculated as the value in the second column divided by the sum of numbers in the 
          second through fourth columns.  Storms are ordered based on the number of counties 
-         assessed as exposed to at least one of these two exposure metrics.).", 
+         assessed as exposed to at least one of these two exposure metrics.", 
          label = "tab:misclassrain") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
          only.contents = FALSE,
@@ -194,7 +194,7 @@ misclass_wind %>%
          Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is 
          calculated as the value in the second column divided by the sum of numbers in the 
          second through fourth columns.  Storms are ordered based on the number of counties 
-         assessed as exposed to at least one of these two exposure metrics.).", 
+         assessed as exposed to at least one of these two exposure metrics.", 
          label = "tab:misclasswind") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
         only.contents = FALSE,
@@ -236,7 +236,7 @@ misclass_flood %>%
          Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is 
          calculated as the value in the second column divided by the sum of numbers in the 
          second through fourth columns.  Storms are ordered based on the number of counties 
-         assessed as exposed to at least one of these two exposure metrics.).", 
+         assessed as exposed to at least one of these two exposure metrics.", 
          label = "tab:misclassflood") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
         only.contents = FALSE,
@@ -277,7 +277,7 @@ misclass_tornado %>%
          Table 1 of the main text. The Jaccard index shown in Figure 7 of the main text is 
          calculated as the value in the second column divided by the sum of numbers in the 
          second through fourth columns.  Storms are ordered based on the number of counties 
-         assessed as exposed to at least one of these two exposure metrics.).", 
+         assessed as exposed to at least one of these two exposure metrics.", 
          label = "tab:misclasstornado") %>% 
   print(include.rownames = FALSE, booktabs = TRUE, 
         only.contents = FALSE,
