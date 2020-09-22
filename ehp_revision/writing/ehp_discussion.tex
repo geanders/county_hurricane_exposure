@@ -86,26 +86,29 @@ act synergistically in causing impacts~\parencite{smith2009}.
 
 \textbf{This dataset is limited to the contiguous US, and while expansion to
 global coverage would be useful and feasible, there would be some challenges.
-For precipitation data, the re-analysis product used here (NLDAS-2) only covers
-the contiguous US, although other re-analysis products, as well as other types
-of precipitation datasets, have global coverage \parencite{sun2018review}. The
-wind data are generated based on a model that is currently US-focused
-\parencite{stormwindmodel}, but could be extended to other areas, although this
-would require adding new land/sea masks within the associated software, as well
-as accounting for differences across storm basins in wind averaging periods
-\parencite{harper2010guidelines} and in the direction of cyclonic winds in the
-Northern versus Southern Hemisphere. Further, since the core of the wind model
-was developed based on data from Atlantic-basin storms
-\parencite{willoughby2006parametric}, an extension to other areas should
-include separate validation and calibration to ensure it performs appropriately
-in those settings. Alternatively, other wind field modeling software is
-available that provides a global coverage, like Geoscience Australia's Tropical
-Cyclone Risk Model (http://geoscienceaustralia.github.io/tcrm/). For tornado
-and flood events, the data described in this paper drew on a US-focused storm
-events database, and so international extension of data on these hazards would
-require access to similar databases covering other countries. Finally, the
-relevant geopolitical boundaries to use for aggregation would vary by country
-(e.g., municipalities in Mexico, districts in India).}
+The key challenge would be for tornado and flood events. For these events, the
+data described in this paper drew on a US-focused storm events database, and so
+international extension of data on these hazards would require access to
+similar databases covering other countries.  For precipitation data, while the
+re-analysis product used here (NLDAS-2) only covers the contiguous US, other
+re-analysis products, as well as other types of precipitation datasets, have
+global coverage \parencite{sun2018review}. The wind data are generated based on
+a model that is currently US-focused \parencite{stormwindmodel}, but could be
+extended to other areas, although this would require adding new land/sea masks
+within the associated software, as well as accounting for differences across
+storm basins in wind averaging periods \parencite{harper2010guidelines}.
+Further, since the core of the wind model was developed based on data from
+Atlantic-basin storms \parencite{willoughby2006parametric}, an extension to
+other areas should include separate validation and calibration to ensure it
+performs appropriately in those settings. Alternatively, other wind field
+modeling software is available that provides a global coverage, like Geoscience
+Australia's Tropical Cyclone Risk Model
+(http://geoscienceaustralia.github.io/tcrm/). For tornado and flood events, the
+data described in this paper drew on a US-focused storm events database, and so
+international extension of data on these hazards would require access to
+similar databases covering other countries. Finally, the relevant geopolitical
+boundaries to use for aggregation would vary by country (e.g., municipalities
+in Mexico, districts in India).}
 
 \textbf{The dataset we present focuses on the physical hazards of a tropical
 cyclone. However, health impacts will often come through indirect pathways,
@@ -223,7 +226,8 @@ on exposures that could affect any county, whether inland or coastal.
 
 Second, these data are aggregated to the county level. \textbf{This spatial
 scale allows for easy integration with health outcome data aggregated at the
-county level. Such data is often used for disaster epidemiology, as aggregated
+county level, and disaster response decisions are often made at a county or
+state level. Such data is often used for disaster epidemiology, as aggregated
 data may be easier to access than individual-level data, especially at a scale
 that covers many locations and years and so allows higher statistical power and
 includes a broader range of exposure levels

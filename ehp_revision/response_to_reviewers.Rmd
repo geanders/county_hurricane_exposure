@@ -123,9 +123,6 @@ discussion in the discussion section.
 
 **Response:** 
 
-\hl{Roger and Meilin, could you take a look at this response and let me know if
-you have any comments of suggestions to add?}
-
 This is an excellent point. We have added text in the Limitations section of the
 Discussion on the potential limitations of using aggregated, county-level
 exposure data in a research study:
@@ -133,6 +130,7 @@ exposure data in a research study:
 > **Text added to Discussion (added text in bold):** 
 "Second, these data are aggregated to the county level. **This spatial scale
 allows for easy integration with health outcome data aggregated at the county
+level, and disaster response decisions are often made at a county or state
 level. Such data is often used for disaster epidemiology, as aggregated data may
 be easier to access than individual-level data, especially at a scale that
 covers many locations and years and so allows higher statistical power and
@@ -173,9 +171,6 @@ authors discuss this?
 
 **Response:** 
 
-\hl{Andrea, Mohammad, Seth, Steven, Bill, could you take a look at this response 
-and let me know if you have any comments of suggestions to add?}
-
 While there would be some limitations in comparisons based on differences in the
 scale of county-equivalents, many countries affected by tropical cyclones do
 have geopolitical areas that are fairly comparable to US counties, like
@@ -186,25 +181,27 @@ barriers to expanding this approach internationally:
 
 > Text added to the Discussion (added text in bold): 
 "**This dataset is limited to the contiguous US, and while expansion to global
-coverage would be useful and feasible, there would be some challenges. For
-precipitation data, the re-analysis product used here (NLDAS-2) only covers the
-contiguous US, although other re-analysis products, as well as other types of
-precipitation datasets, have global coverage [@sun2018review]. The wind data are
-generated based on a model that is currently US-focused [@stormwindmodel], but
-could be extended to other areas, although this would require adding new
-land/sea masks within the associated software, as well as accounting for
-differences across storm basins in wind averaging periods
-[@harper2010guidelines] and in the direction of cyclonic winds in the Northern
-versus Southern Hemisphere. Further, since the core of the wind model was
-developed based on data from Atlantic-basin storms [@willoughby2006parametric],
-an extension to other areas should include separate validation and calibration
-to ensure it performs appropriately in those settings. Alternatively, other wind
+coverage would be useful and feasible, there would be some challenges. The key
+challenge would be for tornado and flood events. For these events, the data
+described in this paper drew on a US-focused storm events database, and so
+international extension of data on these hazards would require access to similar
+databases covering other countries. For precipitation data, while the
+re-analysis product used here (NLDAS-2) only covers the contiguous US, other
+re-analysis products, as well as other types of precipitation datasets, have
+global coverage [@sun2018review], including the NASA Global Land Data
+Assimilation System Version 2 (GLDAS-2; @rodell2004global), the Global
+Precipitation Measurement Mission (GPM), and the Tropical Rainfall Measuring
+Mission (TRMM). The wind data are generated based on a model that is currently
+US-focused [@stormwindmodel], but could be extended to other areas, although
+this would require adding new land/sea masks within the associated software, as
+well as accounting for differences across storm basins in wind averaging periods
+[@harper2010guidelines]. Further, since the core of the wind model was developed
+based on data from Atlantic-basin storms [@willoughby2006parametric], an
+extension to other areas should include separate validation and calibration to
+ensure it performs appropriately in those settings. Alternatively, other wind
 field modeling software is available that provides a global coverage, like
 Geoscience Australia's Tropical Cyclone Risk Model
-(http://geoscienceaustralia.github.io/tcrm/). For tornado and flood events, the
-data described in this paper drew on a US-focused storm events database, and so
-international extension of data on these hazards would require access to similar
-databases covering other countries. Finally, the relevant geopolitical
+(http://geoscienceaustralia.github.io/tcrm/). Finally, the relevant geopolitical
 boundaries to use for aggregation would vary by country (e.g., municipalities in
 Mexico, districts in India).**"
 
@@ -359,17 +356,9 @@ repository widely used by interdisciplinary hazards and disaster researchers.
 
 **Response:** 
 
-\hl{Dirk, could you take a look at this response and let me know if you have
-any comments of suggestions to add? In particular, I don't have a lot of experience
-working with cloud-based platforms with Jupyter Notebooks. It sounds like that's 
-how the workspace for this DesignSafe platform works. My best guess is that you'd
-be able to download and use R packages in that type of workspace, including 
-a package hosted on a drat repository. Do you have any experience or insights on
-installing packages from different repositories while working on a Jupyter Notebook
-through an online platform?}
-
-It turns out that the data we present should already be accessible to use on the
-DesignSafe platform, because we have shared the data as an R package.
+This is a very good, and very forward-looking suggestion. And it turns out that
+the data we present should already be accessible to use on the DesignSafe
+platform because we have shared the data as an R package.
 
 DesignSafe is an online platform sponsored by the National Science Foundation as
 part of the Natural Hazards Engineering Research Infrastructure
@@ -380,14 +369,13 @@ integration and analysis in the cloud through its Discovery Workspace, while
 drawing on data stored in the Data Depot and while using scientific programming
 tools. As part of its platform, DesignSafe allows users to work in a number of
 programming languages, including R (through Jupyter Notebooks)
-[@rathje2017designsafe]. Therefore, DesignSafe users already have access to any
-data shared through an R package, including the data we present in this
-manuscript, without the data needing to be separately loaded and published
-through DesignSafe's Data Depot.
+[@rathje2017designsafe]. Therefore, and thanks to the R package mechanism and
+its integration into the R environment, DesignSafe users already have access to
+any data shared through an R package.
 
-This is great, because it might otherwise be difficult to try to maintain copies
-of the dataset in different repositories (i.e., one copy as an R package and
-another as a DesignSafe dataset), and there could be confusion about things like
+This is a very useful feature because it might otherwise be difficult to try to
+maintain copies of the dataset in different repositories (i.e., one copy as an R
+package and another as a DesignSafe dataset), and there could be confusion about
 the equivalence of the two copies. R packages are citable through a standard
 format that gives the R package version, while data publicly shared on
 DesignSafe is assigned a digital object identifiers (DOI)
@@ -396,7 +384,7 @@ dataset depending on how the user accessed it. If updates of one copy were not
 immediately updated for the other copy, the copies could get out of sync, and
 maintaining two synced copies would add would add an extra layer of work with
 each update to the R package (we have been updating several hazards as new data
-becomes available). DesignSafe's interface with R avoids this problem by
+becomes available). DesignSafe’s interface with R avoids this problem by
 allowing its users direct access to our package and its data through that path,
 as it allows for a single, citable, licensed version of the data stored and
 shared from a single location, with no question of syncing separate versions of
@@ -404,7 +392,7 @@ the data or clarifying licensing and citation practices across two storage
 locations.
 
 We have added a note in the manuscript to let readers know that, because the
-data is shared through an R package, and because DesignSafe's Discovery
+data is shared through an R package, and because DesignSafe’s Discovery
 Workspace allows users to work in R, the data can be fully accessed and used for
 those working on the DesignSafe platform by using the same code in a DesignSafe
 Jupyter notebook that would otherwise be used on a local computer.
@@ -532,9 +520,6 @@ rain."}
 \end{shaded}
 
 **Response:** 
-
-\hl{Roger and Meilin, could you take a look at this response and let me know if
-you have any comments of suggestions to add?}
 
 We have included a measurement of agreement between different hazard-based
 exposure metrics for two reasons. First, while we agree with the reviewer that a
@@ -707,14 +692,13 @@ supplemental table:
 observations, but may sometimes underestimate very high rainfall values (Figure
 2). **Further, in some counties, the correlation was substantially lower when 
 considering only tropical cyclones with cumulative local rainfall of $\ge75$ mm
-(Supplemental Table 2)**."
+(Table S2)**."
 
 > **Text in revised Discussion (relevant addition in bold):**
 "The rainfall data are generally well-correlated with ground-based observations,
 but may sometimes underestimate very high rainfall values (Figure 2), **and in
 some counties the correlation was substantially lower when considering only
-tropical cyclones with cumulative local rainfall of $\ge75$ mm (Supplemental
-Table 2).**"
+tropical cyclones with cumulative local rainfall of $\ge75$ mm (Table S2).**"
 
 \medskip
 
@@ -929,9 +913,6 @@ in the US). Would be good to clarify this.
 
 **Response:** 
 
-\hl{Andrea, could you take a look at this response and let me know if you have
-any comments of suggestions to add?}
-
 You are right, the opposite would be true in the Southern hemisphere. This
 difference is driven by the Coriolis effect on cyclonic rotation, in which the
 rotation of the earth diverts winds as they move toward the low pressure center
@@ -960,9 +941,6 @@ Coordinated Universal Time (UTC)."}
 \end{shaded}
 
 **Response:** 
-
-\hl{Andrea, could you take a look at this response and let me know if you have
-any comments of suggestions to add?}
 
 Some weather data are collected at standardized times, so that observations from
 different locations can be meaningfully integrated to provide a view of
@@ -1064,9 +1042,6 @@ data."}
 
 **Response:** 
 
-\hl{Andrea, could you take a look at this response and let me know if you have
-any comments of suggestions to add?}
-
 This database is NOAA's official database on tornado events in the United States
 [@mccarthy2003nws]. It is the original source for the only other national
 tornado database available for the country, the Storm Prediction Center [SPC]'s
@@ -1105,9 +1080,6 @@ classifying continuous exposures into binary ones within the table.
 \end{shaded}
 
 **Response:** 
-
-\hl{Andrea, Mohammad, Seth, Steven, and Bill, could you take a look at this
-response and let me know if you have any comments of suggestions to add?}
 
 Ultimately, this choice will depend on what a researcher considers as plausible
 causal pathways for the outcome he or she is studying. For example, if power
